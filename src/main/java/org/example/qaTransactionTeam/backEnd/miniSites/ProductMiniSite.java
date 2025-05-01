@@ -2,7 +2,7 @@ package org.example.qaTransactionTeam.backEnd.miniSites;
 
 import io.restassured.http.ContentType;
 import org.apache.log4j.Logger;
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 
 import static io.restassured.RestAssured.given;
 
@@ -18,7 +18,7 @@ public class ProductMiniSite extends MiniSite{
                 .header("Authorization", "Bearer " + token.getToken())
                 .body(body)
                 .when()
-                .post(Configs1.PAYHUB_HOST + "/cabina/marketplaces/"+siteId+"/products")
+                .post(Configs.PAYHUB_HOST + "/cabina/marketplaces/"+siteId+"/products")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -32,7 +32,7 @@ public class ProductMiniSite extends MiniSite{
                 .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer " + token.getToken())
                 .when()
-                .get(Configs1.PAYHUB_HOST + "/cabina/marketplaces/" + siteId + "/products")
+                .get(Configs.PAYHUB_HOST + "/cabina/marketplaces/" + siteId + "/products")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -53,7 +53,7 @@ public class ProductMiniSite extends MiniSite{
                         "  ]\n" +
                         "}")
                 .when()
-                .post(Configs1.PAYHUB_HOST + "/cabina/marketplaces/" + siteId + "/products/update")
+                .post(Configs.PAYHUB_HOST + "/cabina/marketplaces/" + siteId + "/products/update")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -69,7 +69,7 @@ public class ProductMiniSite extends MiniSite{
                         "  \"status\": \""+status+"\"\n" +
                         "}")
                 .when()
-                .put(Configs1.PAYHUB_HOST + "/cabina/marketplaces/" + siteId + "/products/"+productId+"/status")
+                .put(Configs.PAYHUB_HOST + "/cabina/marketplaces/" + siteId + "/products/"+productId+"/status")
                 .then()
 //                .statusCode(statusCode)
                 .extract().response().asString();
@@ -83,7 +83,7 @@ public class ProductMiniSite extends MiniSite{
                 .header("Authorization", "Bearer " + token.getToken())
                 .body(body)
                 .when()
-                .put(Configs1.PAYHUB_HOST + "/cabina/marketplaces/" + siteId + "/products/"+productId+"")
+                .put(Configs.PAYHUB_HOST + "/cabina/marketplaces/" + siteId + "/products/"+productId+"")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();

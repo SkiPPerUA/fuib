@@ -2,7 +2,7 @@ package org.example.qaTransactionTeam.backEnd.token;
 
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import org.json.JSONException;
 import io.restassured.http.ContentType;
 import org.testng.Assert;
@@ -16,8 +16,8 @@ public class Trans_token_itm implements Auth_token{
 
     private String token;
     private String acqID = "2101";
-    private String login = Configs1.LOGIN_MERCHANT_2101;
-    private String password = Configs1.PASSWORD_MERCHANT_2101;
+    private String login = Configs.LOGIN_MERCHANT_2101;
+    private String password = Configs.PASSWORD_MERCHANT_2101;
     private String host = "https://tsystestapi.pumb.ua";
     //private String host = "https://vmt.dts.fuib.com";
     private static final Logger logger = Logger.getLogger(Trans_token_itm.class);

@@ -2,7 +2,7 @@ package org.example.qaTransactionTeam.backEnd.payByLink;
 
 import io.restassured.http.ContentType;
 import org.apache.log4j.Logger;
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import org.json.JSONArray;
 
 import static io.restassured.RestAssured.given;
@@ -23,7 +23,7 @@ public class NovaPoshta {
                         "  \"api_key\": \""+key+"\"\n" +
                         "}")
                 .when()
-                .post(Configs1.PAYHUB_HOST +"/cabina/pechkin/np/keys")
+                .post(Configs.PAYHUB_HOST +"/cabina/pechkin/np/keys")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -36,7 +36,7 @@ public class NovaPoshta {
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer "+token.getToken())
                 .when()
-                .get(Configs1.PAYHUB_HOST +"/cabina/pechkin/np/senders")
+                .get(Configs.PAYHUB_HOST +"/cabina/pechkin/np/senders")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -52,7 +52,7 @@ public class NovaPoshta {
                 .header("Authorization","Bearer "+token.getToken())
                 .body(body)
                 .when()
-                .post(Configs1.PAYHUB_HOST +"/cabina/pay-by-link/acquiring/invoices/"+invoiceID+"/delivery/np/documents")
+                .post(Configs.PAYHUB_HOST +"/cabina/pay-by-link/acquiring/invoices/"+invoiceID+"/delivery/np/documents")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -65,7 +65,7 @@ public class NovaPoshta {
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer "+token.getToken())
                 .when()
-                .get(Configs1.PAYHUB_HOST +"/cabina/pechkin/np/senders/contacts?counterparty_id="+idSenders+"")
+                .get(Configs.PAYHUB_HOST +"/cabina/pechkin/np/senders/contacts?counterparty_id="+idSenders+"")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();

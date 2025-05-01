@@ -2,7 +2,7 @@ package test.backTests.itm;
 
 
 import org.example.qaTransactionTeam.backEnd.utils.BDpostgre;
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -17,7 +17,7 @@ public class MT2359 {
     @BeforeTest
     public void connBD() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
 
-        BDpostgre.BDpostgre("vmtdb", Configs1.POSTGRE_SQL_VMTDB_NAME, Configs1.POSTGRE_SQL_VMTDB_PASSWORD);
+        BDpostgre.BDpostgre("vmtdb", Configs.POSTGRE_SQL_VMTDB_NAME, Configs.POSTGRE_SQL_VMTDB_PASSWORD);
     }
 
     @Test //select func_match_docs_trans()

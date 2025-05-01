@@ -3,7 +3,7 @@ package test.backTests.prostir;
 import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.prostir.EmissionCard;
 import org.example.qaTransactionTeam.backEnd.utils.BDas400;
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -24,7 +24,7 @@ public class MT2890 extends BaseTest {
 
     @BeforeTest
     public void connDB() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
-        BDas400.BDas400("ITMTST", Configs1.ITMTST_ALL_NAME, Configs1.ITMTST_ALL_PASSWORD);
+        BDas400.BDas400("ITMTST", Configs.ITMTST_ALL_NAME, Configs.ITMTST_ALL_PASSWORD);
     }
 
     @AfterTest

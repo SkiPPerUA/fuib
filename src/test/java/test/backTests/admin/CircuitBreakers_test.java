@@ -7,7 +7,7 @@ import org.example.qaTransactionTeam.backEnd.token.Trans_token_payhub;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.A2C_legion;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -123,7 +123,7 @@ public class CircuitBreakers_test extends BaseTest {
                 "    },\n" +
                 "    \"recipient\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data1.getData(Card.OSCHAD_MC, Card_param.pan) +"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.OSCHAD_MC, Card_param.pan) +"\"\n" +
                 "    }\n" +
                 "}");
         for (int i = 0; i < count; i++){

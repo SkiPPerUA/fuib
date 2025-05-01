@@ -1,6 +1,6 @@
 package test.backTests.hce.inbound;
 
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import test.backTests.hce.HCEConfigs;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
@@ -13,7 +13,7 @@ public class ApproveProvisioningStandInNotification {
     public void positiveTestApproveProvisioningStandInNotification(){
 
         String body = "{ “panReferenceID”: “”, “walletAccountEmailAddressHash”: “”, “clientWalletAccountID”: “”, “panSource”: “”, “addressVerificationResultCode”: “”, “cvv2ResultsCode”: “”, “consumerEntryMode”: “”, “locale”: “”," +
-                " “encryptedData”: “"+ Configs1.HCE_JWS +"”," +
+                " “encryptedData”: “"+ Configs.HCE_JWS +"”," +
                 " “deviceInfo”: { “deviceID”: “”, “deviceLanguageCode”: “”, “osType”: “”, “osVersion”: “”, “osBuildID”: “”, “deviceType”: “”, “deviceIDType”: “”, “deviceManufacturer”: “”, “deviceBrand”: “”, “deviceModel”: “”, “deviceName”: “”, “deviceNumber”: “”, “deviceLocation”: “”, “deviceIPAddressV4”: “”, “locationSource”: “”, “tokenProtectionMethod”: “” } }";
 
         String request = given()
@@ -21,7 +21,7 @@ public class ApproveProvisioningStandInNotification {
                 .params("eventType",true)
                 .body(body)
                 .when()
-                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v2/tokenRequestors/"+ Configs1.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs1.HCE_TOKEN_REFERENCE_ID +"/tokenChanged")
+                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v2/tokenRequestors/"+ Configs.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs.HCE_TOKEN_REFERENCE_ID +"/tokenChanged")
                 .then()
                 .statusCode(200)
                 .extract().response().prettyPrint();
@@ -32,14 +32,14 @@ public class ApproveProvisioningStandInNotification {
 
         String body = "{\n" +
                 "“messageReasonCode”: “”, “dateTimeOfEvent”: “”, “panReferenceID”: “”, “walletAccountEmailAddressHash”: “”, “clientWalletAccountId”: “”, “panSource”: “”, “addressVerificationResultCode”: “”, “cvv2ResultsCode”: “”, “consumerEntryMode”: “”, “locale”: “”, “deviceInfo”: { “deviceID”: “”, “deviceLanguageCode”: “”, “osType”: “”, “osVersion”: “”, “osBuildID”: “”, “deviceType”: “”, “deviceIDType”: “”, “deviceManufacturer”: “”, “deviceBrand”: “”, “deviceModel”: “”, “deviceName”: “”, “deviceNumber”: “”, “deviceLocation”: “”, “deviceIpAddressV4”: “”, “locationSource”: “”, “tokenProtectionMethod”: “” },\n" +
-                "} “encryptedData”: “"+ Configs1.HCE_JWS +"” } ";
+                "} “encryptedData”: “"+ Configs.HCE_JWS +"” } ";
 
         String request = given()
                 .contentType(ContentType.JSON)
                 .params("eventType",false)
                 .body(body)
                 .when()
-                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v2/tokenRequestors/"+ Configs1.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs1.HCE_TOKEN_REFERENCE_ID +"/tokenChanged")
+                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v2/tokenRequestors/"+ Configs.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs.HCE_TOKEN_REFERENCE_ID +"/tokenChanged")
                 .then()
                 .statusCode(200)
                 .extract().response().prettyPrint();
@@ -50,7 +50,7 @@ public class ApproveProvisioningStandInNotification {
 
         String body = "{\n" +
                 "“messageReason”: “”, “messageReasonCode”: “”, “dateTimeOfEvent”: “”, “panReferenceID”: “”, “deviceID”: “”, " +
-                "“encryptedData”: “"+ Configs1.HCE_JWS +"”\n" +
+                "“encryptedData”: “"+ Configs.HCE_JWS +"”\n" +
                 "}";
 
         String request = given()
@@ -58,7 +58,7 @@ public class ApproveProvisioningStandInNotification {
                 .params("eventType",false)
                 .body(body)
                 .when()
-                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v2/tokenRequestors/"+ Configs1.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs1.HCE_TOKEN_REFERENCE_ID +"/tokenChanged")
+                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v2/tokenRequestors/"+ Configs.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs.HCE_TOKEN_REFERENCE_ID +"/tokenChanged")
                 .then()
                 .statusCode(200)
                 .extract().response().prettyPrint();

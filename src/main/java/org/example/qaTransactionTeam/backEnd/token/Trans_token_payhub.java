@@ -2,7 +2,7 @@ package org.example.qaTransactionTeam.backEnd.token;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,14 +13,14 @@ public class Trans_token_payhub implements Auth_token{
 
     private String token;
     private String response;
-    private String host = Configs1.PAYHUB_HOST;
+    private String host = Configs.PAYHUB_HOST;
     private String data;
 
     public Trans_token_payhub() throws JSONException {
         data = "{\n" +
-                "\t\"login\": \""+ Configs1.PAYHUB_LOGIN +"\",\n" +
-                "\t\"password\": \""+ Configs1.PAYHUB_PASSWORD +"\",\n" +
-                "\t\"client\": \""+ Configs1.PAYHUB_CLIENT +"\"\n" +
+                "\t\"login\": \""+ Configs.PAYHUB_LOGIN +"\",\n" +
+                "\t\"password\": \""+ Configs.PAYHUB_PASSWORD +"\",\n" +
+                "\t\"client\": \""+ Configs.PAYHUB_CLIENT +"\"\n" +
                 "}";
 //        data = "{\n" +
 //                "\t\"login\": \"svc_ph_trn2_t\",\n" +
@@ -33,9 +33,9 @@ public class Trans_token_payhub implements Auth_token{
     public Trans_token_payhub(String host) throws JSONException {
         this.host = host;
         data = "{\n" +
-                "\t\"login\": \""+ Configs1.PAYHUB_LOGIN +"\",\n" +
-                "\t\"password\": \""+ Configs1.PAYHUB_PASSWORD +"\",\n" +
-                "\t\"client\": \""+ Configs1.PAYHUB_CLIENT +"\"\n" +
+                "\t\"login\": \""+ Configs.PAYHUB_LOGIN +"\",\n" +
+                "\t\"password\": \""+ Configs.PAYHUB_PASSWORD +"\",\n" +
+                "\t\"client\": \""+ Configs.PAYHUB_CLIENT +"\"\n" +
                 "}";
         create_token();
     }

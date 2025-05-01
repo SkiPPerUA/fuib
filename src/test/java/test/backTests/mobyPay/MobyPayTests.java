@@ -4,7 +4,7 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.mobyPay.MobyTrans;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -14,8 +14,8 @@ public class MobyPayTests extends BaseTest {
     @Test
     public void transHoldWith3ds() throws IOException {
         String payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.MONO_VISA, Card_param.pan) +"\",\n" +
-                "              \"expire\": \""+ Cards_data1.getData(Card.MONO_VISA, Card_param.expire) +"\"";
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.MONO_VISA, Card_param.pan) +"\",\n" +
+                "              \"expire\": \""+ Cards_data.getData(Card.MONO_VISA, Card_param.expire) +"\"";
         MobyTrans trans = new MobyTrans("100",payer,false,2);
         trans.status();
 //        trans.complete_hold("100");
@@ -27,7 +27,7 @@ public class MobyPayTests extends BaseTest {
     public void transHoldWithout3ds() throws IOException, InterruptedException {
         logStartTest("transHoldWithout3ds");
         String payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.MONO_VISA, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.MONO_VISA, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2409\"";
         MobyTrans trans = new MobyTrans("1000",payer,false);
 //        trans.complete_hold("1000");
@@ -42,7 +42,7 @@ public class MobyPayTests extends BaseTest {
     public void transHoldWithout3dsCraptogram() {
         logStartTest("transHoldWithout3dsCraptogram");
         String payer = "\"source\": \"APPLE_CRYPTOGRAM\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.MONO_VISA, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.MONO_VISA, Card_param.pan) +"\",\n" +
                 "\t\t\t\t\t\t  \"cryptogram\": \"AHAzQmvcgxILAAKhssPUAAADFA==\",\n" +
                 "              \"expire\": \"2602\"";
         MobyTrans trans = new MobyTrans("1000",payer,false);
@@ -56,8 +56,8 @@ public class MobyPayTests extends BaseTest {
     public void transWith3ds() throws IOException, InterruptedException {
         logStartTest("transWith3ds");
         String payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.MONO_VISA, Card_param.pan) +"\",\n" +
-                "              \"expire\": \""+ Cards_data1.getData(Card.MONO_VISA, Card_param.expire) +"\"";
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.MONO_VISA, Card_param.pan) +"\",\n" +
+                "              \"expire\": \""+ Cards_data.getData(Card.MONO_VISA, Card_param.expire) +"\"";
         MobyTrans trans = new MobyTrans("102",payer,false,2);
         Thread.sleep(5000);
         trans.status();
@@ -69,7 +69,7 @@ public class MobyPayTests extends BaseTest {
     public void transWithout3ds() throws IOException, InterruptedException {
         logStartTest("transWithout3ds");
         String payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.MONO_MC, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.MONO_MC, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2409\"";
         MobyTrans trans = new MobyTrans("1104",payer,true);
         Thread.sleep(5000);

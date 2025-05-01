@@ -5,7 +5,7 @@ import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_itm.MobilePay;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.testng.annotations.Test;
 
 @Test
@@ -18,9 +18,9 @@ public class MakeAGP extends BaseTest {
     public void makeAGP_with_confirmation(){
         body = "{\n" +
                 "\t\"amount\":\"101\",\n" +
-                "\t\"card_number\":\""+ Cards_data1.getData(card, Card_param.pan) +"\",\n" +
-                "\t\"experation_date\":\""+ Cards_data1.getData(card, Card_param.expire)+"\",\n" +
-                "\t\"cvv\": \""+ Cards_data1.getData(card, Card_param.cvv)+"\", \n" +
+                "\t\"card_number\":\""+ Cards_data.getData(card, Card_param.pan) +"\",\n" +
+                "\t\"experation_date\":\""+ Cards_data.getData(card, Card_param.expire)+"\",\n" +
+                "\t\"cvv\": \""+ Cards_data.getData(card, Card_param.cvv)+"\", \n" +
                 "\t\"ucaf\":\"AAABA5RZlAAAA5cZGFmUAAAAAAA=\",\n" +
                 "\t\"ext_trans_id\": \"12wq3e50\",\n" +
                 "\t\"info_3ds\":{\n" +
@@ -49,9 +49,9 @@ public class MakeAGP extends BaseTest {
     public void makeAGP(){
         body = "{\n" +
                 "\t\"amount\":\"101\",\n" +
-                "\t\"card_number\":\""+ Cards_data1.getData(card, Card_param.pan)+"\",\n" +
-                "\t\"experation_date\":\""+ Cards_data1.getData(card, Card_param.expire)+"\",\n" +
-                "\t\"cvv\": \""+ Cards_data1.getData(card, Card_param.cvv)+"\", \n" +
+                "\t\"card_number\":\""+ Cards_data.getData(card, Card_param.pan)+"\",\n" +
+                "\t\"experation_date\":\""+ Cards_data.getData(card, Card_param.expire)+"\",\n" +
+                "\t\"cvv\": \""+ Cards_data.getData(card, Card_param.cvv)+"\", \n" +
                 "\t\"ucaf\":\"AAABA5RZlAAAA5cZGFmUAAAAAAA=\",\n" +
                 "\t\"ext_trans_id\": \"12wq3e50\",\n" +
                 "\t\"info_3ds\":{\n" +

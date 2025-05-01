@@ -39,12 +39,12 @@ public class Send_pay_auth_res extends ScarecrowRabbit{
         mess = "{\n" +
                     "               \t\"token\":\""+token+"\",\n" +
                     "                \"session_id\":\"999999999999\",\n" +
-                    "               \t\"card_number\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                    "               \t\"card_number\":\""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                     "               \t\"ip\":\"0.0.0.0\",\n" +
-                    "               \t\"exp_date\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.expire)+"\",\n" +
+                    "               \t\"exp_date\":\""+ Cards_data.getData(Card.FUIB_MC, Card_param.expire)+"\",\n" +
                     "               \t\"cipher_key\":\"fVdTDKSzqyLdilKK9U****\",\n" +
                     "               \t\"amount\":\"800\",\n" +
-                    "               \t\"cvv2\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                    "               \t\"cvv2\":\""+ Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                     "               \t\"acquirer_settings\":{\n" +
                     "               \t\t\"merchant_id_tds\":\"" + merchant_id_tds+ "\",\n" +
                     "               \t\t\"merchant_id_av\":\"" + merchant_id_av + "\",\n" +

@@ -36,7 +36,7 @@ public class PAYH12647 extends BaseTest {
         dateTo.replace(11,13, String.valueOf(Integer.parseInt(hours)+1));
 
         A2CRonan a2c = new A2CRonan();
-        a2c.A2C(Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        a2c.A2C(Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         changeBDdata(a2c.reference,"A","1");
         WonderWoman wonderWoman = new WonderWoman();
         wonderWoman.getStatus(a2c.acqId,dateNow.toString(),dateTo.toString());
@@ -63,7 +63,7 @@ public class PAYH12647 extends BaseTest {
         dateTo.replace(11,13, String.valueOf(Integer.parseInt(hours)+1));
 
         A2CRonan a2c = new A2CRonan();
-        a2c.A2C(Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        a2c.A2C(Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         changeBDdata(a2c.reference,"B","2");
         WonderWoman wonderWoman = new WonderWoman();
         wonderWoman.getStatus(a2c.acqId,dateNow.toString(),dateTo.toString());
@@ -90,7 +90,7 @@ public class PAYH12647 extends BaseTest {
         dateTo.replace(11,13, String.valueOf(Integer.parseInt(hours)+1));
 
         A2CRonan a2c = new A2CRonan();
-        a2c.A2C(Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        a2c.A2C(Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         changeBDdata(a2c.reference,"B","1");
         WonderWoman wonderWoman = new WonderWoman();
         wonderWoman.getStatus(a2c.acqId,dateNow.toString(),dateTo.toString());

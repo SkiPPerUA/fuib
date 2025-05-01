@@ -5,7 +5,7 @@ import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.A2C_direct;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -23,7 +23,7 @@ public class A2C_direct_regress extends BaseTest {
                 "    \"commission\": 120,\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    }," +
                 "\"payer\":{\n" +
                 "\t\t\"source\":\"IBAN\",\n" +
@@ -44,7 +44,7 @@ public class A2C_direct_regress extends BaseTest {
                 "    \"commission\": 120,\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data1.getData(Card.MONO_VISA,Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.MONO_VISA,Card_param.pan)+"\"\n" +
                 "    }," +
                 "\"payer\":{\n" +
                 "\t\t\"source\":\"IBAN\",\n" +

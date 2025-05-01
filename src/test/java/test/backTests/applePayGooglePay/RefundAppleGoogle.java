@@ -7,7 +7,7 @@ import org.example.qaTransactionTeam.backEnd.itm.GetTransDetails;
 import org.example.qaTransactionTeam.backEnd.transaction.ThreeDS;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,9 +19,9 @@ public class RefundAppleGoogle extends BaseTest {
     private int amount = 200;
     private String body = "{\n" +
             "\t\"amount\":\""+amount+"\",\n" +
-            "\t\t\"card_number\":\""+ Cards_data1.getData(Card.FUIB_VISA, Card_param.pan) +"\",\n" +
-            "\t\"experation_date\":\""+ Cards_data1.getData(Card.FUIB_VISA, Card_param.expire)+"\",\n" +
-            "\t\"cvv\": \""+ Cards_data1.getData(Card.FUIB_VISA, Card_param.cvv)+"\", \n" +
+            "\t\t\"card_number\":\""+ Cards_data.getData(Card.FUIB_VISA, Card_param.pan) +"\",\n" +
+            "\t\"experation_date\":\""+ Cards_data.getData(Card.FUIB_VISA, Card_param.expire)+"\",\n" +
+            "\t\"cvv\": \""+ Cards_data.getData(Card.FUIB_VISA, Card_param.cvv)+"\", \n" +
             "\t\"ucaf\":\"AAABA5RZlAAAA5cZGFmUAAAAAAA=\",\n" +
             "\t\"ext_trans_id\": \"12wq3e49\",\n" +
             ThreeDS.with_threeDS_2_1_0_itm +
@@ -261,7 +261,7 @@ public class RefundAppleGoogle extends BaseTest {
         pay.finish(String.valueOf(amount));
 
         AppleGoogleReversalRefund refund = new AppleGoogleReversalRefund();
-        refund.refund(pay.getSessionId(),String.valueOf(amount), Cards_data1.getData(Card.FUIB_VISA, Card_param.pan),"2211");
+        refund.refund(pay.getSessionId(),String.valueOf(amount), Cards_data.getData(Card.FUIB_VISA, Card_param.pan),"2211");
 
         //Проверка ответа по рефанду
         JSONObject ob = new JSONObject(refund.getRefundInfo());
@@ -307,7 +307,7 @@ public class RefundAppleGoogle extends BaseTest {
 
         AppleGoogleReversalRefund refund = new AppleGoogleReversalRefund();
         refund.refund(pay.getSessionId(),String.valueOf(amount/2));
-        refund.refund(pay.getSessionId(),String.valueOf(amount/2), Cards_data1.getData(Card.FUIB_MC, Card_param.pan),"2212");
+        refund.refund(pay.getSessionId(),String.valueOf(amount/2), Cards_data.getData(Card.FUIB_MC, Card_param.pan),"2212");
 
         //Проверка ответа по рефанду
         JSONObject ob = new JSONObject(refund.getRefundInfo());

@@ -5,7 +5,7 @@ import org.example.qaTransactionTeam.backEnd.admin.Scoring;
 import org.example.qaTransactionTeam.backEnd.utils.BDpostgre;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -21,7 +21,7 @@ public class ScoringTest extends BaseTest {
     public void internal_positive_internal_scoring(){
         scoring.setStatusCode(200);
         body = "{\n" +
-                "    \"pan\" : \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "    \"pan\" : \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "    \"inn\" : \"3510812694\",\n" +
                 "    \"first_name\" : \"Test\",\n" +
                 "    \"last_name\" : \"Test\"\n" +
@@ -32,7 +32,7 @@ public class ScoringTest extends BaseTest {
     public void internal_positive_only_mandatory(){
         scoring.setStatusCode(200);
         body = "{\n" +
-                "    \"pan\" : \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\"\n" +
+                "    \"pan\" : \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\"\n" +
                 "}";
         scoring.internalScoring(body);
     }
@@ -89,7 +89,7 @@ public class ScoringTest extends BaseTest {
     public void partner_positive_internal_scoring(){
         scoring.setStatusCode(200);
         body = "{\n" +
-                "    \"pan\" : \""+ Cards_data1.getData(Card.FUIB_VISA, Card_param.pan) +"\",\n" +
+                "    \"pan\" : \""+ Cards_data.getData(Card.FUIB_VISA, Card_param.pan) +"\",\n" +
                 "    \"inn\" : \"3510812694\",\n" +
                 "    \"first_name\" : \"Testыыы\",\n" +
                 "    \"last_name\" : \"Testффф\"\n" +
@@ -100,7 +100,7 @@ public class ScoringTest extends BaseTest {
     public void partner_positive_only_mandatory(){
         scoring.setStatusCode(200);
         body = "{\n" +
-                "    \"pan\" : \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\"\n" +
+                "    \"pan\" : \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\"\n" +
                 "}";
         scoring.partnerScoring(body);
     }

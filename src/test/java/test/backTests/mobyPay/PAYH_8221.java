@@ -4,7 +4,7 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.mobyPay.MobyTrans;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,7 +25,7 @@ public class PAYH_8221 extends BaseTest {
 
 
         payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2212\"";
         trans = new MobyTrans("100",payer,false);
         json = new JSONObject(trans.getResponse());
@@ -39,7 +39,7 @@ public class PAYH_8221 extends BaseTest {
 
 
         payer = "\"source\": \"GOOGLE_CRYPTOGRAM\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_VISA, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_VISA, Card_param.pan) +"\",\n" +
                 "\t\t\t\t\t\t  \"cryptogram\": \"dsgfsdgdfg\",\n" +
                 "              \"expire\": \"2211\"";
         trans = new MobyTrans("100",payer,false);
@@ -54,7 +54,7 @@ public class PAYH_8221 extends BaseTest {
 
 
         payer = "\"source\": \"APPLE_CRYPTOGRAM\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "\t\t\t\t\t\t  \"cryptogram\": \"dsgfsdgdfg\",\n" +
                 "              \"expire\": \"2212\"";
         trans = new MobyTrans("100",payer,false);
@@ -76,7 +76,7 @@ public class PAYH_8221 extends BaseTest {
         logStartTest("positiveTransWithHold");
 
         payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2212\"";
         trans = new MobyTrans("100",payer,true);
         json = new JSONObject(trans.getResponse());
@@ -98,7 +98,7 @@ public class PAYH_8221 extends BaseTest {
         logStartTest("negativeTransWithHoldSum29");
 
         payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2212\"";
 
         trans = new MobyTrans("29",payer,true);
@@ -121,7 +121,7 @@ public class PAYH_8221 extends BaseTest {
         logStartTest("positiveCompleteHoldAllSum");
 
         payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2212\"";
         trans = new MobyTrans("100",payer,true);
         json = new JSONObject(trans.getResponse());
@@ -151,7 +151,7 @@ public class PAYH_8221 extends BaseTest {
         logStartTest("positiveCompleteHoldSummLess");
 
         payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2212\"";
         trans = new MobyTrans("100",payer,true);
         json = new JSONObject(trans.getResponse());
@@ -181,7 +181,7 @@ public class PAYH_8221 extends BaseTest {
         logStartTest("negativeCompleteHoldSummMore");
 
         payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2212\"";
         trans = new MobyTrans("100",payer,true);
         json = new JSONObject(trans.getResponse());
@@ -210,7 +210,7 @@ public class PAYH_8221 extends BaseTest {
         logStartTest("positiveRefund21Trans");
 
         payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2212\"";
         trans = new MobyTrans("100",payer,true);
         json = new JSONObject(trans.getResponse());
@@ -253,7 +253,7 @@ public class PAYH_8221 extends BaseTest {
         logStartTest("negativeRefund21Trans");
 
         payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2212\"";
         trans = new MobyTrans("100",payer,true);
         json = new JSONObject(trans.getResponse());
@@ -289,7 +289,7 @@ public class PAYH_8221 extends BaseTest {
         logStartTest("positiveRefund25Trans");
 
         payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_VISA, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_VISA, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2211\"";
         trans = new MobyTrans("1000",payer,false);
         json = new JSONObject(trans.getResponse());
@@ -438,7 +438,7 @@ public class PAYH_8221 extends BaseTest {
         logStartTest("positiveRefundAfterCompleteHold");
 
         payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2212\"";
         trans = new MobyTrans("1000",payer,true);
         json = new JSONObject(trans.getResponse());
@@ -598,7 +598,7 @@ public class PAYH_8221 extends BaseTest {
         logStartTest("negativeRefundAfterCompleteHold");
 
         payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_VISA, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_VISA, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2211\"";
         trans = new MobyTrans("1000",payer,true);
         json = new JSONObject(trans.getResponse());

@@ -82,7 +82,7 @@ public class CrossBorder extends BaseTest {
 
     public void test_checkCardCountries(){
         crossborder.checkCardCountries("5545931006939729");
-        crossborder.checkCardCountries(Cards_data1.getData(Card.MONO_MC, Card_param.pan));
+        crossborder.checkCardCountries(Cards_data.getData(Card.MONO_MC, Card_param.pan));
     }
 
     public void cros(){

@@ -3,7 +3,7 @@ package org.example.qaTransactionTeam.backEnd.payByLink;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.log4j.Logger;
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import org.json.JSONObject;
 
 import static io.restassured.RestAssured.given;
@@ -32,7 +32,7 @@ public class TokenForPayByLink {
                 .contentType(ContentType.JSON)
                 .body(body)
                 .when()
-                .post(Configs1.PAYHUB_HOST +"/auth/merchants/admin/otp")
+                .post(Configs.PAYHUB_HOST +"/auth/merchants/admin/otp")
                 .then()
                 .statusCode(200).extract().response().asString();
 
@@ -46,7 +46,7 @@ public class TokenForPayByLink {
                         "\t\"code\": \"1111\"\n" +
                         "}")
                 .when()
-                .post(Configs1.PAYHUB_HOST +"/auth/merchants/admin/otp/confirm")
+                .post(Configs.PAYHUB_HOST +"/auth/merchants/admin/otp/confirm")
                 .then()
                 .statusCode(200).extract().response().asString();
 

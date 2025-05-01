@@ -4,7 +4,7 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.ronan.DomesticCard;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,7 +14,7 @@ public class CheckDomestic extends BaseTest {
     void ukrCard(){
         logStartTest("ukrCard");
         DomesticCard domesticCard = new DomesticCard("http://localhost:8020");
-        Assert.assertTrue(domesticCard.checkDomestic(Cards_data1.getData(Card.FUIB_VISA, Card_param.pan)));
+        Assert.assertTrue(domesticCard.checkDomestic(Cards_data.getData(Card.FUIB_VISA, Card_param.pan)));
         logFinishTest("ukrCard");
     }
 

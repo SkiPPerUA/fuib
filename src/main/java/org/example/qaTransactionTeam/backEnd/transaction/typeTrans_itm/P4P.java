@@ -8,7 +8,7 @@ import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction_itm;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -86,7 +86,7 @@ public class P4P extends Transaction_itm implements Transaction {
         Map<String, String> body = new HashMap<>();
         body.put("paymentIdP4P",p4pFinalisationId);
         body.put("customAmount",summ);
-        body.put("customReceiverCard", Cards_data1.getData(card,Card_param.pan));
+        body.put("customReceiverCard", Cards_data.getData(card,Card_param.pan));
         P4Pfinish(body);
     }
 

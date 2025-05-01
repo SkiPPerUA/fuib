@@ -1,6 +1,6 @@
 package org.example.qaTransactionTeam.frontEnd.frames;
 
-import org.example.qaTransactionTeam.frontEnd.utils.Configs1;
+import org.example.qaTransactionTeam.frontEnd.utils.Configs;
 import org.example.qaTransactionTeam.frontEnd.utils.Locator;
 import org.example.qaTransactionTeam.frontEnd.utils.PageObject;
 import org.example.qaTransactionTeam.frontEnd.utils.Session;
@@ -22,7 +22,7 @@ public class CashOrders_1st_page extends PageObject {
     }
 
     public CashOrders_1st_page openPage(String url){
-        Session.getWD().get(Configs1.environmentFrames+url);
+        Session.getWD().get(Configs.environmentFrames+url);
         confirmPage();
         return this;
     }

@@ -3,7 +3,7 @@ package test.frontTests.frames;
 import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.example.qaTransactionTeam.frontEnd.frames.CashOrders_1st_page;
 import org.example.qaTransactionTeam.frontEnd.utils.Session;
 import org.testng.annotations.AfterTest;
@@ -25,7 +25,7 @@ public class CashOrderTest extends BaseTest {
                 .choiseStreet(" вул. Миколи Оводова, 38 ")
                 .clickNextButton()
                 .choiseCurrency("EUR")
-                .setCardBox(Cards_data1.getData(Card.FUIB_MC, Card_param.pan), Cards_data1.getData(Card.FUIB_MC, Card_param.expire_month), Cards_data1.getData(Card.FUIB_MC, Card_param.expire_year), Cards_data1.getData(Card.FUIB_MC, Card_param.cvv))
+                .setCardBox(Cards_data.getData(Card.FUIB_MC, Card_param.pan), Cards_data.getData(Card.FUIB_MC, Card_param.expire_month), Cards_data.getData(Card.FUIB_MC, Card_param.expire_year), Cards_data.getData(Card.FUIB_MC, Card_param.cvv))
                 .clickNextButton();
         wait_payment();
     }
@@ -40,7 +40,7 @@ public class CashOrderTest extends BaseTest {
                 .choiseStreet(" вул. Миколи Оводова, 38 ")
                 .clickNextButton()
                 .changeCash("9000")
-                .setCardBox(Cards_data1.getData(Card.FUIB_MC, Card_param.pan), Cards_data1.getData(Card.FUIB_MC, Card_param.expire_month), Cards_data1.getData(Card.FUIB_MC, Card_param.expire_year), Cards_data1.getData(Card.FUIB_MC, Card_param.cvv))
+                .setCardBox(Cards_data.getData(Card.FUIB_MC, Card_param.pan), Cards_data.getData(Card.FUIB_MC, Card_param.expire_month), Cards_data.getData(Card.FUIB_MC, Card_param.expire_year), Cards_data.getData(Card.FUIB_MC, Card_param.cvv))
                 .clickNextButton();
         wait_payment();
     }

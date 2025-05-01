@@ -57,7 +57,7 @@ public class P4P_regress extends BaseTest {
 
         make_p4p(cardSender,cardReceiver);
 
-        BDas400.BDas400("ITMTST", Configs1.ITMTST_ALL_NAME, Configs1.ITMTST_ALL_PASSWORD);
+        BDas400.BDas400("ITMTST", Configs.ITMTST_ALL_NAME, Configs.ITMTST_ALL_PASSWORD);
         BDas400.callProcedure("CALL ITM22R.VMT2ITRSSP('DELETE', '"+transaction.getTransactionId()+"')");
         BDas400.closeConn();
 
@@ -69,9 +69,9 @@ public class P4P_regress extends BaseTest {
     }
 
     public P4P make_p4p(Card cardSender, Card cardReceiver){
-        body.put("senderCardNumber", Cards_data1.getData(cardSender, Card_param.pan));
-        body.put("receiverCardNumber", Cards_data1.getData(cardReceiver,Card_param.pan));
-        body.put("expDate", Cards_data1.getData(cardSender,Card_param.expire));
+        body.put("senderCardNumber", Cards_data.getData(cardSender, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data.getData(cardReceiver,Card_param.pan));
+        body.put("expDate", Cards_data.getData(cardSender,Card_param.expire));
         body.put("amount", amount);
         body.put("operationId", "119");
         body.put("details.source","01");
@@ -79,7 +79,7 @@ public class P4P_regress extends BaseTest {
         body.put("details.paymentUrl","paymentUrl");
         body.put("details.additionalMessage","additionalMessage");
         body.put("details.independentSalesOrganizationId","independentSalesOrganizationId");
-        transaction = new P4P(body, Cards_data1.getData(cardSender, Card_param.cvv));
+        transaction = new P4P(body, Cards_data.getData(cardSender, Card_param.cvv));
         return transaction;
     }
 

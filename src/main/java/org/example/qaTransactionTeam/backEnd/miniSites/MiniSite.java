@@ -3,7 +3,7 @@ package org.example.qaTransactionTeam.backEnd.miniSites;
 import io.restassured.http.ContentType;
 import org.apache.log4j.Logger;
 import org.example.qaTransactionTeam.backEnd.payByLink.TokenForPayByLink;
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 
 import static io.restassured.RestAssured.given;
 
@@ -21,7 +21,7 @@ public class MiniSite {
                 .header("Authorization","Bearer "+token.getToken())
                 .body(body)
                 .when()
-                .post(Configs1.PAYHUB_HOST +"/cabina/marketplaces")
+                .post(Configs.PAYHUB_HOST +"/cabina/marketplaces")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -39,7 +39,7 @@ public class MiniSite {
                         body +
                         "}")
                 .when()
-                .post(Configs1.PAYHUB_HOST +"/cabina/marketplaces/"+siteId+"/contacts/bulk")
+                .post(Configs.PAYHUB_HOST +"/cabina/marketplaces/"+siteId+"/contacts/bulk")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -53,7 +53,7 @@ public class MiniSite {
                 .header("Authorization","Bearer "+token.getToken())
                 .body(body)
                 .when()
-                .put(Configs1.PAYHUB_HOST +"/cabina/marketplaces/"+siteId+"/status")
+                .put(Configs.PAYHUB_HOST +"/cabina/marketplaces/"+siteId+"/status")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -67,7 +67,7 @@ public class MiniSite {
                 .header("Authorization","Bearer "+token.getToken())
                 .body(body)
                 .when()
-                .put(Configs1.PAYHUB_HOST +"/cabina/marketplaces/"+siteId+"")
+                .put(Configs.PAYHUB_HOST +"/cabina/marketplaces/"+siteId+"")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -79,7 +79,7 @@ public class MiniSite {
         response = given()
                 .header("Authorization","Bearer "+token.getToken())
                 .when()
-                .delete(Configs1.PAYHUB_HOST +"/cabina/marketplaces/"+siteId+"")
+                .delete(Configs.PAYHUB_HOST +"/cabina/marketplaces/"+siteId+"")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -91,7 +91,7 @@ public class MiniSite {
         response = given()
                 .header("Authorization","Bearer "+token.getToken())
                 .when()
-                .get(Configs1.PAYHUB_HOST +"/cabina/marketplaces"+site_Id)
+                .get(Configs.PAYHUB_HOST +"/cabina/marketplaces"+site_Id)
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();

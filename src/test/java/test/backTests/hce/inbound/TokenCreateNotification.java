@@ -1,6 +1,6 @@
 package test.backTests.hce.inbound;
 
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import test.backTests.hce.HCEConfigs;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
@@ -19,7 +19,7 @@ public class TokenCreateNotification {
                 .params("eventType","eventType")
                 .body(body)
                 .when()
-                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v2/tokenRequestors/"+ Configs1.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs1.HCE_TOKEN_REFERENCE_ID +"/tokenChanged")
+                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v2/tokenRequestors/"+ Configs.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs.HCE_TOKEN_REFERENCE_ID +"/tokenChanged")
                 .then()
                 .extract().response().prettyPrint();
     }

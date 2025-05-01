@@ -1,6 +1,6 @@
 package test.backTests.hce.outbound;
 
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import test.backTests.hce.HCEConfigs;
 import io.restassured.http.ContentType;
 import org.json.JSONException;
@@ -18,10 +18,10 @@ public class TokenInquiry {
 
         String request = given()
                 .contentType(ContentType.JSON)
-                .params("apiKey", Configs1.HCE_APIKEY)
+                .params("apiKey", Configs.HCE_APIKEY)
                 .params("deviceBindingInfo",true)
                 .when()
-                .get("http://"+ HCEConfigs.ENDPOINT +"/vtis/v1/tokenRequestors/"+ Configs1.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs1.HCE_TOKEN_REFERENCE_ID +"/details")
+                .get("http://"+ HCEConfigs.ENDPOINT +"/vtis/v1/tokenRequestors/"+ Configs.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs.HCE_TOKEN_REFERENCE_ID +"/details")
                 .then()
                 .statusCode(200)
                 .extract().response().prettyPrint();

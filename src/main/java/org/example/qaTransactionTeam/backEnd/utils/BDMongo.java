@@ -41,15 +41,15 @@ public class BDMongo {
     }
 
     private static void connToVmtDB(){
-        MongoCredential credential = MongoCredential.createCredential("vmt", "vmtdb", Configs1.MONGO_DB_PASSWORD);
-        mongoClient = new MongoClient(new ServerAddress(Configs1.MONGO_DB_HOST, Configs1.MONGO_DB_PORT), Arrays.asList(credential));
+        MongoCredential credential = MongoCredential.createCredential("vmt", "vmtdb", Configs.MONGO_DB_PASSWORD);
+        mongoClient = new MongoClient(new ServerAddress(Configs.MONGO_DB_HOST, Configs.MONGO_DB_PORT), Arrays.asList(credential));
         db = mongoClient.getDB("vmtdb");
         logger.info("Открыт коннект к базе "+nameBase);
     }
 
     private static void connToInbtwnrdb(){
-        MongoCredential credential = MongoCredential.createCredential("inbtwnr", "inbtwnrdb", Configs1.MONGO_DB_PASSWORD);
-        mongoClient = new MongoClient(new ServerAddress(Configs1.MONGO_DB_HOST, Configs1.MONGO_DB_PORT), Arrays.asList(credential));
+        MongoCredential credential = MongoCredential.createCredential("inbtwnr", "inbtwnrdb", Configs.MONGO_DB_PASSWORD);
+        mongoClient = new MongoClient(new ServerAddress(Configs.MONGO_DB_HOST, Configs.MONGO_DB_PORT), Arrays.asList(credential));
         db = mongoClient.getDB("inbtwnrdb");
         logger.info("Открыт коннект к базе "+nameBase);
     }

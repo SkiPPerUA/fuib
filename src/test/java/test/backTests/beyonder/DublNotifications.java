@@ -3,7 +3,7 @@ package test.backTests.beyonder;
 import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.notificationBP.NotificationBP;
 import org.example.qaTransactionTeam.backEnd.utils.BDpostgre;
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -25,7 +25,7 @@ public class DublNotifications extends BaseTest{
 
     @BeforeTest
     public void connBD() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
-        BDpostgre.BDpostgre("beyonderdb", Configs1.POSTGRE_SQL_BEYONDER_NAME, Configs1.POSTGRE_SQL_BEYONDER_PASSWORD);
+        BDpostgre.BDpostgre("beyonderdb", Configs.POSTGRE_SQL_BEYONDER_NAME, Configs.POSTGRE_SQL_BEYONDER_PASSWORD);
     }
 
     @Test

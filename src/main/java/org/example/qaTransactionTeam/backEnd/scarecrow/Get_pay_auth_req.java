@@ -3,7 +3,7 @@ package org.example.qaTransactionTeam.backEnd.scarecrow;
 import org.apache.log4j.Logger;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -31,12 +31,12 @@ public class Get_pay_auth_req extends ScarecrowRabbit{
 
         String mess = "{\n" +
                 "                  \"session_id\":\"999999999999\",\n" +
-                "                  \"card_number\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "                  \"card_number\":\""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "                  \"ip\":\"0.0.0.0\",\n" +
-                "                  \"exp_date\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.expire)+"\",\n" +
+                "                  \"exp_date\":\""+ Cards_data.getData(Card.FUIB_MC, Card_param.expire)+"\",\n" +
                 "                  \"cipher_key\":\"fVdTDKSzqyLdilKK9*****\",\n" +
                 "                  \"amount\":\"800\",\n" +
-                "                  \"cvv2\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "                  \"cvv2\":\""+ Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "                  \"version\":\""+vers+"\",\n" +
                 "                  \"channel\":\"BRW\",\n" +
                 "                  \"browser_accept_header\":\"*/*\",\n" +

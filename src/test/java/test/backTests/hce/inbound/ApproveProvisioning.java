@@ -1,6 +1,6 @@
 package test.backTests.hce.inbound;
 
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import test.backTests.hce.HCEConfigs;
 import io.restassured.config.RestAssuredConfig;
 import io.restassured.http.ContentType;
@@ -20,7 +20,7 @@ public class ApproveProvisioning {
 
         String body = "{\n" +
                 "“tokenInfo”: { “tokenType”: “”, “tokenAssuranceLevel”: “”, “numberOfActiveTokensForPAN”: “”, “numberOfInactiveTokensForPAN”: “”, “numberOfSuspendedTokensForPAN”: “” }, “panReferenceID”: “”, “walletAccountEmailAddressHash”: “”, “clientWalletAccountID”: “”, “panSource”: “”, “addressVerificationResultCode”: “”, “cvv2ResultsCode”: “”, “consumerEntryMode”: “”, “locale”: “”, " +
-                "“encryptedData”: “"+ Configs1.HCE_JWS +"”, " +
+                "“encryptedData”: “"+ Configs.HCE_JWS +"”, " +
                 "“deviceInfo”: { “deviceID”: “”, “deviceLanguageCode”: “”, “osType”: “”, “osVersion”: “”, “osBuildID”: “”, “deviceType”: “”, “deviceIDType” : “”, “deviceManufacturer”: “”, “deviceBrand”: “”, “deviceModel”: “”, “deviceName”: “”, “deviceNumber”: “”, “deviceLocation”: “”, “deviceIPAddressV4”: “”, “locationSource”: “”, “tokenProtectionMethod”: “” }\n" +
                 "}";
 
@@ -29,7 +29,7 @@ public class ApproveProvisioning {
                 .contentType(ContentType.JSON)
                 .body(body)
                 .when()
-                .post(HCEConfigs.ENDPOINT +"/vtis/v2/tokenRequestors/"+ Configs1.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs1.HCE_TOKEN_REFERENCE_ID +"/approveProvisioning")
+                .post(HCEConfigs.ENDPOINT +"/vtis/v2/tokenRequestors/"+ Configs.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs.HCE_TOKEN_REFERENCE_ID +"/approveProvisioning")
                 .then()
                 .extract().response().prettyPrint();
 
@@ -43,7 +43,7 @@ public class ApproveProvisioning {
 
         String body = "{\n" +
                 "“tokenInfo”: { “tokenType”: “”, “tokenAssuranceLevel”: “”, “numberOfActiveTokensForPAN”: “”, “numberOfInactiveTokensForPAN”: “”, “numberOfSuspendedTokensForPAN”: “” }, “panReferenceID”: “”, “walletAccountEmailAddressHash”: “”, “clientWalletAccountID”: “”, “panSource”: “”, “addressVerificationResultCode”: “”, “cvv2ResultsCode”: “”, “consumerEntryMode”: “”, “locale”: “”, " +
-                "“encryptedData”: “"+ Configs1.HCE_JWS +"”, " +
+                "“encryptedData”: “"+ Configs.HCE_JWS +"”, " +
                 "“deviceInfo”: { “deviceID”: “”, “deviceLanguageCode”: “”, “osType”: “”, “osVersion”: “”, “osBuildID”: “”, “deviceType”: “”, “deviceIDType” : “”, “deviceManufacturer”: “”, “deviceBrand”: “”, “deviceModel”: “”, “deviceName”: “”, “deviceNumber”: “”, “deviceLocation”: “”, “deviceIPAddressV4”: “”, “locationSource”: “”, “tokenProtectionMethod”: “” }\n" +
                 "}";
 
@@ -51,7 +51,7 @@ public class ApproveProvisioning {
                 .contentType(ContentType.JSON)
                 .body(body)
                 .when()
-                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v2/tokenRequestors/"+ Configs1.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs1.HCE_TOKEN_REFERENCE_ID +"/approveProvisioning")
+                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v2/tokenRequestors/"+ Configs.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs.HCE_TOKEN_REFERENCE_ID +"/approveProvisioning")
                 .then()
                 .statusCode(200)
                 .extract().response().prettyPrint();

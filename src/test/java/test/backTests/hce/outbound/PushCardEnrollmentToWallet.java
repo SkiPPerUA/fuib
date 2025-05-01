@@ -1,6 +1,6 @@
 package test.backTests.hce.outbound;
 
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import test.backTests.hce.HCEConfigs;
 import io.restassured.http.ContentType;
 import org.json.JSONException;
@@ -16,12 +16,12 @@ public class PushCardEnrollmentToWallet {
     public void testPushCardEnrollmentToWallet() throws JSONException {
 
         String body = "{\n" +
-                "“encryptedData”: “"+ Configs1.HCE_JWS +"”\n" +
+                "“encryptedData”: “"+ Configs.HCE_JWS +"”\n" +
                 "} ";
 
         String request = given()
                 .contentType(ContentType.JSON)
-                .params("apiKey", Configs1.HCE_APIKEY)
+                .params("apiKey", Configs.HCE_APIKEY)
                 .body(body)
                 .when()
                 .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v1/pushCardEnrollmentToWallet")

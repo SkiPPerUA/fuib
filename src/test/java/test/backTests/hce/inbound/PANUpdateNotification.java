@@ -1,6 +1,6 @@
 package test.backTests.hce.inbound;
 
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
 import test.backTests.hce.HCEConfigs;
@@ -17,7 +17,7 @@ public class PANUpdateNotification {
                 " “messageReasonCode”: “”, " +
                 "“dateTimeOfEvent”: “”, " +
                 "“panReferenceID”: “”, " +
-                "“encryptedData”: “"+ Configs1.HCE_JWS +"”\n" +
+                "“encryptedData”: “"+ Configs.HCE_JWS +"”\n" +
                 "} ";
 
         String request = given()

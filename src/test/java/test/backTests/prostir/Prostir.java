@@ -103,7 +103,7 @@ public class Prostir extends BaseTest {
                 "         \"independent_sales_organization_id\":\"3016715233\"\n" +
                 "      }\n" +
                 "      }},\n"+
-                Payer_constructor.PAN_payer(Cards_data1.getData(Card.TEST_CARD));
+                Payer_constructor.PAN_payer(Cards_data.getData(Card.TEST_CARD));
 
         C2A trans = new C2A(body,0);
         try {

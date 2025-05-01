@@ -23,7 +23,7 @@ public class MT2318 extends BaseTest {
 
     @BeforeTest
     public void connBD() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
-        BDas400.BDas400("ITMTST", Configs1.ITMTST_ALL_NAME, Configs1.ITMTST_ALL_PASSWORD);
+        BDas400.BDas400("ITMTST", Configs.ITMTST_ALL_NAME, Configs.ITMTST_ALL_PASSWORD);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,true);
 
         Map<String, String> bodyC2A = new HashMap<>();
-        bodyC2A.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.token));
+        bodyC2A.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.token));
         bodyC2A.put("amount","100");
         bodyC2A.put("operationId","2");
         bodyC2A.put("customFee","0");
@@ -41,7 +41,7 @@ public class MT2318 extends BaseTest {
         bodyC2A.put("ip","127.0.0.1");
         bodyC2A.put("fingerprint","tests25");
 
-        C2A c2a = new C2A(bodyC2A, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
+        C2A c2a = new C2A(bodyC2A, Cards_data.getData(Card.FUIB_MC, Card_param.token));
 
         Assert.assertEquals(c2a.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(c2a.getSessionId()),true);
@@ -55,7 +55,7 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,false);
 
         Map<String, String> bodyC2A = new HashMap<>();
-        bodyC2A.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.token));
+        bodyC2A.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.token));
         bodyC2A.put("amount","100");
         bodyC2A.put("operationId","2");
         bodyC2A.put("customFee","0");
@@ -64,7 +64,7 @@ public class MT2318 extends BaseTest {
         bodyC2A.put("ip","127.0.0.1");
         bodyC2A.put("fingerprint","tests25");
 
-        C2A c2a = new C2A(bodyC2A, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
+        C2A c2a = new C2A(bodyC2A, Cards_data.getData(Card.FUIB_MC, Card_param.token));
 
         Assert.assertEquals(c2a.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(c2a.getSessionId()),true);
@@ -78,7 +78,7 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,true);
 
         Map<String, String> bodyC2A = new HashMap<>();
-        bodyC2A.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.token));
+        bodyC2A.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.token));
         bodyC2A.put("amount","100");
         bodyC2A.put("operationId","2");
         bodyC2A.put("customFee","0");
@@ -87,7 +87,7 @@ public class MT2318 extends BaseTest {
         bodyC2A.put("ip","127.0.0.1");
         bodyC2A.put("fingerprint","tests25");
 
-        C2A c2a = new C2A(bodyC2A, Cards_data1.getData(Card.FUIB_VISA, Card_param.token));
+        C2A c2a = new C2A(bodyC2A, Cards_data.getData(Card.FUIB_VISA, Card_param.token));
 
         Assert.assertEquals(c2a.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(c2a.getSessionId()),true);
@@ -101,7 +101,7 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,false);
 
         Map<String, String> bodyC2A = new HashMap<>();
-        bodyC2A.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.token));
+        bodyC2A.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.token));
         bodyC2A.put("amount","100");
         bodyC2A.put("operationId","2");
         bodyC2A.put("customFee","0");
@@ -110,7 +110,7 @@ public class MT2318 extends BaseTest {
         bodyC2A.put("ip","127.0.0.1");
         bodyC2A.put("fingerprint","tests25");
 
-        C2A c2a = new C2A(bodyC2A, Cards_data1.getData(Card.FUIB_VISA, Card_param.token));
+        C2A c2a = new C2A(bodyC2A, Cards_data.getData(Card.FUIB_VISA, Card_param.token));
 
         Assert.assertEquals(c2a.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(c2a.getSessionId()),true);
@@ -124,7 +124,7 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,true);
 
         Map<String, String> bodyC2A = new HashMap<>();
-        bodyC2A.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.token));
+        bodyC2A.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.token));
         bodyC2A.put("amount","100");
         bodyC2A.put("operationId","2");
         bodyC2A.put("customFee","0");
@@ -133,7 +133,7 @@ public class MT2318 extends BaseTest {
         bodyC2A.put("ip","127.0.0.1");
         bodyC2A.put("fingerprint","tests25");
 
-        C2A c2a = new C2A(bodyC2A, Cards_data1.getData(Card.FUIB_VISA, Card_param.token));
+        C2A c2a = new C2A(bodyC2A, Cards_data.getData(Card.FUIB_VISA, Card_param.token));
 
         Assert.assertEquals(c2a.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(c2a.getSessionId()),true);
@@ -147,7 +147,7 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,false);
 
         Map<String, String> bodyC2A = new HashMap<>();
-        bodyC2A.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.token));
+        bodyC2A.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.token));
         bodyC2A.put("amount","100");
         bodyC2A.put("operationId","2");
         bodyC2A.put("customFee","0");
@@ -156,7 +156,7 @@ public class MT2318 extends BaseTest {
         bodyC2A.put("ip","127.0.0.1");
         bodyC2A.put("fingerprint","tests25");
 
-        C2A c2a = new C2A(bodyC2A, Cards_data1.getData(Card.FUIB_VISA, Card_param.token));
+        C2A c2a = new C2A(bodyC2A, Cards_data.getData(Card.FUIB_VISA, Card_param.token));
 
         Assert.assertEquals(c2a.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(c2a.getSessionId()),true);
@@ -170,7 +170,7 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,true);
 
         Map<String, String> bodyC2A = new HashMap<>();
-        bodyC2A.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.token));
+        bodyC2A.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.token));
         bodyC2A.put("amount","100");
         bodyC2A.put("operationId","2");
         bodyC2A.put("customFee","0");
@@ -179,7 +179,7 @@ public class MT2318 extends BaseTest {
         bodyC2A.put("ip","127.0.0.1");
         bodyC2A.put("fingerprint","tests25");
 
-        C2A c2a = new C2A(bodyC2A, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
+        C2A c2a = new C2A(bodyC2A, Cards_data.getData(Card.FUIB_MC, Card_param.token));
 
         Assert.assertEquals(c2a.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(c2a.getSessionId()),true);
@@ -193,7 +193,7 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,false);
 
         Map<String, String> bodyC2A = new HashMap<>();
-        bodyC2A.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.token));
+        bodyC2A.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.token));
         bodyC2A.put("amount","100");
         bodyC2A.put("operationId","2");
         bodyC2A.put("customFee","0");
@@ -202,7 +202,7 @@ public class MT2318 extends BaseTest {
         bodyC2A.put("ip","127.0.0.1");
         bodyC2A.put("fingerprint","tests25");
 
-        C2A c2a = new C2A(bodyC2A, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
+        C2A c2a = new C2A(bodyC2A, Cards_data.getData(Card.FUIB_MC, Card_param.token));
 
         Assert.assertEquals(c2a.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(c2a.getSessionId()),true);
@@ -221,7 +221,7 @@ public class MT2318 extends BaseTest {
         bodyA2C.put("amount","100");
         bodyA2C.put("operationId","1");
         bodyA2C.put("customFee","0");
-        bodyA2C.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.token));
+        bodyA2C.put("receiverCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.token));
 
         A2C a2c = new A2C(bodyA2C);
 
@@ -242,7 +242,7 @@ public class MT2318 extends BaseTest {
         bodyA2C.put("amount","100");
         bodyA2C.put("operationId","1");
         bodyA2C.put("customFee","0");
-        bodyA2C.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        bodyA2C.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
 
         A2C a2c = new A2C(bodyA2C);
 
@@ -259,14 +259,14 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,false);
 
         Map<String, String> bodyP4P = new HashMap<>();
-        bodyP4P.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        bodyP4P.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
         bodyP4P.put("amount", "1000");
         bodyP4P.put("operationId", "119");
         bodyP4P.put("customFee", "0");
-        bodyP4P.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        bodyP4P.put("receiverCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
         bodyP4P.put("expDate", "2211");
 
-        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_VISA, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data.getData(Card.FUIB_VISA, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         p4p.P4Ppayment("300",true);
@@ -287,14 +287,14 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,false);
 
         Map<String, String> bodyP4P = new HashMap<>();
-        bodyP4P.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        bodyP4P.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
         bodyP4P.put("amount", "1000");
         bodyP4P.put("operationId", "119");
         bodyP4P.put("customFee", "0");
-        bodyP4P.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        bodyP4P.put("receiverCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
         bodyP4P.put("expDate", "2211");
 
-        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_VISA, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data.getData(Card.FUIB_VISA, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         p4p.P4Ppayment("300",true);
@@ -315,14 +315,14 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,false);
 
         Map<String, String> bodyP4P = new HashMap<>();
-        bodyP4P.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        bodyP4P.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         bodyP4P.put("amount", "1000");
         bodyP4P.put("operationId", "119");
         bodyP4P.put("customFee", "0");
-        bodyP4P.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        bodyP4P.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         bodyP4P.put("expDate", "2212");
 
-        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         p4p.P4Ppayment("300",true);
@@ -343,14 +343,14 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,false);
 
         Map<String, String> bodyP4P = new HashMap<>();
-        bodyP4P.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        bodyP4P.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         bodyP4P.put("amount", "1000");
         bodyP4P.put("operationId", "119");
         bodyP4P.put("customFee", "0");
-        bodyP4P.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        bodyP4P.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         bodyP4P.put("expDate", "2212");
 
-        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         p4p.P4Ppayment("300",true);
@@ -371,11 +371,11 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,true);
 
         Map<String,String> body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
-        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         body.put("expDate", "2212");
         body.put("amount", "100");
-        P2P p2p = new P2P(body, Cards_data1.getData(Card.FUIB_MC, Card_param.token),2);
+        P2P p2p = new P2P(body, Cards_data.getData(Card.FUIB_MC, Card_param.token),2);
 
         Assert.assertEquals(p2p.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(p2p.getSessionId()),true);
@@ -390,11 +390,11 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,false);
 
         Map<String,String> body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
-        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         body.put("expDate", "2212");
         body.put("amount", "100");
-        P2P p2p = new P2P(body, Cards_data1.getData(Card.FUIB_MC, Card_param.token),2);
+        P2P p2p = new P2P(body, Cards_data.getData(Card.FUIB_MC, Card_param.token),2);
 
         Assert.assertEquals(p2p.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(p2p.getSessionId()),false);
@@ -409,11 +409,11 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,true);
 
         Map<String,String> body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
-        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         body.put("expDate", "2212");
         body.put("amount", "100");
-        P2P p2p = new P2P(body, Cards_data1.getData(Card.FUIB_MC, Card_param.token),2);
+        P2P p2p = new P2P(body, Cards_data.getData(Card.FUIB_MC, Card_param.token),2);
 
         Assert.assertEquals(p2p.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(p2p.getSessionId()),true);
@@ -428,11 +428,11 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,false);
 
         Map<String,String> body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
-        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         body.put("expDate", "2212");
         body.put("amount", "100");
-        P2P p2p = new P2P(body, Cards_data1.getData(Card.FUIB_MC, Card_param.token),2);
+        P2P p2p = new P2P(body, Cards_data.getData(Card.FUIB_MC, Card_param.token),2);
 
         Assert.assertEquals(p2p.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(p2p.getSessionId()),false);
@@ -447,8 +447,8 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,true);
 
         Map<String,String> body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
-        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
         body.put("expDate", "2211");
         body.put("amount", "100");
         P2P p2p = new P2P(body,2);
@@ -466,8 +466,8 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,false);
 
         Map<String,String> body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
-        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
         body.put("expDate", "2211");
         body.put("amount", "100");
         P2P p2p = new P2P(body,2);
@@ -485,11 +485,11 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,true);
 
         Map<String,String> body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
-        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
         body.put("expDate", "2211");
         body.put("amount", "100");
-        P2P p2p = new P2P(body, Cards_data1.getData(Card.FUIB_MC, Card_param.token),2);
+        P2P p2p = new P2P(body, Cards_data.getData(Card.FUIB_MC, Card_param.token),2);
 
         Assert.assertEquals(p2p.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(p2p.getSessionId()),true);
@@ -504,11 +504,11 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,false);
 
         Map<String,String> body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
-        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
         body.put("expDate", "2211");
         body.put("amount", "100");
-        P2P p2p = new P2P(body, Cards_data1.getData(Card.FUIB_VISA, Card_param.token),2);
+        P2P p2p = new P2P(body, Cards_data.getData(Card.FUIB_VISA, Card_param.token),2);
 
         Assert.assertEquals(p2p.getErrorCode(),"00");
         Assert.assertEquals(checkCF10(p2p.getSessionId()),false);
@@ -523,11 +523,11 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,true);
 
         Map<String, String> bodyP4P = new HashMap<>();
-        bodyP4P.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        bodyP4P.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
         bodyP4P.put("amount", "1000");
         bodyP4P.put("operationId", "119");
         bodyP4P.put("customFee", "0");
-        bodyP4P.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        bodyP4P.put("receiverCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
         bodyP4P.put("expDate", "2211");
 
         P4P p4p = new P4P(bodyP4P);
@@ -551,11 +551,11 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,true);
 
         Map<String, String> bodyP4P = new HashMap<>();
-        bodyP4P.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        bodyP4P.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
         bodyP4P.put("amount", "1000");
         bodyP4P.put("operationId", "119");
         bodyP4P.put("customFee", "0");
-        bodyP4P.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        bodyP4P.put("receiverCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
         bodyP4P.put("expDate", "2211");
 
         P4P p4p = new P4P(bodyP4P);
@@ -579,14 +579,14 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,true);
 
         Map<String, String> bodyP4P = new HashMap<>();
-        bodyP4P.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        bodyP4P.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         bodyP4P.put("amount", "1000");
         bodyP4P.put("operationId", "119");
         bodyP4P.put("customFee", "0");
-        bodyP4P.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        bodyP4P.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         bodyP4P.put("expDate", "2212");
 
-        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         p4p.P4Ppayment("300",true);
@@ -607,11 +607,11 @@ public class MT2318 extends BaseTest {
         activeMasterpass(2101,true);
 
         Map<String, String> bodyP4P = new HashMap<>();
-        bodyP4P.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        bodyP4P.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         bodyP4P.put("amount", "1000");
         bodyP4P.put("operationId", "119");
         bodyP4P.put("customFee", "0");
-        bodyP4P.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        bodyP4P.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         bodyP4P.put("expDate", "2212");
 
         P4P p4p = new P4P(bodyP4P);

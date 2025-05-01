@@ -5,8 +5,8 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.token.Trans_token_payhub;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -156,7 +156,7 @@ public class PAYH8514 extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\"\n" +
                 "    }\n" +
                 "}";
 
@@ -165,7 +165,7 @@ public class PAYH8514 extends BaseTest {
                 .header("Authorization","Bearer "+token.getToken())
                 .body(body)
                 .when()
-                .post(Configs1.PAYHUB_HOST +"/transactions/a2c")
+                .post(Configs.PAYHUB_HOST +"/transactions/a2c")
                 .then()
                 .statusCode(200)
                 .extract().response().asString();
@@ -187,9 +187,9 @@ public class PAYH8514 extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2212\",\n" +
-                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -202,7 +202,7 @@ public class PAYH8514 extends BaseTest {
                 .header("Authorization","Bearer "+token.getToken())
                 .body(body)
                 .when()
-                .post(Configs1.PAYHUB_HOST +"/transactions/c2a")
+                .post(Configs.PAYHUB_HOST +"/transactions/c2a")
                 .then()
                 .statusCode(200)
                 .extract().response().asString();
@@ -233,7 +233,7 @@ public class PAYH8514 extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_VISA, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.FUIB_VISA, Card_param.pan)+"\"\n" +
                 "    }\n" +
                 "}";
 
@@ -242,7 +242,7 @@ public class PAYH8514 extends BaseTest {
                 .header("Authorization","Bearer "+token.getToken())
                 .body(body)
                 .when()
-                .post(Configs1.PAYHUB_HOST +"/transactions/c2c")
+                .post(Configs.PAYHUB_HOST +"/transactions/c2c")
                 .then()
                 .extract().response().asString();
 
@@ -258,7 +258,7 @@ public class PAYH8514 extends BaseTest {
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer "+token.getToken())
                 .when()
-                .get(Configs1.PAYHUB_HOST +"/transactions/"+typeTrans+"?transaction_id="+trans_id)
+                .get(Configs.PAYHUB_HOST +"/transactions/"+typeTrans+"?transaction_id="+trans_id)
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -271,7 +271,7 @@ public class PAYH8514 extends BaseTest {
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer "+token.getToken())
                 .when()
-                .get(Configs1.PAYHUB_HOST +"/transactions/"+typeTrans+"?external_id="+ext_id)
+                .get(Configs.PAYHUB_HOST +"/transactions/"+typeTrans+"?external_id="+ext_id)
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -284,7 +284,7 @@ public class PAYH8514 extends BaseTest {
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer "+token.getToken())
                 .when()
-                .get(Configs1.PAYHUB_HOST +"/transactions/"+typeTrans+"?transaction_id="+trans_id+"&external_id="+ext_id)
+                .get(Configs.PAYHUB_HOST +"/transactions/"+typeTrans+"?transaction_id="+trans_id+"&external_id="+ext_id)
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();

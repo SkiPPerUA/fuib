@@ -17,8 +17,8 @@ public class NBU_21_c2с_vmt extends BaseTest {
 
     P2P p2p;
     Map<String, String> body;
-    String senderCard = Cards_data1.getData(Card.FUIB_VISA, Card_param.pan);
-    String receiverCard = Cards_data1.getData(Card.FUIB_VISA, Card_param.pan);
+    String senderCard = Cards_data.getData(Card.FUIB_VISA, Card_param.pan);
+    String receiverCard = Cards_data.getData(Card.FUIB_VISA, Card_param.pan);
 
     public void positive_all_fields(){
         body = new HashMap<>();
@@ -56,8 +56,8 @@ public class NBU_21_c2с_vmt extends BaseTest {
     public void positive_only_req_fields_visa_visa(){
         logStartTest("positive_only_req_fields_visa_visa");
         body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
-        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
         body.put("expDate", "2602");
         body.put("amount", "100");
         //body.put("receiverAccountNumber","recipientAccountNumber");
@@ -70,8 +70,8 @@ public class NBU_21_c2с_vmt extends BaseTest {
     public void positive_only_req_fields_master_master(){
         logStartTest("positive_only_req_fields_master_master");
         body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
-        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
         body.put("expDate", "2602");
         body.put("amount", "100");
         //body.put("receiverAccountNumber","recipientAccountNumber");
@@ -125,7 +125,7 @@ public class NBU_21_c2с_vmt extends BaseTest {
 
     @BeforeTest
     public void open_conn() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        BDas400.BDas400("ITMTST", Configs1.ITMTST_ALL_NAME, Configs1.ITMTST_ALL_PASSWORD);
+        BDas400.BDas400("ITMTST", Configs.ITMTST_ALL_NAME, Configs.ITMTST_ALL_PASSWORD);
     }
 
     @AfterTest

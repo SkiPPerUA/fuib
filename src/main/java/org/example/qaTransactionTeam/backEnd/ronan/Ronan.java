@@ -1,7 +1,7 @@
 package org.example.qaTransactionTeam.backEnd.ronan;
 
 import org.apache.log4j.Logger;
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import org.example.qaTransactionTeam.backEnd.utils.RabbitMQ;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,8 +31,8 @@ public class Ronan {
         rabbit = new RabbitMQ("tsys");
 
         String mess = "{\n" +
-                "  \"login\" : \""+ Configs1.RONAN_LOGIN_2101+"\",\n" +
-                "  \"password\" : \""+ Configs1.RONAN_PASSWORD_2101+"\",\n" +
+                "  \"login\" : \""+ Configs.RONAN_LOGIN_2101+"\",\n" +
+                "  \"password\" : \""+ Configs.RONAN_PASSWORD_2101+"\",\n" +
                 "  \"acq_id\" : \""+acqId+"\"\n" +
                 "}";
 

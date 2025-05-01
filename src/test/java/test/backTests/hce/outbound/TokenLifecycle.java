@@ -1,6 +1,6 @@
 package test.backTests.hce.outbound;
 
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import test.backTests.hce.HCEConfigs;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
@@ -24,10 +24,10 @@ public class TokenLifecycle {
 
         String request = given()
                 .contentType(ContentType.JSON)
-                .params("apikey", Configs1.HCE_APIKEY)
+                .params("apikey", Configs.HCE_APIKEY)
                 .body(body)
                 .when()
-                .post("https://"+ HCEConfigs.ENDPOINT +"/vtis/v1/tokenRequestors/"+ Configs1.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs1.HCE_TOKEN_REFERENCE_ID +"/lifecycle")
+                .post("https://"+ HCEConfigs.ENDPOINT +"/vtis/v1/tokenRequestors/"+ Configs.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs.HCE_TOKEN_REFERENCE_ID +"/lifecycle")
                 .then()
                 .statusCode(200)
                 .extract().response().prettyPrint();

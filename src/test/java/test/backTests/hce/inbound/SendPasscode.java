@@ -1,6 +1,6 @@
 package test.backTests.hce.inbound;
 
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import test.backTests.hce.HCEConfigs;
 import io.restassured.http.ContentType;
 import org.json.JSONException;
@@ -18,8 +18,8 @@ public class SendPasscode {
     public void testSendPasscode() throws JSONException {
 
         String body = "{\n" +
-                "“tokenRequestorID” : "+ Configs1.HCE_TOKEN_REQUESTOR_ID +", " +
-                "“tokenReferenceID” : “"+ Configs1.HCE_TOKEN_REFERENCE_ID +"”, " +
+                "“tokenRequestorID” : "+ Configs.HCE_TOKEN_REQUESTOR_ID +", " +
+                "“tokenReferenceID” : “"+ Configs.HCE_TOKEN_REFERENCE_ID +"”, " +
                 "“panReferenceID”: “V-4200...90”, " +
                 "“clientWalletAccountID”: “99E...4C”, " +
                 "“otpMethodIdentifier”: “1e3...60”, " +
@@ -30,7 +30,7 @@ public class SendPasscode {
                       "“deviceType”: “MOBILE_PHONE”, " +
                       "“deviceName”: “My iPhone”, " +
                       "“deviceNumber”: “86...30” }, " +
-                "“encryptedData”: “"+ Configs1.HCE_JWS +"”\n" +
+                "“encryptedData”: “"+ Configs.HCE_JWS +"”\n" +
                 "} ";
 
         String request = given()

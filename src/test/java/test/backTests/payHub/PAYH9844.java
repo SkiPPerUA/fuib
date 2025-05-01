@@ -4,7 +4,7 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.payHub.AcquiringTrans;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -22,9 +22,9 @@ public class PAYH9844 extends BaseTest {
                 "    \"merchant_config_id\":\"8fbf596b-2aae-4718-b4d1-3c37bfc46243\",\n" +
                 "    \"payer\": {\n" +
                 "       \"source\": \"PAN\",\n" +
-                "      \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "      \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "      \"expire\": \"2212\",\n" +
-                "      \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
+                "      \"cvv\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
                 "    },\n" +
                 "     \"description\": \"тестовый платёж\",\n" +
                 "    \"short_description\": \"тестовый платёж\",\n" +
@@ -50,9 +50,9 @@ public class PAYH9844 extends BaseTest {
                 "    \"merchant_config_id\":\"8fbf596b-2aae-4718-b4d1-3c37bfc46243\",\n" +
                 "    \"payer\": {\n" +
                 "       \"source\": \"PAN\",\n" +
-                "      \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "      \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "      \"expire\": \"2212\",\n" +
-                "      \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
+                "      \"cvv\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
                 "    },\n" +
                 "     \"description\": \"тестовый платёж\",\n" +
                 "    \"short_description\": \"тестовый платёж\",\n" +

@@ -293,9 +293,9 @@ public class CashOrdersTest extends BaseTest {
                     "    \"description\": \"test123\",\n" +
                     "    \"payer\" :" +
                     "        {     \"source\": \"PAN\", " +
-                    "              \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC,Card_param.pan)+"\", " +
-                    "              \"expire\": \""+ Cards_data1.getData(Card.FUIB_MC,Card_param.expire)+"\", " +
-                    "              \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC,Card_param.cvv)+"\"},\n" +
+                    "              \"pan\": \""+ Cards_data.getData(Card.FUIB_MC,Card_param.pan)+"\", " +
+                    "              \"expire\": \""+ Cards_data.getData(Card.FUIB_MC,Card_param.expire)+"\", " +
+                    "              \"cvv\": \""+ Cards_data.getData(Card.FUIB_MC,Card_param.cvv)+"\"},\n" +
                     "    \"threed\": {\n" +
                     "        \"fingerprint\": \"test\",\n" +
                     "        \"channel\": \"BRW\",\n" +
@@ -341,7 +341,7 @@ public class CashOrdersTest extends BaseTest {
                 "    },\n" +
                 "    \"client_ip\": \"127.0.0.1\",\n" +
                 "    \"cardholder_name\": \"John Dow\",\n" +
-                Payer_constructor.PAN_payer(Cards_data1.getData(Card.FUIB_MC))+","+
+                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_MC))+","+
                 "    \"threed\": {\n" +
                 "        \"fingerprint\": \"test\",\n" +
                 "        \"channel\": \"BRW\",\n" +
@@ -391,9 +391,9 @@ public class CashOrdersTest extends BaseTest {
                 "    \"description\": \"test\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "        \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
+                "        \"cvv\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
                 "    },\n" +
                 "    \"threed\": {\n" +
                 "        \"fingerprint\": \"test\",\n" +
@@ -427,9 +427,9 @@ public class CashOrdersTest extends BaseTest {
                 "    \"description\": \"test\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "        \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
+                "        \"cvv\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
                 "    },\n" +
                 "    \"threed\": {\n" +
                 "        \"fingerprint\": \"test\",\n" +
@@ -467,9 +467,9 @@ public class CashOrdersTest extends BaseTest {
                 "    \"description\": \"test\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "        \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
+                "        \"cvv\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
                 "    },\n" +
                 "    \"threed\": {\n" +
                 "        \"fingerprint\": \"test\",\n" +
@@ -543,9 +543,9 @@ public class CashOrdersTest extends BaseTest {
                 "    \"description\": \"test\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "        \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
+                "        \"cvv\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
                 "    }\n" +
                 "}";
         cashOrders.createTransaction(x_frame_id,body, "uk");
@@ -595,9 +595,9 @@ public class CashOrdersTest extends BaseTest {
                 "    },\n" +
                 "   \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"pan\": \""+ Cards_data1.getData(card,Card_param.pan)+"\",\n" +
-                "        \"expire\": \""+ Cards_data1.getData(card,Card_param.expire)+"\",\n" +
-                "        \"cvv\": \""+ Cards_data1.getData(card,Card_param.cvv)+"\"\n" +
+                "        \"pan\": \""+ Cards_data.getData(card,Card_param.pan)+"\",\n" +
+                "        \"expire\": \""+ Cards_data.getData(card,Card_param.expire)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data.getData(card,Card_param.cvv)+"\"\n" +
                 "    }" +
                 "}";
         cashOrders.makeTransaction(x_frame_id,body, "uk");

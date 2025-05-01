@@ -4,7 +4,7 @@ package test.backTests.productCatalog;
 import io.restassured.http.ContentType;
 import org.example.qaTransactionTeam.backEnd.utils.Apiman;
 import org.example.qaTransactionTeam.backEnd.utils.BDas400;
-import org.example.qaTransactionTeam.backEnd.utils.Configs1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,7 +30,7 @@ public class MT2727 {
     @BeforeTest
     public void token() throws JSONException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
         this.token = new Apiman("ITM", "crd_prd");
-        BDas400.BDas400("ITMTST", Configs1.ITMTST_ALL_NAME, Configs1.ITMTST_ALL_PASSWORD);
+        BDas400.BDas400("ITMTST", Configs.ITMTST_ALL_NAME, Configs.ITMTST_ALL_PASSWORD);
 
     }
 

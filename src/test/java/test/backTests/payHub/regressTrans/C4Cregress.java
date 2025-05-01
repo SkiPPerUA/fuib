@@ -6,7 +6,7 @@ import org.example.qaTransactionTeam.backEnd.transaction.ThreeDS;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.C4C;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -31,9 +31,9 @@ public class C4Cregress extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
-                "        \"expire\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.expire)+"\",\n" +
-                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"expire\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.expire)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -41,7 +41,7 @@ public class C4Cregress extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 ThreeDS.threeDS_2_2_0;
 
@@ -80,7 +80,7 @@ public class C4Cregress extends BaseTest {
                 "        },\n" +
                 " \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },"+
                 " \"threed\": {\n" +
                 "        \"version\": \"2.1.0\",\n" +
@@ -118,8 +118,8 @@ public class C4Cregress extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"AGP\",\n" +
-                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC,Card_param.pan)+"\",\n" +
-                "        \"expire\": \""+ Cards_data1.getData(Card.FUIB_MC,Card_param.expire)+"\",\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC,Card_param.pan)+"\",\n" +
+                "        \"expire\": \""+ Cards_data.getData(Card.FUIB_MC,Card_param.expire)+"\",\n" +
                 "        \"ucaf\": \"AQAAAAAAASY5OZRQCvVSQSYAAAA=\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
@@ -128,7 +128,7 @@ public class C4Cregress extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_VISA, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.FUIB_VISA, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 ThreeDS.threeDS_2_1_0;
 
@@ -157,10 +157,10 @@ public class C4Cregress extends BaseTest {
                 "\t\"destination\": \"test\",\n" +
                 "\t\"description\": \"VladTest\",\n" +
                 "    \"currency\": 980,\n" +
-                Payer_constructor.PAN_payer(Cards_data1.getData(Card.FUIB_VISA),"EXTERNAL","test")+","+
+                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_VISA),"EXTERNAL","test")+","+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC,Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC,Card_param.pan)+"\"\n" +
                 "    },\n" +
                 ThreeDS.threeDS_2_1_0;
 
@@ -193,10 +193,10 @@ public class C4Cregress extends BaseTest {
                 "\t\"destination\": \"test\",\n" +
                 "\t\"description\": \"VladTest\",\n" +
                 "    \"currency\": 980,\n" +
-                Payer_constructor.PAN_payer(Cards_data1.getData(Card.FUIB_VISA),"EXTERNAL","test")+","+
+                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_VISA),"EXTERNAL","test")+","+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC,Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC,Card_param.pan)+"\"\n" +
                 "    },\n" +
                 ThreeDS.threeDS_2_1_0;
 
