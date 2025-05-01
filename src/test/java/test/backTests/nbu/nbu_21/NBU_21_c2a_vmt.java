@@ -3,8 +3,6 @@ package test.backTests.nbu.nbu_21;
 import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_itm.C2A;
 import org.example.qaTransactionTeam.backEnd.utils.*;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.sql.ResultSet;
@@ -17,7 +15,7 @@ public class NBU_21_c2a_vmt extends BaseTest {
 
     C2A c2a;
     Map<String, String> body;
-    String card = Cards_data.getData(Card.MONO_VISA,Card_param.pan); // 5575191548185686 4596610012333736
+    String card = Cards_data1.getData(Card.MONO_VISA,Card_param.pan); // 5575191548185686 4596610012333736
 
     public void positive_all_fields(){
         body = new HashMap<>();
@@ -60,7 +58,7 @@ public class NBU_21_c2a_vmt extends BaseTest {
     public void positive_only_req_fields_master_less_30K(){
         logStartTest("positive_only_req_fields_master");
         body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
         body.put("amount","100");
         body.put("operationId","2");
         body.put("customFee","0");
@@ -76,7 +74,7 @@ public class NBU_21_c2a_vmt extends BaseTest {
     public void positive_only_req_fields_visa_less_30K(){
         logStartTest("positive_only_req_fields_visa");
         body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
         body.put("amount","10012");
         body.put("operationId","2");
         body.put("customFee","0");
@@ -90,14 +88,14 @@ public class NBU_21_c2a_vmt extends BaseTest {
     public void positive_only_req_fields_master_more_30K(){
         logStartTest("positive_only_req_fields_master");
         body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
         body.put("amount","100");
         body.put("operationId","2");
         body.put("customFee","0");
         body.put("senderFirstName","senderFirstName");
         body.put("senderLastName","senderLastName");
         body.put("receiverAccount","26202111828383");
-        body.put("expDate",Cards_data.getData(Card.FUIB_MC, Card_param.expire));
+        body.put("expDate", Cards_data1.getData(Card.FUIB_MC, Card_param.expire));
         body.put("senderBirthday","01-01-2000");
         body.put("details.source","01");
         body.put("receiverFirstName","recipientFirstName");
@@ -110,14 +108,14 @@ public class NBU_21_c2a_vmt extends BaseTest {
     public void positive_only_req_fields_visa_more_30K(){
         logStartTest("positive_only_req_fields_visa");
         body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("senderCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
         body.put("amount","100");
         body.put("operationId","2");
         body.put("customFee","0");
         body.put("senderFirstName","senderFirstName");
         body.put("senderLastName","senderLastName");
         body.put("receiverAccount","26202111828383");
-        body.put("expDate",Cards_data.getData(Card.FUIB_VISA, Card_param.expire));
+        body.put("expDate", Cards_data1.getData(Card.FUIB_VISA, Card_param.expire));
         body.put("senderBirthday","01-01-2000");
         //body.put("details.source","01");
         body.put("receiverFirstName","recipientFirstName");

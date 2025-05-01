@@ -3,11 +3,9 @@ package test.backTests.payHub.regressTrans;
 import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.helper.Time_helper;
 import org.example.qaTransactionTeam.backEnd.payHub.AcquiringTrans;
-import org.example.qaTransactionTeam.backEnd.payHub.Recurrent;
 import org.example.qaTransactionTeam.backEnd.transaction.Payer_constructor;
-import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -21,7 +19,7 @@ public class Acquiring_regress extends BaseTest {
         String body = "\"amount\":100,\n" +
                 "    \"commission\": 0,\n" +
                 "    \"merchant_config_id\":\"c949382b-ddd0-4b13-94d3-713dfa3e8cca\",\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.TEST_CARD))+","+
+                Payer_constructor.PAN_payer(Cards_data1.getData(Card.TEST_CARD))+","+
                 "    \"description\": \"оплата Заказа "+ Time_helper.current_time() +"\",\n" +
                 "    \"hold\": false,\n" +
                 "    \"short_description\": \"Заказ "+Time_helper.current_time()+"\",\n" +
@@ -37,7 +35,7 @@ public class Acquiring_regress extends BaseTest {
         String body = "\"amount\": 500,\n" +
                 "    \"commission\": 0,\n" +
                 "    \"merchant_config_id\":\"c949382b-ddd0-4b13-94d3-713dfa3e8cca\",\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_MC))+","+
+                Payer_constructor.PAN_payer(Cards_data1.getData(Card.FUIB_MC))+","+
                 "    \"description\": \"оплата Заказа "+ Time_helper.current_time() +"\",\n" +
                 "    \"hold\": true,\n" +
                 "    \"short_description\": \"Заказ "+Time_helper.current_time()+"\",\n" +
@@ -53,7 +51,7 @@ public class Acquiring_regress extends BaseTest {
         String body = "\"amount\": 500,\n" +
                 "    \"commission\": 0,\n" +
                 "    \"merchant_config_id\":\"b7c4fd54-8d44-43ea-a805-0584b6e3d1c9\",\n" +
-                Payer_constructor.ITM_payer(Cards_data.getData(Card.FUIB_MC))+","+
+                Payer_constructor.ITM_payer(Cards_data1.getData(Card.FUIB_MC))+","+
                 "    \"description\": \"оплата Заказа "+ Time_helper.current_time() +"\",\n" +
                 "    \"hold\": true,\n" +
                 "    \"short_description\": \"Заказ "+Time_helper.current_time()+"\",\n" +
@@ -93,7 +91,7 @@ public class Acquiring_regress extends BaseTest {
         AcquiringTrans trans = new AcquiringTrans();
         String body = "{\n" +
                 "    \"merchant_config_id\" : \"ccc77655-1c60-4ed9-bf13-3f586fb998a5\",\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_VISA))+","+
+                Payer_constructor.PAN_payer(Cards_data1.getData(Card.FUIB_VISA))+","+
                 "  }";
         trans.get_3ds_type(body);
     }

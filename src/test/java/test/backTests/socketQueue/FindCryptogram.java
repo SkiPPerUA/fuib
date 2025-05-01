@@ -16,7 +16,7 @@ import java.util.concurrent.TimeoutException;
 
 public class FindCryptogram extends BaseTest {
 
-    String card = Cards_data.getData(Card.FUIB_MC, Card_param.pan);
+    String card = Cards_data1.getData(Card.FUIB_MC, Card_param.pan);
 
     RabbitMQ consumerMess;
 

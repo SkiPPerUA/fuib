@@ -1,6 +1,6 @@
 package test.backTests.hce.inbound;
 
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 import test.backTests.hce.HCEConfigs;
 import io.restassured.http.ContentType;
 import org.json.JSONException;
@@ -45,7 +45,7 @@ public class DeviceTokenBindingRequest {
                 .contentType(ContentType.JSON)
                 .body(body)
                 .when()
-                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v1/tokenRequestors/"+ Configs.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs.HCE_TOKEN_REFERENCE_ID +"/deviceBinding")
+                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v1/tokenRequestors/"+ Configs1.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs1.HCE_TOKEN_REFERENCE_ID +"/deviceBinding")
                 .then()
                 .extract().response().prettyPrint();
 
@@ -87,7 +87,7 @@ public class DeviceTokenBindingRequest {
                 .contentType(ContentType.JSON)
                 .body(body)
                 .when()
-                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v1/tokenRequestors/"+ Configs.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs.HCE_TOKEN_REFERENCE_ID +"/deviceBinding")
+                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v1/tokenRequestors/"+ Configs1.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs1.HCE_TOKEN_REFERENCE_ID +"/deviceBinding")
                 .then()
                 .extract().response().prettyPrint();
 

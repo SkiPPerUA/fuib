@@ -6,9 +6,7 @@ import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.C2A;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
-import org.example.qaTransactionTeam.backEnd.transaction.ThreeDS;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -72,7 +70,7 @@ public class C2Aregress extends BaseTest {
                 "         \"independent_sales_organization_id\":\"3016715233\"\n" +
                 "      }\n" +
                 "      }},\n"+
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_MC));
+                Payer_constructor.PAN_payer(Cards_data1.getData(Card.FUIB_MC));
 
         c2a = new C2A(body,0);
         Thread.sleep(sleep);
@@ -106,7 +104,7 @@ public class C2Aregress extends BaseTest {
                 "    },"+
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.MONO_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.MONO_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2409\",\n" +
                 "        \"cvv\": \"210\",\n" +
                 "        \"client\": {\n" +

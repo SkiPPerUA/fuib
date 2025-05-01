@@ -4,7 +4,7 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_itm.C2A;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,12 +56,12 @@ public class C2A_regress extends BaseTest {
     }
 
     private void set_body(Card card){
-        body.put("senderCardNumber", Cards_data.getData(card,Card_param.pan));
+        body.put("senderCardNumber", Cards_data1.getData(card,Card_param.pan));
         body.put("amount",amount);
         body.put("operationId","2");
         body.put("customFee","0");
         //body.put("receiverAccount","26202111828383");
-        body.put("expDate",Cards_data.getData(card,Card_param.expire));
+        body.put("expDate", Cards_data1.getData(card,Card_param.expire));
         body.put("ip","127.0.0.1");
         body.put("fingerprint","tests25");
         body.put("receiverFirstName","recipientFirstName");

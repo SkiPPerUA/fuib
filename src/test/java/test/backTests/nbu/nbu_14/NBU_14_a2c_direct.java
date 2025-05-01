@@ -63,7 +63,7 @@ public class NBU_14_a2c_direct extends BaseTest {
                 "    \"commission\": 0,\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(card, Card_param.pan) +"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(card, Card_param.pan) +"\",\n" +
                 "        \"recipientFirstName\": \"FirstName\",\n" +
                 "        \"recipientLastName\": \"LastName\"\n" +
                 "\t},"+
@@ -86,10 +86,10 @@ public class NBU_14_a2c_direct extends BaseTest {
 
     void set_status(String status) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         //Установке статуса успех всем транкам по нашей карте
-        BDpostgre.updateSQL("update limits.entries x set status='"+status+"' where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(card, Card_param.token)+"')");
+        BDpostgre.updateSQL("update limits.entries x set status='"+status+"' where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(card, Card_param.token)+"')");
     }
 
     void delete_trans() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        BDpostgre.updateSQL("delete FROM limits.entries x where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(card, Card_param.token)+"')");
+        BDpostgre.updateSQL("delete FROM limits.entries x where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(card, Card_param.token)+"')");
     }
 }

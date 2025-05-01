@@ -30,11 +30,11 @@ public class MT3097 extends BaseTest {
     public void createDate() {
         BDMongo.BDMongo("vmtdb");
 
-        bodyP4P.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        bodyP4P.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         bodyP4P.put("amount", summAll);
         bodyP4P.put("operationId", "119");
         bodyP4P.put("customFee", "0");
-        bodyP4P.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        bodyP4P.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         bodyP4P.put("expDate", "2212");
 
     }
@@ -44,7 +44,7 @@ public class MT3097 extends BaseTest {
         logStartTest("positiveP4PwithFundId");
 
         //Выполнение списание средств
-        P4P p4p = new P4P(bodyP4P, Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
 
         //Выполнение зачисление средств
         p4p.P4Ppayment(summ1,true);
@@ -73,7 +73,7 @@ public class MT3097 extends BaseTest {
         logStartTest("regressP4PwithOutFundId");
 
         //Выполнение списание средств
-        P4P p4p = new P4P(bodyP4P,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
 
         //Выполнение зачисление средств
         p4p.P4Ppayment(summ1,false);
@@ -96,7 +96,7 @@ public class MT3097 extends BaseTest {
         bodyA2C.put("amount",summAll);
         bodyA2C.put("operationId","1");
         bodyA2C.put("customFee","0");
-        bodyA2C.put("receiverCardNumber",Cards_data.getData(Card.FUIB_VISA, Card_param.token));
+        bodyA2C.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.token));
 
         A2C a2c = new A2C(bodyA2C);
 
@@ -112,7 +112,7 @@ public class MT3097 extends BaseTest {
         logStartTest("regressC2AwithOutFundId");
 
         Map<String, String> bodyC2A = new HashMap<>();
-        bodyC2A.put("senderCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        bodyC2A.put("senderCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         bodyC2A.put("amount",summAll);
         bodyC2A.put("operationId","2");
         bodyC2A.put("customFee","0");
@@ -121,7 +121,7 @@ public class MT3097 extends BaseTest {
         bodyC2A.put("ip","127.0.0.1");
         bodyC2A.put("fingerprint","tests25");
 
-        C2A c2a = new C2A(bodyC2A,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        C2A c2a = new C2A(bodyC2A, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
 
         //Подсчет количества записей в Монго
         Assert.assertEquals(countResult(getResponse(c2a.getSessionId())),3);

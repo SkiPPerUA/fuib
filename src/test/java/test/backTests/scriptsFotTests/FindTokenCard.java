@@ -15,7 +15,7 @@ public class FindTokenCard extends BaseTest {
 
     @BeforeTest
     public void connBD() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        BDas400.BDas400(env, Configs.ITMTST_ALL_NAME,Configs.ITMTST_ALL_PASSWORD);
+        BDas400.BDas400(env, Configs1.ITMTST_ALL_NAME, Configs1.ITMTST_ALL_PASSWORD);
     }
 
     @Test

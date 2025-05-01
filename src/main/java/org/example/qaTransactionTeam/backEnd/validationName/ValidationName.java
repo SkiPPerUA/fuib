@@ -1,19 +1,15 @@
 package org.example.qaTransactionTeam.backEnd.validationName;
 
 import org.apache.log4j.Logger;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 import org.example.qaTransactionTeam.backEnd.utils.RabbitMQ;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeoutException;
 
 public class ValidationName {
 
@@ -22,7 +18,7 @@ public class ValidationName {
 
     public void validName(String body){
         try {
-            rabbit = new RabbitMQ(Configs.ACCESS_TO_RABBIT_phd_rb_003,"test");
+            rabbit = new RabbitMQ(Configs1.ACCESS_TO_RABBIT_phd_rb_003,"test");
             Map header = new HashMap();
             header.put("handler","validateCashToCardIdentification");
 

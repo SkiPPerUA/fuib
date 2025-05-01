@@ -4,10 +4,9 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.payHub.VisaAlias;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.A2C;
-import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.A2C_direct;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -44,7 +43,7 @@ public class A2Cregress extends BaseTest {
                     "    },"+
                     "    \"receiver\": {\n" +
                     "        \"source\": \"PAN\",\n" +
-                    "        \"value\": \"" + Cards_data.getData(Card.FUIB_MC, Card_param.pan) + "\"\n" +
+                    "        \"value\": \"" + Cards_data1.getData(Card.FUIB_MC, Card_param.pan) + "\"\n" +
                     "    }";
 
             a2c = new A2C(body);
@@ -88,7 +87,7 @@ public class A2Cregress extends BaseTest {
                 "    },"+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.TEST_CARD, Card_param.pan) +"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.TEST_CARD, Card_param.pan) +"\",\n" +
                 "        \"recipientFirstName\":\"Fir's-tNam e ыв\",\n" +
                 "        \"recipientLastName\":\"L'as-tNa.me\"\n" +
                 "    }";
@@ -159,7 +158,7 @@ public class A2Cregress extends BaseTest {
                 "    },\n " +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \"" + Cards_data.getData(Card.MONO_MC, Card_param.pan) + "\"\n" +
+                "        \"value\": \"" + Cards_data1.getData(Card.MONO_MC, Card_param.pan) + "\"\n" +
                 "    }";
 
         a2c = new A2C(body);

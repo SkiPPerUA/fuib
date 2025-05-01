@@ -5,7 +5,7 @@ import org.example.qaTransactionTeam.backEnd.itm.GetTransDetails;
 import org.example.qaTransactionTeam.backEnd.token.Trans_token_itm;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.json.JSONException;
 import org.testng.annotations.Test;
 
@@ -29,7 +29,7 @@ public class MT610 {
         body.put("ip","127.0.0.1");
         body.put("fingerprint","tests25");
 
-        C2A c2a = new C2A(body, Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        C2A c2a = new C2A(body, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
 
     }
 

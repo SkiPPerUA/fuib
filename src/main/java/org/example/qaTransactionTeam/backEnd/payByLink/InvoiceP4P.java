@@ -1,7 +1,7 @@
 package org.example.qaTransactionTeam.backEnd.payByLink;
 
 import io.restassured.http.ContentType;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 
 import static io.restassured.RestAssured.given;
 
@@ -21,7 +21,7 @@ public class InvoiceP4P extends Invoice{
                         "  \"transaction_id\": \""+transId+"\"\n" +
                         "}")
                 .when()
-                .post(Configs.PAYHUB_HOST +"/cabina/pay-by-link/"+type+"/invoices/"+invoiceId+"/enroll")
+                .post(Configs1.PAYHUB_HOST +"/cabina/pay-by-link/"+type+"/invoices/"+invoiceId+"/enroll")
                 .then()
                 .statusCode(200)
                 .extract().response().asString();

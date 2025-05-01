@@ -1,13 +1,8 @@
 package test.backTests.payHub.regressTrans;
 
 import org.example.qaTransactionTeam.BaseTest;
-import org.example.qaTransactionTeam.backEnd.payHub.VisaAlias;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
-import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.A2C;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.A2C_tax;
-import org.example.qaTransactionTeam.backEnd.utils.Card;
-import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.testng.Assert;

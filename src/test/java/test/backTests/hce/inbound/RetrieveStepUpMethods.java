@@ -1,6 +1,6 @@
 package test.backTests.hce.inbound;
 
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 import test.backTests.hce.HCEConfigs;
 import io.restassured.http.ContentType;
 import org.json.JSONException;
@@ -16,8 +16,8 @@ public class RetrieveStepUpMethods {
     public void positiveTestRetrieveStepUpMethods() throws JSONException {
 
         String body = "{\n" +
-                "\"tokenRequestorID\": \""+ Configs.HCE_TOKEN_REQUESTOR_ID +"\"," +
-                " \"tokenReferenceID\": \""+ Configs.HCE_TOKEN_REFERENCE_ID +"\", " +
+                "\"tokenRequestorID\": \""+ Configs1.HCE_TOKEN_REQUESTOR_ID +"\"," +
+                " \"tokenReferenceID\": \""+ Configs1.HCE_TOKEN_REFERENCE_ID +"\", " +
                 "\"panReferenceID\": \"V-3...55\", \"clientWalletAccountID\": \"897...31\", \"panSource\": \"KEY_ENTERED\", \"otpReason\": \"TOKEN_DEVICE_BINDING\", \"otpMaxReached\": true, \"encryptedData\": \"eyJ...qQ\", \"deviceInfo\": { \"deviceID\": \"413...12\", \"deviceType\": \"MOBILE_PHONE\", \"deviceName\": \"Apple Ipod\", \"deviceNumber\": \"1\", \"deviceIndex\": 9 }\n" +
                 "}";
 
@@ -37,7 +37,7 @@ public class RetrieveStepUpMethods {
     public void negativeTestRetrieveStepUpMethods() throws JSONException {
 
         String body = "{\n" +
-                "\"tokenRequestorID\": \""+ Configs.HCE_TOKEN_REQUESTOR_ID +"\"," +
+                "\"tokenRequestorID\": \""+ Configs1.HCE_TOKEN_REQUESTOR_ID +"\"," +
                 " \"tokenReferenceID\": \"33\", " +
                 "\"panReferenceID\": \"V-3...55\", \"clientWalletAccountID\": \"897...31\", \"panSource\": \"KEY_ENTERED\", \"otpReason\": \"TOKEN_DEVICE_BINDING\", \"otpMaxReached\": true, \"encryptedData\": \"eyJ...qQ\", \"deviceInfo\": { \"deviceID\": \"413...12\", \"deviceType\": \"MOBILE_PHONE\", \"deviceName\": \"Apple Ipod\", \"deviceNumber\": \"1\", \"deviceIndex\": 9 }\n" +
                 "}";

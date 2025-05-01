@@ -2,12 +2,8 @@ package test.backTests.nbu.nbu_21;
 
 import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
-import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_itm.A2C;
-import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_itm.C2A;
-import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_itm.P2P;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_itm.P4P;
 import org.example.qaTransactionTeam.backEnd.utils.*;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -41,9 +37,9 @@ public class RetestNBU21 extends BaseTest {
 
     private void positive_all_fields(){
         body = new HashMap<>();
-        body.put("senderCardNumber", Cards_data.getData(senderCard,Card_param.pan));
-        body.put("receiverCardNumber", Cards_data.getData(receiverCard,Card_param.pan));
-        body.put("expDate", Cards_data.getData(receiverCard,Card_param.expire));
+        body.put("senderCardNumber", Cards_data1.getData(senderCard,Card_param.pan));
+        body.put("receiverCardNumber", Cards_data1.getData(receiverCard,Card_param.pan));
+        body.put("expDate", Cards_data1.getData(receiverCard,Card_param.expire));
         body.put("amount", amount);
         body.put("receiverFirstName","recipientFirstName");
         body.put("receiverLastName","recipientLastName");
@@ -110,7 +106,7 @@ public class RetestNBU21 extends BaseTest {
     void open(){
         try {
             //BDpostgre.BDpostgre("dc3-bgpg-001-vs.test-fuib.com:5432/","kreedb","svc_kree","passw0rd");
-            BDas400.BDas400("ITMTST", Configs.ITMTST_ALL_NAME,Configs.ITMTST_ALL_PASSWORD);
+            BDas400.BDas400("ITMTST", Configs1.ITMTST_ALL_NAME, Configs1.ITMTST_ALL_PASSWORD);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

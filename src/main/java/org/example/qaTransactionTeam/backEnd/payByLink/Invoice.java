@@ -2,7 +2,7 @@ package org.example.qaTransactionTeam.backEnd.payByLink;
 
 import io.restassured.http.ContentType;
 import org.apache.log4j.Logger;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -39,7 +39,7 @@ class Invoice {
                 .header("Authorization","Bearer "+token.getToken())
                 .body(body1)
                 .when()
-                .post(Configs.PAYHUB_HOST +"/cabina/pay-by-link/"+type+"/invoices")
+                .post(Configs1.PAYHUB_HOST +"/cabina/pay-by-link/"+type+"/invoices")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -58,7 +58,7 @@ class Invoice {
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer "+token.getToken())
                 .when()
-                .get(Configs.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices"+params+"")
+                .get(Configs1.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices"+params+"")
                 .then()
                 .statusCode(statusCode).extract().response().asString();
 
@@ -73,7 +73,7 @@ class Invoice {
                         "\t\"valid_till\": \""+TTL+"\"\n" +
                         "}")
                 .when()
-                .put(Configs.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"/valid_till")
+                .put(Configs1.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"/valid_till")
                 .then()
                 .statusCode(204)
                 .extract().response().asString();
@@ -87,7 +87,7 @@ class Invoice {
                 .header("Authorization","Bearer "+token.getToken())
                 .body("{}")
                 .when()
-                .put(Configs.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"/block")
+                .put(Configs1.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"/block")
                 .then()
                 .statusCode(statusCode).extract().response().asString();
     }
@@ -98,7 +98,7 @@ class Invoice {
                 .header("Authorization","Bearer "+token.getToken())
                 .body("{}")
                 .when()
-                .put(Configs.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"/unblock")
+                .put(Configs1.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"/unblock")
                 .then()
                 .statusCode(statusCode).extract().response().asString();
     }
@@ -113,7 +113,7 @@ class Invoice {
                         "  \"external_id\": \"Clone:"+externalId+"\"\n" +
                         "}")
                 .when()
-                .post(Configs.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"/clone")
+                .post(Configs1.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"/clone")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -141,7 +141,7 @@ class Invoice {
                 .header("Authorization","Bearer "+token.getToken())
                 .body(body)
                 .when()
-                .post(Configs.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"/refund")
+                .post(Configs1.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"/refund")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();
@@ -154,7 +154,7 @@ class Invoice {
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer "+token.getToken())
                 .when()
-                .get(Configs.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"/transactions")
+                .get(Configs1.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"/transactions")
                 .then()
                 .statusCode(statusCode).extract().response().asString();
 
@@ -171,7 +171,7 @@ class Invoice {
                         "  \"amount\": "+sum+"\n" +
                         "}")
                 .when()
-                .put(Configs.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"")
+                .put(Configs1.PAYHUB_HOST +"/cabina/pay-by-link/"+typeInvoice+"/invoices/"+invoiceId+"")
                 .then()
                 .statusCode(statusCode)
                 .extract().response().asString();

@@ -3,7 +3,7 @@ package org.example.qaTransactionTeam.backEnd.transaction.typeTrans_itm;
 import org.example.qaTransactionTeam.backEnd.token.Trans_token_itm;
 import org.example.qaTransactionTeam.backEnd.transaction.AppleGooglePay;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 import org.example.qaTransactionTeam.backEnd.wonderWoman.WonderWoman;
 import org.json.JSONObject;
 
@@ -17,7 +17,7 @@ public class RecurrentAGPay extends AppleGooglePay implements Transaction {
     @Override
     public void makeTrans() {
         super.typeTrans = typeTrans;
-        createToken = new Trans_token_itm("APGPC_APGP",Configs.PASSWORD_MERCHANT_2101,"2196");
+        createToken = new Trans_token_itm("APGPC_APGP", Configs1.PASSWORD_MERCHANT_2101,"2196");
         //createToken = new Trans_token_itm("SBPRC_APGP",Configs.PASSWORD_MERCHANT_2101,"2202");
         register(body);
         if (need_threeDS) {

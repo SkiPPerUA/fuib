@@ -17,7 +17,7 @@ public class NBU_21_a2c_vmt extends BaseTest {
 
     A2C a2c;
     Map<String, String> body;
-    String card = Cards_data.getData(Card.FUIB_MC, Card_param.pan);
+    String card = Cards_data1.getData(Card.FUIB_MC, Card_param.pan);
     String source = "01";
     String amount = "100";
 
@@ -60,7 +60,7 @@ public class NBU_21_a2c_vmt extends BaseTest {
         body.put("amount",amount);
         body.put("operationId","1");
         body.put("customFee","10");
-        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
         body.put("senderFirstName","senderFirstName");
         body.put("senderLastName","senderLastName");
         body.put("receiverFirstName","recipientFirstName");
@@ -79,7 +79,7 @@ public class NBU_21_a2c_vmt extends BaseTest {
         body.put("amount",amount);
         body.put("operationId","1");
         body.put("customFee","10");
-        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
         body.put("senderAccountNumber","senderAccountNumber");
         body.put("details.source","01");
 
@@ -94,7 +94,7 @@ public class NBU_21_a2c_vmt extends BaseTest {
         body.put("amount","3000100");
         body.put("operationId","1");
         body.put("customFee","10");
-        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
         body.put("senderFirstName","senderFirstName");
         body.put("senderLastName","senderLastName");
         body.put("receiverFirstName","recipientFirstName");
@@ -119,7 +119,7 @@ public class NBU_21_a2c_vmt extends BaseTest {
         body.put("receiverFirstName","recipientFirstName");
         body.put("receiverLastName","recipientLastName");
         body.put("senderBirthday","01-01-2000");
-        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
         body.put("senderAccountNumber","senderAccountNumber");
         //body.put("details.source","01");
 
@@ -133,7 +133,7 @@ public class NBU_21_a2c_vmt extends BaseTest {
         body.put("amount","500000");
         body.put("operationId","1");
         body.put("customFee","10");
-        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
         body.put("details.source","02");
 
         makeTran(body);
@@ -145,7 +145,7 @@ public class NBU_21_a2c_vmt extends BaseTest {
         body.put("amount","500001");
         body.put("operationId","1");
         body.put("customFee","10");
-        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
         body.put("receiverFirstName","recipientFirstName");
         body.put("receiverLastName","recipientLastName");
         body.put("senderFirstName","senderFirstName");
@@ -168,7 +168,7 @@ public class NBU_21_a2c_vmt extends BaseTest {
         body.put("amount","100");
         body.put("operationId","1");
         body.put("customFee","10");
-        body.put("receiverCardNumber", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
         //body.put("senderAccountNumber","senderAccountNumber");
         body.put("details.source","02");
 
@@ -241,7 +241,7 @@ public class NBU_21_a2c_vmt extends BaseTest {
 
     @BeforeTest
     public void open_conn() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        BDas400.BDas400("ITMTST", Configs.ITMTST_ALL_NAME,Configs.ITMTST_ALL_PASSWORD);
+        BDas400.BDas400("ITMTST", Configs1.ITMTST_ALL_NAME, Configs1.ITMTST_ALL_PASSWORD);
     }
 
     @AfterTest

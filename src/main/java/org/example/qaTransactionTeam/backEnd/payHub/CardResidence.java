@@ -3,7 +3,7 @@ package org.example.qaTransactionTeam.backEnd.payHub;
 import io.restassured.http.ContentType;
 import org.apache.log4j.Logger;
 import org.example.qaTransactionTeam.backEnd.token.Trans_token_payhub;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 import org.json.JSONException;
 
 import static io.restassured.RestAssured.given;
@@ -16,7 +16,7 @@ public class CardResidence {
 
     {
         try {
-            token = new Trans_token_payhub("transacter_test", Configs.PAYHUB_PASSWORD, Configs.PAYHUB_CLIENT,"https://innsmouth.payhub.com.ua");
+            token = new Trans_token_payhub("transacter_test", Configs1.PAYHUB_PASSWORD, Configs1.PAYHUB_CLIENT,"https://innsmouth.payhub.com.ua");
         } catch (JSONException e) {
             e.printStackTrace();
         }

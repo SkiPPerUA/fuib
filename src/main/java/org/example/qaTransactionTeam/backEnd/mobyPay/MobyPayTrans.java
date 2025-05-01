@@ -3,7 +3,7 @@ package org.example.qaTransactionTeam.backEnd.mobyPay;
 import io.restassured.http.ContentType;
 import org.apache.log4j.Logger;
 import org.example.qaTransactionTeam.backEnd.token.Trans_token_payhub;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,7 +57,7 @@ class MobyPayTrans {
                  .header("Authorization","Bearer "+token.getToken())
                  .body(body)
                  .when()
-                 .post(Configs.PAYHUB_HOST +"/mobile-pay/transactions")
+                 .post(Configs1.PAYHUB_HOST +"/mobile-pay/transactions")
                  .then()
 //                 .statusCode(responseCode)
                  .extract().response().asString();
@@ -140,7 +140,7 @@ class MobyPayTrans {
                 .header("Authorization","Bearer "+token.getToken())
                 .body(body)
                 .when()
-                .post(Configs.PAYHUB_HOST +"/mobile-pay/transactions")
+                .post(Configs1.PAYHUB_HOST +"/mobile-pay/transactions")
                 .then()
                 //.statusCode(responseCode)
                 .extract().response().asString();
@@ -161,7 +161,7 @@ class MobyPayTrans {
                                 "  \"c_res\": \"eyJhY3NUcmFuc0lEIjoiZWNhZWFmMjAtNDZlYy00MWVjLThiM2MtODNlOTc2NDM5OTc0IiwidHJhbnNTdGF0dXMiOiJZIiwidGhyZWVEU1NlcnZlclRyYW5zSUQiOiJlYzIwMDNiMC00NmVjLTQxZWMtOGIzYy1lMmVkYmVkNDQ2M2UiLCJtZXNzYWdlVHlwZSI6IkNSZXMiLCJtZXNzYWdlVmVyc2lvbiI6IjIuMS4wIn0\"\n" +
                                 "}")
                         .when()
-                        .put(Configs.PAYHUB_HOST + "/mobile-pay/transactions/" + id + "/3ds")
+                        .put(Configs1.PAYHUB_HOST + "/mobile-pay/transactions/" + id + "/3ds")
                         .then()
                         .statusCode(responseCode)
                         .extract().response().asString();
@@ -218,7 +218,7 @@ class MobyPayTrans {
                 .header("Authorization","Bearer "+token.getToken())
                 .body(body)
                 .when()
-                .post(Configs.PAYHUB_HOST +"/mobile-pay/transactions")
+                .post(Configs1.PAYHUB_HOST +"/mobile-pay/transactions")
                 .then()
 //                .statusCode(responseCode)
                 .extract().response().asString();
@@ -238,7 +238,7 @@ class MobyPayTrans {
                             "  \"c_res\": \"eyJhY3NUcmFuc0lEIjoiZWNhZWFmMjAtNDZlYy00MWVjLThiM2MtODNlOTc2NDM5OTc0IiwidHJhbnNTdGF0dXMiOiJZIiwidGhyZWVEU1NlcnZlclRyYW5zSUQiOiJlYzIwMDNiMC00NmVjLTQxZWMtOGIzYy1lMmVkYmVkNDQ2M2UiLCJtZXNzYWdlVHlwZSI6IkNSZXMiLCJtZXNzYWdlVmVyc2lvbiI6IjIuMS4wIn0\"\n" +
                             "}")
                     .when()
-                    .put(Configs.PAYHUB_HOST +"/mobile-pay/transactions/"+id+"/3ds")
+                    .put(Configs1.PAYHUB_HOST +"/mobile-pay/transactions/"+id+"/3ds")
                     .then()
                     .statusCode(responseCode)
                     .extract().response().asString();
@@ -260,7 +260,7 @@ class MobyPayTrans {
                 .header("Authorization","Bearer "+token.getToken())
                 .body(body1)
                 .when()
-                .post(Configs.PAYHUB_HOST +"/mobile-pay/transactions")
+                .post(Configs1.PAYHUB_HOST +"/mobile-pay/transactions")
                 .then()
 //                .statusCode(responseCode)
                 .extract().response().asString();
@@ -280,7 +280,7 @@ class MobyPayTrans {
                             "  \"c_res\": \"eyJhY3NUcmFuc0lEIjoiZWNhZWFmMjAtNDZlYy00MWVjLThiM2MtODNlOTc2NDM5OTc0IiwidHJhbnNTdGF0dXMiOiJZIiwidGhyZWVEU1NlcnZlclRyYW5zSUQiOiJlYzIwMDNiMC00NmVjLTQxZWMtOGIzYy1lMmVkYmVkNDQ2M2UiLCJtZXNzYWdlVHlwZSI6IkNSZXMiLCJtZXNzYWdlVmVyc2lvbiI6IjIuMS4wIn0\"\n" +
                             "}")
                     .when()
-                    .put(Configs.PAYHUB_HOST +"/mobile-pay/transactions/"+id+"/3ds")
+                    .put(Configs1.PAYHUB_HOST +"/mobile-pay/transactions/"+id+"/3ds")
                     .then()
                     .statusCode(responseCode)
                     .extract().response().asString();
@@ -298,7 +298,7 @@ class MobyPayTrans {
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer "+token.getToken())
                 .when()
-                .get(Configs.PAYHUB_HOST +"/mobile-pay/transactions/"+id)
+                .get(Configs1.PAYHUB_HOST +"/mobile-pay/transactions/"+id)
                 .then()
                 .statusCode(responseCode)
                 .extract().response().asString();
@@ -314,7 +314,7 @@ class MobyPayTrans {
                         "  \"amount\": "+amountHold+"\n" +
                         "}")
                 .when()
-                .post(Configs.PAYHUB_HOST +"/mobile-pay/transactions/"+id+"/complete_hold")
+                .post(Configs1.PAYHUB_HOST +"/mobile-pay/transactions/"+id+"/complete_hold")
                 .then()
                 .statusCode(responseCode)
                 .extract().response().asString();
@@ -330,7 +330,7 @@ class MobyPayTrans {
                         "  \"amount\": "+amountRefund+"\n" +
                         "}")
                 .when()
-                .post(Configs.PAYHUB_HOST +"/mobile-pay/transactions/"+id+"/refund")
+                .post(Configs1.PAYHUB_HOST +"/mobile-pay/transactions/"+id+"/refund")
                 .then()
                 .statusCode(responseCode)
                 .extract().response().asString();
@@ -385,7 +385,7 @@ class MobyPayTrans {
                         "  \"c_res\": \"eyJhY3NUcmFuc0lEIjoiZWNhZWFmMjAtNDZlYy00MWVjLThiM2MtODNlOTc2NDM5OTc0IiwidHJhbnNTdGF0dXMiOiJZIiwidGhyZWVEU1NlcnZlclRyYW5zSUQiOiJlYzIwMDNiMC00NmVjLTQxZWMtOGIzYy1lMmVkYmVkNDQ2M2UiLCJtZXNzYWdlVHlwZSI6IkNSZXMiLCJtZXNzYWdlVmVyc2lvbiI6IjIuMS4wIn0\"\n" +
                         "}")
                 .when()
-                .put(Configs.PAYHUB_HOST +"/mobile-pay/transactions/"+id+"/3ds")
+                .put(Configs1.PAYHUB_HOST +"/mobile-pay/transactions/"+id+"/3ds")
                 .then()
                 .statusCode(responseCode)
                 .extract().response().asString();

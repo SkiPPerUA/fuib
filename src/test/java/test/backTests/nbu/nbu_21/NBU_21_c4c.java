@@ -4,8 +4,7 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.C4C;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.testng.annotations.Test;
 
 @Test
@@ -33,9 +32,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -43,7 +42,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -92,9 +91,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -102,7 +101,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -148,9 +147,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -158,7 +157,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -198,9 +197,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -208,7 +207,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -249,9 +248,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -259,7 +258,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -300,9 +299,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -310,7 +309,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -355,9 +354,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -365,7 +364,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -410,9 +409,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -420,7 +419,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -465,9 +464,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -475,7 +474,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -520,9 +519,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -530,7 +529,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -575,9 +574,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -585,7 +584,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -630,9 +629,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -640,7 +639,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -685,9 +684,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -695,7 +694,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -740,9 +739,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -750,7 +749,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -795,9 +794,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -805,7 +804,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -851,13 +850,13 @@ public class NBU_21_c4c extends BaseTest {
                 "    },"+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -887,9 +886,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -897,7 +896,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +
@@ -943,9 +942,9 @@ public class NBU_21_c4c extends BaseTest {
                 "        \"user_agent\": \"Gecko\"\n" +
                 "    },    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2602\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -953,7 +952,7 @@ public class NBU_21_c4c extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":{\n" +

@@ -6,7 +6,7 @@ import org.example.qaTransactionTeam.backEnd.transaction.ThreeDS;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.C4C_new;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -30,12 +30,12 @@ public class C4C_new_regress extends BaseTest {
                 "    \"destination\": \"test destination\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(sender, Card_param.pan) +"\",\n" +
-                "        \"expire\": \""+Cards_data.getData(sender, Card_param.expire)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan) +"\",\n" +
+                "        \"expire\": \""+ Cards_data1.getData(sender, Card_param.expire)+"\"\n" +
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(receiver, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(receiver, Card_param.pan)+"\"\n" +
                 "    },"+
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -116,12 +116,12 @@ public class C4C_new_regress extends BaseTest {
                 "    \"destination\": \"test destination\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(sender, Card_param.pan) +"\",\n" +
-                "        \"expire\": \""+Cards_data.getData(sender, Card_param.expire)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan) +"\",\n" +
+                "        \"expire\": \""+ Cards_data1.getData(sender, Card_param.expire)+"\"\n" +
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(sender, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan)+"\"\n" +
                 "    },"+
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -156,7 +156,7 @@ public class C4C_new_regress extends BaseTest {
                 "    \"amount\": 500,\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(receiver, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(receiver, Card_param.pan)+"\"\n" +
                 "    },"+
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -200,8 +200,8 @@ public class C4C_new_regress extends BaseTest {
                 "    \"destination\": \"test destination\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(sender, Card_param.pan) +"\",\n" +
-                "        \"expire\": \""+Cards_data.getData(sender, Card_param.expire)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan) +"\",\n" +
+                "        \"expire\": \""+ Cards_data1.getData(sender, Card_param.expire)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -236,7 +236,7 @@ public class C4C_new_regress extends BaseTest {
                 "    \"amount\": 500,\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(receiver, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(receiver, Card_param.pan)+"\"\n" +
                 "    },"+
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -279,12 +279,12 @@ public class C4C_new_regress extends BaseTest {
                 "    \"destination\": \"test destination\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(sender, Card_param.pan) +"\",\n" +
-                "        \"expire\": \""+Cards_data.getData(sender, Card_param.expire)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan) +"\",\n" +
+                "        \"expire\": \""+ Cards_data1.getData(sender, Card_param.expire)+"\"\n" +
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(sender, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan)+"\"\n" +
                 "    },"+
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -319,7 +319,7 @@ public class C4C_new_regress extends BaseTest {
                 "    \"amount\": 400,\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \"" + Cards_data.getData(sender, Card_param.pan) + "\"\n" +
+                "        \"value\": \"" + Cards_data1.getData(sender, Card_param.pan) + "\"\n" +
                 "    }," +
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -352,7 +352,7 @@ public class C4C_new_regress extends BaseTest {
                 "    \"amount\": 400,\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \"" + Cards_data.getData(receiver, Card_param.pan) + "\"\n" +
+                "        \"value\": \"" + Cards_data1.getData(receiver, Card_param.pan) + "\"\n" +
                 "    }," +
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -395,12 +395,12 @@ public class C4C_new_regress extends BaseTest {
                 "    \"destination\": \"test destination\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(sender, Card_param.pan) +"\",\n" +
-                "        \"expire\": \""+Cards_data.getData(sender, Card_param.expire)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan) +"\",\n" +
+                "        \"expire\": \""+ Cards_data1.getData(sender, Card_param.expire)+"\"\n" +
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(sender, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan)+"\"\n" +
                 "    },"+
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -439,7 +439,7 @@ public class C4C_new_regress extends BaseTest {
                     "    \"amount\": 100,\n" +
                     "    \"receiver\": {\n" +
                     "        \"source\": \"PAN\",\n" +
-                    "        \"value\": \"" + Cards_data.getData(receiver, Card_param.pan) + "\"\n" +
+                    "        \"value\": \"" + Cards_data1.getData(receiver, Card_param.pan) + "\"\n" +
                     "    }," +
                     "    \"identification\": {\n" +
                     "        \"requirements\": {\n" +
@@ -488,12 +488,12 @@ public class C4C_new_regress extends BaseTest {
                 "    \"destination\": \"test destination\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(sender, Card_param.pan) +"\",\n" +
-                "        \"expire\": \""+Cards_data.getData(sender, Card_param.expire)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan) +"\",\n" +
+                "        \"expire\": \""+ Cards_data1.getData(sender, Card_param.expire)+"\"\n" +
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(receiver, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(receiver, Card_param.pan)+"\"\n" +
                 "    },"+
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -563,7 +563,7 @@ public class C4C_new_regress extends BaseTest {
                     "    \"amount\": 800,\n" +
                     "    \"receiver\": {\n" +
                     "        \"source\": \"PAN\",\n" +
-                    "        \"value\": \"" + Cards_data.getData(receiver, Card_param.pan) + "\"\n" +
+                    "        \"value\": \"" + Cards_data1.getData(receiver, Card_param.pan) + "\"\n" +
                     "    }," +
                     "    \"identification\": {\n" +
                     "        \"requirements\": {\n" +
@@ -605,8 +605,8 @@ public class C4C_new_regress extends BaseTest {
                 "    \"destination\": \"test destination\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(sender, Card_param.pan) +"\",\n" +
-                "        \"expire\": \""+Cards_data.getData(sender, Card_param.expire)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan) +"\",\n" +
+                "        \"expire\": \""+ Cards_data1.getData(sender, Card_param.expire)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -686,7 +686,7 @@ public class C4C_new_regress extends BaseTest {
                 "    \"destination\": \"test destination\",\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(receiver, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(receiver, Card_param.pan)+"\"\n" +
                 "    },"+
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -727,12 +727,12 @@ public class C4C_new_regress extends BaseTest {
                 "    \"destination\": \"test destination\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(sender, Card_param.pan) +"\",\n" +
-                "        \"expire\": \""+Cards_data.getData(sender, Card_param.expire)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan) +"\",\n" +
+                "        \"expire\": \""+ Cards_data1.getData(sender, Card_param.expire)+"\"\n" +
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(sender, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan)+"\"\n" +
                 "    },"+
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -806,12 +806,12 @@ public class C4C_new_regress extends BaseTest {
                 "    \"destination\": \"test destination\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(sender, Card_param.pan) +"\",\n" +
-                "        \"expire\": \""+Cards_data.getData(sender, Card_param.expire)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan) +"\",\n" +
+                "        \"expire\": \""+ Cards_data1.getData(sender, Card_param.expire)+"\"\n" +
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(sender, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan)+"\"\n" +
                 "    },"+
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
@@ -892,12 +892,12 @@ public class C4C_new_regress extends BaseTest {
                 "    \"destination\": \"test destination\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(sender, Card_param.pan) +"\",\n" +
-                "        \"expire\": \""+Cards_data.getData(sender, Card_param.expire)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(sender, Card_param.pan) +"\",\n" +
+                "        \"expire\": \""+ Cards_data1.getData(sender, Card_param.expire)+"\"\n" +
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(receiver, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(receiver, Card_param.pan)+"\"\n" +
                 "    },"+
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +

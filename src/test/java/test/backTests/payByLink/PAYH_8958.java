@@ -6,8 +6,7 @@ import org.example.qaTransactionTeam.backEnd.payByLink.InvoiceBusiness;
 import org.example.qaTransactionTeam.backEnd.payByLink.InvoiceP4P;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -507,9 +506,9 @@ public class PAYH_8958 extends BaseTest {
         body = "{\n" +
                 "  \"alias\": \"TestAutoVlad\",\n" +
                 "  \"card\": {\n" +
-                "    \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "    \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "    \"expire\": \"2212\",\n" +
-                "    \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
+                "    \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
                 "  }\n" +
                 "}";
         card.addCard(body);

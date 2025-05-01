@@ -4,8 +4,7 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.payHub.CardResidence;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,9 +14,9 @@ public class PAYH12127 extends BaseTest {
     @Test
     void positiveTest(){
         CardResidence cardResidence = new CardResidence();
-        cardResidence.checkResidenceCard(Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        cardResidence.checkResidenceCard(Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
         Assert.assertEquals(cardResidence.response,"true");
-        cardResidence.checkResidenceCard(Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        cardResidence.checkResidenceCard(Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
         Assert.assertEquals(cardResidence.response,"true");
     }
 

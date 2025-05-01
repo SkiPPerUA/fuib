@@ -6,8 +6,7 @@ import org.example.qaTransactionTeam.backEnd.payHub.Recurrent;
 import org.example.qaTransactionTeam.backEnd.payHub.frames.AcquiringFrame;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 
@@ -48,9 +47,9 @@ public class RecurrentTest extends BaseTest {
                 "    \"merchant_config_id\":\"fe18e213-d70c-4f49-b6db-8c40aca019ca\",\n" + //abdd92eb-ef36-45b5-b1a0-e00f4001726e  fb7b84d4-2477-4a53-862f-814fc3b3010b
                 "     \"payer\": {\n" +
                 "      \"source\": \"PAN\",\n" +
-                "      \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "      \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "      \"expire\": \"2602\",\n" +
-                "      \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
+                "      \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\"\n" +
                 "    }," +
                 "    \"description\": \"оплата Заказа "+ LocalDateTime.now()+"\",\n" +
                 "    \"hold\": false,\n" +

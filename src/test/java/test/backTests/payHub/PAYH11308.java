@@ -6,8 +6,7 @@ import org.example.qaTransactionTeam.backEnd.transaction.ThreeDS;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.C4C;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -31,10 +30,10 @@ public class PAYH11308 extends BaseTest {
                 "\t\"description\": \"VladTest\",\n" +
                 "\t\"without_confirmation\":true,\n" +
                 "    \"currency\": 980,\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_VISA),"EXTERNAL","test")+","+
+                Payer_constructor.PAN_payer(Cards_data1.getData(Card.FUIB_VISA),"EXTERNAL","test")+","+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 ThreeDS.threeDS_2_1_0;
 
@@ -70,9 +69,9 @@ public class PAYH11308 extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2212\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -80,7 +79,7 @@ public class PAYH11308 extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"threed\": {\n" +
                 "        \"version\": \"2.1.0\",\n" +
@@ -126,9 +125,9 @@ public class PAYH11308 extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2212\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -136,7 +135,7 @@ public class PAYH11308 extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"threed\": {\n" +
                 "        \"version\": \"2.1.0\",\n" +
@@ -191,9 +190,9 @@ public class PAYH11308 extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2212\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -201,7 +200,7 @@ public class PAYH11308 extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"threed\": {\n" +
                 "        \"version\": \"2.1.0\",\n" +
@@ -261,9 +260,9 @@ public class PAYH11308 extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2212\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -271,7 +270,7 @@ public class PAYH11308 extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"threed\": {\n" +
                 "        \"version\": \"2.1.0\",\n" +
@@ -324,9 +323,9 @@ public class PAYH11308 extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2212\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -334,7 +333,7 @@ public class PAYH11308 extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"threed\": {\n" +
                 "        \"version\": \"2.1.0\",\n" +
@@ -380,9 +379,9 @@ public class PAYH11308 extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2212\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -390,7 +389,7 @@ public class PAYH11308 extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"threed\": {\n" +
                 "        \"version\": \"2.1.0\",\n" +
@@ -436,9 +435,9 @@ public class PAYH11308 extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "        \"expire\": \"2212\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -446,7 +445,7 @@ public class PAYH11308 extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"threed\": {\n" +
                 "        \"version\": \"2.1.0\",\n" +

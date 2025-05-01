@@ -145,9 +145,9 @@ public class FinalSumMore extends BaseTest {
     void openCon() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         body = "{\n" +
                 "\t\"amount\":\""+amountPreauth+"\",\n" +
-                "\t\"card_number\":\""+ Cards_data.getData(card, Card_param.pan)+"\",\n" +
-                "\t\"experation_date\":\""+Cards_data.getData(card, Card_param.expire)+"\",\n" +
-                "\t\"cvv\": \""+Cards_data.getData(card, Card_param.cvv)+"\", \n" +
+                "\t\"card_number\":\""+ Cards_data1.getData(card, Card_param.pan)+"\",\n" +
+                "\t\"experation_date\":\""+ Cards_data1.getData(card, Card_param.expire)+"\",\n" +
+                "\t\"cvv\": \""+ Cards_data1.getData(card, Card_param.cvv)+"\", \n" +
                 "\t\"ucaf\":\"AAABA5RZlAAAA5cZGFmUAAAAAAA=\",\n" +
                 "\t\"ext_trans_id\": \"12wq3e50\",\n" +
                 "\t\"info_3ds\":{\n" +
@@ -167,7 +167,7 @@ public class FinalSumMore extends BaseTest {
                 "\t\t\"challenge_window_size\":\"04\",\n" +
                 "\t\t\"return_url\":\"https://service.fuib.com\"\n" +
                 "\t}}";
-        BDas400.BDas400("ITMTST", Configs.ITMTST_ALL_NAME,Configs.ITMTST_ALL_PASSWORD);
+        BDas400.BDas400("ITMTST", Configs1.ITMTST_ALL_NAME, Configs1.ITMTST_ALL_PASSWORD);
     }
 
     @AfterTest

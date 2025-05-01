@@ -116,7 +116,7 @@ public class NBU_14_a2c extends BaseTest {
         success_a2c_short(2000000);
         set_status("PROCESSED");
         BDpostgre.updateSQL("update limits.entries x set created_at = '"+change_days(-1)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where yyyyMMddHHmmssSSS = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data.getData(card, Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where yyyyMMddHHmmssSSS = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(card, Card_param.token)+"') order by created_at asc limit 1)");
         success_a2c_short(2000000);
     }
 
@@ -125,7 +125,7 @@ public class NBU_14_a2c extends BaseTest {
         success_a2c_short(2000000);
         set_status("PROCESSED");
         BDpostgre.updateSQL("update limits.entries x set created_at = '"+change_days(-1)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(card, Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(card, Card_param.token)+"') order by created_at asc limit 1)");
         success_a2c_full(2500000);
     }
 
@@ -134,7 +134,7 @@ public class NBU_14_a2c extends BaseTest {
         success_a2c_full(2500000);
         set_status("PROCESSED");
         BDpostgre.updateSQL("update limits.entries x set created_at = '"+change_days(-1)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(card, Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(card, Card_param.token)+"') order by created_at asc limit 1)");
         success_a2c_short(2000000);
     }
 
@@ -143,7 +143,7 @@ public class NBU_14_a2c extends BaseTest {
         success_a2c_full(2500000);
         set_status("PROCESSED");
         BDpostgre.updateSQL("update limits.entries x set created_at = '"+change_days(-1)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(card, Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(card, Card_param.token)+"') order by created_at asc limit 1)");
         success_a2c_full(2500000);
     }
 
@@ -174,7 +174,7 @@ public class NBU_14_a2c extends BaseTest {
                 "    },"+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(card, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(card, Card_param.pan)+"\",\n" +
                 "        \"recipientFirstName\": \"FirstName\",\n" +
                 "        \"recipientLastName\": \"LastName\"\n" +
                 "\t}";
@@ -204,7 +204,7 @@ public class NBU_14_a2c extends BaseTest {
                 "    },"+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(card, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(card, Card_param.pan)+"\",\n" +
                 "        \"recipientFirstName\": \"FirstName\",\n" +
                 "        \"recipientLastName\": \"LastName\"\n" +
                 "\t}";
@@ -233,7 +233,7 @@ public class NBU_14_a2c extends BaseTest {
                 "    },"+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(card, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(card, Card_param.pan)+"\",\n" +
                 "        \"recipientFirstName\": \"FirstName\",\n" +
                 "        \"recipientLastName\": \"LastName\"\n" +
                 "\t}";
@@ -265,7 +265,7 @@ public class NBU_14_a2c extends BaseTest {
                 "    },"+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(card, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(card, Card_param.pan)+"\",\n" +
                 "        \"recipientFirstName\": \"FirstName\",\n" +
                 "        \"recipientLastName\": \"LastName\"\n" +
                 "\t}";
@@ -273,7 +273,7 @@ public class NBU_14_a2c extends BaseTest {
     }
 
     public void testCheck_different_reciever() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        BDpostgre.updateSQL("delete FROM limits.entries x where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(Card.MONO_MC, Card_param.token)+"')");
+        BDpostgre.updateSQL("delete FROM limits.entries x where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(Card.MONO_MC, Card_param.token)+"')");
         testNotFullData_one_trans_positive();
         set_status("PROCESSED");
         String body = "\"amount\": 2000000,\n" +
@@ -281,7 +281,7 @@ public class NBU_14_a2c extends BaseTest {
                 "    \"commission\": 0,\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.MONO_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.MONO_MC, Card_param.pan)+"\",\n" +
                 "        \"recipientFirstName\": \"FirstName\",\n" +
                 "        \"recipientLastName\": \"LastName\"\n" +
                 "    }," +
@@ -326,7 +326,7 @@ public class NBU_14_a2c extends BaseTest {
                 "    \"commission\": 0,\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(card, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(card, Card_param.pan)+"\",\n" +
                 "        \"recipientFirstName\": \"FirstName\",\n" +
                 "        \"recipientLastName\": \"LastName\"\n" +
                 "    }," +
@@ -363,7 +363,7 @@ public class NBU_14_a2c extends BaseTest {
                 "    },"+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(card, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(card, Card_param.pan)+"\",\n" +
                 "        \"recipientFirstName\": \"FirstName\",\n" +
                 "        \"recipientLastName\": \"LastName\"\n" +
                 "\t}";
@@ -389,7 +389,7 @@ public class NBU_14_a2c extends BaseTest {
                 "    },"+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(card, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(card, Card_param.pan)+"\",\n" +
                 "        \"recipientFirstName\": \"FirstName\",\n" +
                 "        \"recipientLastName\": \"LastName\"\n" +
                 "\t}";
@@ -402,7 +402,7 @@ public class NBU_14_a2c extends BaseTest {
                 "    \"commission\": 0,\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(card, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(card, Card_param.pan)+"\",\n" +
                 "        \"recipientFirstName\": \"FirstName\",\n" +
                 "        \"recipientLastName\": \"LastName\"\n" +
                 "    }," +
@@ -432,10 +432,10 @@ public class NBU_14_a2c extends BaseTest {
 
     void set_status(String status) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         //Установке статуса успех всем транкам по нашей карте
-        BDpostgre.updateSQL("update limits.entries x set status='"+status+"' where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(card, Card_param.token)+"')");
+        BDpostgre.updateSQL("update limits.entries x set status='"+status+"' where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(card, Card_param.token)+"')");
     }
 
     void delete_trans() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        BDpostgre.updateSQL("delete FROM limits.entries x where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(card, Card_param.token)+"')");
+        BDpostgre.updateSQL("delete FROM limits.entries x where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(card, Card_param.token)+"')");
     }
 }

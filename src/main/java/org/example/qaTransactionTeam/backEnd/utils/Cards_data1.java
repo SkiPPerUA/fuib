@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Cards_data {
+public class Cards_data1 {
 
     private static final Map<Card, Map> CARD_DATA = new HashMap<>();
 

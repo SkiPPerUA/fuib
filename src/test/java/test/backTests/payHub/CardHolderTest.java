@@ -4,8 +4,8 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.payHub.CardHolder;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -18,7 +18,7 @@ public class CardHolderTest extends BaseTest {
     @Test
     public void testShortNamePositive(){
         logStartTest("testShortNamePositive");
-        cardHolder.nameShort(Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        cardHolder.nameShort(Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
         json = new JSONObject(cardHolder.getResponse());
         Assert.assertEquals(json.getBoolean("success"),true);
         Assert.assertEquals(json.getString("cardholder"),"Владислав С");
@@ -30,7 +30,7 @@ public class CardHolderTest extends BaseTest {
     public void testFullNamePositive(){
         logStartTest("testFullNamePositive");
 
-        cardHolder.nameFull(Cards_data.getData(Card.FUIB_MC,Card_param.pan));
+        cardHolder.nameFull(Cards_data1.getData(Card.FUIB_MC,Card_param.pan));
         json = new JSONObject(cardHolder.getResponse());
         Assert.assertEquals(json.getBoolean("success"),true);
         Assert.assertEquals(json.getJSONObject("cardholder").getString("first_name"),"Владислав");
@@ -43,7 +43,7 @@ public class CardHolderTest extends BaseTest {
     @Test
     public void testMatchTax(){
         logStartTest("testMatchTax");
-        cardHolder.matchTax(Cards_data.getData(Card.FUIB_VISA, Card_param.pan),Configs.TaxCode);
+        cardHolder.matchTax(Cards_data1.getData(Card.FUIB_VISA, Card_param.pan), Configs1.TaxCode);
         json = new JSONObject(cardHolder.getResponse());
         Assert.assertEquals(json.getBoolean("success"),true);
 
@@ -53,7 +53,7 @@ public class CardHolderTest extends BaseTest {
             throw new RuntimeException(e);
         }
 
-        cardHolder.matchTax(Cards_data.getData(Card.FUIB_MC, Card_param.pan),Configs.TaxCode);
+        cardHolder.matchTax(Cards_data1.getData(Card.FUIB_MC, Card_param.pan), Configs1.TaxCode);
         json = new JSONObject(cardHolder.getResponse());
         Assert.assertEquals(json.getBoolean("success"),true);
         logFinishTest("testMatchTax");
@@ -62,7 +62,7 @@ public class CardHolderTest extends BaseTest {
     @Test
     public void testShortNameNegaive(){
         logStartTest("testShortNameNegaive");
-        cardHolder.nameShort(Cards_data.getData(Card.MONO_VISA,Card_param.pan));
+        cardHolder.nameShort(Cards_data1.getData(Card.MONO_VISA,Card_param.pan));
         json = new JSONObject(cardHolder.getResponse());
         Assert.assertEquals(json.getBoolean("success"),false);
 
@@ -72,7 +72,7 @@ public class CardHolderTest extends BaseTest {
     @Test
     public void testFullNameNegative(){
         logStartTest("testFullNameNegative");
-        cardHolder.nameFull(Cards_data.getData(Card.MONO_VISA,Card_param.pan));
+        cardHolder.nameFull(Cards_data1.getData(Card.MONO_VISA,Card_param.pan));
         json = new JSONObject(cardHolder.getResponse());
         Assert.assertEquals(json.getBoolean("success"),false);
 
@@ -82,7 +82,7 @@ public class CardHolderTest extends BaseTest {
     @Test
     public void testMatchTaxNegative() {
         logStartTest("testMatchTaxNegative");
-        cardHolder.matchTax(Cards_data.getData(Card.MONO_VISA,Card_param.pan),Configs.TaxCode);
+        cardHolder.matchTax(Cards_data1.getData(Card.MONO_VISA,Card_param.pan), Configs1.TaxCode);
         json = new JSONObject(cardHolder.getResponse());
         Assert.assertEquals(json.getBoolean("success"),false);
         logFinishTest("testMatchTaxNegative");

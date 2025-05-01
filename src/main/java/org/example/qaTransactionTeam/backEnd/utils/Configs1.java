@@ -1,6 +1,6 @@
 package org.example.qaTransactionTeam.backEnd.utils;
 
-public class Configs {
+public class Configs1 {
 
     //DB_configs
     public static final String ITMTST_ALL_NAME = "asgate";

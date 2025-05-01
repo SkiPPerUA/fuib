@@ -21,9 +21,9 @@ public class ReversalAppleGoogle extends BaseTest {
 
     private String body = "{\n" +
             "\t\"amount\":\""+amount+"\",\n" +
-            "\t\t\"card_number\":\""+ Cards_data.getData(Card.FUIB_VISA, Card_param.pan) +"\",\n" +
-            "\t\"experation_date\":\""+Cards_data.getData(Card.FUIB_VISA, Card_param.expire)+"\",\n" +
-            "\t\"cvv\": \""+Cards_data.getData(Card.FUIB_VISA, Card_param.cvv)+"\", \n" +
+            "\t\t\"card_number\":\""+ Cards_data1.getData(Card.FUIB_VISA, Card_param.pan) +"\",\n" +
+            "\t\"experation_date\":\""+ Cards_data1.getData(Card.FUIB_VISA, Card_param.expire)+"\",\n" +
+            "\t\"cvv\": \""+ Cards_data1.getData(Card.FUIB_VISA, Card_param.cvv)+"\", \n" +
             "\t\"ucaf\":\"AAABA5RZlAAAA5cZGFmUAAAAAAA=\",\n" +
             "\t\"ext_trans_id\": \"12wq3e49\",\n" +
             ThreeDS.with_threeDS_2_1_0_itm +
@@ -526,7 +526,7 @@ public class ReversalAppleGoogle extends BaseTest {
 
 
     private void changeTime(String session,int type) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
-        BDas400.BDas400("ITMTST",Configs.ITMTST_ALL_NAME,Configs.ITMTST_ALL_PASSWORD);
+        BDas400.BDas400("ITMTST", Configs1.ITMTST_ALL_NAME, Configs1.ITMTST_ALL_PASSWORD);
         ResultSet res;
         if(type == 21){
              res = BDas400.selectSQL("SELECT * FROM itm22d.VMTCONNVLT v WHERE VCOWNER='TRANSACTION'" +

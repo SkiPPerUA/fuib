@@ -3,7 +3,7 @@ package org.example.qaTransactionTeam.backEnd.token;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 import org.testng.Assert;
 
 import java.util.HashMap;
@@ -15,7 +15,7 @@ public class Shazam_token implements Auth_token{
 
     private String token;
     private Response response;
-    private String host = Configs.PAYHUB_HOST;
+    private String host = Configs1.PAYHUB_HOST;
     private Map<String, String> data;
 
     public Shazam_token(String login, String pass){

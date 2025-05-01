@@ -4,8 +4,7 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.commissions.Сommissions;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
-import org.json.JSONPointer;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -156,11 +155,11 @@ public class CommissionsResipient_privat extends BaseTest {
     }
 
     private void setCards(){
-        cards.put("MONO", Cards_data.getData(Card.MONO_MC, Card_param.pan));
-        cards.put("PUMB_master", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
-        cards.put("PUMB_visa", Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
-        cards.put("Privat", Cards_data.getData(Card.PRIVAT_VISA, Card_param.pan));
-        cards.put("Raif", Cards_data.getData(Card.RAIF_VISA, Card_param.pan));
+        cards.put("MONO", Cards_data1.getData(Card.MONO_MC, Card_param.pan));
+        cards.put("PUMB_master", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
+        cards.put("PUMB_visa", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        cards.put("Privat", Cards_data1.getData(Card.PRIVAT_VISA, Card_param.pan));
+        cards.put("Raif", Cards_data1.getData(Card.RAIF_VISA, Card_param.pan));
         cards.put("Privat2", "5168745022396342");
     }
 

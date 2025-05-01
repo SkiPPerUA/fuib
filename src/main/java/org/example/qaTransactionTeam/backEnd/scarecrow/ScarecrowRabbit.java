@@ -2,7 +2,7 @@ package org.example.qaTransactionTeam.backEnd.scarecrow;
 
 import org.apache.log4j.Logger;
 import org.example.qaTransactionTeam.backEnd.utils.BDas400;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 import org.example.qaTransactionTeam.backEnd.utils.RabbitMQ;
 
 import java.io.IOException;
@@ -24,7 +24,7 @@ class ScarecrowRabbit {
     protected RabbitMQ rabbit;
 
     public void dataForMerchant(String acqid) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, URISyntaxException, KeyManagementException, TimeoutException, NoSuchAlgorithmException, IOException {
-        BDas400.BDas400("ITMTST", Configs.ITMTST_ALL_NAME,Configs.ITMTST_ALL_PASSWORD);
+        BDas400.BDas400("ITMTST", Configs1.ITMTST_ALL_NAME, Configs1.ITMTST_ALL_PASSWORD);
         ResultSet res = BDas400.selectSQL("SELECT * FROM ITM22D.VMTACQSETT WHERE ACQID="+acqid+"");
         res.next();
         merchant_id_tds = res.getString("3DSMRCID").trim();

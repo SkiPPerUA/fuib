@@ -1,15 +1,13 @@
 package test.backTests.payHub.regressTrans;
 
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.transaction.Payer_constructor;
 import org.example.qaTransactionTeam.backEnd.transaction.ThreeDS;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.C2C;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -31,10 +29,10 @@ public class C2Cregress extends BaseTest {
                 "    \"client_ip\": \"0.1.1.4\",\n" +
                 "    \"currency\": 980,\n" +
                 "    \"description\": \"description\",\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_MC))+","+
+                Payer_constructor.PAN_payer(Cards_data1.getData(Card.FUIB_MC))+","+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC,Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC,Card_param.pan)+"\"\n" +
                 "    },\n" +
                 ThreeDS.threeDS_2_2_0;
 
@@ -81,9 +79,9 @@ public class C2Cregress extends BaseTest {
                 "    \"description\": \"description\",\n" +
                 "    \"payer\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
-                "        \"expire\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.expire)+"\",\n" +
-                "        \"cvv\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"expire\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.expire)+"\",\n" +
+                "        \"cvv\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.cvv)+"\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EXTERNAL\",\n" +
                 "            \"id\": \"test\"\n" +
@@ -91,7 +89,7 @@ public class C2Cregress extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    },\n" +
                 ThreeDS.threeDS_2_1_0;
 
@@ -117,7 +115,7 @@ public class C2Cregress extends BaseTest {
                 "    },\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
                 "    \"threed\": {\n" +
                 "        \"version\": \"2.1.0\",\n" +
                 "        \"fingerprint\": \"test\",\n" +

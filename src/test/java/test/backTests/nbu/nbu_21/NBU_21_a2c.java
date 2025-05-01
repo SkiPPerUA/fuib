@@ -4,8 +4,7 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.A2C;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -22,7 +21,7 @@ public class NBU_21_a2c extends BaseTest {
                 "   \"description\": \"description\",\n" +
                 "   \"receiver\":{\n" +
                 "      \"source\":\"PAN\",\n" +
-                "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
 //                        "      \"source\":\"ITM\",\n" +
 //                        "      \"value\":\"?C8RL8XT8A5FV6J7\"\n" +
                 "   },\n" +
@@ -100,7 +99,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"description\": \"description\",\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -135,7 +134,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -168,7 +167,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -195,7 +194,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -223,7 +222,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -255,7 +254,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -287,7 +286,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -319,7 +318,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -351,7 +350,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -383,7 +382,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -415,7 +414,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -447,7 +446,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -479,7 +478,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -511,7 +510,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -543,7 +542,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -574,7 +573,7 @@ public class NBU_21_a2c extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                 "    }";
         makeA2c(body, "PROCESSED");
         logFinishTest("testA2Cregress");
@@ -587,7 +586,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +
@@ -620,7 +619,7 @@ public class NBU_21_a2c extends BaseTest {
                         "   \"currency\":980,\n" +
                         "   \"receiver\":{\n" +
                         "      \"source\":\"PAN\",\n" +
-                        "      \"value\":\""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
+                        "      \"value\":\""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\"\n" +
                         "   },\n" +
                         "    \"identification\": {\n" +
                         "   \"requirements\":{\n" +

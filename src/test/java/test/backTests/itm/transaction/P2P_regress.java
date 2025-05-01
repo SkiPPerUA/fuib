@@ -4,7 +4,7 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_itm.P2P;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -36,9 +36,9 @@ public class P2P_regress extends BaseTest {
     }
 
     private void set_body(Card cardSender, Card cardReceiver){
-        body.put("senderCardNumber", Cards_data.getData(cardSender, Card_param.pan));
-        body.put("receiverCardNumber", Cards_data.getData(cardReceiver,Card_param.pan));
-        body.put("expDate", Cards_data.getData(cardSender,Card_param.expire));
+        body.put("senderCardNumber", Cards_data1.getData(cardSender, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data1.getData(cardReceiver,Card_param.pan));
+        body.put("expDate", Cards_data1.getData(cardSender,Card_param.expire));
         body.put("amount", amount);
         body.put("details.source","01");
         body.put("sli","242");

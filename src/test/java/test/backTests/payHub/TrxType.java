@@ -5,12 +5,11 @@ import org.example.qaTransactionTeam.backEnd.transaction.Payer_constructor;
 import org.example.qaTransactionTeam.backEnd.transaction.ThreeDS;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.A2C;
-import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.A2C_direct;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.C2A;
 import org.example.qaTransactionTeam.backEnd.utils.BDpostgre;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -61,7 +60,7 @@ public class TrxType extends BaseTest {
                 "    },"+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "        \"recipientFirstName\":\"Fir's-tNam e ыв\",\n" +
                 "        \"recipientLastName\":\"L'as-tNa.me\"\n" +
                 "    }";
@@ -84,7 +83,7 @@ public class TrxType extends BaseTest {
                 "             \"recipient\":{\n" +
                 "                 \"account_number\":\"UA213223130000026007233566001\"\n" +
                 "              }}},\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_MC));
+                Payer_constructor.PAN_payer(Cards_data1.getData(Card.FUIB_MC));
 
             transaction = new C2A(body,0);
             System.out.println(x);

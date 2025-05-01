@@ -19,7 +19,7 @@ public class RabbitMQ {
     private Connection connection;
     private Channel channel;
     private AMQP.BasicProperties.Builder properties;
-    private String access = Configs.ACCESS_TO_RABBIT;
+    private String access = Configs1.ACCESS_TO_RABBIT;
 
 
     public RabbitMQ(String host) throws URISyntaxException, NoSuchAlgorithmException, KeyManagementException, IOException, TimeoutException {

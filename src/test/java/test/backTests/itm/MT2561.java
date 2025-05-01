@@ -16,7 +16,7 @@ import org.example.qaTransactionTeam.backEnd.token.Trans_token_itm;
 import org.example.qaTransactionTeam.backEnd.utils.BDMongo;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -76,7 +76,7 @@ public class MT2561 extends BaseTest {
         body.put("ip","127.0.0.1");
         body.put("fingerprint","tests25");
 
-        C2A c2a = new C2A(body, Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        C2A c2a = new C2A(body, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         String C2Asession = c2a.getSessionId();
 
         Object dataFromMongo = checkMongoTransfers(C2Asession).get("extTransId");
@@ -100,7 +100,7 @@ public class MT2561 extends BaseTest {
         body.put("ip","127.0.0.1");
         body.put("fingerprint","tests25");
 
-        C2A c2a = new C2A(body,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        C2A c2a = new C2A(body, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         String C2Asession = c2a.getSessionId();
 
         Object dataFromMongo = checkMongoTransfers(C2Asession).get("expDate");

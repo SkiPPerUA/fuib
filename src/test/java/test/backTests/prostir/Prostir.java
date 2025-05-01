@@ -1,13 +1,8 @@
 package test.backTests.prostir;
 
 import org.example.qaTransactionTeam.BaseTest;
-import org.example.qaTransactionTeam.backEnd.helper.Uuid_helper;
-import org.example.qaTransactionTeam.backEnd.token.Trans_token_payhub;
 import org.example.qaTransactionTeam.backEnd.transaction.Payer_constructor;
-import org.example.qaTransactionTeam.backEnd.transaction.ThreeDS;
-import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.A2C_legion;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.C2A;
-import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.C2C;
 import org.example.qaTransactionTeam.backEnd.utils.*;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -108,7 +103,7 @@ public class Prostir extends BaseTest {
                 "         \"independent_sales_organization_id\":\"3016715233\"\n" +
                 "      }\n" +
                 "      }},\n"+
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.TEST_CARD));
+                Payer_constructor.PAN_payer(Cards_data1.getData(Card.TEST_CARD));
 
         C2A trans = new C2A(body,0);
         try {

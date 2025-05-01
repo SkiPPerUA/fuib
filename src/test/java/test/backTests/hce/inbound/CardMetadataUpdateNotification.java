@@ -1,6 +1,6 @@
 package test.backTests.hce.inbound;
 
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 import test.backTests.hce.HCEConfigs;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Test;
@@ -22,7 +22,7 @@ public class CardMetadataUpdateNotification {
                 .params("eventType", true)
                 .body(body)
                 .when()
-                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v1/tokenRequestors/"+ Configs.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs.HCE_TOKEN_REFERENCE_ID +"/notification")
+                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v1/tokenRequestors/"+ Configs1.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs1.HCE_TOKEN_REFERENCE_ID +"/notification")
                 .then()
                 .extract().response().prettyPrint();
     }
@@ -39,7 +39,7 @@ public class CardMetadataUpdateNotification {
                 .params("eventType", true)
                 .body(body)
                 .when()
-                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v1/tokenRequestors/"+ Configs.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs.HCE_TOKEN_REFERENCE_ID +"/notification")
+                .post("http://"+ HCEConfigs.ENDPOINT +"/vtis/v1/tokenRequestors/"+ Configs1.HCE_TOKEN_REQUESTOR_ID +"/tokens/"+ Configs1.HCE_TOKEN_REFERENCE_ID +"/notification")
                 .then()
                 .extract().response().prettyPrint();
     }

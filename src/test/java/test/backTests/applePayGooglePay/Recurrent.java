@@ -1,15 +1,14 @@
 package test.backTests.applePayGooglePay;
 
 import org.example.qaTransactionTeam.BaseTest;
-import org.example.qaTransactionTeam.backEnd.helper.Uuid_helper;
 import org.example.qaTransactionTeam.backEnd.token.Trans_token_itm;
 import org.example.qaTransactionTeam.backEnd.transaction.AppleGoogleReversalRefund;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_itm.MobilePay;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_itm.RecurrentAGPay;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 import org.testng.annotations.Test;
 
 @Test
@@ -29,9 +28,9 @@ public class Recurrent extends BaseTest {
     public void testRecurrent(){
         body = "{\n" +
                 "\t\"amount\":\""+amountRecur+"\",\n" +
-                "\t\"card_number\":\""+ Cards_data.getData(cardRecur, Card_param.pan) +"\",\n" +
-                "\t\"experation_date\":\""+Cards_data.getData(cardRecur, Card_param.expire)+"\",\n" +
-                "\t\"cvv\": \""+Cards_data.getData(cardRecur, Card_param.cvv)+"\", \n" +
+                "\t\"card_number\":\""+ Cards_data1.getData(cardRecur, Card_param.pan) +"\",\n" +
+                "\t\"experation_date\":\""+ Cards_data1.getData(cardRecur, Card_param.expire)+"\",\n" +
+                "\t\"cvv\": \""+ Cards_data1.getData(cardRecur, Card_param.cvv)+"\", \n" +
                 "\t\"ext_trans_id\": \"12wq3e50\",\n" +
                 "\t\"ucaf\": \"AgEAAAkC+X4C6oIDqQA+gPxQEOA=\",\n" +
                 "\t\"SLI\": \"247\",\n" +
@@ -73,9 +72,9 @@ public class Recurrent extends BaseTest {
     public void testRecurrent1(){
         body = "{\n" +
                 "\t\"amount\":\""+amountRecur+"\",\n" +
-                "\t\"card_number\":\""+ Cards_data.getData(cardRecur, Card_param.pan) +"\",\n" +
-                "\t\"experation_date\":\""+Cards_data.getData(cardRecur, Card_param.expire)+"\",\n" +
-                "\t\"cvv\": \""+Cards_data.getData(cardRecur, Card_param.cvv)+"\", \n" +
+                "\t\"card_number\":\""+ Cards_data1.getData(cardRecur, Card_param.pan) +"\",\n" +
+                "\t\"experation_date\":\""+ Cards_data1.getData(cardRecur, Card_param.expire)+"\",\n" +
+                "\t\"cvv\": \""+ Cards_data1.getData(cardRecur, Card_param.cvv)+"\", \n" +
                 "\t\"ext_trans_id\": \"12wq3e50\",\n" +
                 "\t\"ucaf\": \"AgEAAAkC+X4C6oIDqQA+gPxQEOA=\",\n" +
                 "\t\"SLI\": \"246\",\n" +
@@ -117,9 +116,9 @@ public class Recurrent extends BaseTest {
     public void testRecurrent_withAPG(){
         body = "{\n" +
                 "\t\"amount\":\""+amountAGP+"\",\n" +
-                "\t\"card_number\":\""+ Cards_data.getData(cardAGP, Card_param.pan) +"\",\n" +
-                "\t\"experation_date\":\""+Cards_data.getData(cardAGP, Card_param.expire)+"\",\n" +
-                "\t\"cvv\": \""+Cards_data.getData(cardAGP, Card_param.cvv)+"\", \n" +
+                "\t\"card_number\":\""+ Cards_data1.getData(cardAGP, Card_param.pan) +"\",\n" +
+                "\t\"experation_date\":\""+ Cards_data1.getData(cardAGP, Card_param.expire)+"\",\n" +
+                "\t\"cvv\": \""+ Cards_data1.getData(cardAGP, Card_param.cvv)+"\", \n" +
                 "\t\"ext_trans_id\": \"12wq3e50\",\n" +
                 "\t\"ucaf\": \"AgEAAAkC+X4C6oIDqQA+gPxQEOA=\",\n" +
                 "\t\"SLI\": \"246\",\n" +
@@ -146,7 +145,7 @@ public class Recurrent extends BaseTest {
         if (!agpWithout3ds){
             mobilePay.setThreeDS(2);
         }
-        mobilePay.setToken(new Trans_token_itm("SBPRC_APGP", Configs.PASSWORD_MERCHANT_2101,"2202"));
+        mobilePay.setToken(new Trans_token_itm("SBPRC_APGP", Configs1.PASSWORD_MERCHANT_2101,"2202"));
         mobilePay.find_summ();
         mobilePay.makeTrans();
         recurrent_id = mobilePay.getRecurrent_id();

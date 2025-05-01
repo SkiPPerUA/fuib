@@ -1,7 +1,7 @@
 package org.example.qaTransactionTeam.frontEnd.pages;
 
 import org.example.qaTransactionTeam.frontEnd.pageBlocks.OtpBlock;
-import org.example.qaTransactionTeam.frontEnd.utils.Configs;
+import org.example.qaTransactionTeam.frontEnd.utils.Configs1;
 import org.example.qaTransactionTeam.frontEnd.utils.Locator;
 import org.example.qaTransactionTeam.frontEnd.utils.PageObject;
 import org.example.qaTransactionTeam.frontEnd.utils.Session;
@@ -23,10 +23,10 @@ public class LoginPage extends PageObject {
 
     public void loginInCab(){
 
-        Session.getWD().get(Configs.environmentDev +url);
+        Session.getWD().get(Configs1.environmentDev +url);
         confirmPage();
-        loginField.setValue(Configs.loginDev);
-        passwordField.setValue(Configs.password);
+        loginField.setValue(Configs1.loginDev);
+        passwordField.setValue(Configs1.password);
         enterButton.click();
         blockOtp.confirmBlock();
         blockOtp.otpField.setValue("1111");

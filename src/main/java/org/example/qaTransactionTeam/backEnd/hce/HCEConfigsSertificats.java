@@ -4,7 +4,7 @@ import com.bettercloud.vault.SslConfig;
 import com.bettercloud.vault.Vault;
 import com.bettercloud.vault.VaultConfig;
 import com.bettercloud.vault.VaultException;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Configs1;
 
 public class HCEConfigsSertificats {
     //https://confluence.fuib.com/display/SD/Environment
@@ -26,7 +26,7 @@ public class HCEConfigsSertificats {
         final var auth =
                 vault
                         .auth()
-                        .loginByAppRole(Configs.HCE_ROLEID, Configs.HCE_SECRETID);
+                        .loginByAppRole(Configs1.HCE_ROLEID, Configs1.HCE_SECRETID);
         vaultConfig.token(auth.getAuthClientToken());
         vault = new Vault(vaultConfig);
         final var read = vault.logical().read("hce/vts/"+path+"");

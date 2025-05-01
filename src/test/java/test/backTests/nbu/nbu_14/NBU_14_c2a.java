@@ -115,7 +115,7 @@ public class NBU_14_c2a extends BaseTest {
         success_c2a_short(2000000);
         set_status("PROCESSED");
         BDpostgre.updateSQL("update limits.entries x set created_at = '"+change_days(-1)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(test_card, Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(test_card, Card_param.token)+"') order by created_at asc limit 1)");
         success_c2a_short(2000000);
     }
 
@@ -124,7 +124,7 @@ public class NBU_14_c2a extends BaseTest {
         success_c2a_short(2000000);
         set_status("PROCESSED");
         BDpostgre.updateSQL("update limits.entries x set created_at = '"+change_days(-1)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(test_card, Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(test_card, Card_param.token)+"') order by created_at asc limit 1)");
         success_c2a_full(2500000);
     }
 
@@ -133,7 +133,7 @@ public class NBU_14_c2a extends BaseTest {
         success_c2a_full(2500000);
         set_status("PROCESSED");
         BDpostgre.updateSQL("update limits.entries x set created_at = '"+change_days(-1)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(test_card, Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(test_card, Card_param.token)+"') order by created_at asc limit 1)");
         success_c2a_short(2000000);
     }
 
@@ -142,7 +142,7 @@ public class NBU_14_c2a extends BaseTest {
         success_c2a_full(2500000);
         set_status("PROCESSED");
         BDpostgre.updateSQL("update limits.entries x set created_at = '"+change_days(-1)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(test_card, Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(test_card, Card_param.token)+"') order by created_at asc limit 1)");
         success_c2a_full(2500000);
     }
 
@@ -160,7 +160,7 @@ public class NBU_14_c2a extends BaseTest {
                 "             \"recipient\":{\n" +
                 "                 \"account_number\":\"UA213223130000026007233566001\"\n" +
                 "              }}},\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(card_different),"EXTERNAL","test");
+                Payer_constructor.PAN_payer(Cards_data1.getData(card_different),"EXTERNAL","test");
 
         c2a = new C2A(body,true);
     }
@@ -191,7 +191,7 @@ public class NBU_14_c2a extends BaseTest {
                 "               \"street\": \"22222\"\n" +
                 "               }"+
                 "    },"+
-                Payer_constructor.PAN_payer(Cards_data.getData(test_card),"EXTERNAL","test");
+                Payer_constructor.PAN_payer(Cards_data1.getData(test_card),"EXTERNAL","test");
         c2a = new C2A(body, true);
 
         logStartTest("identification -> series + number");
@@ -218,7 +218,7 @@ public class NBU_14_c2a extends BaseTest {
                 "               \"number\": \"22222\"\n" +
                 "               }"+
                 "    },"+
-                Payer_constructor.PAN_payer(Cards_data.getData(test_card),"EXTERNAL","test");
+                Payer_constructor.PAN_payer(Cards_data1.getData(test_card),"EXTERNAL","test");
         c2a = new C2A(body, true);
 
         logStartTest("general -> tax_id");
@@ -244,7 +244,7 @@ public class NBU_14_c2a extends BaseTest {
                 "               \"tax_id\": \"1234567890\"\n" +
                 "               }"+
                 "    },"+
-                Payer_constructor.PAN_payer(Cards_data.getData(test_card),"EXTERNAL","test");
+                Payer_constructor.PAN_payer(Cards_data1.getData(test_card),"EXTERNAL","test");
         c2a = new C2A(body, true);
 
         logStartTest("general -> birthday + birth_country + locality_type + birth_locality");
@@ -273,7 +273,7 @@ public class NBU_14_c2a extends BaseTest {
                 "               \"birth_locality\": \"4444\"\n" +
                 "               }"+
                 "    },"+
-                Payer_constructor.PAN_payer(Cards_data.getData(test_card),"EXTERNAL","test");
+                Payer_constructor.PAN_payer(Cards_data1.getData(test_card),"EXTERNAL","test");
         c2a = new C2A(body, true);
     }
 
@@ -313,7 +313,7 @@ public class NBU_14_c2a extends BaseTest {
                 "             \"recipient\":{\n" +
                 "                 \"account_number\":\"UA213223130000026007233566001\"\n" +
                 "              }}},\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(test_card),"EXTERNAL","test");
+                Payer_constructor.PAN_payer(Cards_data1.getData(test_card),"EXTERNAL","test");
 
         c2a = new C2A(body,true);
     }
@@ -333,7 +333,7 @@ public class NBU_14_c2a extends BaseTest {
                 "              }\n" +
                 "        }"+
                 "    },"+
-                Payer_constructor.PAN_payer(Cards_data.getData(test_card),"EXTERNAL","test");
+                Payer_constructor.PAN_payer(Cards_data1.getData(test_card),"EXTERNAL","test");
 
         c2a = new C2A(body,true);
     }
@@ -367,7 +367,7 @@ public class NBU_14_c2a extends BaseTest {
                 "               \"street\": \"22222\"\n" +
                 "               }"+
                 "    },"+
-                Payer_constructor.PAN_payer(Cards_data.getData(test_card),"EXTERNAL","test");
+                Payer_constructor.PAN_payer(Cards_data1.getData(test_card),"EXTERNAL","test");
 
         c2a = new C2A(body,0);
     }
@@ -382,7 +382,7 @@ public class NBU_14_c2a extends BaseTest {
                 "        \"source\": \"IBAN\",\n" +
                 "        \"value\": \"UA213223130000026007233566001\"\n" +
                 "    }," +
-                Payer_constructor.PAN_payer(Cards_data.getData(test_card),"EXTERNAL","test");
+                Payer_constructor.PAN_payer(Cards_data1.getData(test_card),"EXTERNAL","test");
         c2a = new C2A();
         c2a.setExpectedStatus(400);
         c2a.setBodyRequest(body);
@@ -402,10 +402,10 @@ public class NBU_14_c2a extends BaseTest {
 
     void set_status(String status) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         //Установке статуса успех всем транкам по нашей карте
-        BDpostgre.updateSQL("update limits.entries x set status='"+status+"' where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(test_card, Card_param.token)+"')");
+        BDpostgre.updateSQL("update limits.entries x set status='"+status+"' where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(test_card, Card_param.token)+"')");
     }
 
     void delete_trans(Card card) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        BDpostgre.updateSQL("delete FROM limits.entries x where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+Cards_data.getData(card, Card_param.token)+"')");
+        BDpostgre.updateSQL("delete FROM limits.entries x where x.card_id = (SELECT x.id FROM cards.cards x WHERE x.itm_token = '"+ Cards_data1.getData(card, Card_param.token)+"')");
     }
 }

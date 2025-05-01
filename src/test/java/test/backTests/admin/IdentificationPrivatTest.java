@@ -4,7 +4,7 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.admin.IdentificationPrivat;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -40,7 +40,7 @@ public class IdentificationPrivatTest extends BaseTest {
         body = "{\n" +
                 "\"currency\": \"980\",\n" +
                 "\"amount\": 100,\n" +
-                "\"receivercardnumber\": \""+ Cards_data.getData(card, Card_param.pan) +"\",\n" +
+                "\"receivercardnumber\": \""+ Cards_data1.getData(card, Card_param.pan) +"\",\n" +
                 "\"sender_account\": \"UA613348510000026203405297856\"\n" +
                 "}";
         identification.check_identification(body);

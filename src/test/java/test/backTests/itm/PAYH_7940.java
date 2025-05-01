@@ -5,7 +5,7 @@ import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_itm.P4P;
 import org.example.qaTransactionTeam.backEnd.itm.Refund;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -17,8 +17,8 @@ import java.util.Map;
 //Отмена полная или части списания разорванного P2P (P4P)
 public class PAYH_7940 extends BaseTest {
 
-    private String card = Cards_data.getData(Card.FUIB_VISA, Card_param.pan);
-    private String expDate = Cards_data.getData(Card.FUIB_VISA, Card_param.expire);;
+    private String card = Cards_data1.getData(Card.FUIB_VISA, Card_param.pan);
+    private String expDate = Cards_data1.getData(Card.FUIB_VISA, Card_param.expire);;
     private JSONObject responseJson;
 
     @Test
@@ -38,12 +38,12 @@ public class PAYH_7940 extends BaseTest {
         body.put("details.independentSalesOrganizationId","independentSalesOrganizationId");
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(body, Cards_data.getData(Card.FUIB_VISA, Card_param.cvv));
+        P4P p4p = new P4P(body, Cards_data1.getData(Card.FUIB_VISA, Card_param.cvv));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         //Выполнение рефанда
         Refund refund = new Refund(p4p.getSessionId());
-        refund.makeRefund("100",expDate,Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        refund.makeRefund("100",expDate, Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
         responseJson = new JSONObject(refund.getRefundInfo());
         Assert.assertEquals(responseJson.getString("amount"),"100");
         //Assert.assertEquals(responseJson.getString("type"),"REFUND");
@@ -76,20 +76,20 @@ public class PAYH_7940 extends BaseTest {
         bodyP4P.put("expDate", expDate);
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(bodyP4P,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         //Выполнение рефанда
         Refund refund = new Refund(p4p.getSessionId());
-        refund.makeRefund("150","2211",Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        refund.makeRefund("150","2211", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
         responseJson = new JSONObject(refund.getRefundInfo());
         Assert.assertEquals(responseJson.getString("amount"),"150");
         Assert.assertEquals(responseJson.getString("type"),"REFUND");
-        refund.makeRefund("200","2211",Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        refund.makeRefund("200","2211", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
         responseJson = new JSONObject(refund.getRefundInfo());
         Assert.assertEquals(responseJson.getString("amount"),"200");
         Assert.assertEquals(responseJson.getString("type"),"REFUND");
-        refund.makeRefund("250","2211",Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        refund.makeRefund("250","2211", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
         responseJson = new JSONObject(refund.getRefundInfo());
         Assert.assertEquals(responseJson.getString("amount"),"250");
         Assert.assertEquals(responseJson.getString("type"),"REFUND");
@@ -122,7 +122,7 @@ public class PAYH_7940 extends BaseTest {
         bodyP4P.put("expDate", expDate);
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(bodyP4P,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         //Зачисление по Р4Р
@@ -153,12 +153,12 @@ public class PAYH_7940 extends BaseTest {
         bodyP4P.put("expDate", expDate);
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(bodyP4P,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         //Выполнение рефанда
         Refund refund = new Refund(p4p.getSessionId());
-        refund.makeRefund("100","2211",Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        refund.makeRefund("100","2211", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
         responseJson = new JSONObject(refund.getRefundInfo());
         Assert.assertEquals(responseJson.getString("amount"),"100");
         Assert.assertEquals(responseJson.getString("type"),"REFUND");
@@ -185,13 +185,13 @@ public class PAYH_7940 extends BaseTest {
         bodyP4P.put("expDate", expDate);
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(bodyP4P,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         //Выполнение рефанда
         Refund refund = new Refund(p4p.getSessionId());
         refund.setStatusCode(400);
-        refund.makeRefund("2000","2211",Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        refund.makeRefund("2000","2211", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
         responseJson = new JSONObject(refund.getRefundInfo()).getJSONObject("status");
         Assert.assertEquals(responseJson.getString("code"),"RF006");
         Assert.assertEquals(responseJson.getString("description"),"Invalid amount");
@@ -219,7 +219,7 @@ public class PAYH_7940 extends BaseTest {
         bodyP4P.put("expDate", expDate);
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(bodyP4P,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         //Зачисление по Р4Р
@@ -254,15 +254,15 @@ public class PAYH_7940 extends BaseTest {
         bodyP4P.put("expDate", expDate);
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(bodyP4P,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         //Выполнение рефанда
         Refund refund = new Refund(p4p.getSessionId());
-        if(card.equals(Cards_data.getData(Card.FUIB_MC, Card_param.pan))){
-            refund.makeRefund("100","2211",Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
-        }else if(card.equals(Cards_data.getData(Card.FUIB_VISA, Card_param.pan))) {
-            refund.makeRefund("100", "2212", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        if(card.equals(Cards_data1.getData(Card.FUIB_MC, Card_param.pan))){
+            refund.makeRefund("100","2211", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        }else if(card.equals(Cards_data1.getData(Card.FUIB_VISA, Card_param.pan))) {
+            refund.makeRefund("100", "2212", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
         }
 
         responseJson = new JSONObject(refund.getRefundInfo());
@@ -297,16 +297,16 @@ public class PAYH_7940 extends BaseTest {
         bodyP4P.put("expDate", expDate);
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(bodyP4P,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         //Выполнение рефанда
         Refund refund = new Refund(p4p.getSessionId());
         refund.setStatusCode(400);
-        if(card.equals(Cards_data.getData(Card.FUIB_MC, Card_param.pan))){
-            refund.makeRefund("100","2311",Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
-        }else if(card.equals(Cards_data.getData(Card.FUIB_VISA, Card_param.pan))) {
-            refund.makeRefund("100", "2312", Cards_data.getData(Card.FUIB_MC, Card_param.pan));
+        if(card.equals(Cards_data1.getData(Card.FUIB_MC, Card_param.pan))){
+            refund.makeRefund("100","2311", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
+        }else if(card.equals(Cards_data1.getData(Card.FUIB_VISA, Card_param.pan))) {
+            refund.makeRefund("100", "2312", Cards_data1.getData(Card.FUIB_MC, Card_param.pan));
         }
 
         responseJson = new JSONObject(refund.getRefundInfo()).getJSONObject("status");
@@ -341,7 +341,7 @@ public class PAYH_7940 extends BaseTest {
         bodyP4P.put("expDate", expDate);
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(bodyP4P,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         //Выполнение рефанда
@@ -379,7 +379,7 @@ public class PAYH_7940 extends BaseTest {
         bodyP4P.put("expDate", expDate);
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(bodyP4P,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         //Регистрация рефанда
@@ -425,7 +425,7 @@ public class PAYH_7940 extends BaseTest {
         body.put("details.independentSalesOrganizationId","independentSalesOrganizationId");
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(body,Cards_data.getData(Card.FUIB_VISA, Card_param.cvv));
+        P4P p4p = new P4P(body, Cards_data1.getData(Card.FUIB_VISA, Card_param.cvv));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         //Регистрация рефанда
@@ -469,7 +469,7 @@ public class PAYH_7940 extends BaseTest {
         body.put("details.independentSalesOrganizationId","independentSalesOrganizationId");
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(body,Cards_data.getData(Card.FUIB_VISA, Card_param.cvv));
+        P4P p4p = new P4P(body, Cards_data1.getData(Card.FUIB_VISA, Card_param.cvv));
         Assert.assertEquals(p4p.getErrorCode(),"00");
 
         //Регистрация рефанда
@@ -510,7 +510,7 @@ public class PAYH_7940 extends BaseTest {
         bodyP4P.put("expDate", expDate);
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(bodyP4P,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals(p4p.getErrorCode(),"00");
 
         //Регистрация рефанда
@@ -558,12 +558,12 @@ public class PAYH_7940 extends BaseTest {
         bodyP4P.put("expDate", expDate);
 
         //Регистрация Р4Р
-        P4P p4p = new P4P(bodyP4P,Cards_data.getData(Card.FUIB_MC, Card_param.token));
+        P4P p4p = new P4P(bodyP4P, Cards_data1.getData(Card.FUIB_MC, Card_param.token));
         Assert.assertEquals("00",p4p.getErrorCode());
 
         //Выполнение рефанда
         Refund refund = new Refund(p4p.getSessionId());
-        refund.makeRefund("1000","2211",Cards_data.getData(Card.FUIB_VISA, Card_param.pan));
+        refund.makeRefund("1000","2211", Cards_data1.getData(Card.FUIB_VISA, Card_param.pan));
         responseJson = new JSONObject(refund.getRefundInfo());
         Assert.assertEquals(responseJson.getString("type"),"REVERSAL");
 

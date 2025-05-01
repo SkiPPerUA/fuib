@@ -4,8 +4,7 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.mobyPay.MobyTrans;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
-import org.example.qaTransactionTeam.backEnd.utils.Configs;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -39,8 +38,8 @@ public class NBU_21_mobpay extends BaseTest {
                 "  },\n" +
                 "  \"payer\": {\n" +
                 "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
-                "              \"expire\": \""+Cards_data.getData(Card.FUIB_MC, Card_param.expire)+"\"  },\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.pan)+"\",\n" +
+                "              \"expire\": \""+ Cards_data1.getData(Card.FUIB_MC, Card_param.expire)+"\"  },\n" +
                 "    \"identification\": {\n" +
                 "   \"requirements\":[{\n" +
                 "      \"recipient\":{\n" +
@@ -365,7 +364,7 @@ public class NBU_21_mobpay extends BaseTest {
     public void testA2Cregress() throws IOException {
         logStartTest("testA2Cregress");
         String payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.MONO_MC, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data1.getData(Card.MONO_MC, Card_param.pan) +"\",\n" +
                 "              \"expire\": \"2409\"";
         MobyTrans trans = new MobyTrans("1107",payer,true,2);
         trans.status();

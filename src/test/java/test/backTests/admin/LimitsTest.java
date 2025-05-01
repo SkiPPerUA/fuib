@@ -1,7 +1,6 @@
 package test.backTests.admin;
 
 import io.restassured.http.ContentType;
-import org.bouncycastle.crypto.tls.SRPTlsClient;
 import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.admin.Limits;
 import org.example.qaTransactionTeam.backEnd.helper.Time_helper;
@@ -12,11 +11,9 @@ import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.A2C;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.C2A;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub.C2C;
 import org.example.qaTransactionTeam.backEnd.utils.*;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.sql.Date;
@@ -56,16 +53,16 @@ public class LimitsTest extends BaseTest {
         success_a2c(100);
         set_status("PROCESSED");
         bd_update("update limits.entries x set created_at = '"+change_days(-1)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at asc limit 1)");
         createLimits("PROFIT",kind,1100,3000,5,3400,10);
         fail_a2c(1101);
         success_a2c(1100);
         set_status("PROCESSED");
         fail_a2c(101);
         success_a2c(100);
-        bd_update("update limits.entries x set created_at = '"+change_days(-1)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"')");
+        bd_update("update limits.entries x set created_at = '"+change_days(-1)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"')");
         bd_update("update limits.entries x set created_at = '"+change_days(-30)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at asc limit 1)");
         try {
             Thread.sleep(30000);
         } catch (InterruptedException e) {
@@ -88,11 +85,11 @@ public class LimitsTest extends BaseTest {
         set_status("PROCESSED");
         fail_a2c(100);
         bd_update("update limits.entries x set created_at = '"+change_days(-1)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at asc limit 1)");
         success_a2c(100);
         set_status("PROCESSED");
         fail_a2c(100);
-        bd_update("update limits.entries x set created_at = '"+change_days(-2)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"')");
+        bd_update("update limits.entries x set created_at = '"+change_days(-2)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"')");
         success_a2c(100);
         success_a2c(100);
         success_a2c(100);
@@ -101,7 +98,7 @@ public class LimitsTest extends BaseTest {
         set_status("PROCESSED");
         fail_a2c(100);
         bd_update("update limits.entries x set created_at = '"+change_days(-30)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_a2c(100);
         set_status("PROCESSED");
         fail_a2c(100);
@@ -111,27 +108,27 @@ public class LimitsTest extends BaseTest {
         delete_trans();
         createLimits("PROFIT",kind,1100,1500,4,1700,5);
         success_a2c(100);
-        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_a2c(100);
-        bd_update("update limits.entries x set status='FAILED' where correlation_id = (select correlation_id from limits.entries where yyyyMMddHHmmssSSS = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set status='FAILED' where correlation_id = (select correlation_id from limits.entries where yyyyMMddHHmmssSSS = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_a2c(100);
         try {
             Thread.sleep(40000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        bd_update("update limits.entries x set status='PROCESSING' where correlation_id = (select correlation_id from limits.entries where yyyyMMddHHmmssSSS = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set status='PROCESSING' where correlation_id = (select correlation_id from limits.entries where yyyyMMddHHmmssSSS = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
         fail_a2c(1101);
         success_a2c(1100);
-        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
         fail_a2c(201);
         success_a2c(100);
-        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
         fail_a2c(100);
-        bd_update("update limits.entries x set created_at = '"+change_days(-1)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"')");
+        bd_update("update limits.entries x set created_at = '"+change_days(-1)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"')");
         fail_a2c(301);
         success_a2c(100);
-        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
         fail_a2c(100);
     }
 
@@ -139,15 +136,15 @@ public class LimitsTest extends BaseTest {
         delete_trans();
         createLimits("PROFIT",kind,1100,1500,10,1700,15);
         success_a2c(100);
-        bd_update("update limits.entries x set kind='DIRECT_MONEY_TRANS' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set kind='DIRECT_MONEY_TRANS' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_a2c(100);
-        bd_update("update limits.entries x set kind='FUIB_TO_FUIB' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set kind='FUIB_TO_FUIB' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_a2c(100);
-        bd_update("update limits.entries x set kind='EXTERNAL_BANK' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set kind='EXTERNAL_BANK' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_a2c(100);
-        bd_update("update limits.entries x set kind='FULL_IDENT_DIRECT' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set kind='FULL_IDENT_DIRECT' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_a2c(100);
-        bd_update("update limits.entries x set kind='FULL_IDENT_FUIB_TO_FUIB' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set kind='FULL_IDENT_FUIB_TO_FUIB' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"') order by created_at desc limit 1)");
         set_status("PROCESSED");
         fail_a2c(1001);
         success_a2c(100);
@@ -158,7 +155,7 @@ public class LimitsTest extends BaseTest {
         success_a2c(100);
         set_status("PROCESSED");
         fail_a2c(100);
-        bd_update("update limits.entries x set created_at = '"+change_days(-1)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"')");
+        bd_update("update limits.entries x set created_at = '"+change_days(-1)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"')");
         success_a2c(100);
         success_a2c(100);
         success_a2c(100);
@@ -182,16 +179,16 @@ public class LimitsTest extends BaseTest {
         success_c2a(100);
         set_status("PROCESSED");
         bd_update("update limits.entries x set created_at = '"+change_days(-1)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at asc limit 1)");
         createLimits("EXPENSE",kind,1100,3000,5,3400,10);
         fail_c2a(1101);
         success_c2a(1100);
         set_status("PROCESSED");
         fail_c2a(101);
         success_c2a(100);
-        bd_update("update limits.entries x set created_at = '"+change_days(-1)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"')");
+        bd_update("update limits.entries x set created_at = '"+change_days(-1)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"')");
         bd_update("update limits.entries x set created_at = '"+change_days(-30)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at asc limit 1)");
         try {
             Thread.sleep(30000);
         } catch (InterruptedException e) {
@@ -214,11 +211,11 @@ public class LimitsTest extends BaseTest {
         set_status("PROCESSED");
         fail_c2a(100);
         bd_update("update limits.entries x set created_at = '"+change_days(-1)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at asc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at asc limit 1)");
         success_c2a(100);
         set_status("PROCESSED");
         fail_c2a(100);
-        bd_update("update limits.entries x set created_at = '"+change_days(-2)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"')");
+        bd_update("update limits.entries x set created_at = '"+change_days(-2)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"')");
         success_c2a(100);
         success_c2a(100);
         success_c2a(100);
@@ -227,7 +224,7 @@ public class LimitsTest extends BaseTest {
         set_status("PROCESSED");
         fail_c2a(100);
         bd_update("update limits.entries x set created_at = '"+change_days(-30)+"'\n" +
-                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
+                "where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_c2a(100);
         set_status("PROCESSED");
         fail_c2a(100);
@@ -237,27 +234,27 @@ public class LimitsTest extends BaseTest {
         delete_trans();
         createLimits("EXPENSE",kind,1100,1500,4,1700,5);
         success_c2a(100);
-        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_c2a(100);
-        bd_update("update limits.entries x set status='FAILED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set status='FAILED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_c2a(100);
         try {
             Thread.sleep(40000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        bd_update("update limits.entries x set status='PROCESSING' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set status='PROCESSING' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
         fail_c2a(1101);
         success_c2a(1100);
-        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
         fail_c2a(201);
         success_c2a(100);
-        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
         fail_c2a(100);
-        bd_update("update limits.entries x set created_at = '"+change_days(-1)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"')");
+        bd_update("update limits.entries x set created_at = '"+change_days(-1)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"')");
         fail_c2a(301);
         success_c2a(100);
-        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set status='PROCESSED' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
         fail_c2a(100);
     }
 
@@ -265,15 +262,15 @@ public class LimitsTest extends BaseTest {
         delete_trans();
         createLimits("EXPENSE",kind,1100,1500,10,1700,15);
         success_c2a(100);
-        bd_update("update limits.entries x set kind='DIRECT_MONEY_TRANS' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set kind='DIRECT_MONEY_TRANS' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_c2a(100);
-        bd_update("update limits.entries x set kind='FUIB_TO_FUIB' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set kind='FUIB_TO_FUIB' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_c2a(100);
-        bd_update("update limits.entries x set kind='EXTERNAL_BANK' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set kind='EXTERNAL_BANK' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_c2a(100);
-        bd_update("update limits.entries x set kind='FULL_IDENT_DIRECT' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set kind='FULL_IDENT_DIRECT' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
         success_c2a(100);
-        bd_update("update limits.entries x set kind='FULL_IDENT_FUIB_TO_FUIB' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
+        bd_update("update limits.entries x set kind='FULL_IDENT_FUIB_TO_FUIB' where correlation_id = (select correlation_id from limits.entries where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"') order by created_at desc limit 1)");
         set_status("PROCESSED");
         fail_c2a(1001);
         success_c2a(100);
@@ -284,7 +281,7 @@ public class LimitsTest extends BaseTest {
         success_c2a(100);
         set_status("PROCESSED");
         fail_c2a(100);
-        bd_update("update limits.entries x set created_at = '"+change_days(-1)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"')");
+        bd_update("update limits.entries x set created_at = '"+change_days(-1)+"' where card_id = (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"')");
         success_c2a(100);
         success_c2a(100);
         success_c2a(100);
@@ -312,7 +309,7 @@ public class LimitsTest extends BaseTest {
         set_status("PROCESSED");
         fail_a2c(100);
         fail_c2a(100);
-        bd_update("update limits.entries x set created_at = '"+change_days(-2)+"' where card_id= (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"')");
+        bd_update("update limits.entries x set created_at = '"+change_days(-2)+"' where card_id= (SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"')");
         fail_a2c(701);
         fail_c2a(701);
         success_a2c(500);
@@ -339,7 +336,7 @@ public class LimitsTest extends BaseTest {
         fail_a2c(100);
         fail_c2a(100);
         fail_c2c(100);
-        bd_update("update limits.entries x set created_at = '"+change_days(-2)+"' where card_id in ((SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"'),(SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"'))");
+        bd_update("update limits.entries x set created_at = '"+change_days(-2)+"' where card_id in ((SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"'),(SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"'))");
         fail_a2c(701);
         fail_c2a(701);
         fail_c2c(701);
@@ -437,7 +434,7 @@ public class LimitsTest extends BaseTest {
                 "    },"+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(reciever_card,Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(reciever_card,Card_param.pan)+"\",\n" +
                 "        \"recipientFirstName\": \"FirstName\",\n" +
                 "        \"recipientLastName\": \"LastName\"\n" +
                 "    }," +
@@ -471,7 +468,7 @@ public class LimitsTest extends BaseTest {
                 "    },"+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(reciever_card,Card_param.pan)+"\",\n" +
+                "        \"value\": \""+ Cards_data1.getData(reciever_card,Card_param.pan)+"\",\n" +
                 "        \"recipientFirstName\": \"FirstName\",\n" +
                 "        \"recipientLastName\": \"LastName\"\n" +
                 "    }," +
@@ -489,10 +486,10 @@ public class LimitsTest extends BaseTest {
         String body = "\"amount\": "+summ+",\n" +
                 "    \"commission\": 0,\n" +
                 "    \"currency\": 980,\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(sender_card),"EXTERNAL","test")+"," +
+                Payer_constructor.PAN_payer(Cards_data1.getData(sender_card),"EXTERNAL","test")+"," +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(reciever_card,Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(reciever_card,Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "         \"requirements\":{\n" +
@@ -520,10 +517,10 @@ public class LimitsTest extends BaseTest {
         String body = "\"amount\": "+summ+",\n" +
                 "    \"commission\": 0,\n" +
                 "    \"currency\": 980,\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(sender_card),"EXTERNAL","test")+"," +
+                Payer_constructor.PAN_payer(Cards_data1.getData(sender_card),"EXTERNAL","test")+"," +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(reciever_card,Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(reciever_card,Card_param.pan)+"\"\n" +
                 "    },\n" +
                 "    \"identification\": {\n" +
                 "         \"requirements\":{\n" +
@@ -554,7 +551,7 @@ public class LimitsTest extends BaseTest {
         String body = "\"amount\": "+summ+",\n" +
                 "    \"commission\": 0,\n" +
                 "    \"currency\": 980,\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(sender_card),"EXTERNAL","test")+"," +
+                Payer_constructor.PAN_payer(Cards_data1.getData(sender_card),"EXTERNAL","test")+"," +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"IBAN\",\n" +
                 "        \"value\": \"UA213223130000026007233566001\"\n" +
@@ -585,7 +582,7 @@ public class LimitsTest extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"commission\": 10,\n" +
                 "    \"description\": \"c2a - пумб мастер\",\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(sender_card),"EXTERNAL","test")+"," +
+                Payer_constructor.PAN_payer(Cards_data1.getData(sender_card),"EXTERNAL","test")+"," +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"IBAN\",\n" +
                 "        \"value\": \"UA213223130000026007233566001\"\n" +
@@ -632,11 +629,11 @@ public class LimitsTest extends BaseTest {
 
     void set_status(String status) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         //Установке статуса успех всем транкам по нашей карте
-        bd_update("update limits.entries x set status='"+status+"' where card_id in ((SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"'),(SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"'))");
+        bd_update("update limits.entries x set status='"+status+"' where card_id in ((SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"'),(SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"'))");
     }
 
     void delete_trans() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        bd_update("delete FROM limits.entries x where card_id in ((SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(sender_card,Card_param.token)+"'),(SELECT x.id FROM cards.cards x WHERE itm_token  = '"+Cards_data.getData(reciever_card,Card_param.token)+"'))");
+        bd_update("delete FROM limits.entries x where card_id in ((SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(sender_card,Card_param.token)+"'),(SELECT x.id FROM cards.cards x WHERE itm_token  = '"+ Cards_data1.getData(reciever_card,Card_param.token)+"'))");
     }
 
     void registrA2Ctrans(){
@@ -644,7 +641,7 @@ public class LimitsTest extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.MONO_MC, Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data1.getData(Card.MONO_MC, Card_param.pan)+"\"\n" +
                 "    }," +
                 "\"payer\":{\n" +
                 "\t\t\"source\":\"IBAN\",\n" +

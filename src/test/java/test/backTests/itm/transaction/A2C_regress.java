@@ -4,7 +4,7 @@ import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.transaction.typeTrans_itm.A2C;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
-import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data1;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -26,7 +26,7 @@ public class A2C_regress extends BaseTest {
         body.put("amount",amount);
         body.put("operationId","1");
         body.put("customFee","10");
-        body.put("receiverCardNumber", Cards_data.getData(card, Card_param.pan));
+        body.put("receiverCardNumber", Cards_data1.getData(card, Card_param.pan));
         body.put("receiverFirstName","recipientFirstName");
         body.put("receiverLastName","recipientLastName");
         body.put("receiverAccountNumberType","recipientAccountNumberType");

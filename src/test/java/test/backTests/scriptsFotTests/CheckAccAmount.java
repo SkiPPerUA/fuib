@@ -12,11 +12,11 @@ import java.sql.SQLException;
 public class CheckAccAmount extends BaseTest {
 
     String env = "ITMTST";
-    String card = Cards_data.getData(Card.FUIB_MC, Card_param.pan);
+    String card = Cards_data1.getData(Card.FUIB_MC, Card_param.pan);
 
     @BeforeTest
     public void connBD() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        BDas400.BDas400(env, Configs.ITMTST_ALL_NAME,Configs.ITMTST_ALL_PASSWORD);
+        BDas400.BDas400(env, Configs1.ITMTST_ALL_NAME, Configs1.ITMTST_ALL_PASSWORD);
     }
 
     @Test

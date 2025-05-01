@@ -1,6 +1,6 @@
 package org.example.qaTransactionTeam.frontEnd.utils;
 
-public class Configs {
+public class Configs1 {
 
     public static final String environmentTest = "https://cabinet-test.payhub.com.ua/";
     public static final String environmentDev = "https://cabinet.dev-fuib.com/";
