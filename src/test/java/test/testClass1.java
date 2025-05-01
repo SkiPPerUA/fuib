@@ -1,15 +1,13 @@
 package test;
 
 import org.example.qaTransactionTeam.BaseTest;
-import org.example.qaTransactionTeam.backEnd.bus.Domino;
-import org.example.qaTransactionTeam.backEnd.bus.Hulk;
 import org.example.qaTransactionTeam.backEnd.kofola.Kofola;
 import org.example.qaTransactionTeam.backEnd.uzvar.Uzvar;
 import org.example.qaTransactionTeam.backEnd.wine.Wine;
 import org.testng.annotations.Test;
 
 @Test
-public class testClass extends BaseTest {
+public class testClass1 extends BaseTest {
 
     public void adsd(){
        new Kofola().getAccountByIban("UA903348510000026204404198193");

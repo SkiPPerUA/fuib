@@ -1,0 +1,5 @@
+src/test/java/test/testClass.java
+target
+src/main/java/org/example/qaTransactionTeam/backEnd/utils/Configs.java
+src/main/java/org/example/qaTransactionTeam/frontEnd/utils/Configs.java
+src/main/java/org/example/qaTransactionTeam/backEnd/utils/Cards_data.java
