@@ -15,6 +15,7 @@ public class CrossBorder extends BaseTest {
     Crossborder crossborder = new Crossborder(); //022773408997     021895374890 ФУНТ
 
     public void test_crossborder(){
+        //test
         String body = "{\n" +
                 "    \"amount\": 100,\n" +
                 "    \"ekb_id\": 2290175,\n" + //8531524  2189387  544881
