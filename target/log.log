@@ -1,5 +1,0 @@
-2025-05-01 14:39:52 INFO  Test:12 - ================         test_crossborder         =================
-2025-05-01 14:40:05 INFO  Crossborder:75 - init - {"itm_token":"?C9HQ90HW2QNPLQ8","pan_mask":"557519******5686","inner_transfer_id":"f2f562b2-5bfe-47d2-aef5-0c09d7d8796e"}
-2025-05-01 14:40:06 INFO  Crossborder:93 - add-receiver-info - {"inner_transfer_id":"f2f562b2-5bfe-47d2-aef5-0c09d7d8796e","receiver_name_last_name":"Trifonov Danylo Oleksiiovych","receiver_card_number":"557519******5686","country":"Poland","amount":100,"commission":38}
-2025-05-01 14:40:06 INFO  Crossborder:107 - send_otp - {"inner_transfer_id":"f2f562b2-5bfe-47d2-aef5-0c09d7d8796e","need_otp":true}
-2025-05-01 14:40:14 INFO  Crossborder:134 - Finish - {"inner_transfer_id":"f2f562b2-5bfe-47d2-aef5-0c09d7d8796e","transaction_status":"PENDING"}

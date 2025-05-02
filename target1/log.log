@@ -1,0 +1,4 @@
+2025-05-02 09:17:43 INFO  Test:12 - ================         positive_sameCard_not3ds         =================
+2025-05-02 09:17:43 INFO  Transaction_payhub:96 - Init p4p_new - {"id":"c5da0565-4ec6-4013-a004-d35a65138487","status":"CREATED","validation_type":"NONE"}
+2025-05-02 09:18:14 INFO  Transaction_payhub:115 - Status debit p4p_new - {"id":"c5da0565-4ec6-4013-a004-d35a65138487","status":"ACTIVE","validation_type":"NONE","approval_code":"038271","total_in_progress_amount":0,"total_paid_amount":0,"total_refunded_amount":0,"available_amount":1000}
+2025-05-02 09:18:14 INFO  Transaction_payhub:41 - Enroll p4p_new - {"message":"Route PUT:/p4p-transfers/c5da0565-4ec6-4013-a004-d35a65138487/enroll not found","error":"Not Found","statusCode":404}
