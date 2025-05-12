@@ -30,7 +30,7 @@ public class A2C_legion_regress extends BaseTest {
                 "    },\n" +
                 "    \"recipient\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.MONO_VISA,Card_param.pan)+"\"\n" +
+                "        \"value\": \"5168745611327906\"\n" +
                 "    }\n" +
                 "}");
         a2C_legion.makeTrans();
@@ -47,7 +47,7 @@ public class A2C_legion_regress extends BaseTest {
                 "    \"external_id\": \"" + Uuid_helper.generate_uuid() + "\",\n" +
                 "    \"sender\": {\n" +
                 "        \"source\": \"IBAN\",\n" +
-                "        \"value\": \"UA953348510000026201112609803\",\n" +
+                "        \"value\": \"UA323348510000026200115575485\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EKB\",\n" +
                 "            \"id\": \"8531524\"\n" +
@@ -55,7 +55,7 @@ public class A2C_legion_regress extends BaseTest {
                 "    },\n" +
                 "    \"recipient\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \"4999999999990011\"\n" +
+                "        \"value\": \"5575191548185686\"\n" +
                 "    }\n" +
                 "}");
         a2C_legion.makeTrans();

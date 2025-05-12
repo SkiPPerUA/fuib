@@ -34,6 +34,9 @@ public class A2Cregress extends BaseTest {
                     "                 \"first_name\":\"IvanSender\",\n" +
                     "                 \"last_name\":\"IvanovSender\",\n" +
                     "                 \"account_number\":\"UA953348510000026201112609803\"\n" +
+                    "              },\n" +
+                    "            \"details\":{\n" +
+                    "                   \"independent_sales_organization_id\":\"3041309906\"\n" +
                     "              }\n" +
                     "        },"+
                     "       \"address\": {" +
@@ -41,6 +44,10 @@ public class A2Cregress extends BaseTest {
                     "               \"street\": \"22222\"\n" +
                     "               }"+
                     "    },"+
+                    "    \"payer\": {\n" +
+                    "        \"source\": \"IBAN\",\n" +
+                    "        \"value\": \"UA253052990000026207671635945\"\n" +
+                    "    }," +
                     "    \"receiver\": {\n" +
                     "        \"source\": \"PAN\",\n" +
                     "        \"value\": \"" + Cards_data.getData(Card.FUIB_MC, Card_param.pan) + "\"\n" +

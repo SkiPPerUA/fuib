@@ -12,7 +12,7 @@ public class BDpostgre {
 
     public static void BDpostgre(String base, String user, String password) throws ClassNotFoundException, SQLException, IllegalAccessException, InstantiationException {
         Class.forName("org.postgresql.Driver");
-        conn= DriverManager.getConnection("jdbc:postgresql://dc3-phdb-002-vm.test-fuib.com:5432/"+base, user,password); //TEST
+        conn= DriverManager.getConnection("jdbc:postgresql://ph-ms-db.test-fuib.com:5000/"+base, user,password); //TEST
         //conn= DriverManager.getConnection("jdbc:postgresql://dc3-phd-db-002-vs.dev-fuib.com:5432/"+base+"", user,password); //DEV
         nameBD = base;
         //logger.info("Открыт коннект к базе "+base);

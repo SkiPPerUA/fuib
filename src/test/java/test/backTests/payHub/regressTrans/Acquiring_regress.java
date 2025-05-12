@@ -19,8 +19,8 @@ public class Acquiring_regress extends BaseTest {
         String body = "\"amount\":100,\n" +
                 "    \"commission\": 0,\n" +
                 "    \"merchant_config_id\":\"c949382b-ddd0-4b13-94d3-713dfa3e8cca\",\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.TEST_CARD))+","+
-                "    \"description\": \"оплата Заказа "+ Time_helper.current_time() +"\",\n" +
+                Payer_constructor.PAN_payer(Cards_data.getData(Card.MONO_VISA))+","+
+                "    \"description\": \"3041309905\",\n" +
                 "    \"hold\": false,\n" +
                 "    \"short_description\": \"Заказ "+Time_helper.current_time()+"\",\n" +
                 "    \"return_url\": \"https://innsmouth.payhub.com.ua\",\n" +

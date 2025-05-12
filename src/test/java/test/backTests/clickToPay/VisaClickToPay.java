@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.given;
 @Test
 public class VisaClickToPay extends BaseTest {
 
-    String request_trace_id = "01966d1c-5e1c-2222-a113-38bd022cbf6a";
+    String request_trace_id = "0196a497-ff29-1347-8462-708d38105358";
 
     public void check_request(){
         RestAssured.useRelaxedHTTPSValidation();
@@ -50,7 +50,7 @@ public class VisaClickToPay extends BaseTest {
                 "      \"value\": \"CLICK_TO_PAY\"" +
                 "    }," +
                 "    \"consumer_information\": {" +
-                "      \"external_consumer_id\": \"b591e262-c60d-4004-b79e-f4f599c356e8\"" +
+                "      \"external_consumer_id\": \"c7c13b98-8874-44e3-b744-3f0f6ec1828a\"" +
                 "    }" +
                 "  }");
     }
@@ -66,7 +66,7 @@ public class VisaClickToPay extends BaseTest {
                 "    \"account_number\": \"4314140209916839\"" +
                 "  }," +
                 "  \"consumer_information\": {" +
-                "    \"external_consumer_id\": \"b591e262-c60d-4004-b79e-f4f599c356e8\"" +
+                "    \"external_consumer_id\": \"109917f6-9e93-4640-a324-b297b42dc617\"" +
                 "  }" +
                 "}");
     }
@@ -78,41 +78,38 @@ public class VisaClickToPay extends BaseTest {
                 "    \"value\": \"CLICK_TO_PAY\"" +
                 "  }," +
                 "  \"consumer_information\": {" +
-                "    \"external_consumer_id\": \"b591e262-c60d-4004-b79e-f4f599c356e8\"" +
+                "    \"external_consumer_id\": \"109917f6-9e93-4640-a324-b297b42dc617\"" +
                 "  }" +
                 "}");
     }
 
     public void enroll_data_ConsumerInformationOnly(){
-        sendMess("enroll_data","{" +
+        sendMess("enroll_payment_instruments","{" +
                 "  \"intent\": {" +
                 "    \"type\": \"PRODUCT_CODE\"," +
                 "    \"value\": \"CLICK_TO_PAY\"" +
                 "  }," +
+                "  \"payment_instruments\": [" +
+                "    {" +
+                "      \"type\": \"CARD\"," +
+                "      \"card_type\": \"Visa Platinum\"," +
+                "      \"issuer_name\": \"FUIB\"," +
+                "      \"name_on_card\": \"TETIANA KHMELYNSKA\"," +
+                "      \"account_number\": \"4314140109310273\"," +
+                "      \"billing_address\": {" +
+                "        \"city\": \"Kyiv\"," +
+                //"        \"state\": \"Kyiv\"," +
+                "        \"country\": \"UKR\"," +
+                "        \"postal_code\": \"94105\"," +
+                "        \"address_line1\": \"1000 Market Street\"," +
+                "        \"address_line2\": \"Building 56\"," +
+                "        \"address_line3\": \"Suite 101\"" +
+                "      }," +
+                "      \"expiration_date\": \"2026-05\"" +
+                "    }" +
+                "  ]," +
                 "  \"consumer_information\": {" +
-                "    \"emails\": [" +
-                "      \"alex123@hotmail.com\"" +
-                "    ]," +
-                "    \"locale\": \"en_US\"," +
-                "    \"phones\": [" +
-                "      \"16504005555\"" +
-                "    ]," +
-                "    \"consent\": {" +
-                "      \"version\": \"1.0\"," +
-                "      \"presenter\": \"Bank A\"," +
-                "      \"time_of_consent\": \"2020-05-05T12:12:12.000Z\"" +
-                "    }," +
-                "    \"last_name\": \"Miller\"," +
-                "    \"first_name\": \"Alex\"," +
-                "    \"middle_name\": \"Robert\"," +
-                "    \"country_code\": \"USA\"," +
-                "    \"external_consumer_id\": \""+Uuid_helper.generate_uuid()+"\"," +
-                "    \"national_identifiers\": [" +
-                "      {" +
-                "        \"type\": \"PASSPORT\"," +
-                "        \"value\": \"A123456\"" +
-                "      }" +
-                "    ]" +
+                "    \"external_consumer_id\": \"c7c13b98-8874-44e3-b744-3f0f6ec1828a\"" +
                 "  }" +
                 "}");
     }
@@ -131,9 +128,9 @@ public class VisaClickToPay extends BaseTest {
                         "      \"name_on_card\": \"TETIANA KHMELYNSKA\"," +
                         "      \"account_number\": \"4314140209916839\"," +
                         "      \"billing_address\": {" +
-                        "        \"city\": \"San Francisco\"," +
-                        "        \"state\": \"CA\"," +
-                        "        \"country\": \"USA\"," +
+                        "        \"city\": \"Kyiv\"," +
+                        //"        \"state\": \"CA\"," +
+                        "        \"country\": \"UKR\"," +
                         "        \"postal_code\": \"94105\"," +
                         "        \"address_line1\": \"1000 Market Street\"," +
                         "        \"address_line2\": \"Building 56\"," +
@@ -155,17 +152,11 @@ public class VisaClickToPay extends BaseTest {
                 "      \"presenter\": \"Bank A\"," +
                 "      \"time_of_consent\": \"2020-05-05T12:12:12.000Z\"" +
                 "    }," +
-                "    \"last_name\": \"Miller\"," +
-                "    \"first_name\": \"Alex\"," +
+                "    \"last_name\": \"KHMELYNSKA\"," +
+                "    \"first_name\": \"TETIANA\"," +
                 "    \"middle_name\": \"Robert\"," +
-                "    \"country_code\": \"USA\"," +
-                "    \"external_consumer_id\": \""+ Uuid_helper.generate_uuid() +"\"," +
-                "    \"national_identifiers\": [" +
-                "      {" +
-                "        \"type\": \"PASSPORT\"," +
-                "        \"value\": \"A123456\"" +
-                "      }" +
-                "    ]" +
+                "    \"country_code\": \"UKR\"," +
+                "    \"external_consumer_id\": \""+ Uuid_helper.generate_uuid() +"\"" +
                 "  }" +
                 "}");
     }
@@ -355,23 +346,14 @@ public class VisaClickToPay extends BaseTest {
                 "  }," +
                 " \"consumer_information\":{" +
                         "      \"emails\":[" +
-                        "         \"12alex3retst@gmail.com\"" +
+                        "         \"12dfsdddalex3retst@gmail.com\"" +
                         "      ]," +
-                        "      \"locale\":\"en_US\"," +
-                        "      \"phones\":[" +
-                        "         \"12304005555\"" +
-                        "      ]," +
-                        "      \"last_name\":\"Miller\"," +
-                        "      \"first_name\":\"Alex\"," +
+                "    \"locale\": \"en_US\"," +
+                        "      \"last_name\":\"KHMELYNSKA\"," +
+                        "      \"first_name\":\"TETIANA\"," +
                         "      \"middle_name\":\"Robert\"," +
-                        "      \"country_code\":\"USA\"," +
-                        "      \"external_consumer_id\":\"b591e262-c60d-4004-b79e-f4f599c356e8\"," +
-                        "      \"national_identifiers\":[" +
-                        "         {" +
-                        "            \"type\":\"PASSPORT\"," +
-                        "            \"value\":\"A123456\"" +
-                        "         }" +
-                        "      ]" +
+                        "      \"country_code\":\"UKR\"," +
+                        "      \"external_consumer_id\":\"109917f6-9e93-4640-a324-b297b42dc617\"" +
                         "   }"+
                 "}");
     }
@@ -390,17 +372,11 @@ public class VisaClickToPay extends BaseTest {
                 "      \"phones\":[" +
                 "         \"12304005555\"" +
                 "      ]," +
-                "      \"last_name\":\"Miller1\"," +
-                "      \"first_name\":\"Alex2\"," +
-                "      \"middle_name\":\"Robert3\"," +
-                "      \"country_code\":\"USA\"," +
-                "      \"external_consumer_id\":\"b591e262-c60d-4004-b79e-f4f599c356e8\"," +
-                "      \"national_identifiers\":[" +
-                "         {" +
-                "            \"type\":\"PASSPORT\"," +
-                "            \"value\":\"A123456\"" +
-                "         }" +
-                "      ]" +
+                "      \"last_name\":\"Miller12\"," +
+                "      \"first_name\":\"Alex22\"," +
+                "      \"middle_name\":\"Robert32\"," +
+                "      \"country_code\":\"UKR\"," +
+                "      \"external_consumer_id\":\"109917f6-9e93-4640-a324-b297b42dc617\"" +
                 "   }"+
                 "}");
     }
@@ -445,7 +421,7 @@ public class VisaClickToPay extends BaseTest {
                 "    \"first_name\": \"Alex\"," +
                 "    \"middle_name\": \"Robert\"," +
                 "      \"country_code\":\"UKR\"," +
-                "      \"external_consumer_id\":\"b591e262-c60d-4004-b79e-f4f599c356e8\"," +
+                "      \"external_consumer_id\":\"f55c8894-5449-4e56-85b0-e7e099734a70\"," +
                 "      \"national_identifiers\":[" +
                 "         {" +
                 "            \"type\":\"PASSPORT\"," +
@@ -480,7 +456,7 @@ public class VisaClickToPay extends BaseTest {
                 "      }" +
                 "   ]," +
                 "   \"consumer_information\":{" +
-                "      \"external_consumer_id\":\"b591e262-c60d-4004-b79e-f4f599c356e8\"," +
+                "      \"external_consumer_id\":\"f55c8894-5449-4e56-85b0-e7e099734a70\"," +
                 "   }" +
                 "}");
     }
@@ -497,7 +473,7 @@ public class VisaClickToPay extends BaseTest {
                 "      \"name_on_card\": \"TETIANA KHMELYNSKA\"," +
                 "      \"account_number\": \"4314140209916839\"," +
                 "      \"billing_address\": {" +
-                "        \"city\": \"New York\"," +
+                "        \"city\": \"New York1\"," +
                 "        \"state\": \"CA\"," +
                 "        \"country\": \"USA\"," +
                 "        \"postal_code\": \"94105\"," +
@@ -525,7 +501,7 @@ public class VisaClickToPay extends BaseTest {
                 "    \"first_name\": \"Alex\"," +
                 "    \"middle_name\": \"Robert\"," +
                 "      \"country_code\":\"UKR\"," +
-                        "      \"external_consumer_id\":\"b591e262-c60d-4004-b79e-f4f599c356e8\"," +
+                        "      \"external_consumer_id\":\"f55c8894-5449-4e56-85b0-e7e099734a70\"," +
                         "      \"national_identifiers\":[" +
                         "         {" +
                         "            \"type\":\"PASSPORT\"," +
@@ -567,22 +543,11 @@ public class VisaClickToPay extends BaseTest {
                 "    \"phones\": [" +
                 "      \"117304005555\"" +
                 "    ]," +
-                "    \"consent\": {" +
-                "      \"version\": \"1.0\"," +
-                "      \"presenter\": \"Bank A\"," +
-                "      \"time_of_consent\": \"2020-05-05T12:12:12.000Z\"" +
-                "    }," +
-                "    \"last_name\": \"Miller\"," +
-                "    \"first_name\": \"Alex\"," +
-                "    \"middle_name\": \"Robert\"," +
+                "      \"last_name\":\"Miller12\"," +
+                "      \"first_name\":\"Alex22\"," +
+                "      \"middle_name\":\"Robert32\"," +
                 "      \"country_code\":\"UKR\"," +
-                "      \"external_consumer_id\":\"b591e262-c60d-4004-b79e-f4f599c356e8\"," +
-                        "      \"national_identifiers\":[" +
-                        "         {" +
-                        "            \"type\":\"PASSPORT\"," +
-                        "            \"value\":\"A663466\"" +
-                        "         }" +
-                        "      ]" +
+                "      \"external_consumer_id\":\"109917f6-9e93-4640-a324-b297b42dc617\"" +
                         "   }" +
                         "}");
     }

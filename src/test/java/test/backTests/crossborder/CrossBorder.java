@@ -1,11 +1,14 @@
 package test.backTests.crossborder;
 
+import io.restassured.http.ContentType;
 import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.dazzler.Crossborder;
 import org.example.qaTransactionTeam.backEnd.utils.*;
 import org.testng.annotations.Test;
 
 import java.util.List;
+
+import static io.restassured.RestAssured.given;
 
 @Test
 public class CrossBorder extends BaseTest {
@@ -14,10 +17,10 @@ public class CrossBorder extends BaseTest {
 
     public void test_crossborder(){
         String body = "{\n" +
-                "    \"amount\": 100,\n" +
+                "    \"amount\": 720,\n" +
                 "    \"ekb_id\": 2290175,\n" + //8531524  2189387  544881
                 "    \"expire\": \"2507\",\n" +
-                "    \"sender_card_id_uah\": \"021129845704\",\n" +      // 2901 мастер евро        2506  мастер евро       2507   виза дол         2608 виза евро     2902 мастер дол  2210 мастер злот  2511 злот
+                //"    \"sender_card_id_uah\": \"021129845704\",\n" +      // 2901 мастер евро        2506  мастер евро       2507   виза дол         2608 виза евро     2902 мастер дол  2210 мастер злот  2511 злот
                 "    \"sender_card_id\": \"028417738202\",\n" +       //022773443990            017813552327            018063400990            021016415798       023079553334     012956728491      018553337602
                 "    \"receiver_card_number\": \"5575191548185686\"\n" +//5575191548185686      4596610012333736    //США 4400667784881736 5312570067325344   4569332829625799
                 "}\n";
@@ -122,9 +125,9 @@ public class CrossBorder extends BaseTest {
                 "           \"amount\": 100," +
                 "           \"recipient\": {" +
                 "               \"source\": \"PAN\"," +
-                "               \"value\": \"5575191548185686\"" +
+                "               \"value\": \" \"" +
                 "       }," +
-                //"           \"device_id\": \"12345AABB54\"," +
+                "           \"device_id\": \"12345AABB54\"," +
                 "           \"session_id\": \"12341234124321\"," +
                 "           \"ip\": \"31.131.120.41\"," +
                 "           \"receiver_name\": \"fsdfs\"," +
@@ -132,4 +135,15 @@ public class CrossBorder extends BaseTest {
                 "           \"jwt\": \"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJMU1dxSEYzWUF0UDkzMmNXdm5ESXBzOHhqaHRQeWxiN0JOV2prVWhqcVhrIn0.eyJleHAiOjE3MjA3OTIxMzksImlhdCI6MTcyMDc5MTIzOSwianRpIjoiZjI4ZTc0YjktMDg4Ny00N2YyLWE3YjUtYmE1ZjEzYTg2MGQzIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLnRlc3QtZnVpYi5jb20vYXV0aC9yZWFsbXMvcHVtYiIsImF1ZCI6WyJ0cmFuc2FjdGVyIiwiUEhUUk4iLCJPREIiLCJhY2NvdW50Il0sInN1YiI6ImZjZDViODMzLTUzMmMtNDg5Ny1hOGVjLWMzNTdlZGE4YzdlMiIsInR5cCI6IkJlYXJlciIsImF6cCI6InRyYW5zYWN0ZXIiLCJzZXNzaW9uX3N0YXRlIjoiNzg2ZWM4NjEtM2Y5My00ZmMxLTkzMzYtMWU1ZDg4ZTI4MzViIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJQSFRSTiI6eyJyb2xlcyI6WyJwaHVudHIiLCJwaGNvbSIsInBoX3NlIiwicGhfY2Jfb3AiLCJwaF9jdV9leCIsInBoX3BuX3RrbiIsInBoX3N3X3JlcSJdfSwidHJhbnNhY3RlciI6eyJyb2xlcyI6WyJwaF9wcF9hZG0iLCJwaF9kaW5mIiwicGhfcHBfb3AiXX0sIk9EQiI6eyJyb2xlcyI6WyJhY2NfbG10X3IiLCJwYXlfZG9jX2NydCIsInBheV9kb2NfZGVsIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6IiIsInNpZCI6Ijc4NmVjODYxLTNmOTMtNGZjMS05MzM2LTFlNWQ4OGUyODM1YiIsIm1lcmNoYW50X2lkIjoiMTA1NDYxOTctMGQyZi00MDU5LWI5YTItZDAxY2I5N2ViYTYxIiwicHJlZmVycmVkX3VzZXJuYW1lIjoic3ZjX3RwdW9fcGgifQ.W5PNYosl9l0FVrwS-jglfCYKQmHYLWKR-kV46Taeojf1wURekLGkbXlyQA0NYNLy76mWi9bzjonSTMY5qOfiWnS6U7v23YadH_s9A0tQ2axN927Q-_I1ldY7K6MdKWwFkHTOvco6qlXvC2IwQp9otZNgRI_TDNDXwF47QpE2jqBEF3hZR2fRB9HsvD_qxHZ9MiwhA0acq63pwjPApGsnVzDtCRexs3q3_JnHo_TQOxT1TLUl9Zz1II1bFuyt9aqy0gR2rl9DxSkGk7l6ldByUexEElY3JyIQ-epFW8RlkcxPnrcZZU6IqUdS9GJc4HvwXYMf_brPeclLRDGyRjTZNw\"" +
                 "}");
     }
+
+    public void finish(){
+        RabbitMQ_http rabbitMQHttp = new RabbitMQ_http("CreateCrossborderSettlement","C2CRestRPC.input");
+        rabbitMQHttp.sendHttp("{" +
+                "\"inner_transfer_id\":\"ba2244e9-e180-46a1-86e5-7cbfc24e79fe\"," +
+                "\"otp\":\"1111\"," +
+                "\"jwt\":\"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJMU1dxSEYzWUF0UDkzMmNXdm5ESXBzOHhqaHRQeWxiN0JOV2prVWhqcVhrIn0.eyJleHAiOjE3MjA3OTIxMzksImlhdCI6MTcyMDc5MTIzOSwianRpIjoiZjI4ZTc0YjktMDg4Ny00N2YyLWE3YjUtYmE1ZjEzYTg2MGQzIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLnRlc3QtZnVpYi5jb20vYXV0aC9yZWFsbXMvcHVtYiIsImF1ZCI6WyJ0cmFuc2FjdGVyIiwiUEhUUk4iLCJPREIiLCJhY2NvdW50Il0sInN1YiI6ImZjZDViODMzLTUzMmMtNDg5Ny1hOGVjLWMzNTdlZGE4YzdlMiIsInR5cCI6IkJlYXJlciIsImF6cCI6InRyYW5zYWN0ZXIiLCJzZXNzaW9uX3N0YXRlIjoiNzg2ZWM4NjEtM2Y5My00ZmMxLTkzMzYtMWU1ZDg4ZTI4MzViIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJQSFRSTiI6eyJyb2xlcyI6WyJwaHVudHIiLCJwaGNvbSIsInBoX3NlIiwicGhfY2Jfb3AiLCJwaF9jdV9leCIsInBoX3BuX3RrbiIsInBoX3N3X3JlcSJdfSwidHJhbnNhY3RlciI6eyJyb2xlcyI6WyJwaF9wcF9hZG0iLCJwaF9kaW5mIiwicGhfcHBfb3AiXX0sIk9EQiI6eyJyb2xlcyI6WyJhY2NfbG10X3IiLCJwYXlfZG9jX2NydCIsInBheV9kb2NfZGVsIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6IiIsInNpZCI6Ijc4NmVjODYxLTNmOTMtNGZjMS05MzM2LTFlNWQ4OGUyODM1YiIsIm1lcmNoYW50X2lkIjoiMTA1NDYxOTctMGQyZi00MDU5LWI5YTItZDAxY2I5N2ViYTYxIiwicHJlZmVycmVkX3VzZXJuYW1lIjoic3ZjX3RwdW9fcGgifQ.W5PNYosl9l0FVrwS-jglfCYKQmHYLWKR-kV46Taeojf1wURekLGkbXlyQA0NYNLy76mWi9bzjonSTMY5qOfiWnS6U7v23YadH_s9A0tQ2axN927Q-_I1ldY7K6MdKWwFkHTOvco6qlXvC2IwQp9otZNgRI_TDNDXwF47QpE2jqBEF3hZR2fRB9HsvD_qxHZ9MiwhA0acq63pwjPApGsnVzDtCRexs3q3_JnHo_TQOxT1TLUl9Zz1II1bFuyt9aqy0gR2rl9DxSkGk7l6ldByUexEElY3JyIQ-epFW8RlkcxPnrcZZU6IqUdS9GJc4HvwXYMf_brPeclLRDGyRjTZNw\"," +
+                "\"client_ip\":\"192.168.77.202\"" +
+                "}" +
+                "    ");
+        }
 }
