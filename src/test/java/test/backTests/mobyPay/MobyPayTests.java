@@ -14,8 +14,8 @@ public class MobyPayTests extends BaseTest {
     @Test
     public void transHoldWith3ds() throws IOException {
         String payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.MONO_VISA, Card_param.pan) +"\",\n" +
-                "              \"expire\": \""+ Cards_data.getData(Card.MONO_VISA, Card_param.expire) +"\"";
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
+                "              \"expire\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.expire) +"\"";
         MobyTrans trans = new MobyTrans("100",payer,false,2);
         trans.status();
 //        trans.complete_hold("100");

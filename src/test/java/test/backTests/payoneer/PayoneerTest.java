@@ -1,7 +1,9 @@
 package test.backTests.payoneer;
 
 import org.example.qaTransactionTeam.BaseTest;
+import org.example.qaTransactionTeam.backEnd.helper.Uuid_helper;
 import org.example.qaTransactionTeam.backEnd.payoneer.Payoneer;
+import org.example.qaTransactionTeam.backEnd.utils.RabbitMQ_http;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 
@@ -52,6 +54,10 @@ public class PayoneerTest extends BaseTest {
 
     public void positive_accountDetails(){
         payoneer.accountDetails(ekb_id);
+    }
+
+    public void positive_getProgramBalance(){
+        payoneer.getProgramBalance();
     }
 
 }

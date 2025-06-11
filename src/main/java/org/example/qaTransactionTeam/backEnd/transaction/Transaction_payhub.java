@@ -116,6 +116,19 @@ public abstract class Transaction_payhub {
         Assert.assertEquals(response.getStatusCode(),statusCode);
     }
 
+    public void confirmTransfers(String body){
+        response = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token.getToken())
+                .header("X-Flow-ID", "11")
+                .header("X-Systemcode","12312")
+                .body(body)
+                .when()
+                .post(token.getHost()+"/transfers/"+transactionId);
+        logger.info("Confirm - "+response.then().extract().response().asString());
+        Assert.assertEquals(response.getStatusCode(),statusCode);
+    }
+
     public void setStatusCode(int statusCode) {
         this.statusCode = statusCode;
     }

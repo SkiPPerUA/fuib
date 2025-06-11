@@ -50,12 +50,12 @@ public class C4Cregress extends BaseTest {
         c4c.status();
         JSONObject json = new JSONObject(c4c.getResponse());
         Assert.assertEquals(json.getString("status"),"ACTIVE");
-        c4c.enroll(1000);
+        c4c.enroll(500);
         Thread.sleep(sleep);
         c4c.statusEnroll();
         json = new JSONObject(c4c.getResponse());
         Assert.assertEquals(json.getString("status"),"ENROLLED");
-        c4c.refund(1000);
+        c4c.refund(600);
         Thread.sleep(sleep);
         c4c.statusRefund();
         json = new JSONObject(c4c.getResponse());

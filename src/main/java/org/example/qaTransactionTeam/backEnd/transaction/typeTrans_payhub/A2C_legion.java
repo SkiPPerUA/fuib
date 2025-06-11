@@ -4,6 +4,9 @@ import org.example.qaTransactionTeam.backEnd.token.Auth_token;
 import org.example.qaTransactionTeam.backEnd.token.Trans_token_payhub;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction_payhub;
+import org.example.qaTransactionTeam.backEnd.utils.BDpostgre;
+
+import java.sql.SQLException;
 
 public class A2C_legion extends Transaction_payhub implements Transaction {
 
@@ -12,6 +15,11 @@ public class A2C_legion extends Transaction_payhub implements Transaction {
 
     public A2C_legion(){
         super.type = type;
+    }
+
+    public A2C_legion(Auth_token token){
+        super.type = type;
+        super.token = token;
     }
 
     public A2C_legion(String body){
@@ -38,6 +46,10 @@ public class A2C_legion extends Transaction_payhub implements Transaction {
 
     public void setToken(Auth_token token) {
         super.token = token;
+    }
+
+    public String getToken() {
+        return token.getToken();
     }
 
     public String status(String transactionId) {

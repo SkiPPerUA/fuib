@@ -70,7 +70,7 @@ public class C2Aregress extends BaseTest {
                 "         \"independent_sales_organization_id\":\"3016715233\"\n" +
                 "      }\n" +
                 "      }},\n"+
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_MC));
+                Payer_constructor.PAN_payer(Cards_data.getData(Card.MONO_VISA));
 
         c2a = new C2A(body,0);
         Thread.sleep(sleep);

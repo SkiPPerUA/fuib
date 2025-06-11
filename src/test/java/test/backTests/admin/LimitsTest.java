@@ -364,18 +364,18 @@ public class LimitsTest extends BaseTest {
 
     public void clientInfo(){
 //        String body = "{\n" +
-//                "  \"customer_id\": \"12345\",\n" +
+//                "  \"customer_id\": \"10303233\",\n" +
 //                "  \"amount\": 2000,\n" +
 //                "  \"pan\": \""+Cards_data.getData(sender_card,Card_param.pan)+"\",\n" +
-//                "  \"iban\": \"UA193348510000026200111677871\",\n" +
+//                "  \"iban\": \"UA953348510000026201112609803\",\n" +
 //                "  \"kind\": \"EXTERNAL_BANK\",\n" +
 //                "  \"direction\": \"EXPENSE\"\n" +
 //                "}";
         String body = "{\n" +
-                "\"customer_id\": \"2189387\",\n" +
+                "\"customer_id\": \"10303233\",\n" +
                 "\"amount\": 1,\n" +
-                "\"ekb_id\": 1535617," +
-                "\"kind\": \"NBU_MEMO\",\n" +
+                //"\"ekb_id\": 1535617," +
+                "\"kind\": \"EXTERNAL_BANK\",\n" +
                 "\"direction\": \"EXPENSE\"\n" +
                 "}";
         limits.clientsInfoLimits(body);

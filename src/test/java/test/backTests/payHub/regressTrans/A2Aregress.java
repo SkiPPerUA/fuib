@@ -98,17 +98,17 @@ public class A2Aregress extends BaseTest {
     }
 
     public void positiveTest_privatBank(){
-        a2a.setToken(new Trans_token_payhub(237368));
+        a2a.setToken(new Trans_token_payhub(2189387));
         a2a.setBodyRequest("{\n" +
                 "    \"service\": \"out_direct_acc\",\n" + //A2SMP  out_direct_acc
-                "    \"amount\": 1000,\n" +
+                "    \"amount\": 200,\n" +
                 "    \"fee_amount\": 100,\n" +
                 "    \"currency\": \"UAH\",\n" +
                 "    \"purpose\": \"Private24\",\n" +
                 "    \"description\": \"test\",\n" +
                 "    \"sender\": {\n" +
                 "        \"source\": \"IBAN\",\n" +
-                "        \"value\": \"UA713348510000026201116887159\"\n" +
+                "        \"value\": \"UA903348510000026204404198193\"\n" +
                 "    },\n" +
                 "    \"jwt\": \""+a2a.getToken()+"\",\n" +
                 "    \"authentication\": {\n" +
@@ -123,7 +123,7 @@ public class A2Aregress extends BaseTest {
                 "    },\n" +
                 "    \"recipient\": {\n" +
                 "        \"source\": \"IBAN\",\n" +
-                "        \"value\": \"UA133052990000026200669912224\"\n" + //UA963052990262056400970225920  UA253052990000026207671635945
+                "        \"value\": \"UA253052990000026207671635945\"\n" + //UA963052990262056400970225920  UA253052990000026207671635945
                 "    }\n" +
                 "}");
         a2a.makeTrans();
@@ -144,7 +144,7 @@ public class A2Aregress extends BaseTest {
                 "    },\n" +
                 "    \"recipient\": {\n" +
                 "        \"source\": \"IBAN\",\n" +
-                "        \"value\": \"UA953348510000026201112609803\"\n" +
+                "        \"value\": \"UA323348510000026208119209027\"\n" + //UA953348510000026201112609803
                 "    }"+
                 "}");
         a2a.makeTrans();

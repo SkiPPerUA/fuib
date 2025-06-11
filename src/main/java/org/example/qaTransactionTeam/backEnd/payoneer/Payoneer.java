@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import org.example.qaTransactionTeam.backEnd.helper.Uuid_helper;
 import org.example.qaTransactionTeam.backEnd.token.Auth_token;
 import org.example.qaTransactionTeam.backEnd.token.Trans_token_payhub;
+import org.example.qaTransactionTeam.backEnd.utils.RabbitMQ_http;
 import org.example.qaTransactionTeam.backEnd.utils.Restful;
 import java.util.HashMap;
 import java.util.Map;
@@ -76,5 +77,30 @@ public class Payoneer extends Restful {
                 .contentType(ContentType.JSON)
                 .when()
                 .get(token.getHost()+"/luna/payoneer-transfers/accounts/details?ekb_id="+ekbID));
+    }
+
+    public void getProgramBalance(){
+        RabbitMQ_http rabbitMQHttp = new RabbitMQ_http("","");
+        rabbitMQHttp.setHost("https://ph-rabbitmq.test-fuib.com");
+        rabbitMQHttp.sendHttpWithConfig("{\n" +
+                "   \"vhost\":\"test\",\n" +
+                "   \"name\":\"amq.default\",\n" +
+                "   \"properties\":{\n" +
+                "      \"delivery_mode\":1,\n" +
+                "      \"headers\":{\n" +
+                "         \"handler\":\"getProgramBalance\",\n" +
+                "         \"contentType\":\"application/json\"\n" +
+                "      },\n" +
+                "      \"reply_to\":\"POSTMAN_RESPONSE:"+ rabbitMQHttp.getUuid()+"\"\n" +
+                "   },\n" +
+                "   \"routing_key\":\"payoneer.input\",\n" +
+                "   \"delivery_mode\":\"1\",\n" +
+                "   \"payload\":\"{}\",\n" +
+                "   \"payload_encoding\":\"string\",\n" +
+                "   \"headers\":{\n" +
+                "      \"handler\":\"getProgramBalance\",\n" +
+                "      \"contentType\":\"application/json\"\n" +
+                "   }\n" +
+                "}");
     }
 }

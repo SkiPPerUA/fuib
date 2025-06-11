@@ -15,8 +15,8 @@ import java.util.Random;
 @Test
 public class C4C_new_regress extends BaseTest {
 
-    Card sender = Card.FUIB_VISA;
-    Card receiver = Card.MONO_VISA;
+    Card sender = Card.FUIB_MC;
+    Card receiver = Card.FUIB_VISA;
     C4C_new c4cNew = new C4C_new();
 
     public void positive_sameCard_not3ds(){
@@ -43,7 +43,10 @@ public class C4C_new_regress extends BaseTest {
                 "                \"first_name\": \"firstname\",\n" +
                 "                \"last_name\": \"last\",\n" +
                 "                \"tax_id\": \"1234567890\",\n" +
-                "                 \"account_number\": \"UA953348510000026201112609803\"\n" +
+                "                \"city\":\"City\",\n" +
+                "                \"country\":\"UKR\",\n" +
+                "                \"address\":\"address\",\n" +
+                "                \"account_number\": \"UA953348510000026201112609803\"\n" +
                 "            },\n" +
                 "            \"recipient\": {\n" +
                 "                \"first_name\": \"test\",\n" +
@@ -65,14 +68,18 @@ public class C4C_new_regress extends BaseTest {
         Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"ACTIVE\""));
 
         c4cNew.enroll(c4cNew.getDebitId(), "{\n" +
-                "    \"external_id\": \""+ Uuid_helper.generate_uuid() +"\",\n" +
+                "    \"external_id\": \""+Uuid_helper.generate_uuid()+"\",\n" +
                 "    \"operation_id\": \""+c4cNew.getDebitId()+"\",\n" +
                 "    \"amount\": 500,\n" +
+                "    \"fee\": 52,\n" +
                 " \"identification\": {\n" +
                 "        \"requirements\": {\n" +
                 "            \"sender\": {\n" +
                 "                \"first_name\": \"firstname\",\n" +
                 "                \"last_name\": \"last\",\n" +
+                "                \"city\":\"City\",\n" +
+                "                \"country\":\"UKR\",\n" +
+                "                \"address\":\"address\",\n" +
                 "                \"tax_id\": \"1234567890\",\n" +
                 "                 \"account_number\": \"UA953348510000026201112609803\"\n" +
                 "            },\n" +
@@ -92,7 +99,7 @@ public class C4C_new_regress extends BaseTest {
                 "}");
         waiter(30);
         c4cNew.statusEnroll(c4cNew.getDebitId(), c4cNew.getEnrollId());
-        Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"ENROLLED\""));
+        Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"PROCESSED\""));
 
         c4cNew.refund(100);
         Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"CREATED\""));
@@ -962,4 +969,7 @@ public class C4C_new_regress extends BaseTest {
         }
     }
 
+    public void erw(){
+        c4cNew.statusEnroll("5c93adf3-cedb-4bf6-927d-2fde8d7d09de", "d16c23a7-c140-422c-a516-31d7b7b1b581");
+    }
 }

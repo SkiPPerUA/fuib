@@ -40,21 +40,21 @@ public class NBU_21_a2c extends BaseTest {
                         "      },\n" +
                         "      \"sender\":{\n" +
                         "         \"first_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
-                        "         \"last_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
-                        "         \"account_number\":\"UA953348510000026201112609803\",\n" +
-                        "         \"city\":\"City\",\n" +
-                        "         \"postal_code\":\"423214\",\n" +
-                        "         \"address\":\"address\",\n" +
-                        "         \"country\":\"Country\",\n" +
-                        "         \"tax_id\":\"3032411164\",\n" +
-                        "         \"document_number\":\"111111\",\n" +
-                        "         \"document_type\":\"01\",\n" +
-                        "         \"birthday\":\"10-10-1992\",\n" +
-                        "         \"reference_number\":\"1111111111111111\"\n" +
+                        "         \"last_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\"\n" +
+//                        "         \"account_number\":\"UA953348510000026201112609803\",\n" +
+//                        "         \"city\":\"City\",\n" +
+//                        "         \"postal_code\":\"423214\",\n" +
+//                        "         \"address\":\"address\",\n" +
+//                        "         \"country\":\"Country\",\n" +
+//                        "         \"tax_id\":\"3032411164\",\n" +
+//                        "         \"document_number\":\"111111\",\n" +
+//                        "         \"document_type\":\"01\",\n" +
+//                        "         \"birthday\":\"10-10-1992\",\n" +
+//                        "         \"reference_number\":\"1111111111111111\"\n" +
                         "      },\n" +
                         "      \"details\":{\n" +
                         "         \"additional_message\":\"11111111221222222233333333334444444444555555555666666666677777111\",\n" +
-                        "         \"source\":\"03\",\n" +
+                        "         \"source\":\"02\",\n" +
                         "         \"independent_sales_organization_id\":\"3016715233\",\n" +
                         "         \"submerchant_url\": \"https://merchant111.com?com=12345\",\n" +
                         "         \"payment_url\": \"https://payment111.com?com=12345\"\n" +

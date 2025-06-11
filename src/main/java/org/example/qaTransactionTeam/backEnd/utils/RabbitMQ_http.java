@@ -14,7 +14,8 @@ public class RabbitMQ_http extends Restful{
     private String uuid = Uuid_helper.generate_uuid();
     private String handler;
     private String routing_key;
-    private String host = "https://ph-rabbit-admin.test-fuib.com"; //test http://10.56.36.75:15672
+    private String env = "test";
+    private String host = "https://ph-rabbit-admin."+env+"-fuib.com"; // https://ph-rabbitmq.test-fuib.com https://ph-rabbit-admin."+env+"-fuib.com"
 
     public RabbitMQ_http(String handler, String routing_key){
         RestAssured.useRelaxedHTTPSValidation();
@@ -38,10 +39,19 @@ public class RabbitMQ_http extends Restful{
                 "   \"payload\":\""+body.replaceAll("\"","\\\\\"")+"\",\n" +
                 "   \"payload_encoding\":\"string\"\n" +
                 "}";
+        send(body1);
+    }
+
+    public void sendHttpWithConfig(String body){
+        addQueue_toRabbit();
+        send(body);
+    }
+
+    private void send(String body){
         request(given()
                 .header("Authorization", "Basic "+auth)
-                .body(body1)
-                .post(host+"/api/exchanges/test/amq.default/publish"));
+                .body(body)
+                .post(host+"/api/exchanges/"+env+"/amq.default/publish"));
         Assert.assertEquals(getResponse(),"{\"routed\":true}");
     }
 
@@ -49,7 +59,14 @@ public class RabbitMQ_http extends Restful{
         request_off_checkResponseCode(given()
                 .header("Authorization", "Basic "+auth)
                 .body("{\"durable\":true}")
-                .put(host+"/api/queues/test/POSTMAN_RESPONSE:"+ uuid));
+                .put(host+"/api/queues/"+env+"/POSTMAN_RESPONSE:"+ uuid));
     }
 
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
 }

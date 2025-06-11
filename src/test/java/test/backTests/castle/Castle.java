@@ -1,5 +1,7 @@
 package test.backTests.castle;
 
+import org.example.qaTransactionTeam.backEnd.helper.BodyHelper;
+import org.example.qaTransactionTeam.backEnd.helper.Uuid_helper;
 import org.example.qaTransactionTeam.backEnd.utils.RabbitMQ_http;
 import org.testng.annotations.Test;
 
@@ -17,10 +19,9 @@ public class Castle {
 //            castle_confirm("1","failed");
 //            //castle_getLimit("NBU_Memo_Stat"); //NBU_A2CSBRD_Stat  NBU_Transfer_Stat  NBU_Memo_Stat
 //        });
-//
-//        castle_add("100");
-//        castle_confirm("100","failed");
-        castle_getLimit("NBU_Memo_Stat");
+//        castle_add("1");
+        castle_confirm("1","failed");
+//        castle_getLimit("NBU_Memo_Stat");
 //        castle_getLimit("NBU_Transfer_Stat");//NBU_A2CSBRD_Stat  NBU_Transfer_Stat  NBU_Memo_Stat
 
     }
@@ -40,6 +41,7 @@ public class Castle {
                 "            \"ip\": \"2.22.90.51\"," +
                 "            \"client_id\": \""+client_id+"\"," + //2189387   544881
                 "            \"ekb_id\": 8531524," +
+                "            \"unique_id\": \""+Uuid_helper.generate_uuid() +"\"," +
                 "            \"currency\": \"UAH\"" +
                 "        }" +
                 "    ]" +
@@ -50,7 +52,7 @@ public class Castle {
         RabbitMQ_http rabbitMQHttp = new RabbitMQ_http("GetCounterSh2","Castle:input");
         rabbitMQHttp.sendHttp("{" +
                 "            \"event_type\": \""+limit+"\"," +
-                "            \"ekb_id\": 1535617," +
+                "            \"ekb_id\": 8531524," +
                 "            \"client_id\": \""+client_id+"\"" + //2189387   544881
                 "}");
     }
@@ -71,6 +73,7 @@ public class Castle {
                 "            \"ip\": \"2.22.90.51\"," +
                 "            \"client_id\": \""+client_id+"\"," +
                 "            \"ekb_id\": 8531524," +
+                "            \"unique_id\": \""+Uuid_helper.generate_uuid() +"\"," +
                 "            \"currency\": \"UAH\"" +
                 "        }" +
                 "    ]" +

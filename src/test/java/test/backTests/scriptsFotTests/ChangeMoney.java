@@ -11,8 +11,8 @@ import java.sql.SQLException;
 
 public class ChangeMoney extends BaseTest {
 
-    String env = "ITMTST2";
-    String card = Cards_data.getData(Card.TEST_CARD,Card_param.pan); //5452199000039521
+    String env = "ITMTST3";
+    String card = Cards_data.getData(Card.FUIB_MC,Card_param.pan); //5452199000039521
     String acc = "3000000000178795241";
     int summ = 500000;
 

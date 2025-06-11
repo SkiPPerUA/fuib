@@ -37,7 +37,7 @@ public class C4C_new extends Transaction_payhub implements Transaction {
                 .header("X-Systemcode","12312")
                 .body(body)
                 .when()
-                .put(token.getHost()+"/p4p-transfers/"+debitId+"/enroll");
+                .post(token.getHost()+"/p4p-transfers/"+debitId+"/credits");
         logger.info("Enroll "+type+" - "+response.then().extract().response().asString());
         Assert.assertEquals(response.getStatusCode(),statusCode);
         enrollId = response.then().extract().response().jsonPath().getString("id");
@@ -50,7 +50,7 @@ public class C4C_new extends Transaction_payhub implements Transaction {
                 .header("X-Flow-ID", "11")
                 .header("X-Systemcode","12312")
                 .when()
-                .get(token.getHost()+"/p4p-transfers/"+debitId+"/enrollments?id="+enrollId);
+                .get(token.getHost()+"/p4p-transfers/"+debitId+"/credits?id="+enrollId);
         logger.info("Статус зачисление "+type+" - "+response.then().extract().response().asString());
         Assert.assertEquals(response.getStatusCode(),statusCode);
     }
@@ -71,7 +71,7 @@ public class C4C_new extends Transaction_payhub implements Transaction {
        statusRefund(debitId, refundId);
     }
 
-    public void refund(String body){
+    public void refund(String debitId, String body){
         response = given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer " + token.getToken())
@@ -86,7 +86,7 @@ public class C4C_new extends Transaction_payhub implements Transaction {
     }
 
     public void refund(int amount){
-        refund("{\n" +
+        refund(debitId,"{\n" +
                 "    \"external_id\": \""+Uuid_helper.generate_uuid()+"\",\n" +
                 "    \"operation_id\": \""+debitId+"\",\n" +
                 "    \"amount\": "+amount+"\n" +

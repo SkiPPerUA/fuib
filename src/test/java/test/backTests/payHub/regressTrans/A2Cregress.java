@@ -35,8 +35,11 @@ public class A2Cregress extends BaseTest {
                     "                 \"last_name\":\"IvanovSender\",\n" +
                     "                 \"account_number\":\"UA953348510000026201112609803\"\n" +
                     "              },\n" +
-                    "            \"details\":{\n" +
-                    "                   \"independent_sales_organization_id\":\"3041309906\"\n" +
+                    "      \"details\":{\n" +
+                    "         \"additional_message\":\"11111111221222222233333333334444444444555555555666666666677777111\",\n" +
+                    "         \"source\":\"02\",\n" +
+                    "         \"submerchant_url\":\"https://jira.fuib.com/projects/PAYH/issues/PAYH-23149?filter=myopenissues\",\n" +
+                    "         \"independent_sales_organization_id\":\"3016715233\"\n" +
                     "              }\n" +
                     "        },"+
                     "       \"address\": {" +
@@ -46,7 +49,7 @@ public class A2Cregress extends BaseTest {
                     "    },"+
                     "    \"payer\": {\n" +
                     "        \"source\": \"IBAN\",\n" +
-                    "        \"value\": \"UA253052990000026207671635945\"\n" +
+                    "        \"value\": \"UA953348510000026201112609803\"\n" +
                     "    }," +
                     "    \"receiver\": {\n" +
                     "        \"source\": \"PAN\",\n" +

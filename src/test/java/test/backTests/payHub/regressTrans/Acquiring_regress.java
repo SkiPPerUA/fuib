@@ -18,9 +18,9 @@ public class Acquiring_regress extends BaseTest {
     public void acquiring3DSversion2() {
         String body = "\"amount\":100,\n" +
                 "    \"commission\": 0,\n" +
-                "    \"merchant_config_id\":\"c949382b-ddd0-4b13-94d3-713dfa3e8cca\",\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.MONO_VISA))+","+
-                "    \"description\": \"3041309905\",\n" +
+                "    \"merchant_config_id\":\"fe18e213-d70c-4f49-b6db-8c40aca019ca\",\n" +
+                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_MC))+","+
+                "    \"description\": \"3041309906\",\n" +
                 "    \"hold\": false,\n" +
                 "    \"short_description\": \"Заказ "+Time_helper.current_time()+"\",\n" +
                 "    \"return_url\": \"https://innsmouth.payhub.com.ua\",\n" +
@@ -34,7 +34,7 @@ public class Acquiring_regress extends BaseTest {
     public void acquiring3DSversion2_hold() {
         String body = "\"amount\": 500,\n" +
                 "    \"commission\": 0,\n" +
-                "    \"merchant_config_id\":\"c949382b-ddd0-4b13-94d3-713dfa3e8cca\",\n" +
+                "    \"merchant_config_id\":\"fe18e213-d70c-4f49-b6db-8c40aca019ca\",\n" +
                 Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_MC))+","+
                 "    \"description\": \"оплата Заказа "+ Time_helper.current_time() +"\",\n" +
                 "    \"hold\": true,\n" +
@@ -43,7 +43,6 @@ public class Acquiring_regress extends BaseTest {
                 "    \"client_ip\":  \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"," +
                 "    \"3ds2_supported\": true";
         trans = new AcquiringTrans(body);
-        trans.complete_hold(600);
     }
 
     @Test

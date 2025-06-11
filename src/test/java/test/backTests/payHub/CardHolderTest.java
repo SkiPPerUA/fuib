@@ -91,7 +91,7 @@ public class CardHolderTest extends BaseTest {
     @Test
     public void testFullDetails(){
         //select * from transactions.transactions where card_to_id is not null and status = 'PROCESSED'
-        String trans_id = "bce86a78-24ab-4cf0-86eb-25242ea55c69";
+        String trans_id = "df9190c7-6510-4e13-b3a5-ba0c224e98af";
 
         cardHolder.setExpectedResponseCode(400);
         String body = "{\n" +
