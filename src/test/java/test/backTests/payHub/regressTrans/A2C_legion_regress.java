@@ -100,10 +100,10 @@ public class A2C_legion_regress extends BaseTest {
         a2C_legion.makeTrans();
     }
 
-    public void positiveTest_crossborder(){
+    public void positiveTest_crossborderUAH(){
         A2C_legion a2C_legion = new A2C_legion(new Trans_token_payhub(6241781));
         a2C_legion.initTransfers("{\n" +
-                "    \"amount\": 300,\n" +
+                "    \"amount\": 1000,\n" +
                         "    \"service\": \"crossborder_direct\",\n" +
                         "    \"currency\": \"USD\",\n" +
                         "    \"description\": \"test\",\n" +
@@ -112,7 +112,7 @@ public class A2C_legion_regress extends BaseTest {
                         "        \"session_id\": \"225e7e87-8555-486d-aefd-9ed2af8109ce\"," +
                         "        \"device_id\": \"60c30bbc4dd94b4fdaf7398f\"," +
                         "        \"ip\": \"45.90.16.93\"," +
-                        "        \"event_type\": \"APP_A2A\"," +
+                        "        \"event_type\": \"APP_A2CSBRD\"," +
                         "        \"login\": \"zubkovam\"," +
                         "        \"application\": \"ANDROID\"," +
                         "        \"app_version\": \"1.1.1.1\"" +
@@ -126,7 +126,7 @@ public class A2C_legion_regress extends BaseTest {
                         "               \"attributes\": {\n" +
                         "               \"sell_currency\": \"UAH\",\n" +
                         "               \"buy_currency\": \"USD\",\n" +
-                        "               \"rate\": 41.7000000,\n" +
+                        "               \"rate\": 41.5200000,\n" +
                         "               \"base_currency\": \"USD\"\n" +
                         "       },\n" +
                         "       \"sell\": {\n" +
@@ -148,8 +148,8 @@ public class A2C_legion_regress extends BaseTest {
                         "    },\n" +
                         "      \"recipient_data\": {\n" +
                         "    \"general\": {\n" +
-                        "      \"first_name\": \"first\",\n" +
-                        "      \"last_name\": \"last\",\n" +
+                        "      \"first_name\": \"Bill\",\n" +
+                        "      \"last_name\": \"Clinton\",\n" +
                         "      \"middle_name\": \"middle\"\n" +
                         "    }\n" +
                         "  },"+
@@ -158,6 +158,54 @@ public class A2C_legion_regress extends BaseTest {
                         "        \"value\": \"5575191548185686\"\n" +
                         "    }\n" +
                         "}");
+        a2C_legion.confirmTransfers("{\n" +
+                "  \"lang\": \"UK\",\n" +
+                "  \"authentication\": {\n" +
+                "    \"otp_code\": \"1111\",\n" +
+                "    \"jwt\": \""+a2C_legion.getToken()+"\"\n" +
+                "  }\n" +
+                "}");
+    }
+
+    public void positiveTest_crossborder(){
+        A2C_legion a2C_legion = new A2C_legion(new Trans_token_payhub(6241781));
+        a2C_legion.initTransfers("{\n" +
+                "    \"amount\": 1000,\n" +
+                "    \"service\": \"crossborder_direct\",\n" +
+                "    \"currency\": \"USD\",\n" +
+                "    \"description\": \"test\",\n" +
+                "    \"authentication\": {" +
+                "        \"jwt\": \""+a2C_legion.getToken()+"\"," +
+                "        \"session_id\": \"225e7e87-8555-486d-aefd-9ed2af8109ce\"," +
+                "        \"device_id\": \"60c30bbc4dd94b4fdaf7398f\"," +
+                "        \"ip\": \"45.90.16.93\"," +
+                "        \"event_type\": \"APP_A2CSBRD\"," +
+                "        \"login\": \"zubkovam\"," +
+                "        \"application\": \"ANDROID\"," +
+                "        \"app_version\": \"1.1.1.1\"" +
+                "    }," +
+                "    \"external_id\": \""+ Uuid_helper.generate_uuid() +"\",\n" +
+                "    \"sender\": {\n" +
+                "        \"source\": \"CARD_ID\",\n" +
+                "        \"value\": \"028417738202\",\n" +
+                "        \"instrument\": \"OWN_CARD\",\n" +
+                "        \"client\": {\n" +
+                "            \"source\": \"EKB\",\n" +
+                "            \"id\": \"2290175\"\n" +
+                "        }\n"+
+                "    },\n" +
+                "      \"recipient_data\": {\n" +
+                "    \"general\": {\n" +
+                "      \"first_name\": \"Bill\",\n" +
+                "      \"last_name\": \"Clinton\",\n" +
+                "      \"middle_name\": \"middle\"\n" +
+                "    }\n" +
+                "  },"+
+                "    \"recipient\": {\n" +
+                "        \"source\": \"PAN\",\n" +
+                "        \"value\": \"5575191548185686\"\n" +
+                "    }\n" +
+                "}");
         a2C_legion.confirmTransfers("{\n" +
                 "  \"lang\": \"UK\",\n" +
                 "  \"authentication\": {\n" +

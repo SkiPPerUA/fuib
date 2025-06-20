@@ -888,6 +888,66 @@ public class C4C_new_regress extends BaseTest {
         Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"ACTIVE\""));
     }
 
+    public void negative_secondRefundAmountMore(){
+
+        c4cNew.setExpectedStatus(200);
+        c4cNew.initTransfers("{\n" +
+                "    \"external_id\": \""+new Random().nextInt() +"\",\n" +
+                "    \"amount\": 1000,\n" +
+                "    \"commission\": 10,\n" +
+                "    \"description\": \"test description\",\n" +
+                "    \"destination\": \"test destination\",\n" +
+                "    \"payer\": {\n" +
+                "        \"source\": \"PAN\",\n" +
+                "        \"value\": \""+ Cards_data.getData(sender, Card_param.pan) +"\",\n" +
+                "        \"expire\": \""+ Cards_data.getData(sender, Card_param.expire)+"\"\n" +
+                "    },\n" +
+                "    \"receiver\": {\n" +
+                "        \"source\": \"PAN\",\n" +
+                "        \"value\": \""+ Cards_data.getData(receiver, Card_param.pan)+"\"\n" +
+                "    },"+
+                "    \"identification\": {\n" +
+                "        \"requirements\": {\n" +
+                "            \"sender\": {\n" +
+                "                \"first_name\": \"firstname\",\n" +
+                "                \"last_name\": \"last\",\n" +
+                "                \"tax_id\": \"1234567890\",\n" +
+                "                \"city\":\"City\",\n" +
+                "                \"country\":\"UKR\",\n" +
+                "                \"address\":\"address\",\n" +
+                "                \"account_number\": \"UA953348510000026201112609803\"\n" +
+                "            },\n" +
+                "            \"recipient\": {\n" +
+                "                \"first_name\": \"test\",\n" +
+                "                \"last_name\": \"test\",\n" +
+                "                \"account_number\": \"UA953348510000026201112609803\"\n" +
+                "            },\n" +
+                "            \"details\": {\n" +
+                "                \"source\": \"07\",\n" +
+                "                \"submerchant_url\": \"https://jira.fuib.com/projects/PAYH/issues/PAYH-41057\",\n" +
+                "                \"independent_sales_organization_id\": \"3016715233\",\n" +
+                "                \"additional_message\": \"test\"\n" +
+                "            }\n" +
+                "        }\n" +
+                "    }\n" +
+                "}");
+        waiter(30);
+        c4cNew.status();
+        Assert.assertTrue(c4cNew.getResponse().contains("\"available_amount\":1000"));
+        Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"ACTIVE\""));
+
+        c4cNew.refund(1000);
+        Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"CREATED\""));
+
+        waiter(30);
+        c4cNew.statusRefund();
+        Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"PROCESSED\""));
+
+        c4cNew.setExpectedStatus(400);
+        c4cNew.refund(100);
+        Assert.assertTrue(c4cNew.getResponse().contains("\"code\":\"LIMIT_EXCEEDED\""));
+    }
+
     public void negative_initNotActive_and_thanEnroll(){
 
         c4cNew.setExpectedStatus(200);
@@ -969,7 +1029,7 @@ public class C4C_new_regress extends BaseTest {
         }
     }
 
-    public void erw(){
-        c4cNew.statusEnroll("5c93adf3-cedb-4bf6-927d-2fde8d7d09de", "d16c23a7-c140-422c-a516-31d7b7b1b581");
-    }
+//    public void erw(){
+//        c4cNew.statusEnroll("5c93adf3-cedb-4bf6-927d-2fde8d7d09de", "d16c23a7-c140-422c-a516-31d7b7b1b581");
+//    }
 }

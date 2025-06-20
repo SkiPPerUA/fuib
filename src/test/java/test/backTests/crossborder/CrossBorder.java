@@ -153,4 +153,11 @@ public class CrossBorder extends BaseTest {
                 "\"receiver_card_number\":\""+Cards_data.getData(Card.FUIB_VISA,Card_param.pan)+"\"" +
                 "}");
     }
+
+    public void getTransStatusRPC(){
+        RabbitMQ_http rabbitMQHttp = new RabbitMQ_http("GetTransactionDetails","C2CRestRPC.input");
+        rabbitMQHttp.sendHttp("{" +
+                "\"transfer_id\":\"2db71dad-811c-473c-9eb0-6861b06ea767\"" +
+                "}");
+    }
 }

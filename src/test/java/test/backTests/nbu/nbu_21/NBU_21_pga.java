@@ -34,7 +34,8 @@ public class NBU_21_pga extends BaseTest {
                 "    \"client_ip\":  \"127.0.0.1\"," +
                 "    \"3ds2_supported\": true," +
                 "    \"identification\": {\n" +
-                "   \"requirements\":[{\n" +
+                "   \"requirements\":[" +
+                "{\n" +
                 "      \"recipient\":{\n" +
                 "         \"first_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
                 "         \"last_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakк\",\n" +
@@ -54,6 +55,66 @@ public class NBU_21_pga extends BaseTest {
                 "         \"independent_sales_organization_id\":\"3016715233\"\n" +
                 "      }\n" +
                 "      },\n" +
+                "{\n" +
+                "      \"recipient\":{\n" +
+                "         \"first_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
+                "         \"last_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakк\",\n" +
+                "         \"amount\":\"1212\",\n" +
+                "         \"account_number\":\"UA21322313000006007233566001000011\"\n" +
+                "      },\n" +
+                "      \"sender\":{\n" +
+                "         \"first_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
+                "         \"last_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
+                "         \"account_number\":\"UA21323130000026007233566011000001\",\n" +
+                "         \"reference_number\":\"1111111111111111\"\n" +
+                "      },\n" +
+                "      \"details\":{\n" +
+                "         \"additional_message\":\"11111111221222222233333333334444444444555555555666666666677777111\",\n" +
+                "         \"source\":\"07\",\n" +
+                "         \"submerchant_url\":\"https://jira.fuib.com/projects/PAYH/issues/PAYH-23149?filter=myopenissues\",\n" +
+                "         \"independent_sales_organization_id\":\"3016715235\"\n" +
+                "      }\n" +
+                "      },\n" +
+                "{\n" +
+                "      \"recipient\":{\n" +
+                "         \"first_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
+                "         \"last_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakк\",\n" +
+                "         \"amount\":\"1212\",\n" +
+                "         \"account_number\":\"UA21322313000006007233566001000011\"\n" +
+                "      },\n" +
+                "      \"sender\":{\n" +
+                "         \"first_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
+                "         \"last_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
+                "         \"account_number\":\"UA21323130000026007233566011000001\",\n" +
+                "         \"reference_number\":\"1111111111111111\"\n" +
+                "      },\n" +
+                "      \"details\":{\n" +
+                "         \"additional_message\":\"11111111221222222233333333334444444444555555555666666666677777111\",\n" +
+                "         \"source\":\"07\",\n" +
+                "         \"submerchant_url\":\"https://jira.fuib.com/projects/PAYH/issues/PAYH-23149?filter=myopenissues\",\n" +
+                "         \"independent_sales_organization_id\":\"3016715236\"\n" +
+                "      }\n" +
+                "      },\n" +
+                "{\n" +
+                "      \"recipient\":{\n" +
+                "         \"first_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
+                "         \"last_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakк\",\n" +
+                "         \"amount\":\"1212\",\n" +
+                "         \"account_number\":\"UA21322313000006007233566001000011\"\n" +
+                "      },\n" +
+                "      \"sender\":{\n" +
+                "         \"first_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
+                "         \"last_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
+                "         \"account_number\":\"UA21323130000026007233566011000001\",\n" +
+                "         \"reference_number\":\"1111111111111111\"\n" +
+                "      },\n" +
+                "      \"details\":{\n" +
+                "         \"additional_message\":\"11111111221222222233333333334444444444555555555666666666677777111\",\n" +
+                "         \"source\":\"07\",\n" +
+                "         \"submerchant_url\":\"https://jira.fuib.com/projects/PAYH/issues/PAYH-23149?filter=myopenissues\",\n" +
+                "         \"independent_sales_organization_id\":\"3016715237\"\n" +
+                "      }\n" +
+                "      },\n" +
                 "     {\n" +
                 "      \"recipient\":{\n" +
                 "         \"first_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
@@ -70,7 +131,7 @@ public class NBU_21_pga extends BaseTest {
                 "      \"details\":{\n" +
                 "         \"additional_message\":\"11111111221222222233333333334444444444555555555666666666677777111\",\n" +
                 "         \"source\":\"07\",\n" +
-                "         \"independent_sales_organization_id\":\"3016715233\"\n" +
+                "         \"independent_sales_organization_id\":\"3016715234\"\n" +
                 "      }\n" +
                 "      }]\n"+
                 "      }\n";

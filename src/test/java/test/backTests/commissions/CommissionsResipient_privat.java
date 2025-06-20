@@ -1,7 +1,7 @@
 package test.backTests.commissions;
 
 import org.example.qaTransactionTeam.BaseTest;
-import org.example.qaTransactionTeam.backEnd.commissions.Сommissions;
+import org.example.qaTransactionTeam.backEnd.commissions.Commissions;
 import org.example.qaTransactionTeam.backEnd.utils.Card;
 import org.example.qaTransactionTeam.backEnd.utils.Card_param;
 import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
@@ -16,7 +16,7 @@ import java.util.Map;
 @Test
 public class CommissionsResipient_privat extends BaseTest {
 
-    Сommissions commissions = new Сommissions();
+    Commissions commissions = new Commissions();
     Map<String, String> cards = new HashMap<>();
 
     public void test_different_bank() {
