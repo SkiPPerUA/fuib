@@ -19,9 +19,9 @@ public class Castle {
 //            castle_confirm("1","failed");
 //            //castle_getLimit("NBU_Memo_Stat"); //NBU_A2CSBRD_Stat  NBU_Transfer_Stat  NBU_Memo_Stat
 //        });
-//        castle_add("1");
-        castle_confirm("1","failed");
-//        castle_getLimit("NBU_Memo_Stat");
+//        castle_add("9970000");
+//        castle_confirm("7000000","failed");
+        castle_getLimit("NBU_Memo_Stat");
 //        castle_getLimit("NBU_Transfer_Stat");//NBU_A2CSBRD_Stat  NBU_Transfer_Stat  NBU_Memo_Stat
 
     }

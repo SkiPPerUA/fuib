@@ -160,4 +160,8 @@ public class CrossBorder extends BaseTest {
                 "\"transfer_id\":\"2db71dad-811c-473c-9eb0-6861b06ea767\"" +
                 "}");
     }
+
+    public void getComm(){
+        crossborder.getLimits();
+    }
 }

@@ -254,4 +254,14 @@ public class MerchantsConfigTest extends BaseTest {
                         "  \"status\": \"BLOCKED\"\n" +
                         "}");
     }
+
+    public void addInst(){
+        configs.addConfigsInstallments("36080f30-7dd8-43bc-b4b9-35bf5fddf399","{\n" +
+                "  \"title\": \"eqwdqs\",\n" +
+                "  \"point_id\": \"21312\",\n" +
+                "  \"partner_name\": \"ewdsq\",\n" +
+                "  \"merchant_pga_config_id\": \"494663ab-8621-45dd-9363-2457ee8364a2\",\n" +
+                "  \"point_type\": \"POS\"\n" +
+                "}");
+    }
 }

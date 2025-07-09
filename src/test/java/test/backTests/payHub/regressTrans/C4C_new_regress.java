@@ -16,7 +16,7 @@ import java.util.Random;
 public class C4C_new_regress extends BaseTest {
 
     Card sender = Card.FUIB_MC;
-    Card receiver = Card.FUIB_VISA;
+    Card receiver = Card.FUIB_MC;
     C4C_new c4cNew = new C4C_new();
 
     public void positive_sameCard_not3ds(){

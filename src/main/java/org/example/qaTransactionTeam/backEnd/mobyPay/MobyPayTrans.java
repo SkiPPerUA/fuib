@@ -99,6 +99,28 @@ class MobyPayTrans {
                 "  \"client_ip\": \"128.10.20.31\",\n" +
                 "  \"decrypted_message\": \"{\\\"applicationPrimaryAccountNumber\\\":\\\"5355611173009543\\\",\\\"applicationExpirationDate\\\":\\\"260731\\\",\\\"currencyCode\\\":\\\"980\\\",\\\"transactionAmount\\\":100,\\\"deviceManufacturerIdentifier\\\":\\\"050110030273\\\",\\\"paymentDataType\\\":\\\"3DSecure\\\",\\\"paymentData\\\":{\\\"onlinePaymentCryptogram\\\":\\\"AHae/5F+sCmfAKc1v/sUAoABFA==\\\"}}\"," +
                 "  \"without_confirmation\": false,\n" +
+                "   \"identification\": {\n" +
+                "    \"requirements\": {\n" +
+                "        \"recipient\":  {\n" +
+                "            \"first_name\": \"Павло\",\n" +
+                "            \"last_name\": \"Тичина\",\n" +
+                "            \"amount\": 1234500,\n" +
+                "            \"account_number\": \"UA213223130000026007233566001\"\n" +
+                "        },\n" +
+                "        \"sender\": {\n" +
+                "            \"first_name\": \"Максим\",\n" +
+                "            \"last_name\": \"Рильський\",\n" +
+                "            \"account_number\": \"UA213223130000026007233566001\",\n" +
+                "            \"reference_number\": 12345678\n" +
+                "        },\n" +
+                "        \"details\": {\n" +
+                "            \"additional_message\": \"Авторе, пиши ще...\",\n" +
+                "            \"source\": \"01\",\n" +
+                "            \"submerchant_url\": \"https://submerchant-url.com\",\n" +
+                "            \"independent_sales_organization_id\": \"3056715233\"\n" +
+                "        }\n" +
+                "    }\n" +
+                "},"+
                 "  \"description\": \"ычфы\",\n" +
                 "  \"merchant_config_id\": \""+merchant_config_id+"\",\n" +
                 "  \"additional_data\": {\n" +

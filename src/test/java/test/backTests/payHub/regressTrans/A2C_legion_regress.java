@@ -43,7 +43,7 @@ public class A2C_legion_regress extends BaseTest {
         A2C_legion a2C_legion = new A2C_legion();
         a2C_legion.setToken(new Trans_token_payhub(6241781));
         a2C_legion.setBodyRequest("{\n" +
-                "    \"amount\": 120,\n" +
+                "    \"amount\": 20000,\n" +
                 "    \"fee_amount\": 100,\n" +
                 "    \"currency\": \"UAH\",\n" +
                 "    \"description\": \"3041309906\",\n" +
@@ -58,7 +58,7 @@ public class A2C_legion_regress extends BaseTest {
                 "    },\n" +
                 "    \"recipient\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.FUIB_MC,Card_param.pan)+"\"\n" +
+                "        \"value\": \"5168745611327906\"\n" +
                 "    }\n" +
                 "}");
         a2C_legion.makeTrans();
@@ -170,7 +170,7 @@ public class A2C_legion_regress extends BaseTest {
     public void positiveTest_crossborder(){
         A2C_legion a2C_legion = new A2C_legion(new Trans_token_payhub(6241781));
         a2C_legion.initTransfers("{\n" +
-                "    \"amount\": 1000,\n" +
+                "    \"amount\": 900,\n" +
                 "    \"service\": \"crossborder_direct\",\n" +
                 "    \"currency\": \"USD\",\n" +
                 "    \"description\": \"test\",\n" +
