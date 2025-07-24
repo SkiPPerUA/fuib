@@ -19,8 +19,8 @@ public class Acquiring_regress extends BaseTest {
         String body = "\"amount\":100,\n" +
                 "    \"commission\": 0,\n" +
                 "    \"merchant_config_id\":\"fe18e213-d70c-4f49-b6db-8c40aca019ca\",\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.MONO_VISA))+","+
-                "    \"description\": \"3041309905\",\n" +
+                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_VISA))+","+
+                "    \"description\": \"3041309906\",\n" +
                 "    \"identification\": {\n" +
                 "         \"requirements\":[" +
                 "               {\n" +
@@ -43,12 +43,15 @@ public class Acquiring_regress extends BaseTest {
                 "         \"independent_sales_organization_id\":\"3016715233\"\n" +
                 "      }\n" +
                 "      }]},\n" +
-                "    \"hold\": false,\n" +
+                "    \"hold\": true,\n" +
                 "    \"short_description\": \"Заказ "+Time_helper.current_time()+"\",\n" +
                 "    \"return_url\": \"https://innsmouth.payhub.com.ua\",\n" +
                 "    \"client_ip\":  \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"," +
                 "    \"3ds2_supported\": true";
         trans = new AcquiringTrans(body);
+        trans.status();
+        trans.complete_hold(100);
+        trans.status();
         Assert.assertEquals(new JSONObject(trans.getResponse()).getString("status"),"PROCESSED");
     }
 

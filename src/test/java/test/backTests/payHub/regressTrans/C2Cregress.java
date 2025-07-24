@@ -32,7 +32,7 @@ public class C2Cregress extends BaseTest {
                 Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_MC))+","+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC,Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.MONO_VISA,Card_param.pan)+"\"\n" +
                 "    },\n" +
                 ThreeDS.threeDS_2_2_0;
 

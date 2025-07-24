@@ -72,7 +72,7 @@ public class C4C_new_regress extends BaseTest {
                 "    \"operation_id\": \""+c4cNew.getDebitId()+"\",\n" +
                 "    \"amount\": 500,\n" +
                 "    \"fee\": 52,\n" +
-                " \"identification\": {\n" +
+                "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
                 "            \"sender\": {\n" +
                 "                \"first_name\": \"firstname\",\n" +

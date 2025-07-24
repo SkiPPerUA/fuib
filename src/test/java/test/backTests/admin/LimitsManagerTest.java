@@ -2,10 +2,14 @@ package test.backTests.admin;
 
 import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.admin.Limits;
+import org.example.qaTransactionTeam.backEnd.utils.BDpostgre;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @Test
 public class LimitsManagerTest extends BaseTest {
@@ -16,6 +20,16 @@ public class LimitsManagerTest extends BaseTest {
     String body = "";
     int count_old;
     int count_new;
+
+    public void positive_selfLimits() {
+            limits.createSelfLimits("{\n" +
+                    "\"max_amount\": 100,\n" +
+                    "\"min_amount\": 70,\n" +
+                    "\"card_in_use\": 999,\n" +
+                    "\"account_in_use\": 999,\n" +
+                    "\"active\": true\n" +
+                    "}");
+    }
 
     public void testCreate(){
         body = "{\n" +

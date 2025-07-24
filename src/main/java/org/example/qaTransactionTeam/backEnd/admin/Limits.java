@@ -67,6 +67,20 @@ public class Limits {
 
     }
 
+    public void createSelfLimits(String body){
+        response = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer "+token.getToken())
+                .body(body)
+                .when()
+                .post(token.getHost()+"/admin/limits/self-configs")
+                .then()
+                .statusCode(status_code)
+                .extract().response().asString();
+
+        logger.info("Create self-limits - "+response);
+    }
+
     public void updateLimits(String body, String id_config){
         response = given()
                 .contentType(ContentType.JSON)

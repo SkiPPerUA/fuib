@@ -17,23 +17,25 @@ public class A2C_legion_regress extends BaseTest {
 
     public void positiveTest_ACCOUNT_ID_to_PAN(){
         A2C_legion a2C_legion = new A2C_legion();
-        a2C_legion.setToken(new Trans_token_payhub(6567363));
+        a2C_legion.setToken(new Trans_token_payhub(6241781));
         a2C_legion.setBodyRequest("{\n" +
-                "    \"amount\": 300,\n" +
+                "    \"amount\": 100,\n" +
                 "    \"currency\": \"UAH\",\n" +
                 "    \"description\": \"test\",\n" +
                 "    \"external_id\": \""+ Uuid_helper.generate_uuid() +"\",\n" +
                 "    \"sender\": {\n" +
-                "        \"source\": \"ACCOUNT_ID\",\n" +
-                "        \"value\": \"144978212\",\n" +
+                "        \"source\":\"ACCOUNT_ID\",\n" +
+                "        \"value\":\"126856282\",\n" +
+                "        \"instrument\":\"OWN_CARD\",\n" +
+                "        \"card_id\":\"019117788042\"," +
                 "        \"client\": {\n" +
                 "            \"source\": \"EKB\",\n" +
-                "            \"id\": \"1141542\"\n" +
+                "            \"id\": \"8531524\"\n" +
                 "        }\n"+
                 "    },\n" +
                 "    \"recipient\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \"5168745611327906\"\n" +
+                "        \"value\": \""+Cards_data.getData(Card.MONO_VISA,Card_param.pan)+"\"\n" +
                 "    }\n" +
                 "}");
         a2C_legion.makeTrans();
@@ -43,7 +45,7 @@ public class A2C_legion_regress extends BaseTest {
         A2C_legion a2C_legion = new A2C_legion();
         a2C_legion.setToken(new Trans_token_payhub(6241781));
         a2C_legion.setBodyRequest("{\n" +
-                "    \"amount\": 20000,\n" +
+                "    \"amount\": 100,\n" +
                 "    \"fee_amount\": 100,\n" +
                 "    \"currency\": \"UAH\",\n" +
                 "    \"description\": \"3041309906\",\n" +

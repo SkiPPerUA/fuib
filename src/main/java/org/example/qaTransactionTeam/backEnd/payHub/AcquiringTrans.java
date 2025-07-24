@@ -62,7 +62,7 @@ public class AcquiringTrans implements Transaction {
                 .body(body)
                 .when()
                 .post(token.getHost()+"/pga/transactions/"+transactionId+"/complete_hold");
-        logger.info("Выполнение AcquiringTrans - "+getResponse());
+        logger.info("complete_hold AcquiringTrans - "+getResponse());
         Assert.assertEquals(response.getStatusCode(),statusCode);
     }
 
@@ -126,6 +126,7 @@ public class AcquiringTrans implements Transaction {
                 .get(token.getHost()+"/pga/transactions/"+transactionId);
         logger.info("Status = "+getResponse());
         Assert.assertEquals(response.getStatusCode(),statusCode);
+        status = response.then().extract().response().jsonPath().getString("status");
     }
 
     public void get_3ds_type(String body){
@@ -207,6 +208,15 @@ public class AcquiringTrans implements Transaction {
     @Override
     public void makeTrans() {
         registerTrans();
+        if (status.equals("PROCESSING")) {
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            status();
+        }
+
         if (status.equals("3DS2_PREPARE")) {
             accept3ds2();
             finishTrans();

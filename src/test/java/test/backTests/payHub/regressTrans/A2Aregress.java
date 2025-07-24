@@ -105,7 +105,7 @@ public class A2Aregress extends BaseTest {
                 "    \"fee_amount\": 100,\n" +
                 "    \"currency\": \"UAH\",\n" +
                 "    \"purpose\": \"Private24\",\n" +
-                "    \"description\": \"test\",\n" +
+                "    \"description\": \"Паєвський Сергій Сергійович - 20/12/1982\",\n" +
                 "    \"sender\": {\n" +
                 "        \"source\": \"IBAN\",\n" +
                 "        \"value\": \"UA903348510000026204404198193\"\n" +
