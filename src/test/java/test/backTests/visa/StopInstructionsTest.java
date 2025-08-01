@@ -1,7 +1,7 @@
-package test.backTests.visaAlias;
+package test.backTests.visa;
 
 import org.example.qaTransactionTeam.BaseTest;
-import org.example.qaTransactionTeam.backEnd.visaAllias.StopInstructions;
+import org.example.qaTransactionTeam.backEnd.visa.visaAllias.StopInstructions;
 import org.testng.annotations.Test;
 
 @Test

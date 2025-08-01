@@ -1,9 +1,8 @@
-package org.example.qaTransactionTeam.backEnd.visaAllias;
+package org.example.qaTransactionTeam.backEnd.visa.visaAllias;
 
 import io.restassured.http.ContentType;
 import org.apache.log4j.Logger;
 import org.example.qaTransactionTeam.backEnd.utils.Apiman;
-import org.json.JSONObject;
 
 import static io.restassured.RestAssured.given;
 

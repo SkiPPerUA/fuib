@@ -89,6 +89,7 @@ public class C4C_new extends Transaction_payhub implements Transaction {
         refund(debitId,"{\n" +
                 "    \"external_id\": \""+Uuid_helper.generate_uuid()+"\",\n" +
                 "    \"operation_id\": \""+debitId+"\",\n" +
+                "    \"fee\": 75,\n" +
                 "    \"amount\": "+amount+"\n" +
                 "}");
     }

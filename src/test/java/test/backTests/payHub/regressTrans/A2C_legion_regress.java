@@ -60,7 +60,7 @@ public class A2C_legion_regress extends BaseTest {
                 "    },\n" +
                 "    \"recipient\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \"5168745611327906\"\n" +
+                "        \"value\": \""+Cards_data.getData(Card.MONO_VISA,Card_param.pan)+"\"\n" +
                 "    }\n" +
                 "}");
         a2C_legion.makeTrans();

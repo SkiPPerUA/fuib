@@ -12,7 +12,7 @@ public class BDas400 {
 
     public static void BDas400(String base, String user, String password) throws ClassNotFoundException, SQLException, IllegalAccessException, InstantiationException {
         Class.forName(com.ibm.as400.access.AS400JDBCDriver.class.getName()).newInstance();
-        conn = DriverManager.getConnection("jdbc:as400://"+base+";libraries=LVFUIBCURR LVFUIBDDM CBA22 ITMRFUIB ITMDFUIB ITM22R ITM22D ASIT144402 ASIC144402 ASID144402 ASIR144402 ASIB144402 ASILIB FUIBGPL ITMSYNC QGPL QTEMP;prompt=false;translate binary=true;naming=system", user, password);
+        conn = DriverManager.getConnection("jdbc:as400://"+base+";libraries=LVFUIBCURR LVFUIBDDM CBA22 ITMRFUIB ITMDFUIB ITM22R ITM22D ASIT144402 ASIC144402 ASID144402 ASIR144402 ASIB144402 ASILIB FUIBGPL ITMSYNC QGPL QTEMP;secure=true;prompt=false;translate binary=true;naming=system", user, password);
         nameBD = base;
         logger.info("Открыт коннект к базе "+nameBD);
 

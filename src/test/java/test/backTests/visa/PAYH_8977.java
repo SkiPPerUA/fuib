@@ -1,7 +1,7 @@
-package test.backTests.visaAlias;
+package test.backTests.visa;
 
 import org.example.qaTransactionTeam.BaseTest;
-import org.example.qaTransactionTeam.backEnd.visaAllias.Allias;
+import org.example.qaTransactionTeam.backEnd.visa.visaAllias.Allias;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.Assert;
