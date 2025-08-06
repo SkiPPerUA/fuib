@@ -1,6 +1,10 @@
 package test.backTests.visa;
 
 import org.example.qaTransactionTeam.BaseTest;
+import org.example.qaTransactionTeam.backEnd.helper.Uuid_helper;
+import org.example.qaTransactionTeam.backEnd.utils.Card;
+import org.example.qaTransactionTeam.backEnd.utils.Card_param;
+import org.example.qaTransactionTeam.backEnd.utils.Cards_data;
 import org.example.qaTransactionTeam.backEnd.visa.requestToPay.AndrewGarner;
 import org.testng.annotations.Test;
 
@@ -10,12 +14,13 @@ public class AndrewGarner_test extends BaseTest {
     AndrewGarner andrewGarner = new AndrewGarner();
 
     public void positive_init(){
+        andrewGarner.setExpectedResponseCode(201);
         andrewGarner.init("{\n" +
                 "    \"product\": \"VD\",\n" +
                 "    \"use_case\": \"P2P\",\n" +
-                "    \"request_reason\": {\n" +
-                "        \"message\": \"test\"\n" +
-                "    },\n" +
+//                "    \"request_reason\": {\n" +
+//                "        \"message\": \"test\"\n" +
+//                "    },\n" +
                 "    \"payment_requests\": [\n" +
                 "        {\n" +
                 "            \"debtor_alias\": \"+380939917659\",\n" +
@@ -25,17 +30,17 @@ public class AndrewGarner_test extends BaseTest {
                 "            \"debtor_country\": \"UA\",\n" +
                 "            \"requested_amount\": 100,\n" +
                 "            \"requested_amount_currency\": \"UAH\",\n" +
-                "            \"end_to_end_id\": \"8336304e-dc06-459c-8f1cf8ce9282b986\",\n" +
-                "            \"debtor_agent_id\": \"BL1234567890\",\n" +
+                "            \"end_to_end_id\": \""+Uuid_helper.generate_uuid4()+"\",\n" +
+                "            \"debtor_agent_id\": \"38042668479\",\n" +
                 "            \"debtor_alias_type\": \"MOBL\"\n" +
                 "        }\n" +
                 "    ],\n" +
-                "    \"due_date\": \"2025-09-29\",\n" +
-                "    \"request_message_id\": \"e401cff8-5b97-4d40-84e365ece927f66b\",\n" +
+                //"    \"due_date\": \"2025-09-29\",\n" +
+                "    \"request_message_id\": \""+ Uuid_helper.generate_uuid4() +"\",\n" +
                 "    \"settlement_options\": [\n" +
                 "        {\n" +
                 "            \"settlement_system\": \"MASTERCARD\",\n" +
-                "            \"primary_account_number\": \"5218320000000000\"\n" +
+                "            \"primary_account_number\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\"\n" +
                 "        }\n" +
                 "    ],\n" +
                 "    \"creditor\": {\n" +
@@ -134,13 +139,14 @@ public class AndrewGarner_test extends BaseTest {
     }
 
     public void positive_confirm(){
-        andrewGarner.confirm("","{\n" +
-                "  \"status_reason\": \"RJ02\",\n" +
+        positive_init();
+        andrewGarner.confirm("{\n" +
+                //"  \"status_reason\": \"RJ02\",\n" +
                 "  \"transaction_status\": \"RJCT\",\n" +
-                "  \"payment_request_id\": \"RFP01314\",\n" +
+                "  \"payment_request_id\": \""+andrewGarner.getPayment_request_id()+"\",\n" +
                 "  \"request_message_id\": \"GG9983636387737JH\",\n" +
-                "  \"message\": \"Rejected by Payer\",\n" +
-                "  \"end_to_end_id\": \"RFPid0001\",\n" +
+                //"  \"message\": \"Rejected by Payer\",\n" +
+                "  \"end_to_end_id\": \""+andrewGarner.getEnd_to_end_id()+"\",\n" +
                 "  \"creation_date_time\": \"2020-12-17T09:30:47Z\"\n" +
                 "}");
     }

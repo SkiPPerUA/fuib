@@ -16,6 +16,8 @@ public class AndrewGarner extends Restful {
     private Apiman token = new Apiman("ITM","svc_ph_tusk_t","J!h6xXW6&LwfJnQ&kLaQBNezdBrzijwd", "stage");
     private String env;
     private RequestSpecification requestSpecification;
+    private String payment_request_id;
+    private String end_to_end_id;
 
     public AndrewGarner(){
         RestAssured.useRelaxedHTTPSValidation();
@@ -30,6 +32,10 @@ public class AndrewGarner extends Restful {
     public void init(String body){
         logger.info("init");
         request(requestSpecification.body(body).when().post(env+"visa-req2pay-inbounds"));
+        if (response.then().extract().statusCode() == 201){
+            payment_request_id = response.then().extract().jsonPath().getString("payment_requests.payment_request_id").replace("[","").replace("]","");
+            end_to_end_id = response.then().extract().jsonPath().getString("payment_requests.end_to_end_id").replace("[","").replace("]","");
+        }
     }
 
     public void referenceData(String body){
@@ -57,9 +63,16 @@ public class AndrewGarner extends Restful {
         request(requestSpecification.body(body).when().post(env+"visa-req2pay-inbounds/transactions/tags"));
     }
 
-    public void confirm(String payment_request_id, String body){
+    public void confirm(String body){
         logger.info("confirm -> "+payment_request_id);
-        request(requestSpecification.body(body).when().patch(env+"visa-req2pay-inbounds/"+payment_request_id+"/confirms"));
+        request(given()
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer "+token.getToken())
+                .header("X-Flow-ID", Uuid_helper.generate_uuid())
+                .header("X-Systemcode",Uuid_helper.generate_uuid()).header("x-request-affinity",payment_request_id).body(body).log().all()
+                .when().patch(env+"visa-req2pay-inbounds/"+payment_request_id+"/confirms"));
+
+        System.out.println(response.then().extract().headers().asList());
     }
 
     public void cancel(String payment_request_id, String body){
@@ -82,4 +95,11 @@ public class AndrewGarner extends Restful {
         request(requestSpecification.body(body).when().patch(env+"visa-req2pay-controls/"+reference_id+"/removes"));
     }
 
+    public String getPayment_request_id() {
+        return payment_request_id;
+    }
+
+    public String getEnd_to_end_id() {
+        return end_to_end_id;
+    }
 }
