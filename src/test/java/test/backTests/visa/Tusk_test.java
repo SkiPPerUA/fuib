@@ -21,6 +21,7 @@ public class Tusk_test extends BaseTest {
                 "        {\n" +
                 "            \"debtor_agent_country\": \"UA\",\n" +
                 "            \"debtor_country\": \"UA\",\n" +
+                "            \"debtor_alias\": \"380933933333\",\n" +
                 "            \"requested_amount\": 100,\n" +
                 "            \"requested_amount_currency\": \"UAH\",\n" +
                 "            \"end_to_end_id\": \"RFPid0001\"\n" +

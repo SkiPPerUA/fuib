@@ -2,8 +2,11 @@ package org.example.qaTransactionTeam;
 
 import org.apache.log4j.Logger;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+
 import java.lang.reflect.Method;
 
+//@Listeners(ReportListener.class)
 abstract public class BaseTest {
     protected static Logger logger = Logger.getLogger("Test");
 
