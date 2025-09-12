@@ -14,8 +14,8 @@ public class MobyPayTests extends BaseTest {
     @Test
     public void transHoldWith3ds() throws IOException {
         String payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
-                "              \"expire\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.expire) +"\"";
+                "\t\t\t\t\t\t  \"pan\": \"5355280030388118\",\n" +
+                "              \"expire\": \"2907\"";
         MobyTrans trans = new MobyTrans("100",payer,false,2);
         trans.status();
 //        trans.complete_hold("100");
@@ -93,5 +93,14 @@ public class MobyPayTests extends BaseTest {
         }
         trans.complete_hold("1000");
         logFinishTest("transHoldWithout3dsAGP");
+    }
+
+    @Test
+    public void hiddenFrame(){
+        String id = "1d8f9c1f-402a-445f-872e-41811a8131cb";
+        String three_data = "eyJ0aHJlZURTU2VydmVyVHJhbnNJRCI6IjE2NDRlZTUwLThkN2QtNDFmMC05MGFkLTdjYTUxZDIyOGYwYyJ9";
+        MobyTrans trans = new MobyTrans();
+        trans.threeDs_complete(id,three_data);
+        trans.status(id);
     }
 }

@@ -12,7 +12,7 @@ public class Wine extends Restful {
     private final Logger logger = Logger.getLogger(Wine.class);
     Apiman token = new Apiman("EKB", "manager");
 
-    public void getClient(String client_id) {
+    public void getClient(String ekb_id) {
         logger.info("Get client info from EKB");
         request(given()
                 .headers("Authorization", "Bearer " + token.getToken())
@@ -24,7 +24,7 @@ public class Wine extends Restful {
                 .queryParams("is_aml_beneficials", "true")
                 .queryParams("is_aml_stockholders", "true")
                 .queryParams("param_codes", "Education,educatinst,ChildrenNumber,Segment_FIZ")
-                .queryParams("wb_client_id", client_id)
+                .queryParams("wb_client_id", ekb_id)
                 .get("https://core-dbgate.test-fuib.com/wine/v2/retail-customers")
         );
     }

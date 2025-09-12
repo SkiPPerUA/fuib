@@ -170,7 +170,8 @@ class MobyPayTrans {
         logger.info("Регистрация транзакции - "+response);
         JSONObject ob = new JSONObject(response);
         id = ob.getString("id");
-        if (ob.getString("status").equals("PENDING")) {
+        System.out.println(id);
+        if (ob.getString("status").equals("PENDING") && !ob.getJSONObject("threed").getString("mode").equals("iframe-hidden")) {
             createIFramePereq(ob.getJSONObject("threed").getString("acs_url"), ob.getJSONObject("threed").getString("c_req"));
             //Ожидание прохождения 3дс
             try {
@@ -190,6 +191,8 @@ class MobyPayTrans {
             } catch (InterruptedException e) {
                 logger.error(e);
             }
+        }else if (ob.getString("status").equals("PENDING") && ob.getJSONObject("threed").getString("mode").equals("iframe-hidden")){
+            createHiddenIFrame(ob.getJSONObject("threed").getString("acs_url"), ob.getJSONObject("threed").getString("tds_method_data"));
         }
     }
 
@@ -364,6 +367,22 @@ class MobyPayTrans {
         return response;
     }
 
+    private void createHiddenIFrame(String url,String tds_method_data) throws IOException {
+        String htmlpareq = "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n" +
+                "<html>\n" +
+                "<body onload=\"document.getElementById('acs').submit()\">\n" +
+                "<iframe name=\"area\" width=\"0\" height=\"0\" border=\"0\"></iframe>\n" +
+                "<form id=\"acs\" action=\""+url+"\" target=\"area\" method=\"post\">\n" +
+                "<input type=\"hidden\" id=\"threeDSMethodData\" value=\""+tds_method_data+"\" name=\"threeDSMethodData\">\n" +
+                "</form>\n" +
+                "</body>\n" +
+                "</html>";
+
+        Files.write(Paths.get("/Users/user/Documents/Тесты/hiddenFrame.html"), htmlpareq.getBytes(StandardCharsets.UTF_8));
+        Desktop desktop = Desktop.getDesktop();
+        desktop.open(new File("/Users/user/Documents/Тесты/hiddenFrame.html"));
+    }
+
     private void createIFramePereq(String url,String pareq) throws IOException {
         if(threeDS==1) {
             String htmlpareq = "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n" +
@@ -396,6 +415,23 @@ class MobyPayTrans {
             Desktop desktop = Desktop.getDesktop();
             desktop.open(new File("/Users/user/Documents/Тесты/creq.html"));
         }
+    }
+
+    public void threeDs_complete(String id, String threed_data){
+        logger.info("sdds");
+        response = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token.getToken())
+                .body("{\n" +
+                        "  \"client_ip\": \"192.168.0.2\",\n" +
+                        "  \"threed_data\": \""+threed_data+"\"\n" +
+                        "}")
+                .when()
+                .put(Configs.PAYHUB_HOST + "/mobile-pay/transactions/" + id + "/3ds")
+                .then()
+                .statusCode(responseCode)
+                .extract().response().asString();
+        logger.info("threeDs_complete -> "+response);
     }
 
     private void complete_trans(){

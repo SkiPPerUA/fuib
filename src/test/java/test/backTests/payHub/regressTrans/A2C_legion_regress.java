@@ -172,7 +172,7 @@ public class A2C_legion_regress extends BaseTest {
     public void positiveTest_crossborder(){
         A2C_legion a2C_legion = new A2C_legion(new Trans_token_payhub(6241781));
         a2C_legion.initTransfers("{\n" +
-                "    \"amount\": 900,\n" +
+                "    \"amount\": 1000,\n" +
                 "    \"service\": \"crossborder_direct\",\n" +
                 "    \"currency\": \"USD\",\n" +
                 "    \"description\": \"test\",\n" +

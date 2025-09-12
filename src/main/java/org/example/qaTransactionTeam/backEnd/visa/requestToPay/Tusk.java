@@ -7,7 +7,10 @@ import org.apache.log4j.Logger;
 import org.example.qaTransactionTeam.backEnd.helper.Uuid_helper;
 import org.example.qaTransactionTeam.backEnd.token.Auth_token;
 import org.example.qaTransactionTeam.backEnd.token.Trans_token_payhub;
+import org.example.qaTransactionTeam.backEnd.utils.RabbitMQ_http;
 import org.example.qaTransactionTeam.backEnd.utils.Restful;
+
+import java.util.Random;
 
 import static io.restassured.RestAssured.given;
 
@@ -29,12 +32,59 @@ public class Tusk extends Restful {
     public void init(String body){
         logger.info("init");
         request(requestSpecification
-                .header("key_id", "test")
-                .header("code", "test")
+                .header("X-Request-Affinity", "YY"+String.valueOf(new Random().nextLong()).substring(1,14)+"YY")
                 .body(body).when().post(token.getHost()+"/outbounds/visa-req2pay-outbounds/initiates"));
 //        if (response.then().extract().statusCode() == 201){
 //            payment_request_id = response.then().extract().jsonPath().getString("payment_requests.payment_request_id").replace("[","").replace("]","");
 //            end_to_end_id = response.then().extract().jsonPath().getString("payment_requests.end_to_end_id").replace("[","").replace("]","");
 //        }
     }
+
+    public void tags(String body){
+        logger.info("tags");
+        request(requestSpecification.body(body).when().post(token.getHost()+"/outbounds/visa-req2pay-outbounds/transactions/tags"));
+    }
+
+    public void refunds(String original_payment_request_id, String body){
+        logger.info("refunds");
+        request(requestSpecification
+                .header("X-Request-Affinity", "YY"+String.valueOf(new Random().nextLong()).substring(1,14)+"YY")
+                .header("original_payment_request_id", original_payment_request_id)
+                .body(body).when().post(token.getHost()+"/outbounds/visa-req2pay-outbounds/"+original_payment_request_id+"/refunds"));
+    }
+
+    public void cancels(String payment_request_id, String body){
+        logger.info("cancels");
+        request(requestSpecification
+                .header("X-Request-Affinity", "YY"+String.valueOf(new Random().nextLong()).substring(1,14)+"YY")
+                .header("payment_request_id", payment_request_id)
+                .body(body).when().patch(token.getHost()+"/outbounds/visa-req2pay-outbounds/"+payment_request_id+"/cancels"));
+    }
+
+    public void confirms(String payment_request_id, String body){
+        logger.info("confirms");
+        request(requestSpecification
+                .header("X-Request-Affinity", "YY"+String.valueOf(new Random().nextLong()).substring(1,14)+"YY")
+                .header("payment_request_id", payment_request_id)
+                .body(body).when().patch(token.getHost()+"/outbounds/visa-req2pay-outbounds/"+payment_request_id+"/confirms"));
+    }
+
+    public void amends(String payment_request_id, String body){
+        logger.info("amends");
+        request(requestSpecification
+                .header("X-Request-Affinity", "YY"+String.valueOf(new Random().nextLong()).substring(1,14)+"YY")
+                .header("payment_request_id", payment_request_id)
+                .body(body).when().patch(token.getHost()+"/outbounds/visa-req2pay-outbounds/"+payment_request_id+"/amends"));
+    }
+
+    public void notifications(String body){
+        logger.info("notifications");
+        request(requestSpecification.body(body).when().post(token.getHost()+"/outbounds/visa-req2pay-outbounds/notifications"));
+    }
+
+    public void getCardNumberByCardId(String card_id){
+        RabbitMQ_http rabbitMQHttp = new RabbitMQ_http("getCardNumberByCardId","Cards:input");
+        rabbitMQHttp.sendHttp("{\"card_id\":\""+card_id+"\"}");
+    }
+
 }

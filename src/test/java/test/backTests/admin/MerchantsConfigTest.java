@@ -264,4 +264,94 @@ public class MerchantsConfigTest extends BaseTest {
                 "  \"point_type\": \"POS\"\n" +
                 "}");
     }
+
+    public void positive_testPhone(){
+        configs.setExpectedResponseCode(200);
+        for (int i = 0; i < 10; i++){
+            configs.createAdmins("{\n" +
+                    "  \"msisdn\": \"3809"+i+"7654321\",\n" +
+                    "  \"client_id\": \"2186b853-23a8-440b-9f0f-2f8ea1cf8885\",\n" +
+                    "  \"merchant_id\": \"c14b8a88-56e4-4582-9e2b-d4886083c051\",\n" +
+                    "  \"email\": \"Vladyslav.Savchuk@valuetek.com.ua\",\n" +
+                    "  \"login\": \""+Uuid_helper.generate_uuid()+"\",\n" +
+                    "  \"roles\": {\"acquiring\": [], \"smart_pay\": []},\n" +
+                    "  \"instructions\": [\"acquiring\"]\n" +
+                    "}");
+        }
+
+        for (int i = 1; i < 10; i++){
+            configs.createAdmins("{\n" +
+                    "  \"msisdn\": \"380"+i+"17654321\",\n" +
+                    "  \"client_id\": \"2186b853-23a8-440b-9f0f-2f8ea1cf8885\",\n" +
+                    "  \"merchant_id\": \"c14b8a88-56e4-4582-9e2b-d4886083c051\",\n" +
+                    "  \"email\": \"Vladyslav.Savchuk@valuetek.com.ua\",\n" +
+                    "  \"login\": \""+Uuid_helper.generate_uuid()+"\",\n" +
+                    "  \"roles\": {\"acquiring\": [], \"smart_pay\": []},\n" +
+                    "  \"instructions\": [\"acquiring\"]\n" +
+                    "}");
+        }
+    }
+
+    public void negative_testPhone(){
+        configs.setExpectedResponseCode(400);
+        for (int i = 1; i < 10; i++){
+            configs.createAdmins("{\n" +
+                    "  \"msisdn\": \"38"+i+"117654321\",\n" +
+                    "  \"client_id\": \"2186b853-23a8-440b-9f0f-2f8ea1cf8885\",\n" +
+                    "  \"merchant_id\": \"c14b8a88-56e4-4582-9e2b-d4886083c051\",\n" +
+                    "  \"email\": \"Vladyslav.Savchuk@valuetek.com.ua\",\n" +
+                    "  \"login\": \""+Uuid_helper.generate_uuid()+"\",\n" +
+                    "  \"roles\": {\"acquiring\": [], \"smart_pay\": []},\n" +
+                    "  \"instructions\": [\"acquiring\"]\n" +
+                    "}");
+        }
+
+        for (int i = 1; i < 10; i++){
+            if (i != 8){
+                configs.createAdmins("{\n" +
+                        "  \"msisdn\": \"3"+i+"0117654321\",\n" +
+                        "  \"client_id\": \"2186b853-23a8-440b-9f0f-2f8ea1cf8885\",\n" +
+                        "  \"merchant_id\": \"c14b8a88-56e4-4582-9e2b-d4886083c051\",\n" +
+                        "  \"email\": \"Vladyslav.Savchuk@valuetek.com.ua\",\n" +
+                        "  \"login\": \""+Uuid_helper.generate_uuid()+"\",\n" +
+                        "  \"roles\": {\"acquiring\": [], \"smart_pay\": []},\n" +
+                        "  \"instructions\": [\"acquiring\"]\n" +
+                        "}");
+            }
+        }
+
+        for (int i = 1; i < 10; i++){
+            if (i != 3){
+                configs.createAdmins("{\n" +
+                        "  \"msisdn\": \""+i+"80117654321\",\n" +
+                        "  \"client_id\": \"2186b853-23a8-440b-9f0f-2f8ea1cf8885\",\n" +
+                        "  \"merchant_id\": \"c14b8a88-56e4-4582-9e2b-d4886083c051\",\n" +
+                        "  \"email\": \"Vladyslav.Savchuk@valuetek.com.ua\",\n" +
+                        "  \"login\": \""+Uuid_helper.generate_uuid()+"\",\n" +
+                        "  \"roles\": {\"acquiring\": [], \"smart_pay\": []},\n" +
+                        "  \"instructions\": [\"acquiring\"]\n" +
+                        "}");
+            }
+        }
+
+        configs.createAdmins("{\n" +
+                "  \"msisdn\": \"3809376543213\",\n" +
+                "  \"client_id\": \"2186b853-23a8-440b-9f0f-2f8ea1cf8885\",\n" +
+                "  \"merchant_id\": \"c14b8a88-56e4-4582-9e2b-d4886083c051\",\n" +
+                "  \"email\": \"Vladyslav.Savchuk@valuetek.com.ua\",\n" +
+                "  \"login\": \""+Uuid_helper.generate_uuid()+"\",\n" +
+                "  \"roles\": {\"acquiring\": [], \"smart_pay\": []},\n" +
+                "  \"instructions\": [\"acquiring\"]\n" +
+                "}");
+
+        configs.createAdmins("{\n" +
+                "  \"msisdn\": \"38093765432\",\n" +
+                "  \"client_id\": \"2186b853-23a8-440b-9f0f-2f8ea1cf8885\",\n" +
+                "  \"merchant_id\": \"c14b8a88-56e4-4582-9e2b-d4886083c051\",\n" +
+                "  \"email\": \"Vladyslav.Savchuk@valuetek.com.ua\",\n" +
+                "  \"login\": \""+Uuid_helper.generate_uuid()+"\",\n" +
+                "  \"roles\": {\"acquiring\": [], \"smart_pay\": []},\n" +
+                "  \"instructions\": [\"acquiring\"]\n" +
+                "}");
+    }
 }

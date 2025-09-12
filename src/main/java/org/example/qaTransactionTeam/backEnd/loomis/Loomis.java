@@ -3,6 +3,7 @@ package org.example.qaTransactionTeam.backEnd.loomis;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.log4j.Logger;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import org.example.qaTransactionTeam.backEnd.utils.Restful;
 
 import static io.restassured.RestAssured.given;
@@ -20,6 +21,6 @@ public class Loomis extends Restful {
                 .contentType(ContentType.JSON)
                 .body(body)
                 .when()
-                .post("https://innsmouth.test-fuib.com/loomis/get-recipients"));
+                .post(Configs.PAYHUB_HOST +"/loomis/v1/a2c-direct-transfers/recepient-details"));
     }
 }

@@ -16,7 +16,7 @@ public class A2Aregress extends BaseTest {
     public void positiveTest(){
                 new A2A("{\n" +
                         "    \"service\": \"internal_fuib_uah\",\n" +
-                        "    \"amount\": 991,\n" +
+                        "    \"amount\": 200,\n" +
                         "    \"fee_amount\": 12,\n" +
                         "    \"currency\": \"UAH\",\n" +
                         "    \"description\": \"test\",\n" +
@@ -79,7 +79,7 @@ public class A2Aregress extends BaseTest {
        a2a.setToken(new Trans_token_payhub(6241781));
        a2a.setBodyRequest("{\n" +
                "    \"service\": \"own_fuib\",\n" +
-               "    \"amount\": 100,\n" +
+               "    \"amount\": 1000,\n" +
                "    \"fee_amount\": 100,\n" +
                "    \"currency\": \"UAH\",\n" +
                "    \"purpose\": \"own_fuib\",\n" +

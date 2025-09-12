@@ -64,20 +64,25 @@ public class AndrewGarner extends Restful {
     }
 
     public void confirm(String body){
+        confirm(payment_request_id,body);
+    }
+
+    public void confirm(String payment_request_id, String body){
         logger.info("confirm -> "+payment_request_id);
         request(given()
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer "+token.getToken())
-                .header("X-Flow-ID", Uuid_helper.generate_uuid())
-                .header("X-Systemcode",Uuid_helper.generate_uuid()).header("x-request-affinity",payment_request_id).body(body).log().all()
-                .when().patch(env+"visa-req2pay-inbounds/"+payment_request_id+"/confirms"));
-
-        System.out.println(response.then().extract().headers().asList());
+                .header("x-flow-id", Uuid_helper.generate_uuid())
+                .header("x-systemcode","payhub")
+                .header("x-request-affinity",payment_request_id+"01")
+                .body(body).when().patch(env+"visa-req2pay-inbounds/"+payment_request_id+"/confirms"));
     }
 
     public void cancel(String payment_request_id, String body){
-        logger.info("confirm -> "+payment_request_id);
-        request(requestSpecification.body(body).when().patch(env+"visa-req2pay-inbounds/"+payment_request_id+"/cancels"));
+        logger.info("cancel -> "+payment_request_id);
+        request(requestSpecification
+                .header("x-request-affinity",payment_request_id+"01")
+                .body(body).when().patch(env+"visa-req2pay-inbounds/"+payment_request_id+"/cancels"));
     }
 
     public void retrieves(String body){

@@ -49,7 +49,7 @@ public class TestAuthBankPartner {
                         "  \"device_id\": \"000000245811\"\n" +
                         "}")
                 .when()
-                .post("http://localhost:8140/v1/authenticationRequests")
+                .post("http://localhost:8182/v1/authenticationRequests")
                 .then()
                 .statusCode(200)
                 .extract()

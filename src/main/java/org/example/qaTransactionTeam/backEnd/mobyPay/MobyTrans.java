@@ -22,4 +22,6 @@ public class MobyTrans extends MobyPayTrans{
         makeTrans(body,threeDS);
     }
 
+    public MobyTrans(){}
+
 }

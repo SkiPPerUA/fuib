@@ -3,18 +3,22 @@ package org.example.qaTransactionTeam.backEnd.payHub;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.log4j.Logger;
+import org.example.qaTransactionTeam.backEnd.utils.Restful;
+
 import static io.restassured.RestAssured.given;
 
-public class Donation {
+public class Donation extends Restful {
 
     protected static final Logger logger = Logger.getLogger(Donation.class);
     private String response;
-    //private String host = "https://innsmouth.test-fuib.com";
-    private String host = "https://innsmouth.payhub.com.ua";
+    private String host = "https://innsmouth.stage-fuib.com";
+
+    public Donation(){
+        RestAssured.useRelaxedHTTPSValidation();
+    }
 
     public void createDonat(String body) {
-
-        RestAssured.useRelaxedHTTPSValidation();
+        logger.info("Создание Donate");
         response = given()
                 .contentType(ContentType.JSON)
                 .header("x-flow-id", "test")
@@ -26,8 +30,15 @@ public class Donation {
                 .statusCode(200)
                 .extract()
                 .response().asString();
+    }
 
-        logger.info("Создание Donate - " + response);
+    public void getReceiptData(String donation_id){
+        request(given()
+                .contentType(ContentType.JSON)
+                .header("x-flow-id", "test")
+                .header("Authorization", "Bearer test")
+                .when()
+                .get(host + "/frames/donations/"+donation_id+"/receipts"));
     }
 
 }

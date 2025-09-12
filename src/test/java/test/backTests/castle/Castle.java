@@ -20,7 +20,7 @@ public class Castle {
 //            //castle_getLimit("NBU_Memo_Stat"); //NBU_A2CSBRD_Stat  NBU_Transfer_Stat  NBU_Memo_Stat
 //        });
 //        castle_add("120");
-        castle_confirm("500","failed");
+          castle_confirm("50","failed");
 //        castle_getLimit("NBU_Memo_Stat");
 //        castle_getLimit("NBU_Transfer_Stat");//NBU_A2CSBRD_Stat  NBU_Transfer_Stat  NBU_Memo_Stat
 
@@ -37,6 +37,8 @@ public class Castle {
                 "            \"payer_client_id\": \"1299125\"," +
                 "            \"receiver_value\": \"537541******5988\"," +
                 "            \"receiver_source\": \"PAN\"," +
+                //"            \"tpp_registration_number\": \"tpp_registration_number\"," +
+                //"            \"resource_id\": \"resource_id\"," +
                 "            \"card_payhub_atm\": "+amount+"," +
                 "            \"ip\": \"2.22.90.51\"," +
                 "            \"client_id\": \""+client_id+"\"," + //2189387   544881

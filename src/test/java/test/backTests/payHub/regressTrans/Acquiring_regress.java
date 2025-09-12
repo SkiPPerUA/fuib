@@ -25,7 +25,7 @@ public class Acquiring_regress extends BaseTest {
                 "         \"requirements\":[" +
                 "               {\n" +
                 "      \"recipient\":{\n" +
-                "         \"first_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakф\",\n" +
+                "         \"first_name\":\"TESTTESTTEST\",\n" +
                 "         \"last_name\":\"jkasdfjkdsfnakjdsfnakdjsfnksajdfnsadkjfnaksjdnfakк\",\n" +
                 "         \"amount\":\"1212\",\n" +
                 "         \"account_number\":\"UA953348510000026201112609803\"\n" +
@@ -43,15 +43,15 @@ public class Acquiring_regress extends BaseTest {
                 "         \"independent_sales_organization_id\":\"3016715233\"\n" +
                 "      }\n" +
                 "      }]},\n" +
-                "    \"hold\": true,\n" +
+                "    \"hold\": false,\n" +
                 "    \"short_description\": \"Заказ "+Time_helper.current_time()+"\",\n" +
                 "    \"return_url\": \"https://innsmouth.payhub.com.ua\",\n" +
                 "    \"client_ip\":  \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"," +
                 "    \"3ds2_supported\": true";
         trans = new AcquiringTrans(body);
         trans.status();
-        trans.complete_hold(100);
-        trans.status();
+//        trans.complete_hold(100);
+//        trans.status();
         Assert.assertEquals(new JSONObject(trans.getResponse()).getString("status"),"PROCESSED");
     }
 
