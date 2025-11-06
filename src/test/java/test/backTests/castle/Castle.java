@@ -81,4 +81,11 @@ public class Castle {
                 "    ]" +
                 "}");
     }
+
+    public void castle_setCardToken() {
+        RabbitMQ_http rabbitMQHttp = new RabbitMQ_http("SetCardToken","Castle:input");
+        rabbitMQHttp.sendHttp("{" +
+                "\"card_token\":\"?C977C2KLVC0QW9W\"" +
+                "}");
+    }
 }

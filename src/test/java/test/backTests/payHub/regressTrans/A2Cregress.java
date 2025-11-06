@@ -17,12 +17,18 @@ public class A2Cregress extends BaseTest {
     int sleep = 15000;
     Transaction a2c;
 
-    @Test
+    @Test(invocationCount = 1)
     public void testA2CPanOnlyMandatoryFields() throws JSONException, InterruptedException {
-            String body = "\"amount\": 100,\n" +
+            String body = "\"amount\": 130,\n" +
                     "    \"currency\": \"UAH\",\n" +
                     "    \"client_ip\": \"0.1.1.4\",\n" +
                     "    \"description\": \"description_тест\", \n" +
+                    "    \"authentication\":{\n" +
+                    "      \"device_id\":\"device_idVladTest\",\n" +
+                    "      \"session_id\":\"idVladTest\",\n" +
+                    "      \"ip\":\"79.110.129.18\",\n" +
+                    "      \"event_type\":\"APP_A2C\"\n" +
+                    "   }," +
                     "    \"destination\": \"test21312\",\n" +
                     "    \"identification\": {\n" +
                     "         \"requirements\":{\n" +
@@ -33,6 +39,16 @@ public class A2Cregress extends BaseTest {
                     "             \"sender\":{\n" +
                     "                 \"first_name\":\"IvanSender\",\n" +
                     "                 \"last_name\":\"IvanovSender\",\n" +
+                    "                 \"account_number\":\"UA953348510000026201112609803\",\n" +
+                    "                 \"city\":\"City\",\n" +
+                    "                 \"postal_code\":\"423214\",\n" +
+                    "                 \"address\":\"address\",\n" +
+                    "                 \"country\":\"Country\",\n" +
+                    "                 \"tax_id\":\"3032411164\",\n" +
+                    "                 \"document_number\":\"111111\",\n" +
+                    "                 \"document_type\":\"01\",\n" +
+                    "                 \"birthday\":\"10-10-1992\",\n" +
+                    "                 \"reference_number\":\"1111111111111111\",\n" +
                     "                 \"account_number\":\"UA953348510000026201112609803\"\n" +
                     "              },\n" +
                     "      \"details\":{\n" +
@@ -53,7 +69,7 @@ public class A2Cregress extends BaseTest {
                     "    }," +
                     "    \"receiver\": {\n" +
                     "        \"source\": \"PAN\",\n" +
-                    "        \"value\": \"" + Cards_data.getData(Card.FUIB_MC, Card_param.pan) + "\"\n" +
+                    "        \"value\": \"" + Cards_data.getData(Card.PROSTIR, Card_param.pan) + "\"\n" +
                     "    }";
 
             a2c = new A2C(body);

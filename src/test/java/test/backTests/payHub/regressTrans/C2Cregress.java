@@ -28,12 +28,18 @@ public class C2Cregress extends BaseTest {
                 "    \"commission\": 0,\n" +
                 "    \"client_ip\": \"0.1.1.4\",\n" +
                 "    \"currency\": 980,\n" +
+                "    \"authentication\":{\n" +
+                "      \"device_id\":\"device_idVladTest\",\n" +
+                "      \"session_id\":\"idVladTest\",\n" +
+                "      \"ip\":\"79.110.129.18\",\n" +
+                "      \"event_type\":\"APP_A2C\"\n" +
+                "   }," +
                 "    \"description\": \"description\",\n" +
                 Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_MC))+","+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"iban\": \"UA973348510100026201112609802\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.MONO_VISA,Card_param.pan)+"\"\n" +
+                //"        \"iban\": \"UA973348510100026201112609802\",\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.PROSTIR,Card_param.pan)+"\"\n" +
                 "    },\n" +
                 ThreeDS.threeDS_2_2_0;
 

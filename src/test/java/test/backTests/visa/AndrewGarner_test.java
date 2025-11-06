@@ -13,6 +13,7 @@ public class AndrewGarner_test extends BaseTest {
 
     AndrewGarner andrewGarner = new AndrewGarner();
 
+    //@Test(invocationCount = 10)
     public void positive_init(){
         andrewGarner.setExpectedResponseCode(201);
         andrewGarner.init("{\n" +
@@ -28,7 +29,7 @@ public class AndrewGarner_test extends BaseTest {
                 "            \"debtor_last_name\": \"P.\",\n" +
                 "            \"debtor_agent_country\": \"UA\",\n" +
                 "            \"debtor_country\": \"UA\",\n" +
-                "            \"requested_amount\": 126,\n" +
+                "            \"requested_amount\": 129,\n" +
                 "            \"requested_amount_currency\": \"UAH\",\n" +
                 "            \"end_to_end_id\": \""+Uuid_helper.generate_uuid4()+"\",\n" +
                 "            \"debtor_agent_id\": \"38042668479\",\n" +
@@ -38,12 +39,12 @@ public class AndrewGarner_test extends BaseTest {
 //                "   \"request_options\": {" +
 //                "            \"reminder_schedule\": [\"2025-09-10T07:30:47Z\",\"2025-09-11T09:30:47Z\",\"2025-09-12T09:30:47Z\"]\n" +
 //                "    },"+
-                //"    \"due_date\": \"2025-09-09\",\n" +
+                "    \"due_date\": \"2025-11-02\",\n" +
                 "    \"request_message_id\": \""+ Uuid_helper.generate_uuid4() +"\",\n" +
                 "    \"settlement_options\": [\n" +
                 "        {\n" +
                 "            \"settlement_system\": \"VISA_DIRECT\",\n" + //VISA_DIRECT  MASTERCARD
-                "            \"primary_account_number\": \""+ Cards_data.getData(Card.MONO_VISA, Card_param.pan) +"\"\n" +
+                "            \"primary_account_number\": \"4123640008041110\"\n" +
                 "        }\n" +
                 "    ],\n" +
                 "    \"creditor\": {\n" +
@@ -53,7 +54,7 @@ public class AndrewGarner_test extends BaseTest {
                 "        \"creditor_alias\": \"+380665767084\",\n" +
                 "        \"creditor_last_name\": \"P.\",\n" +
                 "        \"creditor_alias_type\": \"MOBL\",\n" +
-                "        \"creditor_id\": \"VD10512717\",\n" +
+                "        \"creditor_id\": \"VD10512767\",\n" +
                 "        \"creditor_id_type\": \"AGENT\",\n" +
                 "        \"creditor_first_name\": \"Oleksandr\"\n" +
                 "    },\n" +
@@ -95,7 +96,8 @@ public class AndrewGarner_test extends BaseTest {
     }
 
     public void positive_retrieve(){
-        andrewGarner.retrieve("");
+        positive_init();
+        andrewGarner.retrieve(andrewGarner.getPayment_request_id());
     }
 
     public void positive_amend(){
@@ -106,7 +108,7 @@ public class AndrewGarner_test extends BaseTest {
                 "    \"message\": \"For lunch\",\n" +
                 "    \"unicode_emoji\": \"U+1F382\"\n" +
                 "  },\n" +
-                "  \"due_date\": \"2025-10-10\",\n" +
+                "  \"due_date\": \"2025-12-10\",\n" +
                 "  \"request_message_id\": \"GL"+Uuid_helper.generate_uuid4()+"\",\n" +
 //                "  \"settlement_options\": [\n" +
 //                "    {\n" +
@@ -116,9 +118,9 @@ public class AndrewGarner_test extends BaseTest {
 //                "  ],\n" +
                 "  \"request_options\": {\n" +
                 "    \"reminder_schedule\": [\n" +
-                "      \"2025-09-30T09:30:47Z\",\n" +
-                "      \"2025-09-12T11:22:33Z\",\n" +
-                "      \"2025-09-11T11:45:13Z\"\n" +
+                "      \"2025-11-30T09:30:47Z\",\n" +
+                "      \"2025-11-12T11:22:33Z\",\n" +
+                "      \"2025-11-11T11:45:13Z\"\n" +
                 "    ]\n" +
                 "  },\n" +
                 "  \"payment_request\": {\n" +
@@ -146,12 +148,13 @@ public class AndrewGarner_test extends BaseTest {
     public void positive_confirm(){
         positive_init();
         andrewGarner.setExpectedResponseCode(200);
-        andrewGarner.confirm("{\n" +
-                "  \"status_reason\": \"RJ03\",\n" +
-                "  \"transaction_status\": \"RJCT\",\n" +
-                "  \"payment_request_id\": \""+andrewGarner.getPayment_request_id()+"\",\n" +
-                "  \"request_message_id\": \"YU"+Uuid_helper.generate_uuid4()+"\",\n" +
-//                "   \"accepted_amount\": 124,\n" +
+        for (int i = 0; i < 1; i++) {
+            andrewGarner.confirm("{\n" +
+                    "  \"status_reason\": \"RJ03\",\n" +      //PD03   RJ03  CN01
+                    "  \"transaction_status\": \"RJCT\",\n" + //PDNG   RJCT  CNCL
+                    "  \"payment_request_id\": \"" + andrewGarner.getPayment_request_id() + "\",\n" +
+                    "  \"request_message_id\": \"YU" + Uuid_helper.generate_uuid4() + "\",\n" +
+//                "   \"accepted_amount\": 129,\n" +
 //                "   \"accepted_amount_currency\": \"UAH\",\n" +
 //                "   \"settlement_details\":{\n" +
 //                "      \"creditor_account_detail\":{\n" +
@@ -160,12 +163,13 @@ public class AndrewGarner_test extends BaseTest {
 //                "      \"settlement_system\":\"MASTERCARD\",\n" +
 //                "      \"settled_amount_currency\":\"UAH\",\n" +
 //                "      \"settlement_system_reference_id\":\"VIP1234567890\",\n" +
-//                "      \"settled_amount\":124\n" +
+//                "      \"settled_amount\":129\n" +
 //                "   },\n" +
-                //"  \"message\": \"Rejected by Payer\",\n" +
-                "  \"end_to_end_id\": \""+andrewGarner.getEnd_to_end_id()+"\",\n" +
-                "  \"creation_date_time\": \"2020-12-17T09:30:47Z\"\n" +
-                "}");
+                    "  \"message\": \"Rejected by Payer\",\n" +
+                    "  \"end_to_end_id\": \"" + andrewGarner.getEnd_to_end_id() + "\",\n" +
+                    "  \"creation_date_time\": \"2020-12-17T09:30:47Z\"\n" +
+                    "}");
+        }
     }
 
     public void positive_cancel(){
@@ -200,7 +204,7 @@ public class AndrewGarner_test extends BaseTest {
 
     public void positive_removeBlock(){
         andrewGarner.removeBlock("","{\n" +
-                "  \"debtor_id\": \"VD10512712\",\n" +
+                "  \"debtor_id\": \"13322877\",\n" +
                 "  \"debtor_id_type\": \"AGENT\",\n" +
                 "  \"debtor_agent_id\": \"38042668479\",\n" +
                 "  \"creation_date_time\": \"2020-12-17T09:30:47Z\",\n" +

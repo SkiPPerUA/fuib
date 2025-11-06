@@ -12,15 +12,21 @@ import java.io.IOException;
 public class MobyPayTests extends BaseTest {
 
     @Test
-    public void transHoldWith3ds() throws IOException {
+    public void transHoldWith3ds() throws IOException, InterruptedException {
         String payer = "\"source\": \"GOOGLE_PAN\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \"5355280030388118\",\n" +
-                "              \"expire\": \"2907\"";
-        MobyTrans trans = new MobyTrans("100",payer,false,2);
+                "\t\t\t\t\t\t  \"pan\": \""+Cards_data.getData(Card.FUIB_VISA,Card_param.pan)+"\",\n" +
+                "              \"expire\": \""+Cards_data.getData(Card.FUIB_VISA,Card_param.expire)+"\"";
+        MobyTrans trans = new MobyTrans("100",payer,true,2);
         trans.status();
-//        trans.complete_hold("100");
+        trans.complete_hold("100");
+        trans.status();
+        //System.out.println("ggggg");
+        //Thread.sleep(20000);
+        //trans.refund("100");
+//        trans.refund("30");
+//        trans.refund("20");
 //        trans.complete_hold("101");
-//        trans.status();
+        //trans.status();
     }
 
     @Test
@@ -42,11 +48,11 @@ public class MobyPayTests extends BaseTest {
     public void transHoldWithout3dsCraptogram() {
         logStartTest("transHoldWithout3dsCraptogram");
         String payer = "\"source\": \"APPLE_CRYPTOGRAM\",\n" +
-                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.MONO_VISA, Card_param.pan) +"\",\n" +
+                "\t\t\t\t\t\t  \"pan\": \""+ Cards_data.getData(Card.FUIB_MC, Card_param.pan) +"\",\n" +
                 "\t\t\t\t\t\t  \"cryptogram\": \"AHAzQmvcgxILAAKhssPUAAADFA==\",\n" +
                 "              \"expire\": \"2602\"";
         MobyTrans trans = new MobyTrans("1000",payer,false);
-//        trans.complete_hold("1000");
+        trans.complete_hold("1000");
 //        trans.refund("150");
 //        trans.refund("250");
         trans.status();
@@ -87,7 +93,7 @@ public class MobyPayTests extends BaseTest {
                 "       \"expire\": \"2512\"";
         MobyTrans trans = null;
         try {
-            trans = new MobyTrans("1000",payer,true, 2);
+            trans = new MobyTrans("1000",payer,false, 2);
         } catch (IOException e) {
             e.printStackTrace();
         }

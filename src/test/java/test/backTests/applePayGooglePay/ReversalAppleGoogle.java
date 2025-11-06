@@ -35,7 +35,7 @@ public class ReversalAppleGoogle extends BaseTest {
         logStartTest("positiveReversalAfterRegister");
 
         AppleGooglePay pay = new AppleGooglePay();
-        //pay.register(body,0);
+        pay.register(body);
         AppleGoogleReversalRefund reversal = new AppleGoogleReversalRefund();
         reversal.reversal(pay.getSessionId(),String.valueOf(amount));
 
@@ -69,7 +69,7 @@ public class ReversalAppleGoogle extends BaseTest {
         logStartTest("positiveReversalAfterFinalize");
 
         AppleGooglePay pay = new AppleGooglePay();
-        //pay.register(body,0);
+        pay.register(body);
         pay.finish(String.valueOf(amount));
         AppleGoogleReversalRefund reversal = new AppleGoogleReversalRefund();
         reversal.reversal(pay.getSessionId(),String.valueOf(amount));

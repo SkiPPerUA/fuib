@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 public class AppleGooglePay {
 
     private static final Logger logger = Logger.getLogger(AppleGooglePay.class);
-    protected Trans_token_itm createToken;
+    protected Trans_token_itm createToken = new Trans_token_itm();
     private Response response;
     protected int statusCode = 200;
     protected String sessionId;
@@ -24,7 +24,6 @@ public class AppleGooglePay {
     private final String host = "https://tsystestapi.pumb.ua";
 
     public void register(String body) throws JSONException {
-        System.out.println(body);
         response = given()
                 .header("Token", createToken.getToken())
                 .header("x-forwarded-for","127.0.0.1")

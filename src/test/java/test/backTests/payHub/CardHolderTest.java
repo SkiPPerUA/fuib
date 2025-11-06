@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Test
 public class CardHolderTest extends BaseTest {
 
     CardHolder cardHolder = new CardHolder();
@@ -131,6 +132,30 @@ public class CardHolderTest extends BaseTest {
                 "}";
         cardHolder.full_details(body);
 
+    }
+
+    public void positive_details(){
+        cardHolder.setExpectedResponseCode(200);
+        cardHolder.details(Cards_data.getData(Card.FUIB_MC,Card_param.pan));
+        JSONObject json = new JSONObject(cardHolder.getResponse());
+        Assert.assertEquals(json.getString("first_name"),"Владислав");
+        Assert.assertEquals(json.getString("last_name"),"Савчук");
+        Assert.assertEquals(json.getString("middle_name"),"Ігорович");
+        Assert.assertEquals(json.getString("tax_id"),"3462406450");
+        Assert.assertEquals(json.getString("iban"),"UA953348510000026201112609803");
+    }
+
+    public void negative_details(){
+        cardHolder.setExpectedResponseCode(200);
+        cardHolder.details(Cards_data.getData(Card.MONO_VISA,Card_param.pan));
+        Assert.assertFalse(cardHolder.getResponse().contains("iban"));
+
+        cardHolder.setExpectedResponseCode(400);
+        cardHolder.details("");
+        Assert.assertTrue(cardHolder.getResponse().contains("\"pan\":\"REQUIRED\""));
+
+        cardHolder.details("4321456424562446");
+        Assert.assertTrue(cardHolder.getResponse().contains("\"pan\":\"LUHN_FAILED\""));
     }
 
 }

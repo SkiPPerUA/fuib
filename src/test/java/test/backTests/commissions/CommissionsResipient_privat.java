@@ -80,7 +80,7 @@ public class CommissionsResipient_privat extends BaseTest {
         commissions.commissions_recipients("{\n" +
                 "    \"recipient\": {\n" +
                 "        \"validation_off\": true,\n" +
-                "        \"amount\": 1002,\n" +
+                "        \"amount\": 5402,\n" +
                 "        \"source\": \"IBAN\",\n" +
                 "        \"value\": \"UA523052990262026400946137195\"\n" +
                 "    }\n" +

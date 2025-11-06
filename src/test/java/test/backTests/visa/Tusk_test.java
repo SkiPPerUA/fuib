@@ -20,14 +20,15 @@ public class Tusk_test extends BaseTest {
         tusk.init("{\n" +
                 "    \"product\": \"VD\",\n" +
                 "    \"use_case\": \"P2P\",\n" +
-//                "    \"request_reason\": {\n" +
-//                "        \"message\": \"test121212\"\n" +
-//                "    },\n" +
+                "    \"request_reason\": {\n" +
+                "        \"message\": \"test121212\"\n" +
+                "    },\n" +
                 "    \"payment_requests\": [\n" +
                 "        {\n" +
                 "            \"debtor_agent_country\": \"UA\",\n" +
                 "            \"debtor_country\": \"UA\",\n" +
-                "            \"debtor_alias\": \"380665767084\",\n" +
+                "            \"debtor_type_id\": \"AGENT\",\n" +
+                "            \"debtor_alias\": \"380665767085\",\n" +
                 "            \"payment_request_id\": \"FF"+String.valueOf(new Random().nextLong()).substring(1,14)+"TT\",\n" +
                 "            \"requested_amount\": 1.25,\n" +
                 "            \"requested_amount_currency\": \"UAH\",\n" +
@@ -48,7 +49,7 @@ public class Tusk_test extends BaseTest {
                 "        \"creditor_country\": \"UA\",\n" +
                 "        \"creditor_first_name\": \"first\",\n" +
                 "        \"creditor_last_name\": \"last\",\n" +
-                "        \"creditor_alias\": \"380665767084\",\n" +
+                "        \"creditor_alias\": \"380665767085\",\n" +
                 "        \"creditor_id\": \"BL1234567890\",\n" +
                 "        \"creditor_id_type\": \"AGENT\"\n" +
                 "    },\n" +
@@ -57,6 +58,7 @@ public class Tusk_test extends BaseTest {
     }
 
     public void positive_tags(){
+        positive_init();
         tusk.setExpectedResponseCode(200);
         tusk.tags("{\n" +
                 "  \"message_event\": {\n" +
@@ -73,12 +75,13 @@ public class Tusk_test extends BaseTest {
     }
 
     public void positive_notifications(){
+        positive_init();
         tusk.setExpectedResponseCode(200);
         tusk.notifications("{\n" +
                 "  \"events\": [\n" +
                 "    {\n" +
                 "      \"event_type\": \"REJECTED\",\n" +
-                "      \"payment_request_id\": \"087e40d4a77b48359324bbf990621057\"\n" +
+                "      \"payment_request_id\": \""+tusk.getPayment_request_id()+"\"\n" +
                 "    }\n" +
                 "  ],\n" +
                 "  \"agent_id\": \"VD123445\",\n" +
@@ -88,10 +91,12 @@ public class Tusk_test extends BaseTest {
     }
 
     public void positive_confirms(){
-        tusk.confirms("FF0484304153861TT","{\n" +
+        positive_init();
+        tusk.setExpectedResponseCode(200);
+        tusk.confirms(tusk.getPayment_request_id(),"{\n" +
                 "  \"status_reason\": \"RJ02\",\n" +
                 "  \"transaction_status\": \"RJCT\",\n" +
-                "  \"accepted_amount\": 100,\n" +
+                "  \"accepted_amount\": 1.25,\n" +
                 "  \"accepted_amount_currency\": \"UAH\",\n" +
                 "  \"payment_request_id\": \"FG"+String.valueOf(new Random().nextLong()).substring(1,14)+"TT\",\n" +
                 "  \"request_message_id\": \"GG2576348185492JA\",\n" +
@@ -102,8 +107,9 @@ public class Tusk_test extends BaseTest {
     }
 
     public void positive_refunds(){
+        positive_init();
         tusk.setExpectedResponseCode(201);
-        tusk.refunds("087e40d4a77b48359324bbf990621057","{\n" +
+        tusk.refunds(tusk.getPayment_request_id(),"{\n" +
                         "    \"product\": \"VD\",\n" +
                         "    \"use_case\": \"P2P\",\n" +
                         "    \"payment_requests\": [\n" +
@@ -130,7 +136,7 @@ public class Tusk_test extends BaseTest {
                         "        \"creditor_country\": \"UA\",\n" +
                         "        \"creditor_first_name\": \"first\",\n" +
                         "        \"creditor_last_name\": \"last\",\n" +
-                        "        \"creditor_alias\": \"380665767085\",\n" +
+                        "        \"creditor_alias\": \"380665767084\",\n" +
                         "        \"creditor_id\": \"BL1234567890\",\n" +
                         "        \"creditor_id_type\": \"AGENT\"\n" +
                         "    },\n" +
@@ -139,15 +145,19 @@ public class Tusk_test extends BaseTest {
     }
 
     public void positive_cancels(){
-        tusk.cancels("RFP11755262298174fMhV","{\n" +
-                "  \"creation_date_time\": \"2020-12-17T09:30:47Z\",\n" +
+        positive_init();
+        tusk.setExpectedResponseCode(201);
+        tusk.cancels(tusk.getPayment_request_id(),"{\n" +
+                "  \"creation_date_time\": \"2025-10-21T09:30:47Z\",\n" +
                 "  \"request_message_id\": \"GG"+ Uuid_helper.generate_uuid4() +"\",\n" +
                 "  \"cancellation_reason\": \"ERRAMT\"\n" +
                 "}");
     }
 
     public void positive_amends(){
-        tusk.amends("087e40d4a77b48359324bbf990621057","{\n" +
+        positive_init();
+        tusk.setExpectedResponseCode(200);
+        tusk.amends(tusk.getPayment_request_id(),"{\n" +
                 "  \"due_date\": \"2025-08-14\",\n" +
                 "  \"request_reason\": {\n" +
                 "    \"message\": \"string\",\n" +
@@ -157,7 +167,7 @@ public class Tusk_test extends BaseTest {
                 "    \"requested_amount\": 100\n" +
                 "  },\n" +
                 "  \"creation_date_time\": \"2020-12-17T09:30:47Z\",\n" +
-                "  \"request_message_id\": \"GG9983636387737JH\",\n" +
+                "  \"request_message_id\": \"GG"+ Uuid_helper.generate_uuid4() +"\",\n" +
                 "  \"settlement_options\": [\n" +
                 "    {\n" +
                 "      \"receiving_alias\": \"447709123457\",\n" +

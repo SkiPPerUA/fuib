@@ -73,7 +73,7 @@ public class AndrewGarner extends Restful {
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer "+token.getToken())
                 .header("x-flow-id", Uuid_helper.generate_uuid())
-                .header("x-systemcode","payhub")
+                .header("x-systemcode","payhub").log().all()
                 .header("x-request-affinity",payment_request_id+"01")
                 .body(body).when().patch(env+"visa-req2pay-inbounds/"+payment_request_id+"/confirms"));
     }

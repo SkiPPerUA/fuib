@@ -2,9 +2,11 @@ package org.example.qaTransactionTeam.backEnd.transaction.typeTrans_payhub;
 
 import org.example.qaTransactionTeam.backEnd.token.Auth_token;
 import org.example.qaTransactionTeam.backEnd.token.Trans_token_payhub;
+import org.example.qaTransactionTeam.backEnd.transaction.ThreeDS;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction_payhub;
 import org.example.qaTransactionTeam.backEnd.utils.BDpostgre;
+import org.json.JSONObject;
 
 import java.sql.SQLException;
 
@@ -34,8 +36,33 @@ public class A2C_legion extends Transaction_payhub implements Transaction {
         try {
             initTransfers(bodyRequest);
             confirmTransfers();
+            if (require_3ds_data){
+                waitFinalStatus();
+            }
         } catch (Throwable e) {
             e.printStackTrace();
+        }
+    }
+
+    private void waitFinalStatus(){
+        getStatus(transactionId);
+        String status = new JSONObject(getResponse()).getString("status");
+        if (status.equals("PROCESSED") || status.equals("FAILED")){
+
+        }else if (status.equals("3DS_REQUIRED")){
+            get_theeDS_data();
+            try {
+                ThreeDS.createIFrame(url, creq);
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
+        }else {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            waitFinalStatus();
         }
     }
 

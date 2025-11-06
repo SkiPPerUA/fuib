@@ -27,6 +27,12 @@ public class C4Cregress extends BaseTest {
                 "    \"commission\": 100,\n" +
                 "\t\"destination\": \"test\",\n" +
                 "\t\"description\": \"VladTest\",\n" +
+                        "    \"authentication\":{\n" +
+                        "      \"device_id\":\"device_idVladTest\",\n" +
+                        "      \"session_id\":\"idVladTest\",\n" +
+                        "      \"ip\":\"79.110.129.18\",\n" +
+                        "      \"event_type\":\"APP_A2C\"\n" +
+                        "   }," +
                 "\t\"without_confirmation\":true,\n" +
                 "    \"currency\": 980,\n" +
                 "    \"payer\": {\n" +

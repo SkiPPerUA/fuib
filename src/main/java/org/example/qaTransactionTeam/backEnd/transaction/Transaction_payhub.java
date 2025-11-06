@@ -31,6 +31,7 @@ public abstract class Transaction_payhub {
     protected String creq = "";
     protected String valid_type = "";
     protected Auth_token token;
+    protected boolean require_3ds_data = false;
 
     protected void createTrans(String body) throws IOException {
         String operationId = Uuid_helper.generate_uuid();
@@ -97,19 +98,28 @@ public abstract class Transaction_payhub {
         Assert.assertEquals(response.getStatusCode(),statusCode);
         transactionId = response.then().extract().response().jsonPath().getString("transfer_id");
         if(type.equals("p4p_new")) {
-            debitId = response.then().extract().response().jsonPath().getString("id");;
+            debitId = response.then().extract().response().jsonPath().getString("id");
+        }
+        try {
+            require_3ds_data = response.jsonPath().getBoolean("require_3ds_data");
+        }catch (Throwable e){
+            //logger.info("require_3ds_data не найден");
         }
     }
 
     public void confirmTransfers(){
+        String body = "";
+        if (!require_3ds_data){
+            body = "{\"transfer_id\": \""+transactionId+"\"}";
+        }else {
+            body = "{"+ThreeDS.threeDS_2_2_0+"}";
+        }
         response = given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer " + token.getToken())
                 .header("X-Flow-ID", "11")
                 .header("X-Systemcode","12312")
-                .body("{\n" +
-                        "   \"transfer_id\": \""+transactionId+"\"\n" +
-                        "}")
+                .body(body)
                 .when()
                 .post(token.getHost()+"/transfers/"+transactionId);
         logger.info("Confirm - "+response.then().extract().response().asString());
@@ -147,13 +157,15 @@ public abstract class Transaction_payhub {
                     "    \"c_res\": \"vladTest\"\n" +
                     "}";
             url = token.getHost()+"/p4p-transfers/"+transactionId+"/3ds";
+        }else if (type.equals("a2c legion")) {
+            url = token.getHost()+"/transactions/c2c/3ds";
         }else {
             url = token.getHost()+"/transactions/"+type+"/3ds";
         }
         response = given()
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer "+token.getToken())
-                .body(body)
+                .body(body).log().all()
                 .when()
                 .put(url);
         logger.info("Подтверждение 3DS для "+type+" транзакции - "+response.then().extract().response().asString());
@@ -203,7 +215,7 @@ public abstract class Transaction_payhub {
             url = "/operations/deferred/c2c?id=" + transactionId + "&details=true";
         }else if(type.equals("a2c_tax")){
             url = "/transactions/a2c?transaction_id=" + transactionId + "&details=true";
-        }else if(type.contains("a2a")){
+        }else if(type.contains("a2a") || type.contains("legion")){
             url = "/transfers/"+transactionId;
         }else {
             url = "/transactions/" + type + "?transaction_id=" + transactionId + "&details=true";
@@ -216,7 +228,7 @@ public abstract class Transaction_payhub {
                 .when()
                 .get(token.getHost() + url);
         resp = response.then().extract().response().asString();
-        logger.info("Статус "+type+" транзакции - "+resp);
+        logger.info("Статус "+type+" транзакции {"+transactionId+"} - "+resp);
         Assert.assertEquals(response.getStatusCode(),statusCode);
         return  resp;
     }
@@ -243,7 +255,12 @@ public abstract class Transaction_payhub {
                 creq = json.getJSONObject("threed_info").getString("c_req");
             }
         }else {
-            String status = json.getJSONObject("data").getString("status");
+            String status = "";
+            if (type.equals("a2c legion")) {
+                status = json.getString("status");
+            } else {
+                status = json.getJSONObject("data").getString("status");
+            }
             if (status.equals("PENDING")) {
                 try {
                     url = json.getJSONObject("data").getJSONObject("3ds_info").getString("acs_url");
@@ -274,6 +291,18 @@ public abstract class Transaction_payhub {
                 }
             }else if (status.equals("PROCESSED")){
                 //Транка успешна - поиск 3дс - прекращать
+            }else if (status.equals("3DS_REQUIRED")){
+                try {
+                    url = json.getJSONObject("threed_options").getString("acs_url");
+                    creq = json.getJSONObject("threed_options").getString("c_req");
+                } catch (JSONException e) {
+                    try {
+                        Thread.sleep(wait);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                    get_theeDS_data();
+                }
             }else {
                 Assert.fail("Статус транзакции "+type+" ("+transactionId+") = "+status);
             }

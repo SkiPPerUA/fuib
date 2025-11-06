@@ -45,14 +45,21 @@ public class A2C_legion_regress extends BaseTest {
         A2C_legion a2C_legion = new A2C_legion();
         a2C_legion.setToken(new Trans_token_payhub(6241781));
         a2C_legion.setBodyRequest("{\n" +
-                "    \"amount\": 100,\n" +
-                "    \"fee_amount\": 100,\n" +
+                "    \"amount\": 100000,\n" +
+                "    \"fee_amount\": 101,\n" +
                 "    \"currency\": \"UAH\",\n" +
+                "    \"authentication\":{\n" +
+                        "      \"device_id\":\"device_idVladTest\",\n" +
+                        "      \"session_id\":\"VladTest\",\n" +
+                        "      \"ip\":\"79.110.129.18\",\n" +
+                        "      \"event_type\":\"APP_A2C\"\n" +
+                        "   }," +
                 "    \"description\": \"3041309906\",\n" +
                 "    \"external_id\": \"" + Uuid_helper.generate_uuid() + "\",\n" +
                 "    \"sender\": {\n" +
                 "        \"source\": \"IBAN\",\n" +
-                "        \"value\": \"UA953348510000026201112609803\",\n" +
+                "        \"value\": \"UA953348510000026201112609803\",\n" + //UA323348510000026208119209027  UA953348510000026201112609803
+                "        \"card_id\":\"019117787643\"," +                       //025342752026               019117787643
                 "        \"client\": {\n" +
                 "            \"source\": \"EKB\",\n" +
                 "            \"id\": \"8531524\"\n" +
@@ -60,7 +67,7 @@ public class A2C_legion_regress extends BaseTest {
                 "    },\n" +
                 "    \"recipient\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.MONO_VISA,Card_param.pan)+"\"\n" +
+                "        \"value\": \""+Cards_data.getData(Card.OSCHAD_MC,Card_param.pan)+"\"\n" +
                 "    }\n" +
                 "}");
         a2C_legion.makeTrans();
@@ -172,13 +179,13 @@ public class A2C_legion_regress extends BaseTest {
     public void positiveTest_crossborder(){
         A2C_legion a2C_legion = new A2C_legion(new Trans_token_payhub(6241781));
         a2C_legion.initTransfers("{\n" +
-                "    \"amount\": 1000,\n" +
+                "    \"amount\": 30000,\n" +
                 "    \"service\": \"crossborder_direct\",\n" +
                 "    \"currency\": \"USD\",\n" +
                 "    \"description\": \"test\",\n" +
                 "    \"authentication\": {" +
                 "        \"jwt\": \""+a2C_legion.getToken()+"\"," +
-                "        \"session_id\": \"225e7e87-8555-486d-aefd-9ed2af8109ce\"," +
+                "        \"session_id\": \"225e709ce\"," +
                 "        \"device_id\": \"60c30bbc4dd94b4fdaf7398f\"," +
                 "        \"ip\": \"45.90.16.93\"," +
                 "        \"event_type\": \"APP_A2CSBRD\"," +
@@ -189,7 +196,7 @@ public class A2C_legion_regress extends BaseTest {
                 "    \"external_id\": \""+ Uuid_helper.generate_uuid() +"\",\n" +
                 "    \"sender\": {\n" +
                 "        \"source\": \"CARD_ID\",\n" +
-                "        \"value\": \"028417738202\",\n" +
+                "        \"value\": \"028417738202\",\n" +  //028417738202 usd       031799270259 eur
                 "        \"instrument\": \"OWN_CARD\",\n" +
                 "        \"client\": {\n" +
                 "            \"source\": \"EKB\",\n" +

@@ -45,6 +45,28 @@ class MobyPayTrans {
                 "  \"client_ip\": \"127.0.0.1\",\n" +
                 "  \"description\": \"description1234\",\n" +
                 "  \"without_confirmation\": true,\n" +
+                "   \"identification\": {\n" +
+                "    \"requirements\": {\n" +
+                "        \"recipient\":  {\n" +
+                "            \"first_name\": \"Павло\",\n" +
+                "            \"last_name\": \"Тичина\",\n" +
+                "            \"amount\": 1234500,\n" +
+                "            \"account_number\": \"UA213223130000026007233566001\"\n" +
+                "        },\n" +
+                "        \"sender\": {\n" +
+                "            \"first_name\": \"Максим\",\n" +
+                "            \"last_name\": \"Рильський\",\n" +
+                "            \"account_number\": \"UA213223130000026007233566001\",\n" +
+                "            \"reference_number\": 12345678\n" +
+                "        },\n" +
+                "        \"details\": {\n" +
+                "            \"additional_message\": \"Авторе, пиши ще...\",\n" +
+                "            \"source\": \"01\",\n" +
+                "            \"submerchant_url\": \"https://submerchant-url.com\",\n" +
+                "            \"independent_sales_organization_id\": \"3056715233\"\n" +
+                "        }\n" +
+                "    }\n" +
+                "},"+
                 "  \"merchant_config_id\": \""+merchant_config_id+"\",\n" +
                 "\t\"hold\": "+hold+",\n" +
                 "  \"payer\": {\n" +
@@ -72,7 +94,7 @@ class MobyPayTrans {
         String external = UUID.randomUUID().toString();
         logger.info("External ID = "+external);
         this.threeDS = threeDS;
-        String three_ds = null;
+        String three_ds = "";
         if (threeDS == 2){
             three_ds = "\"threed\": {\n" +
                     "              \"channel\": \"BRW\",\n" +
@@ -102,10 +124,10 @@ class MobyPayTrans {
                 "   \"identification\": {\n" +
                 "    \"requirements\": {\n" +
                 "        \"recipient\":  {\n" +
-                "            \"first_name\": \"Павло\",\n" +
-                "            \"last_name\": \"Тичина\",\n" +
-                "            \"amount\": 1234500,\n" +
-                "            \"account_number\": \"UA213223130000026007233566001\"\n" +
+                "            \"first_name\": \"ТзОВ «Торговий Дім «Міст Експрес»\",\n" +
+                "            \"last_name\": \"ТзОВ «Торговий Дім «Міст Експрес»\",\n" +
+                "            \"amount\": \"2628\",\n" +
+                "            \"account_number\": \"UA673252680000000002600838627\"\n" +
                 "        },\n" +
                 "        \"sender\": {\n" +
                 "            \"first_name\": \"Максим\",\n" +
@@ -114,10 +136,10 @@ class MobyPayTrans {
                 "            \"reference_number\": 12345678\n" +
                 "        },\n" +
                 "        \"details\": {\n" +
-                "            \"additional_message\": \"Авторе, пиши ще...\",\n" +
+                "            \"additional_message\": \"\",\n" +
                 "            \"source\": \"01\",\n" +
-                "            \"submerchant_url\": \"https://submerchant-url.com\",\n" +
-                "            \"independent_sales_organization_id\": \"3056715233\"\n" +
+                "            \"submerchant_url\": \"https://meest-express.com.ua\",\n" +
+                "            \"independent_sales_organization_id\": \"36152228\"\n" +
                 "        }\n" +
                 "    }\n" +
                 "},"+
@@ -192,7 +214,8 @@ class MobyPayTrans {
                 logger.error(e);
             }
         }else if (ob.getString("status").equals("PENDING") && ob.getJSONObject("threed").getString("mode").equals("iframe-hidden")){
-            createHiddenIFrame(ob.getJSONObject("threed").getString("acs_url"), ob.getJSONObject("threed").getString("tds_method_data"));
+            //createHiddenIFrame(ob.getJSONObject("threed").getString("acs_url"), ob.getJSONObject("threed").getString("tds_method_data"));
+            threeDs_complete(id,ob.getJSONObject("threed").getString("tds_method_data"));
         }
     }
 
@@ -348,6 +371,10 @@ class MobyPayTrans {
     }
 
     public void refund(String amountRefund){
+        refund(id,amountRefund);
+    }
+
+    public void refund(String id, String amountRefund){
         response = given()
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer "+token.getToken())
@@ -357,7 +384,7 @@ class MobyPayTrans {
                 .when()
                 .post(Configs.PAYHUB_HOST +"/mobile-pay/transactions/"+id+"/refund")
                 .then()
-                .statusCode(responseCode)
+//                .statusCode(responseCode)
                 .extract().response().asString();
 
         logger.info("Завершение рефанда на сумму: "+amountRefund+" - "+response);
@@ -418,7 +445,6 @@ class MobyPayTrans {
     }
 
     public void threeDs_complete(String id, String threed_data){
-        logger.info("sdds");
         response = given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer " + token.getToken())

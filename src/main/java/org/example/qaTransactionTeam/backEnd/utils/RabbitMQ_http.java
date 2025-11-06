@@ -14,7 +14,7 @@ public class RabbitMQ_http extends Restful{
     private String uuid = Uuid_helper.generate_uuid();
     private String handler;
     private String routing_key;
-    private String env = "test";
+    private String env = "stage";
     private String host = "https://ph-rabbit-admin."+env+"-fuib.com"; // https://ph-rabbitmq.test-fuib.com https://ph-rabbit-admin."+env+"-fuib.com"
 
     public RabbitMQ_http(String handler, String routing_key){

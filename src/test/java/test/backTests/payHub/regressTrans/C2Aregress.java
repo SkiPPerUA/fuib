@@ -25,6 +25,12 @@ public class C2Aregress extends BaseTest {
                 "    \"currency\": 980,\n" +
                 "    \"commission\": 10,\n" +
                 "    \"client_ip\": \"0.1.1.4\",\n" +
+                "    \"authentication\":{\n" +
+                "      \"device_id\":\"device_idVladTest\",\n" +
+                "      \"session_id\":\"idVladTest\",\n" +
+                "      \"ip\":\"79.110.129.18\",\n" +
+                "      \"event_type\":\"APP_A2C\"\n" +
+                "   }," +
                 "    \"description\": \"c2a - пумб мастер\",\n" +
                 "    \"threed\": {\n" +
                 "        \"version\": \"2.2.0\",\n" +
@@ -70,7 +76,7 @@ public class C2Aregress extends BaseTest {
                 "         \"independent_sales_organization_id\":\"3016715233\"\n" +
                 "      }\n" +
                 "      }},\n"+
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.MONO_VISA));
+                Payer_constructor.PAN_payer(Cards_data.getData(Card.PROSTIR));
 
         c2a = new C2A(body,0);
         Thread.sleep(sleep);

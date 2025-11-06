@@ -19,6 +19,8 @@ public class Tusk extends Restful {
     private final Logger logger = Logger.getLogger(Tusk.class);
     private Auth_token token = new Trans_token_payhub("svc_tsys_rtpo_t", "jjw#&HCu42%SkCf79pg5Xf4nyxeS3v3&", "transacter");
     private RequestSpecification requestSpecification;
+    private String payment_request_id;
+    private String end_to_end_id;
 
     public Tusk(){
         RestAssured.useRelaxedHTTPSValidation();
@@ -33,16 +35,16 @@ public class Tusk extends Restful {
         logger.info("init");
         request(requestSpecification
                 .header("X-Request-Affinity", "YY"+String.valueOf(new Random().nextLong()).substring(1,14)+"YY")
-                .body(body).when().post(token.getHost()+"/outbounds/visa-req2pay-outbounds/initiates"));
-//        if (response.then().extract().statusCode() == 201){
-//            payment_request_id = response.then().extract().jsonPath().getString("payment_requests.payment_request_id").replace("[","").replace("]","");
-//            end_to_end_id = response.then().extract().jsonPath().getString("payment_requests.end_to_end_id").replace("[","").replace("]","");
-//        }
+                .body(body).when().post(token.getHost()+"/visa-req2pay-outbounds/initiates"));
+        if (response.then().extract().statusCode() == 201){
+            payment_request_id = response.then().extract().jsonPath().getString("payment_requests.payment_request_id").replace("[","").replace("]","");
+            end_to_end_id = response.then().extract().jsonPath().getString("payment_requests.end_to_end_id").replace("[","").replace("]","");
+        }
     }
 
     public void tags(String body){
         logger.info("tags");
-        request(requestSpecification.body(body).when().post(token.getHost()+"/outbounds/visa-req2pay-outbounds/transactions/tags"));
+        request(requestSpecification.body(body).when().post(token.getHost()+"/visa-req2pay-outbounds/transactions/tags"));
     }
 
     public void refunds(String original_payment_request_id, String body){
@@ -50,15 +52,15 @@ public class Tusk extends Restful {
         request(requestSpecification
                 .header("X-Request-Affinity", "YY"+String.valueOf(new Random().nextLong()).substring(1,14)+"YY")
                 .header("original_payment_request_id", original_payment_request_id)
-                .body(body).when().post(token.getHost()+"/outbounds/visa-req2pay-outbounds/"+original_payment_request_id+"/refunds"));
+                .body(body).when().post(token.getHost()+"/visa-req2pay-outbounds/"+original_payment_request_id+"/refunds"));
     }
 
     public void cancels(String payment_request_id, String body){
-        logger.info("cancels");
+        logger.info("cancels -> "+payment_request_id);
         request(requestSpecification
                 .header("X-Request-Affinity", "YY"+String.valueOf(new Random().nextLong()).substring(1,14)+"YY")
-                .header("payment_request_id", payment_request_id)
-                .body(body).when().patch(token.getHost()+"/outbounds/visa-req2pay-outbounds/"+payment_request_id+"/cancels"));
+                .header("payment_request_id", payment_request_id+"01")
+                .body(body).when().patch(token.getHost()+"/visa-req2pay-outbounds/"+payment_request_id+"/cancels"));
     }
 
     public void confirms(String payment_request_id, String body){
@@ -66,7 +68,7 @@ public class Tusk extends Restful {
         request(requestSpecification
                 .header("X-Request-Affinity", "YY"+String.valueOf(new Random().nextLong()).substring(1,14)+"YY")
                 .header("payment_request_id", payment_request_id)
-                .body(body).when().patch(token.getHost()+"/outbounds/visa-req2pay-outbounds/"+payment_request_id+"/confirms"));
+                .body(body).when().patch(token.getHost()+"/visa-req2pay-outbounds/"+payment_request_id+"/confirms"));
     }
 
     public void amends(String payment_request_id, String body){
@@ -74,12 +76,12 @@ public class Tusk extends Restful {
         request(requestSpecification
                 .header("X-Request-Affinity", "YY"+String.valueOf(new Random().nextLong()).substring(1,14)+"YY")
                 .header("payment_request_id", payment_request_id)
-                .body(body).when().patch(token.getHost()+"/outbounds/visa-req2pay-outbounds/"+payment_request_id+"/amends"));
+                .body(body).when().patch(token.getHost()+"/visa-req2pay-outbounds/"+payment_request_id+"/amends"));
     }
 
     public void notifications(String body){
         logger.info("notifications");
-        request(requestSpecification.body(body).when().post(token.getHost()+"/outbounds/visa-req2pay-outbounds/notifications"));
+        request(requestSpecification.body(body).when().post(token.getHost()+"/visa-req2pay-outbounds/notifications"));
     }
 
     public void getCardNumberByCardId(String card_id){
@@ -87,4 +89,7 @@ public class Tusk extends Restful {
         rabbitMQHttp.sendHttp("{\"card_id\":\""+card_id+"\"}");
     }
 
+    public String getPayment_request_id() {
+        return payment_request_id;
+    }
 }

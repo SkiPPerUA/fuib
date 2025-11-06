@@ -34,8 +34,8 @@ public class A2Aregress extends BaseTest {
                         "        \"value\": \"UA563348510000026201113488937\"\n" +
                         "    },\n" +
                         "    \"authentication\": {\n" +
-                        "        \"device_id\": \"test\",\n" +
-                        "        \"session_id\": \"test\",\n" +
+                        "        \"device_id\": \"test1\",\n" +
+                        "        \"session_id\": \"test22\",\n" +
                         "        \"ip\": \"192.168.0.1\",\n" +
                         "        \"event_type\": \"APP_A2P\"\n" +
                         "    }\n" +
@@ -101,7 +101,7 @@ public class A2Aregress extends BaseTest {
         a2a.setToken(new Trans_token_payhub(2189387));
         a2a.setBodyRequest("{\n" +
                 "    \"service\": \"out_direct_acc\",\n" + //A2SMP  out_direct_acc
-                "    \"amount\": 200,\n" +
+                "    \"amount\": 1001,\n" +
                 "    \"fee_amount\": 100,\n" +
                 "    \"currency\": \"UAH\",\n" +
                 "    \"purpose\": \"Private24\",\n" +
@@ -113,7 +113,7 @@ public class A2Aregress extends BaseTest {
                 "    \"jwt\": \""+a2a.getToken()+"\",\n" +
                 "    \"authentication\": {\n" +
                 "        \"jwt\": \""+a2a.getToken()+"\",\n" +
-                "        \"session_id\": \"225e7e87-8555-486d-aefd-9ed2af8109ce\",\n" +
+                "        \"session_id\": \"225e79ce\",\n" +
                 "        \"device_id\": \"60c30bbc4dd94b4fdaf7398f\",\n" +
                 "        \"ip\": \"45.90.16.93\",\n" +
                 "        \"event_type\": \"APP_A2A\",\n" +

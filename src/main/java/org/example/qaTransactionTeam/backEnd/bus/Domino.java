@@ -10,14 +10,14 @@ public class Domino extends Restful {
 
     private Apiman token = new Apiman("EKB","vip_manager", "test");
 
-    public void find_customers(String client_id){
+    public void find_customersBYattributes(String string){
         request(given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer "+token.getToken())
                 .header("X-Flow-ID", "11")
                 .header("X-Systemcode","12312")
                 .when()
-                .get("https://api."+token.getEnvironment()+"-fuib.com:443/bus/domino/v2/customers/by-attributes?sirius_id="+client_id));
+                .get("https://api."+token.getEnvironment()+"-fuib.com:443/bus/domino/v2/customers/by-attributes?"+string));
     }
 
     public void get_customers(String client_id){

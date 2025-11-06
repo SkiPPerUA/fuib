@@ -62,4 +62,16 @@ public class CardHolder extends Restful {
                 .when()
                 .post(token.getHost()+"/transactions/cardholders/full-details"));
     }
+
+    public void details(String pan){
+        logger.info("Details");
+        request(given()
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer "+token.getToken())
+                .body("{\n" +
+                        "   \"pan\": \""+pan+"\"\n" +
+                        "}")
+                .when()
+                .post(token.getHost()+"/transactions/cardholders/details"));
+    }
 }
