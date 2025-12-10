@@ -28,7 +28,7 @@ public class Tusk_test extends BaseTest {
                 "            \"debtor_agent_country\": \"UA\",\n" +
                 "            \"debtor_country\": \"UA\",\n" +
                 "            \"debtor_type_id\": \"AGENT\",\n" +
-                "            \"debtor_alias\": \"380665767085\",\n" +
+                "            \"debtor_alias\": \"380665767084\",\n" +
                 "            \"payment_request_id\": \"FF"+String.valueOf(new Random().nextLong()).substring(1,14)+"TT\",\n" +
                 "            \"requested_amount\": 1.25,\n" +
                 "            \"requested_amount_currency\": \"UAH\",\n" +
@@ -49,7 +49,7 @@ public class Tusk_test extends BaseTest {
                 "        \"creditor_country\": \"UA\",\n" +
                 "        \"creditor_first_name\": \"first\",\n" +
                 "        \"creditor_last_name\": \"last\",\n" +
-                "        \"creditor_alias\": \"380665767085\",\n" +
+                "        \"creditor_alias\": \"380665767084\",\n" +
                 "        \"creditor_id\": \"BL1234567890\",\n" +
                 "        \"creditor_id_type\": \"AGENT\"\n" +
                 "    },\n" +

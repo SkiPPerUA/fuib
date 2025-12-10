@@ -2,10 +2,13 @@ package test.backTests.admin;
 
 import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.admin.Limits;
+import org.example.qaTransactionTeam.backEnd.helper.Uuid_helper;
 import org.example.qaTransactionTeam.backEnd.utils.BDpostgre;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.sql.ResultSet;
@@ -1689,6 +1692,134 @@ public class LimitsManagerTest extends BaseTest {
             limits.setStatus_code_put(204);
         }
         logFinishTest("updateLimits_negative_"+test_name+"_zero");
+    }
+
+    public void getLimitByProduct(){
+        limits.getLimitByProduct("2189387","CROSSBORDER-OCT");
+        limits.getLimitByProduct("2189387","CROSSBORDER-AFT");
+    }
+
+    public void getProductConfigs() throws SQLException {
+        limits.getProductConfigs();
+        ResultSet res = BDpostgre.selectSQL("SELECT count(*) FROM public.product_limits");
+        res.next();
+        Assert.assertEquals(new JSONArray(limits.getResponse()).length(),res.getInt(1));
+    }
+
+    public void createProductConfigs_mandatoryFields() throws SQLException {
+        BDpostgre.updateSQL("delete FROM public.product_limits where product = 'CORSSBORDER-AFT' and kind = 'NBU_MEMO' and type = 'ONCE' and operation_type = 'DEBIT'");
+        limits.createProductConfigs("{\n" +
+                "  \"product\": \"CORSSBORDER-AFT\",\n" +
+                "  \"kind\": \"NBU_MEMO\",\n" +
+                "  \"operation_type\": \"DEBIT\",\n" +
+                "  \"type\": \"ONCE\",\n" +
+                "  \"weight\": 90,\n" +
+                "  \"amount_min\": 0,\n" +
+                "  \"amount_max\": 100,\n" +
+                "  \"count_max\": 10,\n" +
+                "  \"sh2_required\": true\n" +
+                "}");
+
+        ResultSet res = BDpostgre.selectSQL("SELECT pl.* FROM public.product_limits AS pl where id = '"+limits.getLimits_id_config()+"'");
+        res.next();
+        Assert.assertEquals(res.getString("product"),"CORSSBORDER-AFT");
+        Assert.assertEquals(res.getString("kind"),"NBU_MEMO");
+        Assert.assertEquals(res.getString("operation_type"),"DEBIT");
+        Assert.assertEquals(res.getString("type"),"ONCE");
+        Assert.assertEquals(res.getInt("weight"),90);
+        Assert.assertEquals(res.getInt("amount_min"),0);
+        Assert.assertEquals(res.getInt("amount_max"),100);
+        Assert.assertEquals(res.getInt("count_max"),10);
+        Assert.assertEquals(res.getBoolean("sh2_required"),true);
+    }
+
+    public void createProductConfigs_double() throws SQLException {
+        BDpostgre.updateSQL("delete FROM public.product_limits where product = 'CORSSBORDER-AFT' and kind = 'NBU_MEMO' and type = 'ONCE' and operation_type = 'DEBIT'");
+        createProductConfigs_mandatoryFields();
+        limits.createProductConfigs("{\n" +
+                "  \"product\": \"CORSSBORDER-AFT\",\n" +
+                "  \"kind\": \"NBU_MEMO\",\n" +
+                "  \"operation_type\": \"DEBIT\",\n" +
+                "  \"type\": \"ONCE\",\n" +
+                "  \"weight\": 88,\n" +
+                "  \"amount_min\": 124,\n" +
+                "  \"amount_max\": 10012,\n" +
+                "  \"count_max\": 102,\n" +
+                "  \"sh2_required\": false\n" +
+                "}");
+
+        Assert.assertTrue(limits.getResponse().contains("DUPLICATED_INPUT"));
+    }
+
+    public void createProductConfigs_allFields() throws SQLException {
+        BDpostgre.updateSQL("delete FROM public.product_limits where product = 'CORSSBORDER-AFT' and kind = 'NBU_MEMO' and type = 'ONCE' and operation_type = 'DEBIT'");
+        limits.createProductConfigs("{\n" +
+                "  \"product\": \"CORSSBORDER-AFT\",\n" +
+                "  \"kind\": \"NBU_MEMO\",\n" +
+                "  \"operation_type\": \"DEBIT\",\n" +
+                "  \"type\": \"ONCE\",\n" +
+                "  \"weight\": 90,\n" +
+                "  \"amount_min\": 0,\n" +
+                "  \"amount_max\": 100,\n" +
+                "  \"count_max\": 10,\n" +
+                "  \"sh2_required\": true,\n" +
+                "  \"valid_from\": \"2025-11-14 17:14:08.122 +0200\",\n"+
+                "  \"valid_to\": \"2025-11-15 17:14:08.122 +0200\"\n"+
+                "}");
+
+        ResultSet res = BDpostgre.selectSQL("SELECT * FROM public.product_limits where id = '"+limits.getLimits_id_config()+"'");
+        res.next();
+        Assert.assertEquals(res.getString("product"),"CORSSBORDER-AFT");
+        Assert.assertEquals(res.getString("kind"),"NBU_MEMO");
+        Assert.assertEquals(res.getString("operation_type"),"DEBIT");
+        Assert.assertEquals(res.getString("type"),"ONCE");
+        Assert.assertEquals(res.getInt("weight"),90);
+        Assert.assertEquals(res.getInt("amount_min"),0);
+        Assert.assertEquals(res.getInt("amount_max"),100);
+        Assert.assertEquals(res.getInt("count_max"),10);
+        Assert.assertEquals(res.getBoolean("sh2_required"),true);
+    }
+
+    public void deleteProductConfigs() throws SQLException {
+        createProductConfigs_mandatoryFields();
+        limits.deleteProductConfigs(limits.getLimits_id_config());
+        ResultSet res = BDpostgre.selectSQL("SELECT count(*) FROM public.product_limits where id = '"+limits.getLimits_id_config()+"'");
+        res.next();
+        Assert.assertEquals(res.getInt(1),0);
+    }
+
+    public void updateProductConfigs() throws SQLException {
+        BDpostgre.updateSQL("delete FROM public.product_limits where product = 'CORSSBORDER-AFT' and kind = 'NBU_MEMO' and type = 'ONCE' and operation_type = 'DEBIT'");
+        createProductConfigs_mandatoryFields();
+        BDpostgre.updateSQL("delete FROM public.product_limits where product = 'CROSSBORDER-OCT' and kind = 'NBU_A2CSBRD' and type = 'MONTHLY' and operation_type = 'CREDIT'");
+        limits.updateProductConfigs(limits.getLimits_id_config(),"{\n" +
+                "  \"product\": \"CROSSBORDER-OCT\",\n" +
+                "  \"kind\": \"NBU_A2CSBRD\",\n" +
+                "  \"operation_type\": \"CREDIT\",\n" +
+                "  \"type\": \"MONTHLY\",\n" +
+                "  \"weight\": 88,\n" +
+                "  \"amount_min\": 124,\n" +
+                "  \"amount_max\": 10012,\n" +
+                "  \"count_max\": 102,\n" +
+                "  \"sh2_required\": false\n" +
+                "}");
+
+        ResultSet res = BDpostgre.selectSQL("SELECT * FROM public.product_limits where id = '"+limits.getLimits_id_config()+"'");
+        res.next();
+        Assert.assertEquals(res.getString("product"),"CROSSBORDER-OCT");
+        Assert.assertEquals(res.getString("kind"),"NBU_A2CSBRD");
+        Assert.assertEquals(res.getString("operation_type"),"CREDIT");
+        Assert.assertEquals(res.getString("type"),"MONTHLY");
+        Assert.assertEquals(res.getInt("weight"),88);
+        Assert.assertEquals(res.getInt("amount_min"),124);
+        Assert.assertEquals(res.getInt("amount_max"),10012);
+        Assert.assertEquals(res.getInt("count_max"),102);
+        Assert.assertEquals(res.getBoolean("sh2_required"),false);
+    }
+
+    @BeforeTest
+    public void connDB() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+        BDpostgre.BDpostgre("limiter", "dev","password");
     }
 
     void checkLimitsData(String direction, String kind, int transaction_amount, int daily_amount, int daily_quantity, int monthly_amount, int monthly_quantity){

@@ -45,7 +45,7 @@ public class A2C_legion_regress extends BaseTest {
         A2C_legion a2C_legion = new A2C_legion();
         a2C_legion.setToken(new Trans_token_payhub(6241781));
         a2C_legion.setBodyRequest("{\n" +
-                "    \"amount\": 100000,\n" +
+                "    \"amount\": 322,\n" +
                 "    \"fee_amount\": 101,\n" +
                 "    \"currency\": \"UAH\",\n" +
                 "    \"authentication\":{\n" +
@@ -67,7 +67,7 @@ public class A2C_legion_regress extends BaseTest {
                 "    },\n" +
                 "    \"recipient\": {\n" +
                 "        \"source\": \"PAN\",\n" +
-                "        \"value\": \""+Cards_data.getData(Card.OSCHAD_MC,Card_param.pan)+"\"\n" +
+                "        \"value\": \""+Cards_data.getData(Card.MONO_VISA,Card_param.pan)+"\"\n" + //5168745611327906
                 "    }\n" +
                 "}");
         a2C_legion.makeTrans();
@@ -118,7 +118,7 @@ public class A2C_legion_regress extends BaseTest {
                         "    \"description\": \"test\",\n" +
                         "    \"authentication\": {" +
                         "        \"jwt\": \""+a2C_legion.getToken()+"\"," +
-                        "        \"session_id\": \"225e7e87-8555-486d-aefd-9ed2af8109ce\"," +
+                        "        \"session_id\": \"225e7e87\"," +
                         "        \"device_id\": \"60c30bbc4dd94b4fdaf7398f\"," +
                         "        \"ip\": \"45.90.16.93\"," +
                         "        \"event_type\": \"APP_A2CSBRD\"," +
@@ -179,7 +179,7 @@ public class A2C_legion_regress extends BaseTest {
     public void positiveTest_crossborder(){
         A2C_legion a2C_legion = new A2C_legion(new Trans_token_payhub(6241781));
         a2C_legion.initTransfers("{\n" +
-                "    \"amount\": 30000,\n" +
+                "    \"amount\": 303,\n" +
                 "    \"service\": \"crossborder_direct\",\n" +
                 "    \"currency\": \"USD\",\n" +
                 "    \"description\": \"test\",\n" +

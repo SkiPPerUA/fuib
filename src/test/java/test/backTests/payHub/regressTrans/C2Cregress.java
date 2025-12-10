@@ -39,7 +39,7 @@ public class C2Cregress extends BaseTest {
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
                 //"        \"iban\": \"UA973348510100026201112609802\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.PROSTIR,Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC,Card_param.pan)+"\"\n" +
                 "    },\n" +
                 ThreeDS.threeDS_2_2_0;
 

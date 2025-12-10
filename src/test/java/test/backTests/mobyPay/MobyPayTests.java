@@ -16,10 +16,10 @@ public class MobyPayTests extends BaseTest {
         String payer = "\"source\": \"GOOGLE_PAN\",\n" +
                 "\t\t\t\t\t\t  \"pan\": \""+Cards_data.getData(Card.FUIB_VISA,Card_param.pan)+"\",\n" +
                 "              \"expire\": \""+Cards_data.getData(Card.FUIB_VISA,Card_param.expire)+"\"";
-        MobyTrans trans = new MobyTrans("100",payer,true,2);
+        MobyTrans trans = new MobyTrans("100",payer,false,2);
         trans.status();
-        trans.complete_hold("100");
-        trans.status();
+//        trans.complete_hold("100");
+//        trans.status();
         //System.out.println("ggggg");
         //Thread.sleep(20000);
         //trans.refund("100");
@@ -86,8 +86,8 @@ public class MobyPayTests extends BaseTest {
     @Test
     public void transHoldWithout3dsAGP(){
         logStartTest("transHoldWithout3dsAGP");
-        //VTS, C2P, M4M
-        String payer = "\"source\": \"M4M\",\n" +
+        //VTS, C2P, M4M, MCP
+        String payer = "\"source\": \"MCP\",\n" +
                 "       \"token\": \"5167974893582613\",\n" +
                 "       \"cryptogram\": \"AHAzQmvcgxILAAKhssPUAAADFA==\",\n" +
                 "       \"expire\": \"2512\"";

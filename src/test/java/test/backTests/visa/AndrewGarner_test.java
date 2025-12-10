@@ -13,7 +13,7 @@ public class AndrewGarner_test extends BaseTest {
 
     AndrewGarner andrewGarner = new AndrewGarner();
 
-    //@Test(invocationCount = 10)
+    //@Test(invocationCount = 5)
     public void positive_init(){
         andrewGarner.setExpectedResponseCode(201);
         andrewGarner.init("{\n" +
@@ -39,7 +39,7 @@ public class AndrewGarner_test extends BaseTest {
 //                "   \"request_options\": {" +
 //                "            \"reminder_schedule\": [\"2025-09-10T07:30:47Z\",\"2025-09-11T09:30:47Z\",\"2025-09-12T09:30:47Z\"]\n" +
 //                "    },"+
-                "    \"due_date\": \"2025-11-02\",\n" +
+                "    \"due_date\": \"2025-11-20\",\n" +
                 "    \"request_message_id\": \""+ Uuid_helper.generate_uuid4() +"\",\n" +
                 "    \"settlement_options\": [\n" +
                 "        {\n" +

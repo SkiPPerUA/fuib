@@ -24,33 +24,34 @@ public class C2Aregress extends BaseTest {
         String body = " \"amount\": 100,\n" +
                 "    \"currency\": 980,\n" +
                 "    \"commission\": 10,\n" +
-                "    \"client_ip\": \"0.1.1.4\",\n" +
-                "    \"authentication\":{\n" +
-                "      \"device_id\":\"device_idVladTest\",\n" +
-                "      \"session_id\":\"idVladTest\",\n" +
-                "      \"ip\":\"79.110.129.18\",\n" +
-                "      \"event_type\":\"APP_A2C\"\n" +
-                "   }," +
+//                "    \"client_ip\": \"0.1.1.4\",\n" +
+//                "    \"authentication\":{\n" +
+//                "      \"device_id\":\"device_idVladTest\",\n" +
+//                "      \"session_id\":\"idVladTest\",\n" +
+//                "      \"ip\":\"79.110.129.18\",\n" +
+//                "      \"event_type\":\"APP_A2C\"\n" +
+//                "   }," +
                 "    \"description\": \"c2a - пумб мастер\",\n" +
-                "    \"threed\": {\n" +
-                "        \"version\": \"2.2.0\",\n" +
-                "        \"fingerprint\": \"test\",\n" +
-                "        \"java_enabled\": false,\n" +
-                "        \"javascript_enabled\": true,\n" +
-                "        \"accept_header\": \"*\",\n" +
-                "        \"lang\": \"RU\",\n" +
-                "        \"color_depth\": 24,\n" +
-                "        \"screen_width\": 1920,\n" +
-                "        \"screen_height\": 1080,\n" +
-                "        \"tz\": 120,\n" +
-                "        \"challenge_window_size\": \"02\",\n" +
-                "        \"iframe_return_url\": \"https://service.fuib.com\",\n" +
-                "        \"user_agent\": \"Gecko\"\n" +
-                "    },"+
-                "    \"receiver\": {\n" +
-                "        \"source\": \"IBAN\",\n" +
-                "        \"value\": \"UA953348510000026201112609803\"\n" +
-                "    },"+
+                "    \"destination\": \"пумб мастер\",\n" +
+//                "    \"threed\": {\n" +
+//                "        \"version\": \"2.2.0\",\n" +
+//                "        \"fingerprint\": \"test\",\n" +
+//                "        \"java_enabled\": false,\n" +
+//                "        \"javascript_enabled\": true,\n" +
+//                "        \"accept_header\": \"*\",\n" +
+//                "        \"lang\": \"RU\",\n" +
+//                "        \"color_depth\": 24,\n" +
+//                "        \"screen_width\": 1920,\n" +
+//                "        \"screen_height\": 1080,\n" +
+//                "        \"tz\": 120,\n" +
+//                "        \"challenge_window_size\": \"02\",\n" +
+//                "        \"iframe_return_url\": \"https://service.fuib.com\",\n" +
+//                "        \"user_agent\": \"Gecko\"\n" +
+//                "    },"+
+//                "    \"receiver\": {\n" +
+//                "        \"source\": \"IBAN\",\n" +
+//                "        \"value\": \"UA953348510000026201112609803\"\n" +
+//                "    },"+
                 "    \"identification\": {\n" +
                 "   \"requirements\": " +
                 "     {\n" +
@@ -76,9 +77,9 @@ public class C2Aregress extends BaseTest {
                 "         \"independent_sales_organization_id\":\"3016715233\"\n" +
                 "      }\n" +
                 "      }},\n"+
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.PROSTIR));
+                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_MC));
 
-        c2a = new C2A(body,0);
+        c2a = new C2A(body,true);
         Thread.sleep(sleep);
         c2a.status();
         JSONObject json = new JSONObject(c2a.getResponse()).getJSONObject("data");

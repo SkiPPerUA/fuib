@@ -554,7 +554,7 @@ public class CashOrdersTest extends BaseTest {
     @Test(enabled = true)
     public void make_transaction() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         cashOrders.setStatusCode(200);
-        Card card = Card.MONO_MC;
+        Card card = Card.MONO_VISA;
         positive_timeslots();
         String amount = "50000";
         String cardholder_name = "John Dow123";

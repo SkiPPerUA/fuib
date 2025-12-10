@@ -31,6 +31,11 @@ public class ICCS_EOD extends BaseTest {
         rabbitMQHttp.sendHttp("{\"eod\": true }");
     }
 
+    public void checkEod_payhub(){
+        RabbitMQ_http rabbitMQHttp = new RabbitMQ_http("checkEOD","transfers.input");
+        rabbitMQHttp.sendHttp("{\"eod\": true }");
+    }
+
 
     private void connBD() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         BDas400.BDas400(env, "savchukv", "skipper11223");

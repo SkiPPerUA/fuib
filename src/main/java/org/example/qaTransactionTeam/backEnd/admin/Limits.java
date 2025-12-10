@@ -4,6 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.apache.log4j.Logger;
 import org.example.qaTransactionTeam.backEnd.helper.Uuid_helper;
+import org.example.qaTransactionTeam.backEnd.token.Auth_token;
 import org.example.qaTransactionTeam.backEnd.token.Trans_token_payhub;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,6 +22,7 @@ public class Limits {
     private int status_code = 200;
     private int status_code_put = 204;
     private Trans_token_payhub token;
+    private String limits_id_config;
 
     {
         try {
@@ -44,6 +46,21 @@ public class Limits {
                 .extract().response().asString();
 
         logger.info("Get Limits - "+response);
+    }
+
+    public void getLimitByProduct(String sirius_id, String product){
+        Auth_token token1 = new Trans_token_payhub(123456);
+        logger.info(String.format("getLimitByProduct -> sirius_id {%s}; product {%s}",sirius_id,product));
+        response = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer "+token1.getToken())
+                .when()
+                .get(token1.getHost()+"/limits/fuib/"+sirius_id+"/products/"+product)
+                .then()
+                .statusCode(status_code)
+                .extract().response().asString();
+
+        logger.info("getLimitByProduct - "+response);
     }
 
     public void getLimits(){
@@ -181,6 +198,62 @@ public class Limits {
         logger.info("Get Mirinda Limits for sirius_id "+sirius_id+" = "+response);
     }
 
+    public void getProductConfigs(){
+        response = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer "+token.getToken())
+                .when()
+                .get(token.getHost()+"/admin/limits/product-configs")
+                .then()
+                .statusCode(200)
+                .extract().response().asString();
+
+        logger.info("getProductConfigs = "+response);
+    }
+
+    public void createProductConfigs(String body){
+        response = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer "+token.getToken())
+                .body(body)
+                .when()
+                .post(token.getHost()+"/admin/limits/product-configs")
+                .then()
+                //.statusCode(200)
+                .extract().response().asString();
+
+        logger.info("createProductConfigs = "+response);
+
+        limits_id_config = new JSONObject(getResponse()).getString("id");
+    }
+
+    public void deleteProductConfigs(String config_id){
+        response = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer "+token.getToken())
+                .when()
+                .delete(token.getHost()+"/admin/limits/product-configs/"+config_id)
+                .then()
+                .statusCode(204)
+                .extract().response().asString();
+
+        logger.info("deleteProductConfigs");
+    }
+
+    public void updateProductConfigs(String config_id,String body){
+        response = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer "+token.getToken())
+                .body(body)
+                .when()
+                .put(token.getHost()+"/admin/limits/product-configs/"+config_id)
+                .then()
+                .statusCode(200)
+                .extract().response().asString();
+
+        logger.info("updateProductConfigs -> "+config_id);
+    }
+
     public String getResponse() {
         return response;
     }
@@ -195,5 +268,9 @@ public class Limits {
 
     public void setStatus_code_put(int status_code_put) {
         this.status_code_put = status_code_put;
+    }
+
+    public String getLimits_id_config() {
+        return limits_id_config;
     }
 }
