@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.when;
 
 public class C2Cregress extends BaseTest {
 
@@ -35,11 +36,11 @@ public class C2Cregress extends BaseTest {
                 "      \"event_type\":\"APP_A2C\"\n" +
                 "   }," +
                 "    \"description\": \"description\",\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_MC))+","+
+                Payer_constructor.PAN_payer(Cards_data.getData(Card.MONO_VISA))+","+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
                 //"        \"iban\": \"UA973348510100026201112609802\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_MC,Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(Card.FUIB_VISA,Card_param.pan)+"\"\n" +
                 "    },\n" +
                 ThreeDS.threeDS_2_2_0;
 
@@ -54,8 +55,8 @@ public class C2Cregress extends BaseTest {
 
     @Test
     public void hidden_frame() throws InterruptedException {
-        String trans = "507fd3c2-c399-40bc-b0a9-bd408364d22e";
-        String ss = "eyJ0aHJlZURTU2VydmVyVHJhbnNJRCI6ImQwYjIyNjYwLTFmN2ItNDFmMC05MDIxLWIxNzljZTA2OTQ5ZiJ9";
+        String trans = "026c83c6-dc85-4b23-a577-6254f1b9fb5f";
+        String ss = "eyJ0aHJlZURTU2VydmVyVHJhbnNJRCI6ImIxZDgxOTIwLWRhYzQtNDFmMC05MTBmLTJiN2Q5NWU5N2FkYiJ9";
 
         RestAssured.useRelaxedHTTPSValidation();
         c2c.agreeHidden(trans, ss);
@@ -63,6 +64,7 @@ public class C2Cregress extends BaseTest {
         c2c.setTransactionId(trans);
         ThreeDS.createIFrame((String) data.get("acs_url"), (String) data.get("c_req"));
         c2c.agree3DS();
+        c2c.status(trans);
     }
 
     private Map<String,String> wait_hidden_frame(String trans) throws InterruptedException {

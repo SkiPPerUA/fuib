@@ -354,4 +354,71 @@ public class MerchantsConfigTest extends BaseTest {
                 "  \"instructions\": [\"acquiring\"]\n" +
                 "}");
     }
+
+    public void positive_updateConfigsPga(){
+        configs.updateConfigsPga("80bbbe8b-c207-428b-98d4-654bb3b8e606","139d87ef-e80e-4c6f-88a1-5d0bc0f05c2b","{\n" +
+                "   \"transaction_expires_after_seconds\":1200,\n" +
+                "   \"pga_version\":\"v2\",\n" +
+                "   \"name\":\"ФОП Колобок\",\n" +
+                "   \"pga_merchant_id\":\"1431ECAE35C80F82409D\",\n" +
+                "   \"pga_account_id\":\"001\",\n" +
+                "   \"pga_portal_id\":\"9564166CB48FC7898F54E5149BEFC940\",\n" +
+                "   \"password\":\""+System.currentTimeMillis()+"aA@\",\n" +
+                "   \"two_phase\":false,\n" +
+                "   \"groups\":[\n" +
+                "      \"SF\"\n" +
+                "   ]\n" +
+                "}");
+    }
+
+    public void negative_updateConfigsPga(){
+        String password = System.currentTimeMillis()+"aA@";
+        configs.updateConfigsPga("80bbbe8b-c207-428b-98d4-654bb3b8e606","139d87ef-e80e-4c6f-88a1-5d0bc0f05c2b","{\n" +
+                "   \"transaction_expires_after_seconds\":1200,\n" +
+                "   \"pga_version\":\"v2\",\n" +
+                "   \"name\":\"ФОП Колобок\",\n" +
+                "   \"pga_merchant_id\":\"1431ECAE35C80F82409D\",\n" +
+                "   \"pga_account_id\":\"001\",\n" +
+                "   \"pga_portal_id\":\"9564166CB48FC7898F54E5149BEFC940\",\n" +
+                "   \"password\":\""+password+"\",\n" +
+                "   \"two_phase\":false,\n" +
+                "   \"groups\":[\n" +
+                "      \"SF\"\n" +
+                "   ]\n" +
+                "}");
+
+
+        configs.setExpectedResponseCode(500);
+        //password same
+        configs.updateConfigsPga("80bbbe8b-c207-428b-98d4-654bb3b8e606","139d87ef-e80e-4c6f-88a1-5d0bc0f05c2b","{\n" +
+                "   \"transaction_expires_after_seconds\":1200,\n" +
+                "   \"pga_version\":\"v2\",\n" +
+                "   \"name\":\"ФОП Колобок\",\n" +
+                "   \"pga_merchant_id\":\"1431ECAE35C80F82409D\",\n" +
+                "   \"pga_account_id\":\"001\",\n" +
+                "   \"pga_portal_id\":\"9564166CB48FC7898F54E5149BEFC940\",\n" +
+                "   \"password\":\""+password+"\",\n" +
+                "   \"two_phase\":false,\n" +
+                "   \"groups\":[\n" +
+                "      \"SF\"\n" +
+                "   ]\n" +
+                "}");
+
+        //password validation
+        List.of("45678976Aa@","12345678976Aa","12345678976A@","12345678976a@","nhjkdsfhsjkdAa@").forEach(x -> {
+            configs.updateConfigsPga("80bbbe8b-c207-428b-98d4-654bb3b8e606","139d87ef-e80e-4c6f-88a1-5d0bc0f05c2b","{\n" +
+                    "   \"transaction_expires_after_seconds\":1200,\n" +
+                    "   \"pga_version\":\"v2\",\n" +
+                    "   \"name\":\"ФОП Колобок\",\n" +
+                    "   \"pga_merchant_id\":\"1431ECAE35C80F82409D\",\n" +
+                    "   \"pga_account_id\":\"001\",\n" +
+                    "   \"pga_portal_id\":\"9564166CB48FC7898F54E5149BEFC940\",\n" +
+                    "   \"password\":\""+password+"\",\n" +
+                    "   \"two_phase\":false,\n" +
+                    "   \"groups\":[\n" +
+                    "      \"SF\"\n" +
+                    "   ]\n" +
+                    "}");
+        });
+    }
 }

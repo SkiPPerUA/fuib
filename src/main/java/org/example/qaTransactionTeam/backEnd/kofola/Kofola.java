@@ -23,4 +23,13 @@ public class Kofola extends Restful {
                         "}")
                 .post("https://core-dbgate."+env+"-fuib.com/kofola/v1/accounts/by-filters?limit=100&offset=0"));
     }
+
+    public void getOwnerByAccount_id(String account_id){
+        request(given()
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer "+token.getToken())
+                .header("X-Flow-ID","test")
+                .header("X-Systemcode","test")
+                .get("https://core-dbgate."+env+"-fuib.com/kofola/v2/card-accounts?account_id="+account_id));
+    }
 }

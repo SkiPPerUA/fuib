@@ -1,5 +1,6 @@
 package org.example.qaTransactionTeam.backEnd.transaction;
 
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
@@ -165,18 +166,18 @@ public abstract class Transaction_payhub {
         response = given()
                 .contentType(ContentType.JSON)
                 .header("Authorization","Bearer "+token.getToken())
-                .body(body).log().all()
+                .body(body)
                 .when()
                 .put(url);
         logger.info("Подтверждение 3DS для "+type+" транзакции - "+response.then().extract().response().asString());
         Assert.assertEquals(response.getStatusCode(),statusCode);
     }
 
-    public void agreeHidden(String transactionId, String ss){
+    public void agreeHidden(String transactionId, String threed_data){
         String url;
         String body = "{\n" +
                 "    \"transaction_id\": \""+transactionId+"\",\n" +
-                "    \"threed_data\": \""+ss+"\"\n" +
+                "    \"threed_data\": \""+threed_data+"\"\n" +
                 "}";
         if(type.equals("c4c")) {
             url = token.getHost()+"/operations/deferred/c2c/"+transactionId+"/3ds";
@@ -195,7 +196,7 @@ public abstract class Transaction_payhub {
                 .body(body)
                 .when()
                 .put(url);
-        logger.info("Подтверждение 3DS для "+type+" транзакции - "+response.then().extract().response().asString());
+        logger.info("Подтверждение agreeHidden для "+type+" транзакции - "+response.then().extract().response().asString());
         Assert.assertEquals(response.getStatusCode(),statusCode);
     }
 
@@ -264,23 +265,28 @@ public abstract class Transaction_payhub {
             if (status.equals("PENDING")) {
                 try {
                     url = json.getJSONObject("data").getJSONObject("3ds_info").getString("acs_url");
-
 //                    //hidden_frame
-//                    creq = json.getJSONObject("data").getJSONObject("3ds_info").getString("hidden_frame_data");
-//                    Map<String,String> body = new HashMap<>();
-//                    body.put("threeDSMethodData",creq);
-//                    String res = given()
-//                            .contentType(ContentType.URLENC)
-//                            .params(body)
-//                            .when()
-//                            .post(url)
-//                            .then().extract().response().prettyPrint();
-//
-//                    json = new JSONObject(res);
-//                    url = json.getJSONObject("data").getJSONObject("3ds_info").getString("acs_url");
+                    if (json.getJSONObject("data").getJSONObject("3ds_info").getString("threed_mode").equals("THREED_TWO_FRAME_HIDDEN")) {
+                        creq = json.getJSONObject("data").getJSONObject("3ds_info").getString("hidden_frame_data");
+                        Map<String, String> body = new HashMap<>();
+                        body.put("threeDSMethodData", creq);
+                        String res = given()
+                                .contentType(ContentType.URLENC)
+                                .params(body)
+                                .when()
+                                .post(url)
+                                .then().extract().response().asString();
 
-                    creq = json.getJSONObject("data").getJSONObject("3ds_info").getString("c_req");
-
+                        String threed_data = res.substring(res.indexOf("value=\"")+7,res.indexOf("value=\"")+91);
+                        agreeHidden(transactionId,threed_data);
+                        Map data = wait_hidden_frame(transactionId);
+                        setTransactionId(transactionId);
+                        url = (String) data.get("acs_url");
+                        creq = (String) data.get("c_req");
+                    }else {
+                        url = json.getJSONObject("data").getJSONObject("3ds_info").getString("acs_url");
+                        creq = json.getJSONObject("data").getJSONObject("3ds_info").getString("c_req");
+                    }
                 } catch (JSONException e) {
                     try {
                         Thread.sleep(wait);
@@ -288,6 +294,8 @@ public abstract class Transaction_payhub {
                         ex.printStackTrace();
                     }
                     get_theeDS_data();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }else if (status.equals("PROCESSED")){
                 //Транка успешна - поиск 3дс - прекращать
@@ -307,6 +315,19 @@ public abstract class Transaction_payhub {
                 Assert.fail("Статус транзакции "+type+" ("+transactionId+") = "+status);
             }
         }
+    }
+
+    private Map<String,String> wait_hidden_frame(String trans) throws InterruptedException {
+        Thread.sleep(5000);
+        String creq = "";
+        String url = "";
+        Map<String,String> data = new HashMap<>();
+        JSONObject json = new JSONObject(getStatus(trans));
+        creq = json.getJSONObject("data").getJSONObject("3ds_info").getString("c_req");
+        url = json.getJSONObject("data").getJSONObject("3ds_info").getString("acs_url");
+        data.put("acs_url", url);
+        data.put("c_req", creq);
+        return data;
     }
 
     public String getDebitId() {

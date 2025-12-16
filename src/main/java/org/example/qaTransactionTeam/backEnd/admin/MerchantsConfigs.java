@@ -49,7 +49,7 @@ public class MerchantsConfigs extends Restful {
     public void updateConfigsPga(String id, String config, String body){
         RestAssured.useRelaxedHTTPSValidation();
         logger.info("Update configs pga");
-        request(given().contentType(ContentType.JSON).header("Authorization", "Bearer "+token.getToken())
+        request(given().contentType(ContentType.JSON).header("Authorization", "Bearer "+token.getToken()).log().all()
                 .body(body).when().put(token.getHost()+"/admin/merchants/"+id+"/configs/pga/"+config));
     }
 
