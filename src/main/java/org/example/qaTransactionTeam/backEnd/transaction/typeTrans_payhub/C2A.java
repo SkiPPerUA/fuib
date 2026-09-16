@@ -6,6 +6,7 @@ import org.example.qaTransactionTeam.backEnd.token.Trans_token_payhub;
 import org.example.qaTransactionTeam.backEnd.transaction.ThreeDS;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction_payhub;
+import org.json.JSONObject;
 import org.testng.Assert;
 import java.io.IOException;
 import java.util.Map;
@@ -24,6 +25,7 @@ public class C2A extends Transaction_payhub implements Transaction {
 
     public C2A(){
         super.type = type;
+        super.token = new Trans_token_payhub();
     }
 
     public C2A(String body, int threeDS){
@@ -94,8 +96,35 @@ public class C2A extends Transaction_payhub implements Transaction {
         super.token = new Trans_token_payhub();
         try {
             createTrans(bodyRequest);
+            if (require_3ds_data){
+                waitFinalStatus();
+            }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void waitFinalStatus(){
+        getStatus(transactionId);
+        String status = new JSONObject(getResponse()).getString("status");
+        if (status.equals("PROCESSED") || status.equals("FAILED")){
+
+        }else if (status.equals("3DS_REQUIRED")){
+
+            get_theeDS_data();
+//            try {
+//                ThreeDS.createIFrame(url, creq);
+//            } catch (Throwable e) {
+//                e.printStackTrace();
+//            }
+
+        }else {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            waitFinalStatus();
         }
     }
 

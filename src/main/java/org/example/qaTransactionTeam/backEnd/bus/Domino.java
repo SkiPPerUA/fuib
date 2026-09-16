@@ -1,6 +1,7 @@
 package org.example.qaTransactionTeam.backEnd.bus;
 
 import io.restassured.http.ContentType;
+import org.checkerframework.checker.units.qual.A;
 import org.example.qaTransactionTeam.backEnd.utils.Apiman;
 import org.example.qaTransactionTeam.backEnd.utils.Restful;
 
@@ -8,16 +9,19 @@ import static io.restassured.RestAssured.given;
 
 public class Domino extends Restful {
 
-    private Apiman token = new Apiman("EKB","vip_manager", "test");
+    private Apiman token = new Apiman("EKB","corp_cust_r", "test");
 
-    public void find_customersBYattributes(String string){
+    //https://confluence.fuib.com/pages/viewpage.action?pageId=314509085
+
+    public void find_customersBYattributes(String body){
         request(given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer "+token.getToken())
                 .header("X-Flow-ID", "11")
                 .header("X-Systemcode","12312")
+                .body(body)
                 .when()
-                .get("https://api."+token.getEnvironment()+"-fuib.com:443/bus/domino/v2/customers/by-attributes?"+string));
+                .post("https://api."+token.getEnvironment()+"-fuib.com:443/bus/wolverine/v2/customers/by-attributes"));
     }
 
     public void get_customers(String client_id){
@@ -27,7 +31,7 @@ public class Domino extends Restful {
                 .header("X-Flow-ID", "11")
                 .header("X-Systemcode","12312")
                 .when()
-                .get("https://api."+token.getEnvironment()+"-fuib.com:443/bus/domino/v2/customers/"+client_id));
+                .get("https://api."+token.getEnvironment()+"-fuib.com:443/bus/wolverine/v2/customers/"+client_id));
     }
 
     public void update_customers(String client_id, String body){

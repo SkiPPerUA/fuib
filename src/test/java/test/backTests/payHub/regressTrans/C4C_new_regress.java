@@ -12,11 +12,13 @@ import org.testng.annotations.Test;
 
 import java.util.Random;
 
+import static org.example.qaTransactionTeam.backEnd.utils.Card.FUIB_MC;
+
 @Test
 public class C4C_new_regress extends BaseTest {
 
     Card sender = Card.FUIB_MC;
-    Card receiver = Card.FUIB_MC;
+    Card receiver = Card.OSCHAD_MC;
     C4C_new c4cNew = new C4C_new();
 
     public void positive_sameCard_not3ds(){
@@ -40,8 +42,8 @@ public class C4C_new_regress extends BaseTest {
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
                 "            \"sender\": {\n" +
-                "                \"first_name\": \"firstname\",\n" +
-                "                \"last_name\": \"last\",\n" +
+                "                \"first_name\": \"firstnamefirstnamefirstnamefirstnaA\",\n" +
+                "                \"last_name\": \"lastlastlastlastlastlastlastlastlaB\",\n" +
                 "                \"tax_id\": \"1234567890\",\n" +
                 "                \"city\":\"City\",\n" +
                 "                \"country\":\"UKR\",\n" +
@@ -49,8 +51,8 @@ public class C4C_new_regress extends BaseTest {
                 "                \"account_number\": \"UA953348510000026201112609803\"\n" +
                 "            },\n" +
                 "            \"recipient\": {\n" +
-                "                \"first_name\": \"test\",\n" +
-                "                \"last_name\": \"test\",\n" +
+                "                \"first_name\": \"firstnamefirstnamefirstnamefirstnaC\",\n" +
+                "                \"last_name\": \"lastlastlastlastlastlastlastlastlaD\",\n" +
                 "                \"account_number\": \"UA953348510000026201112609803\"\n" +
                 "            },\n" +
                 "            \"details\": {\n" +
@@ -75,8 +77,8 @@ public class C4C_new_regress extends BaseTest {
                 "    \"identification\": {\n" +
                 "        \"requirements\": {\n" +
                 "            \"sender\": {\n" +
-                "                \"first_name\": \"firstname\",\n" +
-                "                \"last_name\": \"last\",\n" +
+                "                \"first_name\": \"firstnamefirstnamefirstnamefirstnaE\",\n" +
+                "                \"last_name\": \"lastlastlastlastlastlastlastlastlaF\",\n" +
                 "                \"city\":\"City\",\n" +
                 "                \"country\":\"UKR\",\n" +
                 "                \"address\":\"address\",\n" +
@@ -84,8 +86,8 @@ public class C4C_new_regress extends BaseTest {
                 "                 \"account_number\": \"UA953348510000026201112609803\"\n" +
                 "            },\n" +
                 "            \"recipient\": {\n" +
-                "                \"first_name\": \"test\",\n" +
-                "                \"last_name\": \"test\",\n" +
+                "                \"first_name\": \"firstnamefirstnamefirstnamefirstnaG\",\n" +
+                "                \"last_name\": \"lastlastlastlastlastlastlastlastlaH\",\n" +
                 "                \"account_number\": \"UA953348510000026201112609803\"\n" +
                 "            },\n" +
                 "            \"details\": {\n" +
@@ -97,7 +99,7 @@ public class C4C_new_regress extends BaseTest {
                 "        }\n" +
                 "    }\n" +
                 "}");
-        waiter(30);
+        waiter(50);
         c4cNew.statusEnroll(c4cNew.getDebitId(), c4cNew.getEnrollId());
         Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"PROCESSED\""));
 
@@ -1019,6 +1021,102 @@ public class C4C_new_regress extends BaseTest {
                 "}");
         Assert.assertTrue(c4cNew.getResponse().contains("\"message\":\"Переказ неактивний.\""));
 
+    }
+
+    public void positive_sameCard_AGP(){
+
+        c4cNew.setExpectedStatus(200);
+        c4cNew.initTransfers("{\n" +
+                "    \"external_id\": \""+new Random().nextInt() +"\",\n" +
+                "    \"amount\": 1000,\n" +
+                "    \"commission\": 10,\n" +
+                "    \"description\": \"test description\",\n" +
+                "    \"destination\": \"test destination\",\n" +
+                "    \"payer\": {\n" +
+                "        \"source\": \"AGP\",\n" +
+                "        \"value\": \""+ Cards_data.getData(sender,Card_param.pan)+"\",\n" +
+                "        \"expire\": \""+ Cards_data.getData(sender,Card_param.expire)+"\",\n" +
+                "        \"ucaf\": \"AQAAAAAAASY5OZRQCvVSQSYAAAA=\"\n" +
+                "    },\n" +
+                "    \"receiver\": {\n" +
+                "        \"source\": \"PAN\",\n" +
+                "        \"value\": \""+ Cards_data.getData(receiver, Card_param.pan)+"\"\n" +
+                "    },"+
+                "    \"identification\": {\n" +
+                "        \"requirements\": {\n" +
+                "            \"sender\": {\n" +
+                "                \"first_name\": \"firstnamefirstnamefirstnamefirstnaA\",\n" +
+                "                \"last_name\": \"lastlastlastlastlastlastlastlastlaB\",\n" +
+                "                \"tax_id\": \"1234567890\",\n" +
+                "                \"city\":\"City\",\n" +
+                "                \"country\":\"UKR\",\n" +
+                "                \"address\":\"address\",\n" +
+                "                \"account_number\": \"UA953348510000026201112609803\"\n" +
+                "            },\n" +
+                "            \"recipient\": {\n" +
+                "                \"first_name\": \"firstnamefirstnamefirstnamefirstnaC\",\n" +
+                "                \"last_name\": \"lastlastlastlastlastlastlastlastlaD\",\n" +
+                "                \"account_number\": \"UA953348510000026201112609803\"\n" +
+                "            },\n" +
+                "            \"details\": {\n" +
+                "                \"source\": \"07\",\n" +
+                "                \"submerchant_url\": \"https://jira.fuib.com/projects/PAYH/issues/PAYH-41057\",\n" +
+                "                \"independent_sales_organization_id\": \"3016715233\",\n" +
+                "                \"additional_message\": \"test\"\n" +
+                "            }\n" +
+                "        }\n" +
+                "    }\n" +
+                "}");
+        waiter(30);
+        c4cNew.status();
+        Assert.assertTrue(c4cNew.getResponse().contains("\"available_amount\":1000"));
+        Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"ACTIVE\""));
+
+        c4cNew.enroll(c4cNew.getDebitId(), "{\n" +
+                "    \"external_id\": \""+Uuid_helper.generate_uuid()+"\",\n" +
+                "    \"operation_id\": \""+c4cNew.getDebitId()+"\",\n" +
+                "    \"amount\": 500,\n" +
+                "    \"fee\": 52,\n" +
+                "    \"identification\": {\n" +
+                "        \"requirements\": {\n" +
+                "            \"sender\": {\n" +
+                "                \"first_name\": \"firstnamefirstnamefirstnamefirstnaE\",\n" +
+                "                \"last_name\": \"lastlastlastlastlastlastlastlastlaF\",\n" +
+                "                \"city\":\"City\",\n" +
+                "                \"country\":\"UKR\",\n" +
+                "                \"address\":\"address\",\n" +
+                "                \"tax_id\": \"1234567890\",\n" +
+                "                 \"account_number\": \"UA953348510000026201112609803\"\n" +
+                "            },\n" +
+                "            \"recipient\": {\n" +
+                "                \"first_name\": \"firstnamefirstnamefirstnamefirstnaG\",\n" +
+                "                \"last_name\": \"lastlastlastlastlastlastlastlastlaH\",\n" +
+                "                \"account_number\": \"UA953348510000026201112609803\"\n" +
+                "            },\n" +
+                "            \"details\": {\n" +
+                "                \"source\": \"07\",\n" +
+                "                \"submerchant_url\": \"https://jira.fuib.com/projects/PAYH/issues/PAYH-41057\",\n" +
+                "                \"independent_sales_organization_id\": \"3016715233\",\n" +
+                "                \"additional_message\": \"test\"\n" +
+                "            }\n" +
+                "        }\n" +
+                "    }\n" +
+                "}");
+        waiter(50);
+        c4cNew.statusEnroll(c4cNew.getDebitId(), c4cNew.getEnrollId());
+        Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"PROCESSED\""));
+
+        c4cNew.refund(100);
+        Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"CREATED\""));
+
+        waiter(30);
+        c4cNew.statusRefund();
+        Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"PROCESSED\""));
+
+        c4cNew.status();
+        Assert.assertTrue(c4cNew.getResponse().contains("\"available_amount\":400"));
+        Assert.assertTrue(c4cNew.getResponse().contains("\"total_refunded_amount\":100"));
+        Assert.assertTrue(c4cNew.getResponse().contains("\"status\":\"ACTIVE\""));
     }
 
     private void waiter(int sec){

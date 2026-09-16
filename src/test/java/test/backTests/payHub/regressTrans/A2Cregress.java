@@ -19,7 +19,7 @@ public class A2Cregress extends BaseTest {
 
     @Test(invocationCount = 1)
     public void testA2CPanOnlyMandatoryFields() throws JSONException, InterruptedException {
-            String body = "\"amount\": 130,\n" +
+            String body = "\"amount\": 1000,\n" +
                     "    \"currency\": \"UAH\",\n" +
                     "    \"client_ip\": \"0.1.1.4\",\n" +
                     "    \"description\": \"description_тест\", \n" +
@@ -39,7 +39,7 @@ public class A2Cregress extends BaseTest {
                     "             \"sender\":{\n" +
                     "                 \"first_name\":\"IvanSender\",\n" +
                     "                 \"last_name\":\"IvanovSender\",\n" +
-                    "                 \"account_number\":\"UA953348510000026201112609803\",\n" +
+                    //"                 \"account_number\":\"UA313348510000026206976797365\",\n" +
                     "                 \"city\":\"City\",\n" +
                     "                 \"postal_code\":\"423214\",\n" +
                     "                 \"address\":\"address\",\n" +
@@ -49,7 +49,7 @@ public class A2Cregress extends BaseTest {
                     "                 \"document_type\":\"01\",\n" +
                     "                 \"birthday\":\"10-10-1992\",\n" +
                     "                 \"reference_number\":\"1111111111111111\",\n" +
-                    "                 \"account_number\":\"UA953348510000026201112609803\"\n" +
+                    "                 \"account_number\":\"UA313348510000026206976797365\"\n" +
                     "              },\n" +
                     "      \"details\":{\n" +
                     "         \"additional_message\":\"11111111221222222233333333334444444444555555555666666666677777111\",\n" +
@@ -63,13 +63,13 @@ public class A2Cregress extends BaseTest {
                     "               \"street\": \"22222\"\n" +
                     "               }"+
                     "    },"+
-                    "    \"payer\": {\n" +
-                    "        \"source\": \"IBAN\",\n" +
-                    "        \"value\": \"UA953348510000026201112609803\"\n" +
-                    "    }," +
+//                    "    \"payer\": {\n" +
+//                    "        \"source\": \"IBAN\",\n" +
+//                    "        \"value\": \"UA313348510000026206976797365\"\n" +
+//                    "    }," +
                     "    \"receiver\": {\n" +
                     "        \"source\": \"PAN\",\n" +
-                    "        \"value\": \"" + Cards_data.getData(Card.PROSTIR, Card_param.pan) + "\"\n" +
+                    "        \"value\": \"" + Cards_data.getData(Card.PRIVAT_MASTER, Card_param.pan) + "\"\n" +
                     "    }";
 
             a2c = new A2C(body);

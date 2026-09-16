@@ -13,16 +13,17 @@ public class A2Aregress extends BaseTest {
 
     String [] services = {"internal_fuib_uah","internal_relatives","internal_relatives_currency","out_direct_acc","in_direct_acc","own_fuib","A2P_alias"};
 
-    public void positiveTest(){
-                new A2A("{\n" +
-                        "    \"service\": \"internal_fuib_uah\",\n" +
-                        "    \"amount\": 200,\n" +
+    public void positiveTest() throws InterruptedException {
+               a2a = new A2A("{\n" +
+                        "    \"service\": \"internal_fuib_uah\",\n" + //a2sep
+                        "    \"amount\": 722,\n" +
                         "    \"fee_amount\": 12,\n" +
                         "    \"currency\": \"UAH\",\n" +
                         "    \"description\": \"test\",\n" +
                         "    \"purpose\": \"some purpose\",\n" +
                         "    \"sender\": {\n" +
                         "        \"source\": \"ACCOUNT_ID\",\n" +
+                        "        \"card_id\": \"100501\",\n" +
                         "        \"value\": \"126856282\"\n" +
 //                        "        \"client\": {\n" +
 //                        "            \"source\": \"EKB\",\n" +
@@ -31,7 +32,11 @@ public class A2Aregress extends BaseTest {
                         "    },\n" +
                         "    \"recipient\": {\n" +
                         "        \"source\": \"IBAN\",\n" +
-                        "        \"value\": \"UA563348510000026201113488937\"\n" +
+                        "        \"card_id\": \"100500\",\n" +
+                        "        \"card_mask\": \"444111******1111\",\n" +
+                        "        \"phone\": \"3809876543211\",\n" +
+                        "        \"tax_id\":\"3462406451\"," +
+                        "        \"value\": \"UA563348510000026201113488937\"\n" + //UA973220010000026203303699802 моно
                         "    },\n" +
                         "    \"authentication\": {\n" +
                         "        \"device_id\": \"test1\",\n" +
@@ -40,6 +45,9 @@ public class A2Aregress extends BaseTest {
                         "        \"event_type\": \"APP_A2P\"\n" +
                         "    }\n" +
                         "}");
+        Thread.sleep(30000);
+        a2a.getStatus(a2a.getTransactionId());
+        a2a.getDetails(a2a.getTransactionId(),"8531524");
     }
 
     public void positiveAllTest(){
@@ -75,33 +83,39 @@ public class A2Aregress extends BaseTest {
         }
     }
 
-    public void positiveTest_own_fuib(){
+    public void positiveTest_own_fuib() throws InterruptedException {
        a2a.setToken(new Trans_token_payhub(6241781));
        a2a.setBodyRequest("{\n" +
                "    \"service\": \"own_fuib\",\n" +
-               "    \"amount\": 1000,\n" +
+               "    \"amount\": 123,\n" +
                "    \"fee_amount\": 100,\n" +
                "    \"currency\": \"UAH\",\n" +
                "    \"purpose\": \"own_fuib\",\n" +
                "    \"description\": \"test\",\n" +
                "    \"sender\": {\n" +
                "        \"source\": \"IBAN\",\n" +
-               "        \"value\": \"UA323348510000026208119209027\"\n" +
+               "        \"card_id\": \"100501\",\n" +
+               "        \"value\": \"UA953348510000026201112609803\"\n" + //UA953348510000026201112609803
                "    },\n" +
                "    \"recipient\": {\n" +
                "        \"source\": \"IBAN\",\n" +
-               "        \"value\": \"UA953348510000026201112609803\"\n" +
+               "        \"card_id\": \"100500\",\n" +
+               "        \"card_mask\": \"444111******1111\",\n" +
+               "        \"phone\": \"3809876543211\",\n" +
+               "        \"value\": \"UA323348510000026208119209027\"\n" + //UA323348510000026208119209027
                "    }\n" +
                "}");
-
        a2a.makeTrans();
+       Thread.sleep(30000);
+       a2a.getStatus(a2a.getTransactionId());
+       a2a.getDetails(a2a.getTransactionId(),"8531524");
     }
 
     public void positiveTest_privatBank(){
         a2a.setToken(new Trans_token_payhub(2189387));
         a2a.setBodyRequest("{\n" +
                 "    \"service\": \"out_direct_acc\",\n" + //A2SMP  out_direct_acc
-                "    \"amount\": 1001,\n" +
+                "    \"amount\": 1000,\n" +
                 "    \"fee_amount\": 100,\n" +
                 "    \"currency\": \"UAH\",\n" +
                 "    \"purpose\": \"Private24\",\n" +
@@ -216,5 +230,74 @@ public class A2Aregress extends BaseTest {
                 "      \"value\":\"UA253052990000026207671635945\"" +
                 "   }" +
                 "}");
+    }
+
+    public void oneStep_toPrivatA2A_create() throws InterruptedException {
+        String external = Uuid_helper.generate_uuid4();
+        RabbitMQ_http rabbitMQHttp = new RabbitMQ_http("createA2ATransfer","A2A.transfers.input");
+        A2A a2a = new A2A();
+        a2a.setToken(new Trans_token_payhub(6241781));
+        rabbitMQHttp.sendHttp("{" +
+                "   \"external_id\":\""+external+"\"," +
+                "   \"merchant_id\":\"10546197-0d2f-4059-b9a2-d01cb97eba61\"," +
+                "   \"amount\":300," +
+                "   \"currency\":\"UAH\"," +
+                "   \"purpose\":\"ssss\"," +
+                "   \"service\":\"OUT_A2DIRECT\"," +
+                "   \"client_ip\":\"192.168.76.13\"," +
+                "   \"sender\":{" +
+                "      \"iban\":\"UA953348510000026201112609803\"," +
+                "      \"sirius_client_id\":6241781" +
+                "   }," +
+                "   \"recipient\":{" +
+                "      \"iban\":\"UA253052990000026207671635945\"," +
+                "      \"tax_id\":\"3462406451\"" +
+                "   }" +
+                "}");
+
+        Thread.sleep(30000);
+
+        oneStep_toPrivatA2A_confirm(external);
+    }
+
+    private void oneStep_toPrivatA2A_confirm(String external_id){
+        RabbitMQ_http rabbitMQHttp = new RabbitMQ_http("confirmA2ATransfer","A2A.transfers.input");
+        A2A a2a = new A2A();
+        a2a.setToken(new Trans_token_payhub(6241781));
+        rabbitMQHttp.sendHttp("{" +
+                "   \"external_id\":\""+external_id+"\"," +
+                "   \"merchant_id\":\"10546197-0d2f-4059-b9a2-d01cb97eba61\"," +
+                "   \"routing_key\":\"a2a_transfers.status\"," +
+                "   \"commission_amount\":300," +
+                "   \"commission_currency\":\"UAH\"," +
+                "   \"commission_purpose\":\"Комісійна винагорода за переказ (#PH)\"," +
+                "   \"purpose\":\"тест влад\"," +
+                "   \"recipient\":{" +
+                "      \"iban\":\"UA253052990000026207671635945\"," +
+                "      \"moniker\":\"\"," +
+                "      \"full_name\":\"Test VLADYSLAV\"," +
+                "      \"tax_id\":\"3462406451\"," +
+                "      \"passport_series\":\"\"," +
+                "      \"passport_number\":\"\"" +
+                "   }," +
+                "   \"ultimate_debtor\":{" +
+                "      \"name\":\"\"," +
+                "      \"tax_id\":\"\"," +
+                "      \"passport_series\":\"\"," +
+                "      \"passport_number\":\"\"" +
+                "   }," +
+                "   \"initiating_party\":{" +
+                "      \"tax_id\":\"\"," +
+                "      \"name\":\"\"," +
+                "      \"passport_series\":\"\"," +
+                "      \"passport_number\":\"\"" +
+                "   }" +
+                "}");
+    }
+
+    public void getStatus_rpc(){
+        RabbitMQ_http rabbitMQHttp = new RabbitMQ_http("getStatus","A2A.transfers.input");
+        rabbitMQHttp.sendHttp("{\"id\":\"e2c90c33-23db-479f-b06a-3b405201fe31\"," +
+                "                \"merchant_id\":\"10546197-0d2f-4059-b9a2-d01cb97eba61\"}");
     }
 }

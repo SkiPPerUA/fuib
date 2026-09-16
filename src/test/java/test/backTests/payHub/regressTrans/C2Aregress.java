@@ -21,7 +21,7 @@ public class C2Aregress extends BaseTest {
 
     @Test
     public void testC2APan() throws JSONException, InterruptedException, IOException {
-        String body = " \"amount\": 100,\n" +
+        String body = " \"amount\": 123,\n" +
                 "    \"currency\": 980,\n" +
                 "    \"commission\": 10,\n" +
 //                "    \"client_ip\": \"0.1.1.4\",\n" +
@@ -33,25 +33,25 @@ public class C2Aregress extends BaseTest {
 //                "   }," +
                 "    \"description\": \"c2a - пумб мастер\",\n" +
                 "    \"destination\": \"пумб мастер\",\n" +
-//                "    \"threed\": {\n" +
-//                "        \"version\": \"2.2.0\",\n" +
-//                "        \"fingerprint\": \"test\",\n" +
-//                "        \"java_enabled\": false,\n" +
-//                "        \"javascript_enabled\": true,\n" +
-//                "        \"accept_header\": \"*\",\n" +
-//                "        \"lang\": \"RU\",\n" +
-//                "        \"color_depth\": 24,\n" +
-//                "        \"screen_width\": 1920,\n" +
-//                "        \"screen_height\": 1080,\n" +
-//                "        \"tz\": 120,\n" +
-//                "        \"challenge_window_size\": \"02\",\n" +
-//                "        \"iframe_return_url\": \"https://service.fuib.com\",\n" +
-//                "        \"user_agent\": \"Gecko\"\n" +
-//                "    },"+
-//                "    \"receiver\": {\n" +
-//                "        \"source\": \"IBAN\",\n" +
-//                "        \"value\": \"UA953348510000026201112609803\"\n" +
-//                "    },"+
+                "    \"threed\": {\n" +
+                "        \"version\": \"2.2.0\",\n" +
+                "        \"fingerprint\": \"test\",\n" +
+                "        \"java_enabled\": false,\n" +
+                "        \"javascript_enabled\": true,\n" +
+                "        \"accept_header\": \"*\",\n" +
+                "        \"lang\": \"RU\",\n" +
+                "        \"color_depth\": 24,\n" +
+                "        \"screen_width\": 1920,\n" +
+                "        \"screen_height\": 1080,\n" +
+                "        \"tz\": 120,\n" +
+                "        \"challenge_window_size\": \"02\",\n" +
+                "        \"iframe_return_url\": \"https://service.fuib.com\",\n" +
+                "        \"user_agent\": \"Gecko\"\n" +
+                "    },"+
+                "    \"receiver\": {\n" +
+                "        \"source\": \"IBAN\",\n" +
+                "        \"value\": \"UA323348510000026208119209027\"\n" +
+                "    },"+
                 "    \"identification\": {\n" +
                 "   \"requirements\": " +
                 "     {\n" +
@@ -77,9 +77,9 @@ public class C2Aregress extends BaseTest {
                 "         \"independent_sales_organization_id\":\"3016715233\"\n" +
                 "      }\n" +
                 "      }},\n"+
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_MC));
+                Payer_constructor.PAN_payer(Cards_data.getData(Card.TEST_CARD));
 
-        c2a = new C2A(body,true);
+        c2a = new C2A(body,false);
         Thread.sleep(sleep);
         c2a.status();
         JSONObject json = new JSONObject(c2a.getResponse()).getJSONObject("data");
@@ -126,5 +126,11 @@ public class C2Aregress extends BaseTest {
         JSONObject json = new JSONObject(c2a.getResponse()).getJSONObject("data");
         Assert.assertEquals(json.getString("status"),"PROCESSED");
         logFinishTest("testC2APan3DS2");
+    }
+
+    @Test
+    public void dsa(){
+        C2A c2a = new C2A();
+        c2a.status("4d92c2c6-8221-4e68-8301-5e08de18a191");
     }
 }

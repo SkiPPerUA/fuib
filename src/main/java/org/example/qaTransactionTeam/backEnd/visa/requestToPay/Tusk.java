@@ -20,6 +20,7 @@ public class Tusk extends Restful {
     private Auth_token token = new Trans_token_payhub("svc_tsys_rtpo_t", "jjw#&HCu42%SkCf79pg5Xf4nyxeS3v3&", "transacter");
     private RequestSpecification requestSpecification;
     private String payment_request_id;
+    private String request_message_id;
     private String end_to_end_id;
 
     public Tusk(){
@@ -37,6 +38,7 @@ public class Tusk extends Restful {
                 .header("X-Request-Affinity", "YY"+String.valueOf(new Random().nextLong()).substring(1,14)+"YY")
                 .body(body).when().post(token.getHost()+"/visa-req2pay-outbounds/initiates"));
         if (response.then().extract().statusCode() == 201){
+            request_message_id = response.then().extract().jsonPath().getString("request_message_id");
             payment_request_id = response.then().extract().jsonPath().getString("payment_requests.payment_request_id").replace("[","").replace("]","");
             end_to_end_id = response.then().extract().jsonPath().getString("payment_requests.end_to_end_id").replace("[","").replace("]","");
         }
@@ -79,6 +81,15 @@ public class Tusk extends Restful {
                 .body(body).when().patch(token.getHost()+"/visa-req2pay-outbounds/"+payment_request_id+"/amends"));
     }
 
+    public void agents(String body){
+        logger.info("agents");
+        request(requestSpecification
+                .header("X-Request-Affinity", "YY"+String.valueOf(new Random().nextLong()).substring(1,14)+"YY")
+                .header("payment_request_id", payment_request_id)
+                .body(body)
+                .body(body).when().post(token.getHost()+"/inbounds/request-to-payments/agents"));
+    }
+
     public void notifications(String body){
         logger.info("notifications");
         request(requestSpecification.body(body).when().post(token.getHost()+"/visa-req2pay-outbounds/notifications"));
@@ -91,5 +102,9 @@ public class Tusk extends Restful {
 
     public String getPayment_request_id() {
         return payment_request_id;
+    }
+
+    public String getRequest_message_id() {
+        return request_message_id;
     }
 }

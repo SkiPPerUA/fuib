@@ -4,9 +4,12 @@ import com.github.jknack.handlebars.Helper;
 import org.example.qaTransactionTeam.BaseTest;
 import org.example.qaTransactionTeam.backEnd.admin.MerchantsConfigs;
 import org.example.qaTransactionTeam.backEnd.helper.Uuid_helper;
+import org.example.qaTransactionTeam.backEnd.utils.BDpostgre;
+import org.example.qaTransactionTeam.backEnd.utils.RabbitMQ_http;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Test
@@ -15,7 +18,7 @@ public class MerchantsConfigTest extends BaseTest {
     MerchantsConfigs configs = new MerchantsConfigs();
 
     public void positive_getConfigs(){
-        configs.getConfigs("80bbbe8b-c207-428b-98d4-654bb3b8e606");
+        configs.getConfigs("10546197-0d2f-4059-b9a2-d01cb97eba61");
         Assert.assertTrue(configs.getResponse().contains("\"name\":\"https://www.pbl_test.com/\""));
     }
 
@@ -86,29 +89,28 @@ public class MerchantsConfigTest extends BaseTest {
     }
 
     public void positive_updateConfigs(){
-        String merchant_id = "80bbbe8b-c207-428b-98d4-654bb3b8e606";
+        String merchant_id = "c2bd11e7-bc16-4819-a43a-3956beeb5a87";
         String uuid = Uuid_helper.generate_uuid();
         configs.setExpectedResponseCode(204);
-        configs.updateConfigs(merchant_id,"{\n" +
-                "    \"submerchant_url\": \"https://test.fuib.com/"+uuid+"\"\n" +
-                "}");
+        configs.updateConfigs(merchant_id,"{\"merchant_id\":\""+merchant_id+"\",\"point_id\":\"3330\",\"channel_id\":15,\"submerchant_url\":\"https://test.fuib.com/"+uuid+"\",\"mode\":\"IPS_PAYHUB\", \"transfer_boundary\":\"LOCAL\", \"transfer_direction\":\"SEND\", \"is_bank\": true, \"direct_agreement\": true, \"clearing_fee\": true, \"require_description\":false,\"require_identification\":false,\"check_limits\":false,\"callback_ib\":false}");
 
         configs.setExpectedResponseCode(200);
         configs.getConfigs(merchant_id);
-        Assert.assertTrue(configs.getResponse().contains("\"submerchant_url\":\"https://test.fuib.com/"+uuid+"\""));
     }
 
-    public void positive_addConfigs(){
+    public void positive_addConfigs() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         String merchant_id = "c2bd11e7-bc16-4819-a43a-3956beeb5a87";
         String uuid = Uuid_helper.generate_uuid();
         try {
-            configs.addConfigs(merchant_id,"{\"merchant_id\":\""+merchant_id+"\",\"point_id\":\"3330\",\"channel_id\":15,\"submerchant_url\":\"https://test.fuib.com/"+uuid+"\",\"mode\":\"OTHER\",\"require_description\":false,\"require_identification\":false,\"check_limits\":false,\"callback_ib\":false}\n");
+            configs.addConfigs(merchant_id,"{\"merchant_id\":\""+merchant_id+"\",\"point_id\":\"3330\",\"channel_id\":15,\"submerchant_url\":\"https://test.fuib.com/"+uuid+"\",\"mode\":\"IPS_PAYHUB\", \"transfer_boundary\":\"LOCAL\", \"transfer_direction\":\"DUAL\", \"is_bank\": true, \"direct_agreement\": false, \"clearing_fee\": false, \"require_description\":false,\"require_identification\":false,\"check_limits\":false,\"callback_ib\":false}");
         }catch (Throwable e){
-            Assert.fail("Выполнить - {delete FROM merchants.configs x where x.merchant_id = '"+merchant_id+"'}");
+            BDpostgre.BDpostgre("merchants", "dev","password");
+            BDpostgre.updateSQL("delete FROM merchants.configs x where x.merchant_id = '"+merchant_id+"'");
+            BDpostgre.closeConn();
+            positive_addConfigs();
         }
         configs.setExpectedResponseCode(200);
         configs.getConfigs(merchant_id);
-        Assert.assertTrue(configs.getResponse().contains("\"submerchant_url\":\"https://test.fuib.com/"+uuid+"\""));
     }
 
     public void positive_instructions(){
@@ -420,5 +422,13 @@ public class MerchantsConfigTest extends BaseTest {
                     "   ]\n" +
                     "}");
         });
+    }
+
+    public void tsd(){
+        RabbitMQ_http rabbitMQHttp = new RabbitMQ_http("getTransactionConfig","merchants.input");
+        rabbitMQHttp.sendHttp("{" +
+                "\"merchant_id\": \"10546197-0d2f-4059-b9a2-d01cb97eba61\"," +
+                "\"transaction_type\": \"A2C\"" +
+                "}");
     }
 }

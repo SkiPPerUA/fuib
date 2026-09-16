@@ -18,8 +18,8 @@ public class MobyPayTests extends BaseTest {
                 "              \"expire\": \""+Cards_data.getData(Card.FUIB_VISA,Card_param.expire)+"\"";
         MobyTrans trans = new MobyTrans("100",payer,false,2);
         trans.status();
-//        trans.complete_hold("100");
-//        trans.status();
+        //trans.complete_hold("102");
+        //trans.status();
         //System.out.println("ggggg");
         //Thread.sleep(20000);
         //trans.refund("100");

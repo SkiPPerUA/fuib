@@ -32,4 +32,16 @@ public class Kofola extends Restful {
                 .header("X-Systemcode","test")
                 .get("https://core-dbgate."+env+"-fuib.com/kofola/v2/card-accounts?account_id="+account_id));
     }
+
+    public void find_accounts(String body){
+        request(given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer "+token.getToken())
+                .header("X-Flow-ID", "11")
+                .header("X-Systemcode","12312")
+                .body(body)
+                .when()
+                .post("https://core-dbgate."+env+"-fuib.com/kofola/v2/accounts/by-filters"));
+
+    }
 }

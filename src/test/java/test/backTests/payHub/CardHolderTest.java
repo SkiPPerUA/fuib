@@ -158,4 +158,15 @@ public class CardHolderTest extends BaseTest {
         Assert.assertTrue(cardHolder.getResponse().contains("\"pan\":\"LUHN_FAILED\""));
     }
 
+    public void positive_getCardholders(){
+        cardHolder.getCardholders("{\n" +
+                "    \"ekb_client_id\": \"8531524\",\n" +
+                "    \"receiver\":\n" +
+                "        {\n" +
+                "            \"source\": \"PAN\",\n" +
+                "            \"value\": \""+Cards_data.getData(Card.FUIB_MC,Card_param.pan)+"\"\n" +
+                "        }\n" +
+                "}");
+    }
+
 }

@@ -2,6 +2,7 @@ package org.example.qaTransactionTeam.backEnd.token;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import org.example.qaTransactionTeam.backEnd.cashOrders.CashOrders;
 import org.example.qaTransactionTeam.backEnd.utils.Configs;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,9 +43,18 @@ public class Trans_token_payhub implements Auth_token{
 
     public Trans_token_payhub(String login, String password, String client) throws JSONException {
         data = "{\n" +
-                "\t\"login\": \""+login+"\",\n" +
-                "\t\"password\": \""+password+"\",\n" +
-                "\t\"client\": \""+client+"\"\n" +
+                "  \"params\": {\n" +
+                "    \"login\": \""+login+"\",\n" +
+                "    \"password\": \""+password+"\",\n" +
+                "    \"client\": \""+client+"\"\n" +
+                "  },\n" +
+                "  \"data\": {\n" +
+                "  \"terminal_id\": \"ib_android\",\n" +
+                "  \"client\": {\n" +
+                "    \"id\": \"6241781\",\n" +  //6646497  //1004834 //544881 //6779548
+                "    \"source\": \"SIRIUS\"\n" +
+                "  }\n" +
+                "  }\n" +
                 "}";
         create_token();
     }
@@ -81,6 +91,21 @@ public class Trans_token_payhub implements Auth_token{
 //                "    \"client\": \"transacter\"\n" +
 //                "  }\n" +
 //                "}";
+//        data = "{\n" +
+//                "  \"params\": {\n" +
+//                "    \"login\": \"svc_tpuo_ph\",\n" +
+//                "    \"password\": \"gemozlhnKphR4KH86v8AQUjXyXn58w\",\n" +
+//                "    \"client\": \"transacter\"\n" +
+//                "  },\n" +
+//                "  \"data\": {\n" +
+//                "    \"terminal_id\": \"ib_ios\",\n" +
+//                "    \"client\": {\n" +
+//                "      \"id\": \"6241781\",\n" +
+//                "      \"source\": \"SIRIUS\"\n" +
+//                "    }\n" +
+//                "  }\n" +
+//                "}\n" +
+//                "\n";
         create_token();
         }
 
@@ -122,7 +147,13 @@ public class Trans_token_payhub implements Auth_token{
                 .then()
                 .extract().response().asString();
 
-        JSONObject ob = new JSONObject(response).getJSONObject("data");
+        JSONObject ob = null;
+        try {
+            ob = new JSONObject(response).getJSONObject("data");
+        }catch (Throwable e){
+            System.out.println(response);
+            throw new RuntimeException(e);
+        }
         token = ob.getString("access_token");
     }
 

@@ -15,13 +15,15 @@ public class Tusk_test extends BaseTest {
 
     Tusk tusk = new Tusk();
 
+    @Test(invocationCount = 1)
     public void positive_init(){
         tusk.setExpectedResponseCode(201);
         tusk.init("{\n" +
                 "    \"product\": \"VD\",\n" +
                 "    \"use_case\": \"P2P\",\n" +
                 "    \"request_reason\": {\n" +
-                "        \"message\": \"test121212\"\n" +
+                "        \"message\": \"aasas1212\",\n" +
+                "        \"unicode_emoji\": \"unicode_emoji1212\"\n" +
                 "    },\n" +
                 "    \"payment_requests\": [\n" +
                 "        {\n" +
@@ -30,9 +32,9 @@ public class Tusk_test extends BaseTest {
                 "            \"debtor_type_id\": \"AGENT\",\n" +
                 "            \"debtor_alias\": \"380665767084\",\n" +
                 "            \"payment_request_id\": \"FF"+String.valueOf(new Random().nextLong()).substring(1,14)+"TT\",\n" +
-                "            \"requested_amount\": 1.25,\n" +
+                "            \"requested_amount\": 7,\n" +
                 "            \"requested_amount_currency\": \"UAH\",\n" +
-                "            \"end_to_end_id\": \"RFPid0001\"\n" +
+                "            \"end_to_end_id\": \"RFPid02512\"\n" +
                 "        }\n" +
                 "    ],\n" +
                 "    \"due_date\": \"2025-09-29\",\n" +
@@ -49,7 +51,7 @@ public class Tusk_test extends BaseTest {
                 "        \"creditor_country\": \"UA\",\n" +
                 "        \"creditor_first_name\": \"first\",\n" +
                 "        \"creditor_last_name\": \"last\",\n" +
-                "        \"creditor_alias\": \"380665767084\",\n" +
+                "        \"creditor_alias\": \"380665767086\",\n" +
                 "        \"creditor_id\": \"BL1234567890\",\n" +
                 "        \"creditor_id_type\": \"AGENT\"\n" +
                 "    },\n" +
@@ -93,14 +95,14 @@ public class Tusk_test extends BaseTest {
     public void positive_confirms(){
         positive_init();
         tusk.setExpectedResponseCode(200);
-        tusk.confirms(tusk.getPayment_request_id(),"{\n" +
-                "  \"status_reason\": \"RJ02\",\n" +
-                "  \"transaction_status\": \"RJCT\",\n" +
-                "  \"accepted_amount\": 1.25,\n" +
-                "  \"accepted_amount_currency\": \"UAH\",\n" +
+        tusk.confirms(tusk.getRequest_message_id(),"{\n" +
+                //"  \"status_reason\": \"RJ02\",\n" +
+                "  \"transaction_status\": \"PDNG\",\n" +
+                //"  \"accepted_amount\": 1.25,\n" +
+                //"  \"accepted_amount_currency\": \"UAH\",\n" +
                 "  \"payment_request_id\": \"FG"+String.valueOf(new Random().nextLong()).substring(1,14)+"TT\",\n" +
-                "  \"request_message_id\": \"GG2576348185492JA\",\n" +
-                "  \"message\": \"Rejected by Payer\",\n" +
+                "  \"request_message_id\": \""+tusk.getRequest_message_id()+"\",\n" +
+                //"  \"message\": \"Rejected by Payer\",\n" +
                 "  \"end_to_end_id\": \"RFPid0001\",\n" +
                 "  \"creation_date_time\": \"2020-12-17T09:30:47Z\"\n" +
                 "}");
@@ -155,9 +157,9 @@ public class Tusk_test extends BaseTest {
     }
 
     public void positive_amends(){
-        positive_init();
+        //positive_init();
         tusk.setExpectedResponseCode(200);
-        tusk.amends(tusk.getPayment_request_id(),"{\n" +
+        tusk.amends("1854cdfe-0f06-4c10-a44d-506","{\n" +
                 "  \"due_date\": \"2025-08-14\",\n" +
                 "  \"request_reason\": {\n" +
                 "    \"message\": \"string\",\n" +
@@ -231,5 +233,14 @@ public class Tusk_test extends BaseTest {
 
     public void positive_getCard(){
         tusk.getCardNumberByCardId("021129845704");
+    }
+
+    public void positive_agents(){
+        tusk.agents("{\n" +
+                "client_ekb_id:\"11011584\",\n" +
+                "phone_numbers:[\n" +
+                "\"+380951443165\"\n" +
+                "]\n" +
+                "}");
     }
 }

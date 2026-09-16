@@ -18,7 +18,7 @@ public class Acquiring_regress extends BaseTest {
     public void acquiring3DSversion2() {
         String body = "\"amount\":100,\n" +
                 "    \"commission\": 0,\n" +
-                "    \"merchant_config_id\":\"fe18e213-d70c-4f49-b6db-8c40aca019ca\",\n" +
+                "    \"merchant_config_id\":\"fb7b84d4-2477-4a53-862f-814fc3b3010b\",\n" +
                 Payer_constructor.PAN_payer(Cards_data.getData(Card.FUIB_VISA))+","+
                 "    \"description\": \"3041309906\",\n" +
                 "    \"identification\": {\n" +
@@ -39,7 +39,7 @@ public class Acquiring_regress extends BaseTest {
                 "      \"details\":{\n" +
                 "         \"additional_message\":\"11111111221222222233333333334444444444555555555666666666677777111\",\n" +
                 "         \"source\":\"07\",\n" +
-                "         \"submerchant_url\":\"https://jira.fuib.com/projects/PAYH/issues/PAYH-23149?filter=myopenissues\",\n" +
+                "         \"submerchant_url\":\"http://3.ce\",\n" +
                 "         \"independent_sales_organization_id\":\"3016715233\"\n" +
                 "      }\n" +
                 "      }]},\n" +

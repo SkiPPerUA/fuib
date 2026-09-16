@@ -372,10 +372,10 @@ public class LimitsTest extends BaseTest {
 //                "  \"direction\": \"EXPENSE\"\n" +
 //                "}";
         String body = "{\n" +
-                "\"customer_id\": \"10303233\",\n" +
+                "\"customer_id\": \"477702\",\n" +
                 "\"amount\": 1,\n" +
                 //"\"ekb_id\": 1535617," +
-                "\"kind\": \"EXTERNAL_BANK\",\n" +
+                "\"kind\": \"NBU_MEMO\",\n" +
                 "\"direction\": \"EXPENSE\"\n" +
                 "}";
         limits.clientsInfoLimits(body);

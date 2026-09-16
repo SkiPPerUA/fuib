@@ -34,7 +34,7 @@ public class PAYH_8977 extends BaseTest {
                 "    \"expiry_date\": \"2023-11\",\n" +
                 "    \"consent_date_time\": \"2023-08-30 10:12:12\",\n" +
                 "    \"alias_type\": \"01\",\n" +
-                "    \"alias\": \"380933943736\"\n" +
+                "    \"alias\": \"380933943746\"\n" +
                 "\t    }";
         logger.info("Account = "+account+testNumber);
         logger.info("Guid = "+guid+""+testNumber+"");

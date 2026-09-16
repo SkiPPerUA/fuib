@@ -4,6 +4,8 @@ import org.example.qaTransactionTeam.backEnd.token.Trans_token_payhub;
 import org.example.qaTransactionTeam.backEnd.transaction.ThreeDS;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction;
 import org.example.qaTransactionTeam.backEnd.transaction.Transaction_payhub;
+import org.example.qaTransactionTeam.backEnd.utils.Configs;
+
 import java.io.IOException;
 
 public class C2C extends Transaction_payhub implements Transaction {

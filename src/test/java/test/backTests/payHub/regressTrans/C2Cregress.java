@@ -18,6 +18,7 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
+import static org.example.qaTransactionTeam.backEnd.utils.Card.*;
 
 public class C2Cregress extends BaseTest {
 
@@ -26,21 +27,21 @@ public class C2Cregress extends BaseTest {
     @Test
     public void testC2CPan3DS2OnlyMandatoryFieldsReceiverPan() throws JSONException, InterruptedException {
         String body = "\"amount\": 333,\n" +
-                "    \"commission\": 0,\n" +
+                "    \"commission\": 110,\n" +
                 "    \"client_ip\": \"0.1.1.4\",\n" +
                 "    \"currency\": 980,\n" +
                 "    \"authentication\":{\n" +
                 "      \"device_id\":\"device_idVladTest\",\n" +
                 "      \"session_id\":\"idVladTest\",\n" +
                 "      \"ip\":\"79.110.129.18\",\n" +
-                "      \"event_type\":\"APP_A2C\"\n" +
+                "      \"event_type\":\"APP_C2C\"\n" +
                 "   }," +
                 "    \"description\": \"description\",\n" +
-                Payer_constructor.PAN_payer(Cards_data.getData(Card.MONO_VISA))+","+
+                Payer_constructor.PAN_payer(Cards_data.getData(TEST_CARD))+","+
                 "    \"receiver\": {\n" +
                 "        \"source\": \"PAN\",\n" +
                 //"        \"iban\": \"UA973348510100026201112609802\",\n" +
-                "        \"value\": \""+ Cards_data.getData(Card.FUIB_VISA,Card_param.pan)+"\"\n" +
+                "        \"value\": \""+ Cards_data.getData(FUIB_MC,Card_param.pan)+"\"\n" +
                 "    },\n" +
                 ThreeDS.threeDS_2_2_0;
 

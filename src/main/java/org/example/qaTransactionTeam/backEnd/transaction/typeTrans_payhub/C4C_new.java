@@ -20,7 +20,7 @@ public class C4C_new extends Transaction_payhub implements Transaction {
 
     public C4C_new(){
         super.type = type;
-        super.token = new Trans_token_payhub();
+        super.token = new Trans_token_payhub("svc_ph_test_ptrn","quxS2&56xvatPZz66LKG8sJQHn3ZYVSA","transacter","https://test-endpoint.payhub.com.ua");
     }
 
     public C4C_new(String body){

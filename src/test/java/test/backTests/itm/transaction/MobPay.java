@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 @Test
 public class MobPay extends BaseTest {
 
-    public final Card card = Card.MONO_MC;
+    public final Card card = Card.MONO_VISA;
     private String body;
     public Transaction transaction;
 
@@ -58,7 +58,7 @@ public class MobPay extends BaseTest {
                 "    \"amount\": 100,\n" +
                 "    \"account_number\": \"UA213223130000026007233566001\",\n" +
                 "    \"independent_sales_organization_id\": \"3056715233\",\n" +
-                "    \"merchant_url\": \"https://merchant111.com?com=12345\",\n" +
+                "    \"merchant_url\": \"https://merchant11133333.com?com=12345\",\n" +
                 "    \"payment_url\": \"https://payment111.com?com=12345\"\n" +
                 "  }, {\n" +
                 "    \"first_name\": \"Ivan\",\n" +

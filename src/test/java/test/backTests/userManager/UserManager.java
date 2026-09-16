@@ -10,7 +10,7 @@ public class UserManager extends BaseTest {
     public void find(){
         RabbitMQ_http rabbitMQHttp = new RabbitMQ_http("Find","UserManager:input");
         rabbitMQHttp.sendHttp("{" +
-                        "    \"ekb_id\": \"7115468\"," +
+                        "    \"ekb_id\": \"3392431\"," +
                         "    \"fields\": {" +
                         "         \"general\" : true," +
                         "         \"extra\" : true," +

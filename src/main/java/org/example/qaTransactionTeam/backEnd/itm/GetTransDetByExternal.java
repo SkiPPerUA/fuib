@@ -25,7 +25,7 @@ public class GetTransDetByExternal {
     }
 
     public void GetDetailsByExternal(String external){
-        String url = "https://tsystestapi.pumb.ua/vmt/api/v2/transfers/get-transfers/"+acqId+"/external/"+external+"";
+        String url = "https://tsystestapi.pumb.ua/vmtapi/api/v2/transfers/get-transfers/"+acqId+"/external/"+external+"";
 
         response = given()
                 .contentType(ContentType.JSON)

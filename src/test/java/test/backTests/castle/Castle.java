@@ -10,8 +10,9 @@ import java.util.List;
 @Test
 public class Castle {
     String event_type = "APP_A2C";
-    String client_id = "6241781";
+    String client_id = "3584489";
 
+    @Test(invocationCount = 1)
     public void test_castle(){
 
 //        List.of("APP_A2SEP","APP_A2C","APP_A2P","APP_A2X","APP_A2CSBRD","APP_A2FUIB","APP_A2T").forEach(x -> {event_type = x;
@@ -19,10 +20,11 @@ public class Castle {
 //            castle_confirm("1","failed");
 //            //castle_getLimit("NBU_Memo_Stat"); //NBU_A2CSBRD_Stat  NBU_Transfer_Stat  NBU_Memo_Stat
 //        });
-//        castle_add("120");
-//          castle_confirm("50","failed");
-//        castle_getLimit("NBU_Memo_Stat");
-        castle_getLimit("NBU_A2CSBRD_Stat");//NBU_A2CSBRD_Stat  NBU_Transfer_Stat  NBU_Memo_Stat
+        //castle_add("120");
+        //castle_confirm("125","failed");
+        castle_getLimit("NBU_Memo_Stat");
+        //castle_setCardToken();
+//        castle_getLimit("NBU_A2CSBRD_Stat");//NBU_A2CSBRD_Stat  NBU_Transfer_Stat  NBU_Memo_Stat
 
     }
 
@@ -85,7 +87,7 @@ public class Castle {
     public void castle_setCardToken() {
         RabbitMQ_http rabbitMQHttp = new RabbitMQ_http("SetCardToken","Castle:input");
         rabbitMQHttp.sendHttp("{" +
-                "\"card_token\":\"?C977C2KLVC0QW9W\"" +
+                "\"card_token\":\"?C977C2KLVC0QW1W\"" +
                 "}");
     }
 }

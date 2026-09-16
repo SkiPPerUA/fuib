@@ -17,9 +17,9 @@ public class ArthurVector_test extends BaseTest {
         arthurVector.init("{\n" +
                 "    \"product\": \"VD\",\n" +
                         "    \"use_case\": \"P2P\",\n" +
-//                "    \"request_reason\": {\n" +
-//                "        \"message\": \"test\"\n" +
-//                "    },\n" +
+                "    \"request_reason\": {\n" +
+                "        \"message\": \"test\"\n" +
+                "    },\n" +
                         "    \"payment_requests\": [\n" +
                         "        {\n" +
                         "            \"debtor_alias\": \"+380665767084\",\n" +

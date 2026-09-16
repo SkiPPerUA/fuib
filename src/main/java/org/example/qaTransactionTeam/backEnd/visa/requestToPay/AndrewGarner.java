@@ -31,7 +31,7 @@ public class AndrewGarner extends Restful {
 
     public void init(String body){
         logger.info("init");
-        request(requestSpecification.body(body).when().post(env+"visa-req2pay-inbounds"));
+        request(requestSpecification.body(body).when().log().all().post(env+"visa-req2pay-inbounds"));
         if (response.then().extract().statusCode() == 201){
             payment_request_id = response.then().extract().jsonPath().getString("payment_requests.payment_request_id").replace("[","").replace("]","");
             end_to_end_id = response.then().extract().jsonPath().getString("payment_requests.end_to_end_id").replace("[","").replace("]","");
@@ -74,7 +74,7 @@ public class AndrewGarner extends Restful {
                 .header("Authorization","Bearer "+token.getToken())
                 .header("x-flow-id", Uuid_helper.generate_uuid())
                 .header("x-systemcode","payhub").log().all()
-                .header("x-request-affinity",payment_request_id+"01")
+                .header("x-request-affinity",payment_request_id+"01").log().all()
                 .body(body).when().patch(env+"visa-req2pay-inbounds/"+payment_request_id+"/confirms"));
     }
 

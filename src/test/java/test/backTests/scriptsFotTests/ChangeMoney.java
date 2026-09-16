@@ -11,14 +11,14 @@ import java.sql.SQLException;
 
 public class ChangeMoney extends BaseTest {
 
-    String env = "ITMTST";
+    String env = "itmtst";
     String card = Cards_data.getData(Card.FUIB_MC,Card_param.pan); //5452199000039521
     String acc = "3000000000178795241";
-    int summ = 500000;
+    int summ = 50000000;
 
     @BeforeTest
     public void connBD() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        BDas400.BDas400(env, "savchukv", "skipper11223");
+        BDas400.BDas400(env, "Asgate", "continent");
     }
 
     @Test

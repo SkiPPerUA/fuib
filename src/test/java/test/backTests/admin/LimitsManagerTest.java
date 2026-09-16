@@ -1695,8 +1695,9 @@ public class LimitsManagerTest extends BaseTest {
     }
 
     public void getLimitByProduct(){
+        //limits.getLimitByProduct("477702","CROSSBORDER-OCT");
         limits.getLimitByProduct("2189387","CROSSBORDER-OCT");
-        limits.getLimitByProduct("2189387","CROSSBORDER-AFT");
+        //limits.getLimitByProduct("2189387","CROSSBORDER-AFT");
     }
 
     public void getProductConfigs() throws SQLException {

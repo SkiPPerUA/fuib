@@ -20,7 +20,7 @@ public class AcquiringTrans implements Transaction {
     private String body;
     public static int statusCode = 200;
     protected String status;
-    private final Auth_token token = new Trans_token_payhub("svc_ph_trn2_t", "HNviY3YJnEBTf&tSBnC3gRn4v%y&fn&B", "transacter"); //pan payer
+    private final Auth_token token = new Trans_token_payhub(); //pan payer
     //private final Auth_token token = new Trans_token_payhub("svc_ph_test_ptrn", "quxS2&56xvatPZz66LKG8sJQHn3ZYVSA", "transacter"); //itm payer
     //private final Auth_token token = new Trans_token_payhub("svc_ph_Ccuxalsxt", "Lamx!yAgp9sA7VRiReHwQd2jiXFEpFL3", "transacter", "https://rlyeh.payhub.com.ua"); //PROD
 

@@ -15,7 +15,7 @@ public class Direct_CircuitBreakers extends Restful {
         request(given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer "+token.getToken())
-                .when()
+                .when().log().all()
                 .get(token.getHost()+"/admin/direct-transfers/circuit-breakers?transfer_type="+type+"&processing_scheme="+scheme));
     }
 }

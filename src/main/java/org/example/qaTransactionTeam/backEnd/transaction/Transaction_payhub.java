@@ -1,6 +1,5 @@
 package org.example.qaTransactionTeam.backEnd.transaction;
 
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
@@ -187,6 +186,8 @@ public abstract class Transaction_payhub {
                     "    \"c_res\": \"vladTest\"\n" +
                     "}";
             url = token.getHost()+"/p4p-transfers/"+transactionId+"/3ds";
+        }else if (type.equals("c2a legion")){
+            url = token.getHost()+"/transactions/c2a/3ds";
         }else {
             url = token.getHost()+"/transactions/"+type+"/3ds";
         }
@@ -251,21 +252,16 @@ public abstract class Transaction_payhub {
                 }
                 get_theeDS_data();
             }
-            if (valid_type.equals("3DS")) {
-                url = json.getJSONObject("threed_info").getString("acs_url");
-                creq = json.getJSONObject("threed_info").getString("c_req");
-            }
-        }else {
+        }
             String status = "";
-            if (type.equals("a2c legion")) {
+            if (type.contains("legion") || type.equals("c4c")) {
                 status = json.getString("status");
             } else {
                 status = json.getJSONObject("data").getString("status");
             }
-            if (status.equals("PENDING")) {
+            if (status.equals("PENDING") && !type.equals("c4c")) {
                 try {
                     url = json.getJSONObject("data").getJSONObject("3ds_info").getString("acs_url");
-//                    //hidden_frame
                     if (json.getJSONObject("data").getJSONObject("3ds_info").getString("threed_mode").equals("THREED_TWO_FRAME_HIDDEN")) {
                         creq = json.getJSONObject("data").getJSONObject("3ds_info").getString("hidden_frame_data");
                         Map<String, String> body = new HashMap<>();
@@ -287,34 +283,95 @@ public abstract class Transaction_payhub {
                         url = json.getJSONObject("data").getJSONObject("3ds_info").getString("acs_url");
                         creq = json.getJSONObject("data").getJSONObject("3ds_info").getString("c_req");
                     }
-                } catch (JSONException e) {
+                } catch (JSONException | InterruptedException e) {
                     try {
                         Thread.sleep(wait);
                     } catch (InterruptedException ex) {
                         ex.printStackTrace();
                     }
                     get_theeDS_data();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
                 }
-            }else if (status.equals("PROCESSED")){
+            }else if (status.equals("PENDING") && type.equals("c4c")) {
+                try {
+                    url = json.getJSONObject("threed_info").getString("acs_url");
+                    if (json.getJSONObject("threed_info").getString("threed_mode").equals("THREED_TWO_FRAME_HIDDEN")) {
+                        creq = json.getJSONObject("threed_info").getString("hidden_frame_data");
+                        Map<String, String> body = new HashMap<>();
+                        body.put("threeDSMethodData", creq);
+                        String res = given()
+                                .contentType(ContentType.URLENC)
+                                .params(body)
+                                .when()
+                                .post(url)
+                                .then().extract().response().asString();
+
+                        String threed_data = res.substring(res.indexOf("value=\"")+7,res.indexOf("value=\"")+91);
+                        agreeHidden(transactionId,threed_data);
+                        Map data = wait_hidden_frame(transactionId);
+                        setTransactionId(transactionId);
+                        url = (String) data.get("acs_url");
+                        creq = (String) data.get("c_req");
+                    }else {
+                        url = json.getJSONObject("threed_info").getString("acs_url");
+                        creq = json.getJSONObject("threed_info").getString("c_req");
+                    }
+                } catch (JSONException | InterruptedException e) {
+                    try {
+                        Thread.sleep(wait);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                    get_theeDS_data();
+                }
+            }else if (status.equals("PROCESSED") || status.equals("PROCESSING") || status.equals("ACTIVE")){
                 //Транка успешна - поиск 3дс - прекращать
             }else if (status.equals("3DS_REQUIRED")){
-                try {
-                    url = json.getJSONObject("threed_options").getString("acs_url");
-                    creq = json.getJSONObject("threed_options").getString("c_req");
-                } catch (JSONException e) {
+                if (json.getJSONObject("threed_options").getString("threed_mode").equals("THREED_TWO_HIDDEN")){
                     try {
-                        Thread.sleep(wait);
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
+                        url = json.getJSONObject("threed_options").getString("acs_url");
+                        creq = json.getJSONObject("threed_options").getString("hidden_frame_data");
+                        Map<String, String> body = new HashMap<>();
+                        body.put("threeDSMethodData", creq);
+                        String res = given()
+                                .contentType(ContentType.URLENC)
+                                .params(body)
+                                .when()
+                                .post(url)
+                                .then().extract().response().asString();
+
+                        String threed_data = res.substring(res.indexOf("value=\"")+7,res.indexOf("value=\"")+91);
+                        agreeHidden(transactionId,threed_data);
+                        Map data = wait_hidden_frame(transactionId);
+                        setTransactionId(transactionId);
+                        url = (String) data.get("acs_url");
+                        creq = (String) data.get("c_req");
+                    } catch (JSONException e) {
+                        try {
+                            Thread.sleep(wait);
+                        } catch (InterruptedException ex) {
+                            ex.printStackTrace();
+                        }
+                        get_theeDS_data();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
                     }
-                    get_theeDS_data();
+                }else {
+                    try {
+                        url = json.getJSONObject("threed_options").getString("acs_url");
+                        creq = json.getJSONObject("threed_options").getString("c_req");
+                    } catch (JSONException e) {
+                        try {
+                            Thread.sleep(wait);
+                        } catch (InterruptedException ex) {
+                            ex.printStackTrace();
+                        }
+                        get_theeDS_data();
+                    }
                 }
             }else {
                 Assert.fail("Статус транзакции "+type+" ("+transactionId+") = "+status);
             }
-        }
+        //}
     }
 
     private Map<String,String> wait_hidden_frame(String trans) throws InterruptedException {
@@ -337,5 +394,16 @@ public abstract class Transaction_payhub {
     public Transaction_payhub setTransactionId(String transactionId) {
         this.transactionId = transactionId;
         return this;
+    }
+
+    public void getDetails(String transferId, String sender_ekb_id){
+        response = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token.getToken())
+                .header("X-Flow-ID", "11")
+                .when()
+                .get(token.getHost()+"/transfers/"+transferId+"/details?sender_id="+sender_ekb_id);
+        resp = response.then().extract().response().asString();
+        logger.info("getDetails [" + transferId + "] -> " + resp);
     }
 }

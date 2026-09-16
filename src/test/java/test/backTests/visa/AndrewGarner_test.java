@@ -13,7 +13,7 @@ public class AndrewGarner_test extends BaseTest {
 
     AndrewGarner andrewGarner = new AndrewGarner();
 
-    //@Test(invocationCount = 5)
+    @Test(invocationCount = 5)
     public void positive_init(){
         andrewGarner.setExpectedResponseCode(201);
         andrewGarner.init("{\n" +
@@ -29,7 +29,7 @@ public class AndrewGarner_test extends BaseTest {
                 "            \"debtor_last_name\": \"P.\",\n" +
                 "            \"debtor_agent_country\": \"UA\",\n" +
                 "            \"debtor_country\": \"UA\",\n" +
-                "            \"requested_amount\": 129,\n" +
+                "            \"requested_amount\": 532,\n" +
                 "            \"requested_amount_currency\": \"UAH\",\n" +
                 "            \"end_to_end_id\": \""+Uuid_helper.generate_uuid4()+"\",\n" +
                 "            \"debtor_agent_id\": \"38042668479\",\n" +
@@ -39,7 +39,7 @@ public class AndrewGarner_test extends BaseTest {
 //                "   \"request_options\": {" +
 //                "            \"reminder_schedule\": [\"2025-09-10T07:30:47Z\",\"2025-09-11T09:30:47Z\",\"2025-09-12T09:30:47Z\"]\n" +
 //                "    },"+
-                "    \"due_date\": \"2025-11-20\",\n" +
+                "    \"due_date\": \"2026-05-27\",\n" +
                 "    \"request_message_id\": \""+ Uuid_helper.generate_uuid4() +"\",\n" +
                 "    \"settlement_options\": [\n" +
                 "        {\n" +
@@ -54,7 +54,7 @@ public class AndrewGarner_test extends BaseTest {
                 "        \"creditor_alias\": \"+380665767084\",\n" +
                 "        \"creditor_last_name\": \"P.\",\n" +
                 "        \"creditor_alias_type\": \"MOBL\",\n" +
-                "        \"creditor_id\": \"VD10512767\",\n" +
+                "        \"creditor_id\": \"VD11513771\",\n" +
                 "        \"creditor_id_type\": \"AGENT\",\n" +
                 "        \"creditor_first_name\": \"Oleksandr\"\n" +
                 "    },\n" +

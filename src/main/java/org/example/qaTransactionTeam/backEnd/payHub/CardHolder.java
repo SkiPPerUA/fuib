@@ -28,6 +28,16 @@ public class CardHolder extends Restful {
                 .post(token.getHost()+"/transactions/cardholders/short-name"));
     }
 
+    public void getCardholders(String body){
+        logger.info("getCardholders");
+        request(given()
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer "+token.getToken())
+                .body(body)
+                .when().log().all()
+                .post(token.getHost()+"/transfers/cardholders"));
+    }
+
     public void nameFull(String pan){
         logger.info("Full Name");
         request(given()

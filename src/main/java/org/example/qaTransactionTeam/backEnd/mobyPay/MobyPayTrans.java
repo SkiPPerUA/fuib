@@ -138,7 +138,7 @@ class MobyPayTrans {
                 "        \"details\": {\n" +
                 "            \"additional_message\": \"\",\n" +
                 "            \"source\": \"01\",\n" +
-                "            \"submerchant_url\": \"https://meest-express.com.ua\",\n" +
+                "            \"submerchant_url\": \"http://2.ua\",\n" +
                 "            \"independent_sales_organization_id\": \"36152228\"\n" +
                 "        }\n" +
                 "    }\n" +
@@ -153,7 +153,7 @@ class MobyPayTrans {
                 "\t\t\t\t\"amount\": 1000,\n" +
                 "\t\t\t\t\"account_number\": \"UA1234567654323456\",\n" +
                 "\t\t\t\t\"independent_sales_organization_id\": \"0123456789\",\n" +
-                "\t\t\t\t\"merchant_url\": \"Vsssakddddd\",\n" +
+                "\t\t\t\t\"merchant_url\": \"https://meest12-express.com.ua\",\n" +
                 "\t\t\t\t\"payment_url\": \"ddddd\"\n" +
                 "\t\t\t},\n" +
                 "\t\t\t{\n" +
@@ -352,6 +352,19 @@ class MobyPayTrans {
                 .extract().response().asString();
 
         logger.info("Инфо по транзакции - "+response);
+    }
+
+    public void statusByExternalID(String acq_id, String external_id){
+        response = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization","Bearer "+token.getToken())
+                .when()
+                .get("https://tsystestapi.pumb.ua/vmtapi/api/v2/transfers/get-transfers/"+acq_id+"/external/"+external_id)
+                .then()
+                .statusCode(responseCode)
+                .extract().response().asString();
+
+        logger.info("statusByExternalID - "+response);
     }
 
     public void complete_hold(String amountHold){

@@ -26,7 +26,7 @@ public class Limits {
 
     {
         try {
-            token = new Trans_token_payhub();
+            token = new Trans_token_payhub("svc_ph_test_ib","ApBMQ7zx4F3K3TXyQkyXRHPp37CFtq","transacter");
         } catch (JSONException e) {
             e.printStackTrace();
         }
